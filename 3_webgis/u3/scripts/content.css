@@ -1,0 +1,42 @@
+#content {
+	margin: auto;
+	width: 75%;
+	font-size: 18px;
+	text-align: justify;
+}
+
+#map {
+	width: 80%;
+	height: 575px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+#legendwrap  {
+    position: relative;
+    text-align: left;
+    top: -142px;
+    right: 33px;
+    float: right;
+}
+
+#feature_info {
+    clear: both;
+    position: relative;
+    top: -142px;
+}
+
+table {
+	width: 50%;
+	min-width: 33%;
+	border-radius: 0.5rem;
+	color: #000000;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 2.5rem
+}
+
+th, td {
+	padding: 1rem;
+	border-radius: 0.5rem;
+}

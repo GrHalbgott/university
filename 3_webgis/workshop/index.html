@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="N. Kolaxidis">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> WebGIS 2022/23 - Räumliche Operationen mit Turf.js </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">
+        <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script> <!-- so wird Turf.js komplett eingebunden -->
+        <script type="text/javascript" src="./main.js"></script>
+        <style>
+            /* CSS für den Button */
+            .navbutton {
+                display: block;
+                padding: 0.75rem 5rem;
+                margin: 2vh auto;
+                background-color: #EEEEEE;
+                color: #0A3161;
+                text-align: center;
+                font-weight: none;
+                border: 2px solid #0A3161;
+                border-radius: 0.5rem;
+                transition-duration: 0.5s;
+                cursor: pointer;
+            }
+            .navbutton:hover {
+                background-color: #0A3161;
+                padding: 1.15rem 6.5rem;
+                color: #EEEEEE;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center; color: #0A3161; text-shadow: 1px 1px 0.7rem #333333; font-family: Calibri;"> 
+            Räumliche Operationen mit Turf.js 
+        </h1>
+        <section id="content">		
+            <div id="map" style="width: 80%; height: 80vh; margin: 0 auto; border: 1px solid black;">
+                
+                <script type="text/javascript">
+                    // klassisch OpenLayers-Kartengrundlage erstellen
+                    const map = new ol.Map({
+                        target: 'map',
+                        view: new ol.View({
+                            projection : "EPSG:3857",
+                            center: ol.proj.fromLonLat([10.5, 51.5]),
+                            zoom: 6,
+                            }),
+                        });
+                    
+                    // OSM-Layer hinzufügen
+                    const osmLayer = new ol.layer.Tile({
+                        source: new ol.source.OSM(),
+                        });
+                    map.addLayer(osmLayer);
+                    
+                    // zeigt die definierten Punkte aus dem Script vor Ausführen der Funktion an
+                    var pointdata = {
+                        "type": "FeatureCollection",
+                        "features": [refPoint, point2, point3]
+                    };
+
+                    const pointsLayer = new ol.layer.Vector({
+                        source: new ol.source.Vector({
+                            features: new ol.format.GeoJSON().readFeatures(
+                                pointdata, {featureProjection: "EPSG:3857"}
+                                ),
+                            }),
+                        style: new ol.style.Style({
+                            image: new ol.style.Circle({
+                                fill: new ol.style.Fill({
+                                    color: "rgba(255, 0, 0, 0.33)"
+                                    }),
+                                stroke: new ol.style.Stroke({
+                                    color: "#000000",
+                                    width: 1.5
+                                    }),
+                                radius: 6
+                                })
+                            })
+                        });
+                    map.addLayer(pointsLayer);
+
+                    console.log("Punkte wurden geladen und werden angezeigt.")
+
+                    // Funktion zum Anzeigen der Ergebnisse (wird im Script nach Ausführen der Analyse aufgerufen)
+                    function showresults(resultData) {
+                        // Hinzufügen eines Vector-Layers mit den Daten aus dem JS-Script
+                        const resultLayer = new ol.layer.Vector({
+                            source: new ol.source.Vector({
+                                features: new ol.format.GeoJSON().readFeatures(
+                                    resultData, {featureProjection: "EPSG:3857"}
+                                    ),
+                                }),
+                            });
+                        map.addLayer(resultLayer); 
+                    }
+                </script>
+                
+                <div id="info"></div>
+                <button type="button" class="navbutton" onclick=doit()> Do it! </button> <!-- Hier wird die Funktion aus main.js ausgeführt -->
+
+            </div>
+        </section>
+    </body>
+</html>

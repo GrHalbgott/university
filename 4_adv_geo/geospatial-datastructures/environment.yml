@@ -1,0 +1,9 @@
+name: advgeoscripting
+dependencies:
+  - python=3.9
+  - geopandas=0.10.0
+  - jupyter
+  - ipyleaflet
+  - gdal
+  - pygeos
+  - geojson

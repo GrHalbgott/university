@@ -1,0 +1,37 @@
+body {
+	padding: 1% 2.5rem;
+	background-color: #EEEEEE;
+}
+
+* { /* chooses everything */
+    font-family: Calibri, Arial;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#navbutton {
+	clear: both;
+}
+
+.navbutton {
+    display: block;
+    padding: 0.75rem 5rem;
+    margin: 2vh auto;
+    background-color: #EEEEEE;
+    color: #0A3161;
+    text-align: center;
+    font-weight: none;
+    border: 2px solid #0A3161;
+    border-radius: 0.5rem;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.navbutton:hover {
+    background-color: #0A3161;
+    padding: 1.15rem 6.5rem;
+    color: #EEEEEE;
+    font-weight: bold;
+}

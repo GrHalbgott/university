@@ -1,0 +1,70 @@
+#content {
+	margin: auto;
+	width: 75%;
+	font-size: 18px;
+	text-align: justify;
+}
+
+#topimages  {
+	float: right;
+	margin: -1rem 0 -0.6rem;
+	text-align: center;
+}
+
+#topimages ul li {
+	display: inline-block;
+}
+
+#topimages ul li p {
+	font-style: italic;
+	text-align: center;
+	margin: 2px 0 0.25rem;
+}
+
+#topimages img {
+	height: 220px;
+}
+
+.democrats {
+	color: #0A3161;
+}
+
+.republicans {
+	color: #B31942;
+}
+
+#detailimage img {
+	width: 50%;
+	min-width: 375px;
+	max-width: 1200px;
+	float: left;
+}
+
+table {
+	width: 50%;
+	min-width: 33%;
+	border-radius: 0.5rem;
+	color: #000000;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 2.5rem
+}
+
+th, td {
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+#empty { /* table cell without border/content */
+	border: 0px;
+}
+
+#democrats {
+	color: #EEEEEE;
+	background-color: #0A3161;
+}
+
+#republicans {
+	color: #000000;
+	background-color: #B31942;
+}

@@ -1,0 +1,6 @@
+{
+  "timestamp" : "2022-12-15T10:56:53.896383",
+  "status" : 404,
+  "message" : "The provided boundary parameter does not lie completely within the underlying data-extract polygon.",
+  "requestUrl" : "https://api.ohsome.org/v1/contributions/count"
+}

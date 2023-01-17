@@ -1,0 +1,58 @@
+.banner {
+    text-align: center;
+    margin: auto;
+    margin-top: -1.5rem;
+}
+
+.banner h1 {
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 0.5rem black;
+    width: 100%;
+}
+
+/* Navbar */
+.navbar {
+    margin: auto;
+    margin-bottom: 1.5rem;
+    width: 247px;
+    font-size: 15px;
+    background: linear-gradient(180deg, #0A3161 0%, #FFFFFF 50%, #0A3161 100%);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Dropdown */
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 0; /* entfernen von Whitespace links der "Tabelle" */
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar li a {
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition-duration: 0.5s;
+	cursor: pointer;
+    color: #000000;
+}
+
+.navbar a.current, li a.current{
+    background-color: #CCCCCC;
+}
+
+.navbar li a:hover {
+    background-color: #CCCCCC;
+}
+
+/**/
+hr {
+    margin: 0 2%;
+    border-color: #000000;
+}

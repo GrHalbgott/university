@@ -1,0 +1,745 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2022-12-18T21:18:05Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/696112202",
+        "name": "Abode",
+        "shop": "furniture",
+        "@timestamp": "2021-04-13T17:44:06Z",
+        "@version": 4,
+        "@changeset": 102881501,
+        "@user": "Steeley",
+        "@uid": 101150
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9001019,
+          53.279297
+        ]
+      },
+      "id": "node/696112202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/703111634",
+        "name": "A Cut Above",
+        "shop": "hairdresser",
+        "@timestamp": "2010-04-21T09:01:08Z",
+        "@version": 1,
+        "@changeset": 4484515,
+        "@user": "sirwardle",
+        "@uid": 265303
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.8892774,
+          53.2735047
+        ]
+      },
+      "id": "node/703111634"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/703111637",
+        "addr:city": "Ellesmere Port",
+        "addr:street": "1 West Road",
+        "name": "Heat",
+        "phone": "+44 151 355 3040",
+        "shop": "hairdresser",
+        "website": "https://www.facebook.com/Heat.Hairandbeauty/",
+        "@timestamp": "2018-12-04T14:47:20Z",
+        "@version": 5,
+        "@changeset": 65163217,
+        "@user": "confusedbuffalo",
+        "@uid": 242345
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.8981932,
+          53.2719649
+        ]
+      },
+      "id": "node/703111637"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/703120084",
+        "addr:city": "Ellesmere Port",
+        "addr:postcode": "CH65 6PN",
+        "addr:street": "2B Woodland Road",
+        "name": "Headquarters",
+        "phone": "+44 151 356 4667",
+        "shop": "hairdresser",
+        "@timestamp": "2018-12-04T14:47:20Z",
+        "@version": 2,
+        "@changeset": 65163217,
+        "@user": "confusedbuffalo",
+        "@uid": 242345
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9098124,
+          53.2645601
+        ]
+      },
+      "id": "node/703120084"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1024879385",
+        "addr:city": "Ellesmere Port",
+        "addr:housenumber": "5-7",
+        "addr:postcode": "CH65 6PN",
+        "addr:street": "Woodland Road",
+        "brand": "McColl's",
+        "brand:wikidata": "Q16997477",
+        "brand:wikipedia": "en:McColl's",
+        "contact:website": "https://www.mccolls.co.uk/storelocator/whitby-5-7-woodland-rd/",
+        "fhrs:id": "1520126",
+        "name": "McColl's",
+        "old_fhrs:id": "980298",
+        "old_name": "Co-Operative",
+        "shop": "convenience",
+        "@timestamp": "2022-06-27T11:57:14Z",
+        "@version": 5,
+        "@changeset": 122907048,
+        "@user": "Dave Venables",
+        "@uid": 417748
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9092675,
+          53.2645609
+        ]
+      },
+      "id": "node/1024879385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1635334629",
+        "addr:postcode": "CH66 1JG",
+        "addr:street": "Windways",
+        "brand": "Tesco Express",
+        "brand:wikidata": "Q98456772",
+        "contact:website": "https://www.tesco.com/store-locator/little-sutton/rossmore-rd-w",
+        "fhrs:id": "1201309",
+        "name": "Tesco Express",
+        "shop": "convenience",
+        "source:addr": "FHRS Open Data",
+        "@timestamp": "2022-01-21T11:50:54Z",
+        "@version": 6,
+        "@changeset": 116428014,
+        "@user": "CjMalone",
+        "@uid": 6816132
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9376951,
+          53.2870082
+        ]
+      },
+      "id": "node/1635334629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1635930785",
+        "brand": "Halfords Autocentre",
+        "brand:wikidata": "Q5641894",
+        "brand:wikipedia": "en:Halfords Autocentre",
+        "name": "Halfords Auto Centre",
+        "shop": "car_repair",
+        "@timestamp": "2021-10-05T12:22:21Z",
+        "@version": 3,
+        "@changeset": 112120924,
+        "@user": "user_5589",
+        "@uid": 5589
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9421575,
+          53.2808455
+        ]
+      },
+      "id": "node/1635930785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1637848344",
+        "shop": "hairdresser",
+        "@timestamp": "2012-02-18T16:12:22Z",
+        "@version": 1,
+        "@changeset": 10721691,
+        "@user": "RaverDave",
+        "@uid": 606022
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9465138,
+          53.2843539
+        ]
+      },
+      "id": "node/1637848344"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1639327168",
+        "shop": "car",
+        "@timestamp": "2012-02-19T16:33:19Z",
+        "@version": 1,
+        "@changeset": 10731883,
+        "@user": "RaverDave",
+        "@uid": 606022
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9520153,
+          53.2923602
+        ]
+      },
+      "id": "node/1639327168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2093976073",
+        "brand:wikidata": "Q8002536",
+        "contact:website": "https://stores.wilko.com/gb/cheshire-east/ellesmere-port/unit-6-18-civic-way",
+        "name": "Wilko",
+        "shop": "doityourself",
+        "@timestamp": "2022-02-01T12:15:15Z",
+        "@version": 4,
+        "@changeset": 116865980,
+        "@user": "CjMalone",
+        "@uid": 6816132
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9018687,
+          53.2777612
+        ]
+      },
+      "id": "node/2093976073"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2096132120",
+        "name": "Hollywood Car Sales",
+        "shop": "car",
+        "source:name": "photograph",
+        "@timestamp": "2016-12-27T20:22:04Z",
+        "@version": 2,
+        "@changeset": 44715032,
+        "@user": "theid",
+        "@uid": 303055
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9468715,
+          53.2857547
+        ]
+      },
+      "id": "node/2096132120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2096211559",
+        "addr:housenumber": "508",
+        "addr:postcode": "CH66 3RE",
+        "addr:street": "Chester Road",
+        "brand": "Tesco Express",
+        "brand:wikidata": "Q98456772",
+        "contact:website": "https://www.tesco.com/store-locator/ellesmere-port/508-chester-rd",
+        "fhrs:id": "289952",
+        "name": "Tesco Express",
+        "shop": "convenience",
+        "source": "local_knowledge",
+        "source:addr": "FHRS Open Data",
+        "@timestamp": "2022-01-21T11:50:54Z",
+        "@version": 4,
+        "@changeset": 116428014,
+        "@user": "CjMalone",
+        "@uid": 6816132
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9425601,
+          53.2812365
+        ]
+      },
+      "id": "node/2096211559"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2137185887",
+        "name": "Gordale Garden Centre",
+        "shop": "garden_centre",
+        "@timestamp": "2015-01-11T11:32:23Z",
+        "@version": 2,
+        "@changeset": 28059878,
+        "@user": "Dyserth",
+        "@uid": 1892838
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.0011891,
+          53.2734178
+        ]
+      },
+      "id": "node/2137185887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2137185888",
+        "name": "Waterworld",
+        "shop": "garden_centre",
+        "@timestamp": "2013-02-01T11:38:22Z",
+        "@version": 1,
+        "@changeset": 14869937,
+        "@user": "Moony8",
+        "@uid": 1183089
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.0004056,
+          53.2723558
+        ]
+      },
+      "id": "node/2137185888"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2137185889",
+        "shop": "gift",
+        "@timestamp": "2013-02-01T11:38:22Z",
+        "@version": 1,
+        "@changeset": 14869937,
+        "@user": "Moony8",
+        "@uid": 1183089
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.0014138,
+          53.2740946
+        ]
+      },
+      "id": "node/2137185889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2137185890",
+        "name": "Great Outdoors",
+        "shop": "yes",
+        "@timestamp": "2013-02-01T11:38:22Z",
+        "@version": 1,
+        "@changeset": 14869937,
+        "@user": "Moony8",
+        "@uid": 1183089
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9986675,
+          53.2727505
+        ]
+      },
+      "id": "node/2137185890"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2192914402",
+        "name": "General Store",
+        "shop": "alcohol",
+        "@timestamp": "2015-02-03T16:47:53Z",
+        "@version": 2,
+        "@changeset": 28593392,
+        "@user": "daviesp12",
+        "@uid": 722193
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9242669,
+          53.2854968
+        ]
+      },
+      "id": "node/2192914402"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2192914403",
+        "name": "Style Council",
+        "shop": "hairdresser",
+        "@timestamp": "2013-03-09T17:31:52Z",
+        "@version": 1,
+        "@changeset": 15305207,
+        "@user": "Moony8",
+        "@uid": 1183089
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9243216,
+          53.2857482
+        ]
+      },
+      "id": "node/2192914403"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2192914406",
+        "addr:housenumber": "14A",
+        "addr:postcode": "CH66 1JN",
+        "addr:street": "Overpool Road",
+        "brand": "Co-op Food",
+        "brand:wikidata": "Q3277439",
+        "brand:wikipedia": "en:Co-op Food",
+        "fhrs:id": "289888",
+        "name": "Co-op Food",
+        "shop": "convenience",
+        "source:addr": "FHRS Open Data",
+        "@timestamp": "2020-10-08T17:36:28Z",
+        "@version": 2,
+        "@changeset": 92189011,
+        "@user": "Fledge",
+        "@uid": 589645
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9242867,
+          53.2856889
+        ]
+      },
+      "id": "node/2192914406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2192914408",
+        "name": "Debonair",
+        "shop": "hairdresser",
+        "@timestamp": "2015-02-03T16:47:53Z",
+        "@version": 2,
+        "@changeset": 28593392,
+        "@user": "daviesp12",
+        "@uid": 722193
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9243651,
+          53.2858293
+        ]
+      },
+      "id": "node/2192914408"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2192914409",
+        "addr:housenumber": "24A",
+        "addr:postcode": "CH66 1JN",
+        "addr:street": "Overpool Road",
+        "fhrs:id": "314621",
+        "name": "Drury's",
+        "shop": "butcher",
+        "source:addr": "FHRS Open Data",
+        "@timestamp": "2020-10-08T17:36:28Z",
+        "@version": 3,
+        "@changeset": 92189011,
+        "@user": "Fledge",
+        "@uid": 589645
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9242347,
+          53.2854067
+        ]
+      },
+      "id": "node/2192914409"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2192914410",
+        "name": "Iceni",
+        "shop": "hairdresser",
+        "@timestamp": "2015-02-03T16:47:53Z",
+        "@version": 2,
+        "@changeset": 28593392,
+        "@user": "daviesp12",
+        "@uid": 722193
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9241345,
+          53.2851232
+        ]
+      },
+      "id": "node/2192914410"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2351939368",
+        "name": "Brookdale Garage",
+        "shop": "car_repair",
+        "@timestamp": "2013-06-19T08:19:51Z",
+        "@version": 1,
+        "@changeset": 16613892,
+        "@user": "Dousey1",
+        "@uid": 1536887
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9643935,
+          53.2804522
+        ]
+      },
+      "id": "node/2351939368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2400490518",
+        "name": "Burton Caravan Sales",
+        "shop": "caravan",
+        "source": "survey",
+        "@timestamp": "2019-09-05T12:27:25Z",
+        "@version": 3,
+        "@changeset": 74131494,
+        "@user": "GinaroZ",
+        "@uid": 3432400
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9980007,
+          53.2716352
+        ]
+      },
+      "id": "node/2400490518"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3329784266",
+        "building": "yes",
+        "name": "Ellesmere Port Arcades",
+        "shop": "mall",
+        "@timestamp": "2015-02-04T11:30:43Z",
+        "@version": 1,
+        "@changeset": 28608747,
+        "@user": "daviesp12",
+        "@uid": 722193
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9006571,
+          53.2778578
+        ]
+      },
+      "id": "node/3329784266"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3824468558",
+        "addr:city": "Ellesmere Port",
+        "addr:postcode": "CH65 0AP",
+        "addr:street": "Port Arcades",
+        "name": "Netto",
+        "opening_hours": "Mo-Sa 08:00-22:00;Su 10:00-16:00",
+        "shop": "supermarket",
+        "website": "http://www.netto.co.uk/",
+        "@timestamp": "2015-11-08T13:11:04Z",
+        "@version": 1,
+        "@changeset": 35168982,
+        "@user": "oderplantscher",
+        "@uid": 817315
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.901615,
+          53.276881
+        ]
+      },
+      "id": "node/3824468558"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6030901143",
+        "addr:city": "Ellesmere Port",
+        "addr:housename": "Kay Group Services",
+        "addr:postcode": "CH65 3AA",
+        "addr:street": "Jackswood Avenue",
+        "brand": "Spar",
+        "brand:wikidata": "Q610492",
+        "brand:wikipedia": "en:SPAR (retailer)",
+        "name": "Spar",
+        "shop": "convenience",
+        "@timestamp": "2021-10-29T10:28:36Z",
+        "@version": 6,
+        "@changeset": 113117618,
+        "@user": "user_5589",
+        "@uid": 5589
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9079437,
+          53.2898892
+        ]
+      },
+      "id": "node/6030901143"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6031532744",
+        "name": "Little Sutton Car Centre",
+        "shop": "car",
+        "@timestamp": "2018-11-02T09:08:48Z",
+        "@version": 1,
+        "@changeset": 64105764,
+        "@user": "RaverDave",
+        "@uid": 606022
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9467454,
+          53.2860392
+        ]
+      },
+      "id": "node/6031532744"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7497667815",
+        "brand": "Asda",
+        "brand:wikidata": "Q297410",
+        "brand:wikipedia": "en:Asda",
+        "contact:phone": "+44 151 348 6120",
+        "contact:website": "https://storelocator.asda.com/north-west/ellesmere-port/grange-road/opticians",
+        "fixme": "Location not accurate",
+        "name": "Asda Opticians",
+        "operator": "Asda Stores Ltd",
+        "shop": "optician",
+        "@timestamp": "2021-09-26T22:39:53Z",
+        "@version": 2,
+        "@changeset": 111742554,
+        "@user": "user_5589",
+        "@uid": 5589
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.8983946,
+          53.2762266
+        ]
+      },
+      "id": "node/7497667815"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9399555441",
+        "addr:housenumber": "1",
+        "addr:postcode": "CH66 3JT",
+        "addr:street": "Thelwall Road",
+        "brand": "Tesco Express",
+        "brand:wikidata": "Q98456772",
+        "contact:website": "https://www.tesco.com/store-locator/ellesmere-port/sutton-way",
+        "fhrs:id": "507648",
+        "name": "Tesco Express",
+        "shop": "convenience",
+        "@timestamp": "2022-01-21T11:50:54Z",
+        "@version": 2,
+        "@changeset": 116428014,
+        "@user": "CjMalone",
+        "@uid": 6816132
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9261943,
+          53.2761766
+        ]
+      },
+      "id": "node/9399555441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9443089704",
+        "addr:housenumber": "1",
+        "addr:postcode": "CH65 0DB",
+        "addr:street": "York Road",
+        "brand": "Farmfoods",
+        "brand:wikidata": "Q5435841",
+        "brand:wikipedia": "en:Farmfoods",
+        "fhrs:id": "314611",
+        "name": "Farmfoods",
+        "shop": "frozen_food",
+        "@timestamp": "2022-01-23T21:07:10Z",
+        "@version": 1,
+        "@changeset": 116515136,
+        "@user": "CjMalone",
+        "@uid": 6816132
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.9001868,
+          53.2784236
+        ]
+      },
+      "id": "node/9443089704"
+    }
+  ]
+}

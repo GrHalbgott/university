@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="N. Kolaxidis">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Open Layers -  Landuse Tile Cache </title>
+        <link rel="stylesheet" type="text/css" href="./scripts/global.css">
+        <link rel="stylesheet" type="text/css" href="./scripts/header.css">
+        <link rel="stylesheet" type="text/css" href="./scripts/content.css">
+        <link rel="stylesheet" type="text/css" href="./scripts/footer.css">
+        <link rel="stylesheet" type="text/css" href="./libs/ol-v7.1.0/ol.css">
+        <script type="text/javascript" src="./scripts/main.js"></script>
+        <script type="text/javascript" src="./scripts/styles.js"></script>
+        <script type="text/javascript" src="./libs/ol-v7.1.0/ol.js"></script>
+    </head>
+    <body>
+        <section id="header">
+            <div class="banner">
+                <h1> Open Layers -  Landuse Tile Cache </h1>
+            </div>
+            <div class="navbar">
+                <ul>
+                    <li><a href="./index.html"> Startseite </a></li>
+                    <li class="dropdown">
+                        <a href="./ol1.html" class="current" class="dropbtn"> Open Layers </a>
+                        <div class="dropdown_content">
+                            <a href="./ol1.html"> Windräder in D </a>
+                            <a class="current" href=""> Landuse Tile Cache </a>
+                            <a href="./ol3.html"> Datenvisualisierung </a>
+                        </div>
+                    </li>
+                    <li><a href="./impressum.html"> Impressum </a></li>
+                </ul>    
+            </div>
+            <hr>
+        </section>
+
+        <section id="content">
+            <h2>OSM Landuse Tile Cache</h2>
+		
+        		<div id="map">
+        		    <script type="text/javascript">
+              	    const map = new ol.Map({
+                  	    target: 'map',
+                  	    view: new ol.View({
+                    	    projection : "EPSG:3857",
+                            center: ol.proj.fromLonLat([10.5, 51.5]),
+                      	    zoom: 4.1
+                    	    }),
+                	    });
+
+                    const landuse = new ol.layer.Tile({
+                        source: new ol.source.XYZ({
+                            url: "https://maps.heigit.org/osmlanduse/tiles/osmlanduse:osm_lulc_combined_osm4eo/webmercator/{z}/{x}/{y}.png",
+                            minZoom: 4
+                            })
+                        });
+                	map.addLayer(landuse);
+
+                    const osmLayer = new ol.layer.Tile({
+                        source: new ol.source.OSM(),
+                        maxZoom: 4
+                        });
+                    map.addLayer(osmLayer);
+          	    </script>
+        		</div>
+
+        </section>
+
+        <div id="navbutton" style="margin-bottom: -2.5rem">
+          <table>
+            <tr>
+              <td><a href="./ol1.html"><button type="button" class="navbutton" style="margin-right: 0rem"> Zurück </button></a></td>
+              <td><a href="./ol3.html"><button type="button" class="navbutton" style="margin-left: 0rem"> Weiter </button></a></td>
+            </tr>
+        </div>
+
+        <section id="footer">
+            <a href="#top"><img class="arrow" src="./images/arrow.png" alt="Nach-Oben-Pfeil"/></a>
+            <p class="footer"> Nikolaos Kolaxidis </p>
+            <p class="footer">|</p>
+            <p class="footer"> 07.12.2022 </p>
+            <p class="footer">|</p>
+            <p class="footer"> Universität Heidelberg </p>
+        </section>
+    </body>
+</html>

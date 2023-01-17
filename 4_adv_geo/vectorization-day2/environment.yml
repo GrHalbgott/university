@@ -1,0 +1,10 @@
+name: advgeoscripting
+dependencies:
+  - python=3.9
+  - geopandas
+  - jupyter
+  - ipyleaflet
+  - gdal
+  - pygeos
+  - cython
+  - line_profiler

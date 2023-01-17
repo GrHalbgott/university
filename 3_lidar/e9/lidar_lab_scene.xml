@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <scene id="lidar_lab" name="LiDAR-Geo-Lab">
+		<!-- Adapt the parts definitions below and add further parts: id and value (=relative path to model file) -->
+        <part id="0">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/groundplane.obj"/>
+            </filter>
+        </part>
+        <part id="1">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_01_18m.obj"/>
+            </filter>
+        </part>
+        <part id="2">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_02_14m.obj"/>
+            </filter>
+        </part>
+        <part id="3">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_02_15m.obj"/>
+            </filter>
+        </part>
+        <part id="4">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_02_16m.obj"/>
+            </filter>
+        </part>
+        <part id="5">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_02_20m.obj"/>
+            </filter>
+        </part>
+        <part id="6">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_03_14m.obj"/>
+            </filter>
+        </part>
+        <part id="7">
+            <filter type="objloader">
+                <param type="string" key="filepath" value="data/sceneparts/lidar_lab/TS03_03_19m.obj"/>
+            </filter>
+        </part>
+    </scene>
+</document>

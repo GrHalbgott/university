@@ -1,0 +1,23 @@
+#footer {
+	position: fixed;
+	bottom: 0.5rem;
+	height: 2.5rem;
+	border-radius: 0.5rem;
+	left: 2.5rem;
+	right: 2.5rem;
+	text-align: center;
+	color: #000000;
+	background: linear-gradient(0deg, #0A3161 10%, #FFFFFF 50%, #B31942 90%);
+}
+
+p.footer {
+    margin: 0.6rem 0.5rem 0 0.5rem;
+	display: inline-block;
+}
+
+img.arrow {
+	position: fixed;
+	right: 2.5px;
+	bottom: 3rem;
+	width: 2.75rem;
+}
