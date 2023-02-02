@@ -1,0 +1,30 @@
+idea: accessibility of clean drinking water, comprehensive waste disposal -> Goal 6 and 3
+https://sdgs.hotosm.org/pages/part-iv-using-open-data-and-maps-to-meet-and-monitor-sdgs/sdg-goal-06/
+
+WATER and SANITATION
+amenity=drinking_water
+amenity=shower
+amenity=toilets
+
+WASTE
+amenity=waste_transfer_station
+amenity=waste_disposal
+amenity=waste_basket
+amenity=recycling
+amenity=sanitary_dump_station
+
+---
+
+Accessibility of Healthcare institutions -> Goal 3
+
+healthcare=*
+amenity=clinic
+amenity=dentist
+amenity=doctors
+amenity=hospital
+
+---
+NO SDG GOAL (?)
+Comparison Baby hatches in Kibera vs rest of Nairobi -> seems to be necessary where low income
+
+amenity=baby_hatch
