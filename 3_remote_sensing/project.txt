@@ -1,5 +1,5 @@
-Waldbranddetektion MODIS vs. Zeitreihendetektion (RandomForest, nnphen oder so)
 Borkenkäferbefall in Wäldern -> multitemporale Daten
+Je nach Größe des Befalls (Literatur) MODIS oder Landsat etc.
 
 bfastmonitor bzw bfastlite als Package für Analyse am Ende
 für MODIS-Daten MODIStsp
@@ -14,3 +14,10 @@ Mehrere Datensätze -> gemeinsames Prozessierungslevel
 - Hauptsache: zeigen, dass man mit Fernerkundungsdaten umgehen kann
 - Zweispalter in Latex -> max 5000/5500 Worte
 - Abgabe: PDF und R-Script am 31.03.2023
+
+
+Borkenkäferbefall:
+- Change detection: Ausbreitung nach mehreren Jahren visualisieren
+- Change quantification: wie viel Fläche betroffen in Zeit x?
+- Harz in D oder Kanada um die großen Seen rum
+- Wenn NDVI homogen niedriger über Fläche X, dann wahrscheinlich Trockenheit, wenn Armstrukturen dann wahrscheinlich eher Schädlingsbefall (abchecken welche in Frage kommen außer Borkenkäfer)
