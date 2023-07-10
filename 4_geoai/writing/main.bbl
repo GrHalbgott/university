@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+
+\bibitem{JanowiczEA2020}
+Janowicz, K., Gao, S., McKenzie, G., Hu, Y., and Bhaduri, B., 2020.
+\newblock ``{GeoAI: Spatially Explicit Artificial Intelligence Techniques for
+  Geographic Knowledge Discovery and Beyond}''.
+\newblock {\em {International Journal of Geographical Information Science},
+  {\bf 34}}(4), pp.~625--636.
+
+\bibitem{Li2020}
+Li, W., 2020.
+\newblock ``{GeoAI: Where machine learning and big data converge in
+  GIScience}''.
+\newblock {\em {Journal of Spatial Information Science}}(20), pp.~71--77.
+
+\bibitem{PhanEA2020}
+Phan, T., Kuch, V., and Lehner, L., 2020.
+\newblock ``{Land Cover Classification using Google Earth Engine and Random
+  Forest Classifier—The Role of Image Composition}''.
+\newblock {\em {Remote Sensing}, {\bf 12}}(2411).
+
+\bibitem{SvobodaEA2022}
+Svoboda, J., Stych, P., Laštovicka, J., Paluba, D., and Kobliuk, N., 2022.
+\newblock ``{Random Forest Classiﬁcation of Land Use, Land-Use Change and
+  Forestry (LULUCF) Using Sentinel-2 Data—A Case Study of Czechia}''.
+\newblock {\em {Remote Sensing}, {\bf 14}}(1189).
+
+\bibitem{YangNewsam2010}
+Yang, Y., and Newsam, S., 2010.
+\newblock ``{Bag-Of-Visual-Words and Spatial Extensions for Land-Use
+  Classification}''.
+\newblock {\em {ACM SIGSPATIAL International Conference on Advances in
+  Geographic Information Systems}}.
+
+\bibitem{MingEA2016}
+Ming, D., Zhou, T., Wang, M., and Tan, T., 2016.
+\newblock ``{Land Cover Classification Using Random Forest With Genetic
+  Algorithm-based Parameter Optimization}''.
+\newblock {\em {Journal of Applied Remote Sensing}, {\bf 10}}(3).
+
+\bibitem{AminiEA2022}
+Amini, S., Saber, M., Rabiei-Dastjerdi, H., and Homayouni, S., 2022.
+\newblock ``{Urban Land Use and Land Cover Change Analysis Using Random Forest
+  Classification of Landsat Time Series}''.
+\newblock {\em {Remote Sensing}, {\bf 14}}(2654).
+
+\end{thebibliography}
