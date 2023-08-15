@@ -1,1 +1,0 @@
-start https://giscience.courses-pages.gistools.geog.uni-heidelberg.de/openstreetmap-analyses-with-qgis-python-and-r/content/intro.html

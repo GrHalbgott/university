@@ -1,0 +1,1 @@
+# Time to take action! New participatory (GIS) approaches and current GIS practices for disaster risk reduction and anticipatory action

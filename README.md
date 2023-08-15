@@ -1,7 +1,7 @@
-# Learning during the master's 
+# Learning during the studies
 
-This repo shows things I have done and learned during my master's at Heidelberg University. <br/>
-It is not everything, but a lot of the more interesting stuff regarding coding and papers.
+This repo shows things I have done and learned during my studies at Trier and Heidelberg University. <br/>
+It is not everything, but a lot of the more interesting stuff regarding coding, papers and presentations.
 
 The number in the folder name refers to the semester, the folder itself to a subject. <br/>
-Everything is made by me except when stated otherwise (working in groups), although some of the practical informatics code (C++) is by my group members during the seminar due to highly mathematical tasks (I sometimes just provided general code structure and commenting).
+Everything is made by me except when stated otherwise (working in groups).
