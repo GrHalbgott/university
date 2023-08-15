@@ -1,0 +1,49 @@
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Kontakt - s6nikola</title>
+	<link rel="stylesheet" type="text/css" href="./scripts/style.css"/>
+	<script type="text/javascript" src="./scripts/prototype.js"></script>
+	<script type="text/javascript">
+		function change_content(elementname, filename) {
+			new Ajax.Updater(elementname, filename);
+		}
+	</script>
+</head>
+
+<body>
+	<section id="container">
+		<div id="form">
+			<form action="MAILTO:s6nikola@uni-trier.de" method="post" enctype="text/plain">
+				<fieldset>
+					<legend><h2>Haben Sie Fragen? Fragen Sie!</h2></legend>
+					<p style="margin-top:0px">Folgende Angaben sind nötig, um Ihre Anfrage zu bearbeiten:</p>
+					<label for="First name" class="formtitle">Vorname:</label><br/>
+						<input type="text" id="First name" name="First name"><br/>
+					<label for="Last name" class="formtitle">Nachname:</label><br/>
+						<input type="text" id="Last name" name="Last name"><br/>
+					<label for="Age" class="formtitle">Alter (16-99):</label><br/>
+						<input type="number" id="Age" name="Age" min="16" max="99"><br/>
+					<label for="Gender" class="formtitle">Geschlecht:</label><br/>
+					<select id="Gender" name="Gender">
+						<option value="Männlich">Männlich</option>
+						<option value="Weiblich">Weiblich</option>
+						<option value="Divers">Divers</option>
+					</select><br/>
+					<label for="Residence" class="formtitle">Wohnort:</label><br/>
+						<input type="text" id="Residence" name="Residence"><br/>	
+					<label for="Email" class="formtitle">Email:</label><br/>
+						<input type="text" id="Email" name="Email"><br/>	
+					<label for="Inquire" class="formtitle">Anfrage:</label><br/>
+						<textarea class="inquire" id="Inquire" name="Anfrage" placeholder="Schreiben Sie hier Ihre Anfrage."></textarea><br/><br/>
+					<input type="checkbox" id="data" name="data" required>
+						<label for="data">Ich erkläre mich hiermit einverstanden, dass meine Daten zur Bearbeitung des Anliegens an den Betreiber der Webseite gesendet werden.</label><br/><br/>
+					<input type="submit" value="Senden">
+					<input type="reset" value="Abbrechen">
+				</fieldset>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
+

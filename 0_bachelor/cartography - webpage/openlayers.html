@@ -1,0 +1,168 @@
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Open Layers - s6nikola</title>
+	<link rel="stylesheet" type="text/css" href="./scripts/style.css"/>
+	<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+	<script type="text/javascript" src="./scripts/prototype.js"></script>
+	<script type="text/javascript">
+		function change_content(elementname, filename) {
+			new Ajax.Updater(elementname, filename);
+		}
+	</script>
+</head>
+
+<body onload="init()">
+	<section>
+		<div id="header">
+			<p class="toptitle" title="Seite wurde erstellt von Nikolaos Kolaxidis"> Seminar - Kartographische Informatik
+				<a href="./index.html" target="_top" title="Homepage Kartographie 2020 - s6nikola">
+					<img class="logo" src="./pics/logo.png" alt="Logo der Universität Trier"/>
+				</a>
+			</p>
+		</div>
+		<hr/>
+		<div id="menue">
+			<div class="MenueNav">
+				<ul>
+					<li><a href="./index.html">Home</a></li>
+					|
+					<li><a href="" onclick="change_content('container','./internet.html');return false">Internet</a>
+						<ul>
+							<li><a href="" onclick="change_content('container','./javascript.html');return false">JavaScript</a></li>
+						</ul>
+					</li>
+					<li><a href="" onclick="change_content('container','./raster.html');return false">Rastergrafik</a>
+						<ul>
+							<li><a href="./openlayers.html">Open Layers</a></li>
+						</ul>
+					</li>
+					<li><a href="" onclick="change_content('container','./vektor.html');return false">Vektorgrafik</a>
+						<ul>
+							<li><a href="" onclick="change_content('container','./svg.html');return false">SVG</a></li>
+						</ul>
+					</li>
+					<li><a href="" onclick="change_content('container','./animation.html');return false">Animation</a></li>
+					|
+					<li><a href="" onclick="change_content('container','./kontakt.html');return false">Kontakt</a></li>
+					<li><a href="" onclick="change_content('container','./impressum.html');return false">Impressum</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	
+	<section id="container">
+		<h2>Open Layers</h2>
+		
+		<div id="map" style="background-color:gray"></div>
+		<script type="text/javascript">
+			function init() {
+				var pixelgr = 8.046279423268324;		//Pixelgröße
+				var minx = 2542590.084344442000000;		//X-Wert
+				var maxy = 5515730.813550672500000;		//Y-Wert
+				var maxx = minx + (961 * pixelgr);		//Bildbreite
+				var miny = maxy - (779 * pixelgr);		//Bildhöhe
+				
+				var map = new OpenLayers.Map('map',{ controls: [] });
+				var Siedlung = new OpenLayers.Layer.Image (
+					"Siedlung",
+					"./pics/openlayers/siedlung.gif",
+					new OpenLayers.Bounds(minx, miny, maxx, maxy),		//minX,minY,maxX,maxY
+					new OpenLayers.Size(961, 779),						//Originalgröße des Gif-Bildes
+					{numZoomLevels:7, maxResolution: 7}			 		//maxResolution entsprechend anpassen
+					);
+				var Gewaesser = new OpenLayers.Layer.Image (
+					"Gewaesser",
+					"./pics/openlayers/gewaesser.gif",
+					new OpenLayers.Bounds(minx, miny, maxx, maxy),
+					new OpenLayers.Size(961, 779),
+					{numZoomLevels:7, maxResolution: 7, isBaseLayer:false}	//Dieses Layer ist KEIN Baselayer
+					);		
+				var Wald = new OpenLayers.Layer.Image (
+					"Wald",
+					"./pics/openlayers/wald.gif",
+					new OpenLayers.Bounds(minx, miny, maxx, maxy),
+					new OpenLayers.Size(961, 779),
+					{numZoomLevels:7, maxResolution: 7, isBaseLayer:false}	//Dieses Layer ist KEIN Baselayer
+					);
+				var Verkehrswege = new OpenLayers.Layer.Image (
+					"Verkehrswege",
+					"./pics/openlayers/verkehrswege.gif",
+					new OpenLayers.Bounds(minx, miny, maxx, maxy),
+					new OpenLayers.Size(961, 779),
+					{numZoomLevels:7, maxResolution: 7, isBaseLayer:false}	//Dieses Layer ist KEIN Baselayer
+					);
+				var Infrastruktur = new OpenLayers.Layer.Image (
+					"Infrastruktur",
+					"./pics/openlayers/infrastruktur.gif",
+					new OpenLayers.Bounds(minx, miny, maxx, maxy),
+					new OpenLayers.Size (961, 779),
+					{numZoomLevels:7, maxResolution: 7, isBaseLayer:false}	//Dieses Layer ist KEIN Baselayer
+					);
+					
+				map.addLayers([Siedlung, Gewaesser, Wald, Verkehrswege, Infrastruktur]);				 //Hier auf die Reihenfolge achten!
+				map.addControl(new OpenLayers.Control.LayerSwitcher({'ascending':false}));
+				map.addControl(new OpenLayers.Control.PanZoomBar());
+				map.addControl(new OpenLayers.Control.MousePosition());
+				map.addControl(new OpenLayers.Control.KeyboardDefaults());
+				map.addControl(new OpenLayers.Control.Navigation());
+				map.zoomToMaxExtent();
+			}
+		</script>
+		
+		<div id="aufgabe">
+			<h3>Aufgabenbeschreibung</h3>
+			
+			Die Aufgabe bestand darin die Open-Layers-API in Form einer interaktiven Karte in die Internetpräsentation zu integrieren. Das dazu notwendige Script wurde uns zur Verfügung gestellt.
+			Dieses ist aufgebaut in drei Teile, welche alle zu einer Funktion
+			<p class="comment">
+				function init()
+			</p>
+			gehören, welche bei Laden des Hauptcontainers (Seiteninhalt exklusive Header & Footer) auf der Seite ausgeführt wird.
+			Innerhalb dieser Funktion sind die drei Bereiche gegliedert in:
+			<ol>
+				<li>Zuweisen der Open-Layers-Map an ein div (erzeugt das Map-Element auf der Seite)</li>
+				<li>Vorbereiten der Layer (Eigenschaften der Ebenen)</li>
+				<li>Aufrufen der Layer und der Steuerungsfunktionen der interaktiven Karte</li>
+			</ol>
+			Werden die Befehle ausgeführt, erscheint eine interaktive Karte mit Steuerungselementen auf der Internetseite.<br/>
+			
+			<p>Allerdings wird die Mausposition nicht in geographischen Koordinaten angezeigt, sondern in Zahlen, deren Sinn & Zweck bisher nicht festzustellen ist (wahrscheinlich Pixel o.Ä).<br/>
+			Daher muss eine Umformung der Zahlen erfolgen bzw eine arithmetische Projektion in ein Koordinatensystem. Alle Layer müssen dann in dieses Koordinatensystem übertragen werden.<br/>
+			Meine Idee zur Vereinfachung der Eintragungen sind Variablen, die einmal vorgerechnet werden und im Nachhinein - einmal eingetragen - ständig veränderbar sind.
+			Im selben Script wie die Open Layers werden die Codezeilen</p>
+			<p class="comment">
+				var pixelgr = 8.046279423268324; 		//Pixelgröße<br/>
+				var minx = 2542590.084344442000000;		//X-Wert<br/>
+				var maxy = 5515730.813550672500000;		//Y-Wert<br/>
+				var maxx = minx + (961 * pixelgr);		//Bildbreite<br/>
+				var miny = maxy - (779 * pixelgr);		//Bildhöhe <br/>
+			</p>
+			hinzugefügt. Diese Variablen können nun einfach per 
+			<p class="comment">
+				new OpenLayers.Bounds(minx, miny, maxx, maxy)
+			</p>
+			in die Eigenschaften der neuen Layer eingebunden werden. So werden die Koordinaten in allen Layern nun korrekt angezeigt.<br/>
+			
+			<p>Ein weiteres Problem bestand darin, dass das Einbinden der Seite mit den Open Layers in die Internetpräsentation mit dem Menü, welches hauptsächlich in JavaScript geschrieben ist, nicht funktioniert hat.
+			Dem konnte umgangen werden, indem eine neue Seite (Open-Layers) mit dem gleichen Header und Footer erstellt wird und das eigentliche Menü (Startseite) nun einen Link auf eine Seite (Open-Layers) aufweist anstatt eine Section mit Inhalten anderer Seiten auszutauschen.<br/>
+			Die Seite "Open-Layers" kann nun als eine Art Checkpoint gesehen werden, da das Menü nun ebenfalls auf dieser Seite aufgeführt wird.</p>
+			<br/>
+		</div>
+	</section>
+	
+	<section id="footer">
+		<a href="#top">
+			<img class="arrow" src="./pics/arrow.png"/>
+		</a>
+		<p class="footer">Nikolaos Kolaxidis</p>
+		<p class="footer">|</p>
+		<p class="footer">09.07.2020</p>
+		<p class="footer">|</p>
+		<p class="footer">Universität Trier</p>
+		<br/>
+		Erstellt mit <a class="footernoline" href="https://notepad-plus-plus.org/download/" target="_blank">Notepad++</a> 
+	</section>
+</body>
+</html>
+

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Impressum - Kavi_s6nikola</title>
+	<style type="text/css">
+		html,
+		body {
+			margin:0;
+			padding: 1% 2% 1% 2%;
+			height:100%;
+			width:95%;
+			font-family:calibri,arial;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}	
+		
+		link, vlink, alink, a {
+			text-decoration:none;
+			color:black;
+		}
+		a.noline {
+			text-decoration:none;
+			color:#000000;
+			display: block;     
+			position: relative;
+			padding:1.5em;
+			margin:-1.5em;
+		}
+		a.subnoline {
+			text-decoration:none;
+			display:block;
+			color:#000000;  
+			position: relative;
+			padding:1em;
+			margin:-1.05em -1.2em -1.05em -1.2em;
+		}
+		a.subnothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			color:#000000;
+			cursor:pointer;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.footernoline {
+			text-decoration:none;
+			font-style:italic;
+			font-weight:bold;
+			color:#FFFFFF;
+		}
+		a.line {
+			text-decoration:underline;
+			font-style:italic;
+			color:#000000;
+		}
+		a.nothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			font-weight:bold;
+			color:#000000;
+			cursor:default;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.nothing:hover {
+			color:#FFFFFF;
+			cursor:default;
+		}
+		
+		img.resize {
+			height:auto;
+			width:15vw;
+			margin:auto;
+			position:absolute;
+			top:-2.5vw;
+			bottom:auto;
+			right:0;
+			z-index:2;
+		}
+		img.arrow {
+			position:fixed;
+			right:1%;
+			bottom:2%;
+			height:auto;
+			width:4vw;
+			z-index:5
+		}
+		p.toptitle {
+			font-size:2vw;
+			text-decoration:underline; 
+			font-weight:bold;
+		}
+		p.fat {
+			font-weight:bold;
+			text-decoration:underline;
+			margin: 0;
+		}
+		object.pdfapp {
+			width:100%;
+			height:120vh;
+		}
+		
+		ul.dropdown {
+			text-align: left;
+			display: inline;
+			margin: 0 2em 0 0;
+			padding: 15px 4px 15px 0;
+			list-style: none;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			z-index:1;
+		}
+		ul.dropdown li.dropdown {
+			display: inline-block;
+			margin-right: -4px;
+			position: relative;
+			padding: 17px 20px;
+			background: #FFFFFF;
+			cursor: pointer;
+			transition: all 0s;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown:hover {
+			background: #AFAFAF;
+			color: #000000;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown ul.dropdown {
+			padding:0;
+			position: absolute;
+			top: 54px;
+			left: 0;
+			min-width: 150%;
+			height:justify;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			display: none;
+			opacity: 0;
+			visibility: hidden;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown { 
+			background: #AFAFAF;
+			display: block; 
+			color: #FFFFFF;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown:hover { 
+			background: #585858; 
+			color:#FFFFFF; 
+			z-index:2;
+		}		
+		ul.dropdown li.dropdown ul.dropdown li.dropdown a:hover { 
+			background: #585858; 
+			color:#FFFFFF;
+			text-decoration: none;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+			z-index:2;
+		}
+		li.dropdown:hover ul.dropdown li.dropdown ul.dropdown {
+			display: none
+		}
+		li.dropdown ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			position:absolute;
+			top:0;
+			left:100%;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown ul.dropdown li.dropdown {
+			background: #AFAFAF;
+		}
+		
+		#container {
+			min-height:100%;
+			position:relative;
+		}
+		#header {
+			position:relative;
+		}
+		#body {
+			padding-bottom:2.5em;	/* Height of the footer */
+		}
+		#footer {
+			position:absolute;
+			bottom:0;
+			text-align:center;
+			color:#FFFFFF;
+			width:98%;
+			height:2.5em;			/* Height of the footer */
+			background:#585858;
+		}
+		#dropdown {
+			text-align:center;
+			height:100%;
+			font-family:calibri,arial;
+		}
+		#pdfapp {
+			align:center;
+			width:auto;
+			min-height:100%;
+		}
+	</style>
+	<script language="javascript">
+		var AngezeigteBreite = 200;
+		var GespeicherteBreite = 0;
+
+		function BildAnpassen(Bild)
+		{
+			if (Bild.width > AngezeigteBreite || GespeicherteBreite > AngezeigteBreite)
+			{
+				if (Bild.width == AngezeigteBreite)
+				{
+					Bild.width = GespeicherteBreite;
+				}
+				else
+				{
+					GespeicherteBreite = Bild.width;
+					Bild.style.cursor = "pointer";
+					Bild.width = AngezeigteBreite;
+				}
+			}
+		}
+	</script>
+</head>
+<body vlink="red" alink="red">
+	<div id="container">
+		<div id="header">
+			<p class="toptitle" align="center" title="Portfolio wurde erstellt von Nikolaos Kolaxidis"> Angewandte Modellierung und Kartographische Visualisierung </p>
+			<div><p title="Besuchen Sie die Uni-Trier-Hompage unter www.uni-trier.de"><a href="https://www.uni-trier.de/index.php?id=48" target="_blank"><img class="resize" src="./pics/logo.png" alt="Logo der Universität Trier"/></a></p></div>
+			<p title="Mit diesem Pfeil können Sie per Klick an den Seitenkopf springen"><a href="#top"><img class="arrow" src="./pics/arrow.png" alt="Nach oben"/></a></p>
+			<hr></hr>
+		</div>
+		<div id="body">
+			<div id="dropdown">
+				<ul class="dropdown">
+					<li class="dropdown"><a class="noline" href="./index.html"> Startseite </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./index.html#1" target="_self"> Allgemeines zur Aufgabenstellung </a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="noline" href="./portfolio.html" target="_self"> Portfolio </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./pfbegin.html" target="_self"> Einführungsschritte </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#1" target="_self"> Einleitung und Grundlagen: &nbsp;&nbsp; GIS und Kartographie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#2" target="_self"> Fortgeschrittene GIS-Techniken: Map-Series </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#3" target="_self"> Einführung in Internetpräsentationen </a></li>
+								</ul>
+							</li>	
+							<li class="dropdown"><a class="subnoline" href="./gisv.html" target="_self"> GIS-Vergeich </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#0" target="_self"> Einführung: GIS-Vergeich - kommerziell vs. Open-Source </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#1" target="_self"> Georeferenzierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#2" target="_self"> Digitalisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#3" target="_self"> Visualisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#4" target="_self"> Conclusio </a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="subnoline" href="./3dm.html" target="_self"> 3D-Modellierung </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#1" target="_self"> Einführung: 3D-Modellierung und virtuelle Landschaften </a></li>	
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#2" target="_self"> Potential erneuerbarer Energien in Rheinland-Pfalz: Windenergie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#3" target="_self"> Virtuelle Landschaften: Schattenwurf und Sichtlinien </a></li>
+								</ul>
+							</li>				
+								
+							<li class="dropdown"><a class="subnoline" href="./cityengine.html" target="_self"> ESRI-CityEngine </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#1" target="_self"> Einführung: ESRI CityEngine </a></li>
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#2" target="_self"> Präsentation der Webscene "Windenergie im Trierer Raum" </a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="nothing"> Impressum </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./impressum.html#1" target="_self"> Datenschutzerklärung </a></li>
+						</ul>
+					</li>
+				</ul>
+				<br/>
+				<br/>
+			</div>
+			
+			<h1 id="D"> Danksagung </h1>
+				Der Autor bedankt sich für ein interessantes und exzellent aufgebautes Modul. Die Thematiken waren realitätsnah und äußerst aktuell. 
+				Als Bestätigung verweist er auf die ausgezeichneten Evaluationsergebnisse der Studierenden, die dieses Modul im Sommersemester 2016 besuchten.
+				<br/>
+				Auch bedankt er sich bei hilfreichen Kommilitonen und Mitmenschen, die ihm auf dem Weg zum Abschließen dieses Portfolios lange Zeit treu zur Seite standen und ihm die besten Tipps gaben.
+				Dankeschön dafür!
+				<br/><br/>
+				Beste Grüße, Nikolaos Kolaxidis
+				<br/><br/>
+				<img style="width:89.5vw; height:auto;" src="./pics/oldmap.jpg"/>
+				<br/><br/>
+				Es folgt das Impressum. 
+				<br/><br/>
+			<h1> Impressum </h1>
+				<h2> Angaben gemäß § 5 TMG: </h2>
+					<p> Universität Trier <br/> Universitätsring 15 <br/> 54296 Trier </p>
+				<h2> Vertreten durch: </h2>
+					<p> Diplom-Biogeograph Mike Teucher <br/> Raum F 187, Kartographie, Universität Trier <br/> Behringstraße 21 <br/> 54296 Trier </p>
+				<h2> Alle Rechte obliegen: </h2>
+					<p> Nikolaos Kolaxidis <br/> Kloschinskystr. 81 <br/> 54292 Trier </p>
+					<p> Bei der Nutzung von Software und Objekten wie Darstellungen und Texten von Drittanbietern sind diese entsprechend gekennzeichnet. </p>
+				<h2>Kontakt:</h2>
+					<table>
+						<tr>
+							<td>Telefon:</td>
+							<td>+49 (0) 157 - 72464444</td>
+						</tr>
+						<tr>
+							<td>E-Mail:</td>
+							<td>s6nikola@uni-trier.de</td>
+						</tr>
+					</table>	
+			<br/>
+			<h1>Haftungsausschluss (Disclaimer)</h1>
+				<p><strong>Haftung für Inhalte</strong></p> 
+					<p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. 
+					Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, 
+					die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. 
+					Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. 
+					Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p> 
+				<p><strong>Haftung für Links</strong></p> 
+					<p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. 
+					Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
+					Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. 
+					Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. 
+					Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. 
+					Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. 
+					Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p> 
+				<p><strong>Urheberrecht</strong></p> 
+					<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. 
+					Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. 
+					Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. 
+					Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. 
+					Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. 
+					Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+			<br/>
+			<h1 id="1">Datenschutzerklärung:</h1>
+				<p><strong>Datenschutz</strong></p> 
+					<p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. 
+					Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p> 
+					<p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. 
+					Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. 
+					Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p> 
+					<p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. 
+					Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+				<br/>
+				<p><strong>Cookies</strong></p> 
+					<p>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren, Malware, Spyware oder jegliche andere Schadsoftware. 
+					Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</p> 
+					<p>Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. 
+					Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.</p> 
+					<p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, 
+					die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browser aktivieren. 
+					Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+				<br/>
+				<p><strong>Widerspruch Werbe-Mails</strong></p> 
+				<p> Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. 
+					Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+			<br/>
+			<h1>Software und Objekte von Drittanbietern</h1>
+				<h2>Benutzte Software</h2> 
+					<p><a class="line" href="https://notepad-plus-plus.org/download/" target="_blank"> Notepad++ Version 6.9.2 </a></p>
+					<p><a class="line" href="https://www.mozilla.org/en-US/firefox/all/#de" target="_blank"> Mozilla Firefox Version 48.0.2 </a></p>
+					<p><a class="line" href="http://www.esri.de/produkte/arcgis" target="_blank"> ArcGIS Version 10.3.1 </a></p>
+					<p><a class="line" href="http://www.esri.com/software/cityengine" target="_blank"> City-Engine Build 2015.2.2106 </a><p>
+					<p><a class="line" href="http://www.qgis.org/de/site/" target="_blank"> QuantumGIS Version 2.8 Wien </a></p>
+				<h2>Darstellungen und Abbildungen</h2>
+					<p><a class="line" href="https://www.uni-trier.de/index.php?id=26691" target="_blank"> Logo der Universität Trier </a></p>
+					<p><a class="line" href="https://s-media-cache-ak0.pinimg.com/originals/5f/cd/92/5fcd92abfda2924ea891bbba5014617e.jpg" target="_blank"> Old Earth Map </a></p>
+				<h2>Hilfen für HTML- und CSS-Code</h2>
+					<p><a class="line" href="http://www.w3schools.com" target="_blank"> W3Schools.com </a></p>
+					<p><a class="line" href="https://wiki.selfhtml.org" target="_blank"> SelfHTML.org </a></p>
+					<p><a class="line" href="http://www.css4you.de" target="_blank"> CSS4You.de </a></p>
+					<p><a class="line" href="http://jsfiddle.net" target="_blank"> JSFiddle.net </a></p>
+					<p><a class="line" href="http://stackoverflow.com" target="_blank"> StackOverflow.com </a></p>
+					<p><a class="line" href="https://css-tricks.com" target="_blank"> CSS-Tricks.com </a></p>
+										
+		<br/><br/>								
+		</div>
+		<div id="footer">
+			Nikolaos Kolaxidis &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23.09.2016 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Universität Trier <br/>  
+			Erstellt mit <a class="footernoline" href="https://notepad-plus-plus.org/download/" target="_blank"> Notepad++</a> 
+			für <a class="footernoline" href="https://www.mozilla.org/en-US/firefox/all/#de" target="_blank"> Mozilla Firefox</a>
+		</div>
+	</div>
+	
+</body>
+</html>

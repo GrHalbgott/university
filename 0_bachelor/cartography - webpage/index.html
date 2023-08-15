@@ -1,0 +1,77 @@
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Startseite - s6nikola</title>
+	<link rel="stylesheet" type="text/css" href="./scripts/style.css"/>
+	<script type="text/javascript" src="./scripts/prototype.js"></script>
+	<script type="text/javascript">
+		function change_content(elementname, filename) {
+			new Ajax.Updater(elementname, filename);
+		}
+	</script>
+</head>
+
+<body>
+	<section>
+		<div id="header">
+			<p class="toptitle" title="Seite wurde erstellt von Nikolaos Kolaxidis"> Seminar - Kartographische Informatik
+				<a href="./index.html" target="_top" title="Homepage Kartographie 2020 - s6nikola">
+					<img class="logo" src="./pics/logo.png" alt="Logo der Universität Trier"/>
+				</a>
+			</p>
+		</div>
+		<hr/>
+		<div id="menue">
+			<div class="MenueNav">
+				<ul>
+					<li><a href="./index.html">Home</a></li>
+					|
+					<li><a href="" onclick="change_content('container','./internet.html');return false">Internet</a>
+						<ul>
+							<li><a href="" onclick="change_content('container','./javascript.html');return false">JavaScript</a></li>
+						</ul>
+					</li>
+					<li><a href="" onclick="change_content('container','./raster.html');return false">Rastergrafik</a>
+						<ul>
+							<li><a href="./openlayers.html">Open Layers</a></li>
+						</ul>
+					</li>
+					<li><a href="" onclick="change_content('container','./vektor.html');return false">Vektorgrafik</a>
+						<ul>
+							<li><a href="" onclick="change_content('container','./svg.html');return false">SVG</a></li>
+						</ul>
+					</li>
+					<li><a href="" onclick="change_content('container','./animation.html');return false">Animation</a></li>
+					|
+					<li><a href="" onclick="change_content('container','./kontakt.html');return false">Kontakt</a></li>
+					<li><a href="" onclick="change_content('container','./impressum.html');return false">Impressum</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="container">
+		<b><h2>Herzlich Willkommen</h2></b>
+		<p> auf meiner Webseite zum Modul "Kartographie" im Jahre 2020 der Universität Trier! <br/><br/>
+		<big><strong><i> Viel Spaß mit meiner Internetpräsentation! - Nikolaos Kolaxidis </i></strong></big></p><br/>
+		
+		<section id="navbutton">
+			<button type="button" class="navbutton" onclick="change_content('container','./raster.html');return false'">Weiter</button>
+		</section>
+	</section>
+	
+	<section id="footer">
+		<a href="#top">
+			<img class="arrow" src="./pics/arrow.png"/>
+		</a>
+		<p class="footer">Nikolaos Kolaxidis</p>
+		<p class="footer">|</p>
+		<p class="footer">09.07.2020</p>
+		<p class="footer">|</p>
+		<p class="footer">Universität Trier</p>
+		<br/>
+		Erstellt mit <a class="footernoline" href="https://notepad-plus-plus.org/download/" target="_blank">Notepad++</a> 
+	</section>
+</body>
+</html>
+

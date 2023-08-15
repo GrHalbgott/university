@@ -1,0 +1,23 @@
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> SVG - s6nikola</title>
+	<link rel="stylesheet" type="text/css" href="./scripts/style.css"/>
+	<script type="text/javascript" src="./scripts/prototype.js"></script>
+	<script type="text/javascript">
+		function change_content(elementname, filename) {
+			new Ajax.Updater(elementname, filename);
+		}
+	</script>
+</head>
+
+<body>
+	<section id="container">
+		<h2>Scalable Vector Graphics</h2>
+		
+		<object type="image/svg+xml" data="./svg/rlp_kreise.svg" width="500" height="600" border="1"></object>
+		<object type="image/svg+xml" data="./svg/stadtbezirke_trier.svg" width="500" height="600" border="1"></object>
+	</section>
+</body>
+</html>
+

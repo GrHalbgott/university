@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Portfolio: 3D-Modellierung - Kavi_s6nikola</title>
+	<style type="text/css">
+		html,
+		body {
+			margin:0;
+			padding: 1% 2% 1% 2%;
+			height:100%;
+			width:95%;
+			font-family:calibri,arial;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}	
+		
+		link, vlink, alink, a {
+			text-decoration:none;
+			color:black;
+		}
+		a.noline {
+			text-decoration:none;
+			color:#000000;
+			display: block;     
+			position: relative;
+			padding:1.5em;
+			margin:-1.5em;
+		}
+		a.subnoline {
+			text-decoration:none;
+			display:block;
+			color:#000000;  
+			position: relative;
+			padding:1em;
+			margin:-1.05em -1.2em -1.05em -1.2em;
+		}
+		a.subnothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			color:#000000;
+			cursor:pointer;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.footernoline {
+			text-decoration:none;
+			font-style:italic;
+			font-weight:bold;
+			color:#FFFFFF;
+		}
+		a.line {
+			text-decoration:underline;
+			font-style:italic;
+			color:#000000;
+		}
+		a.nothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			font-weight:bold;
+			color:#000000;
+			cursor:default;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.nothing:hover {
+			color:#FFFFFF;
+			cursor:default;
+		}
+		
+		img.resize {
+			height:auto;
+			width:15vw;
+			margin:auto;
+			position:absolute;
+			top:-2.5vw;
+			bottom:auto;
+			right:0;
+			z-index:2;
+		}
+		img.arrow {
+			position:fixed;
+			right:1%;
+			bottom:2%;
+			height:auto;
+			width:4vw;
+			z-index:5
+		}
+		p.toptitle {
+			font-size:2vw;
+			text-decoration:underline; 
+			font-weight:bold;
+		}
+		p.fat {
+			font-weight:bold;
+			text-decoration:underline;
+			margin: 0;
+		}
+		object.pdfapp {
+			width:100%;
+			height:120vh;
+		}
+		.lod td {
+			padding:10px 5px;
+			border-style:double;
+			border-width:1px;
+			overflow:hidden;
+			word-break:normal;
+		}
+		
+		ul.dropdown {
+			text-align: left;
+			display: inline;
+			margin: 0 2em 0 0;
+			padding: 15px 4px 15px 0;
+			list-style: none;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			z-index:1;
+		}
+		ul.dropdown li.dropdown {
+			display: inline-block;
+			margin-right: -4px;
+			position: relative;
+			padding: 17px 20px;
+			background: #FFFFFF;
+			cursor: pointer;
+			transition: all 0s;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown:hover {
+			background: #AFAFAF;
+			color: #000000;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown ul.dropdown {
+			padding:0;
+			position: absolute;
+			top: 54px;
+			left: 0;
+			min-width: 150%;
+			height:justify;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			display: none;
+			opacity: 0;
+			visibility: hidden;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown { 
+			background: #AFAFAF;
+			display: block; 
+			color: #FFFFFF;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown:hover { 
+			background: #585858; 
+			color:#FFFFFF; 
+			z-index:2;
+		}		
+		ul.dropdown li.dropdown ul.dropdown li.dropdown a:hover { 
+			background: #585858; 
+			color:#FFFFFF;
+			text-decoration: none;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+			z-index:2;
+		}
+		li.dropdown:hover ul.dropdown li.dropdown ul.dropdown {
+			display: none
+		}
+		li.dropdown ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			position:absolute;
+			top:0;
+			left:100%;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown ul.dropdown li.dropdown {
+			background: #AFAFAF;
+		}
+		
+		#container {
+			min-height:100%;
+			position:relative;
+		}
+		#header {
+			position:relative;
+		}
+		#body {
+			padding-bottom:2.5em;	/* Height of the footer */
+		}
+		#footer {
+			position:absolute;
+			bottom:0;
+			text-align:center;
+			color:#FFFFFF;
+			width:98%;
+			height:2.5em;			/* Height of the footer */
+			background:#585858;
+		}
+		#dropdown {
+			text-align:center;
+			height:100%;
+			font-family:calibri,arial;
+		}
+		#pdfapp {
+			align:center;
+			width:auto;
+			min-height:100%;
+		}
+	</style>
+	<script language="javascript">
+		var AngezeigteBreite = 200;
+		var GespeicherteBreite = 0;
+
+		function BildAnpassen(Bild)
+		{
+			if (Bild.width > AngezeigteBreite || GespeicherteBreite > AngezeigteBreite)
+			{
+				if (Bild.width == AngezeigteBreite)
+				{
+					Bild.width = GespeicherteBreite;
+				}
+				else
+				{
+					GespeicherteBreite = Bild.width;
+					Bild.style.cursor = "pointer";
+					Bild.width = AngezeigteBreite;
+				}
+			}
+		}
+		</script>
+</head>
+<body vlink="red" alink="red">
+	<div id="container">
+		<div id="header">
+			<p class="toptitle" align="center" title="Portfolio wurde erstellt von Nikolaos Kolaxidis"> Angewandte Modellierung und Kartographische Visualisierung </p>
+			<div><p title="Besuchen Sie die Uni-Trier-Hompage unter www.uni-trier.de"><a href="https://www.uni-trier.de/index.php?id=48" target="_blank"><img class="resize" src="./pics/logo.png" alt="Logo der Universität Trier"/></a></p></div>
+			<p title="Mit diesem Pfeil können Sie per Klick an den Seitenkopf springen"><a href="#top"><img class="arrow" src="./pics/arrow.png" alt="Nach oben"/></a></p>
+			<hr></hr>
+		</div>
+		<div id="body">
+			<div id="dropdown">
+				<ul class="dropdown">
+					<li class="dropdown"><a class="noline" href="./index.html" target="_self"> Startseite </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./index.html#1" target="_self"> Allgemeines zur Aufgabenstellung </a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="subnothing" href="./portfolio.html" target="_self"> Portfolio </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./pfbegin.html" target="_self"> Einführungsschritte </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#1" target="_self"> Einleitung und Grundlagen: &nbsp;&nbsp; GIS und Kartographie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#2" target="_self"> Fortgeschrittene GIS-Techniken: Map-Series </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#3" target="_self"> Einführung in Internetpräsentationen </a></li>
+								</ul>
+							</li>	
+							<li class="dropdown"><a class="subnoline" href="./gisv.html" target="_self"> GIS-Vergeich </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#0" target="_self"> Einführung: GIS-Vergeich - kommerziell vs. Open-Source </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#1" target="_self"> Georeferenzierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#2" target="_self"> Digitalisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#3" target="_self"> Visualisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#4" target="_self"> Conclusio </a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="nothing"> 3D-Modellierung </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#1" target="_self"> Einführung: 3D-Modellierung und virtuelle Landschaften </a></li>	
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#2" target="_self"> Potential erneuerbarer Energien in Rheinland-Pfalz: Windenergie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#3" target="_self"> Virtuelle Landschaften: Schattenwurf und Sichtlinien </a></li>
+								</ul>
+							</li>				
+								
+							<li class="dropdown"><a class="subnoline" href="./cityengine.html" target="_self"> ESRI-CityEngine </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#1" target="_self"> Einführung: ESRI CityEngine </a></li>
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#2" target="_self"> Präsentation der Webscene "Windenergie im Trierer Raum" </a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="noline" href="./impressum.html" target="_self"> Impressum </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./impressum.html#1" target="_self"> Datenschutzerklärung </a></li>
+						</ul>
+					</li>
+				</ul>
+				<br/>
+				<br/>
+			</div>
+
+			<h2 id="1"> Einführung: 3D-Modellierung und virtuelle Landschaften </h2>
+				Ein großer Bereich in GIS, der in den letzten Jahren stark an Potential gewonnen hat, ist die dreidimensionale Modellierung von Landschaften, Städten und anderen Objekten. 
+				Gerade wegen dem Leistungsaufschwung durch neue und bessere Computertechnik ist es heute mehr möglich als früher, detailreiche Objekte und vor Allem größere Objektsammlungen zu konstruieren. 
+				Stark verbreitet sind dabei thematische Modelle, welche in Detailfülle reduzierte Modelle sind, die einen bestimmten Inhalt zu einer Thematik vereinfacht darstellen wollen. 
+				<br/><br/>
+				Bestandteil dieser sind meist Basiskartenelemente wie ein digitales Gelände- und Oberflächenmodell (digital surface model DSM und digitales Geländemodell DGM).
+				Dabei beinhaltet das DSM Informationen zu den Objekten, die sich auf der Erdoberfläche befinden, und das DGM die Erdoberfläche selber, sprich das Relief.
+				Beide Modelle werden erzeugt durch  Befliegung durch Flugzeug oder Hubschrauber wie dem von LIDAR (light detection and ranging). Zu den Basiskartenelementen gehören auch Daten wie eine Straßennetzkarte. 
+				Hinzufügen zu den Basiskartenelementen lassen sich dann die inhaltsspezifischen Informationslayer (Ebenen von Informationen), womit die Karte durch den letzten Schliff, 
+				sprich Legende, Maßstab und Nordpfeil sowie Titel etc., fertiggestellt werden kann.
+				<br/><br/>
+				<b>Level of detail</b>
+				<br/><br/>
+				3D-Modelle von Objekten können in ihrer Auflösung oder Detailfülle völlig unterschiedlich ausfallen. Es gibt jedoch fünf sogenannte Level-of-detail-Indices (LOD), wodurch das Modell in seiner Detailfülle eingeordnet werden kann.
+				Der jeweilige Index ist wie folgt definiert:
+				<br/><br/>
+				<table class="lod" align="center" style="undefined;table-layout:fixed; width:50vw">
+					<colgroup>
+						<col style="width:justify">
+						<col style="width:justify">
+					</colgroup>
+					<tr>
+						<td class="lod">LOD 0 (Regionalmodell)<br></th>
+						<td class="lod">Das Relief wird dreidimensional dargestellt, sonstige Objekte werden im Grundriss dargestellt</th>
+					</tr>
+					<tr>
+						<td class="lod">LOD 1 (Stadt-oder Standortmodell)</td>
+						<td class="lod">Gebäude erscheinen als dreidimensionale kubische Formen, Dächer werden als ebene Flächen visualisiert</td>
+					</tr>
+					<tr>
+						<td class="lod">LOD 2 (Texturierte Modelle)</td>
+						<td class="lod">Dachstrukturen werden geometrisch differenziert dargestellt; vereinfachte Darstellung der Vegetation</td>
+					</tr>
+					<tr>
+						<td class="lod">LOD 3 (Architekturmodelle)</td>
+						<td class="lod">Geometrisch sehr fein ausdifferenziert, stellt Vegetation und Straßenmöbel, Dachformen/-strukturen realistisch dar, Punktgenauigkeit (Lage / Höhe): 0,5 m/0,5 m</td>
+					</tr>
+					<tr>
+						<td class="lod">LOD 4 (Innenraummodelle)</td>
+						<td class="lod">Begehbare Architekturmodelle, konstruktive Elemente und Öffnungen werden in ihrer realen Form dargestellt</td>
+					</tr>
+				</table>
+				<br/><br/>
+				Virtuelle Welten werden noch durch Eigenschaften wie Immersion (mentale Eintauchtiefe), Interaktion (Handlungsfreiraum) oder Imagination (Detaillierungsgrad) unterschieden.
+				Dabei haben dreidimensionale Modelle einen großen Anwendungsbereich beispielsweise in der Medizin, im Militär oder bei Videospielen. 
+				<br/><br/>
+				Diese verschiedenen Bereiche benötigen dreidimensionale Modelle mit unterschiedlichen Eigenschaften. Während in der Medizin eher die Imagination wichtig ist, sind bei Videospielen Immersion und Interaktion von großer Wichtigkeit.
+				Im Militär dagegen braucht man Überblick über individuelle Objekte und Standorte, so ist hier die Imagination auf verschiedenen Ebenen gefragt.
+				
+			<br/><br/>
+			<h2 id="2"> Potential erneuerbarer Energien in Rheinland-Pfalz: Windenergie </h2>
+				Als Grundlage von 3D-Modellen werden häufig vorher zweidimensionale Karten erstellt, die die nötigen wichtigsten Informationen enthalten oder einen groben Überblick ohne Raumtiefe liefern. Eine solche Karte, 
+				die in erster Linie eine Orientierung darstellt und bei der Erstellung eines räumlichen 3D-Modells hilft, findet sich im Folgenden:
+				<br/><br/>
+				
+				<figure style="display:inline-block;">
+					<img onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_6_WindparksRLP.png"/>
+					<figcaption style="font-weight:bold">Windparkpotentialflächen im Raum Trier-Saarburg</figcaption>
+				</figure>
+				<br/><br/>
+				Gezeigt wird der Raum Trier-Saarburg mit Relief, Ortsnamen und grobem Straßennetz. Außerdem sind Windräder eingezeichnet, welche schon gebaut wurden, welche noch beantragt und welche schon genehmigt sind. 
+				Die wichtigste Information, die die Karte inne hat, sind die Potentialflächen. Diese zeigen nämlich, ob ein Windrad an der Position rechtlich möglich ist oder nicht. Leider deckt sich dies nicht ganz mit den
+				schon vorhandenen Windparks, Grund dafür könnten neue Richtlinien sein, die erst nach dem Bau der ersten Windräder in Kraft getreten sind. Ansonsten bildet diese Karte eine Grundlage für Ämter, die beantragte 
+				Windparkstandorte freigeben oder eben nicht. Denn: diese Karte wurde mit Informationen erstellt, die solche Ämter als rechtliche Anhaltspunkte freigegeben haben. Sie werden Tabuzonen genannt. In ihnen sind je
+				nach Bedingung die Begrenzungen für Windparkspotentialflächen festgelegt. 
+				<br/><br/>
+				Es gibt harte und weiche Tabuzonen. Zu den harten Tabuzonen zählen Gebiete, in denen absolut keine Windparks gebaut werden dürfen. Eine harte Tabuzone etwa wird durch die Bedingung markiert, dass in gefestigten 
+				Siedlungen keine Windparks entstehen dürfen, oder einfach Naturschutzgebiete oder Biosphärenreservate. Der Mindestabstand zu Gebäuden einer Siedlung beträgt in harten Tabuzonen einen Kilometer, das ist die Grenze, 
+				ab der wieder Windparks gebaut werden dürfen. Bei Einzelhäusern dagegen sind es nur 500 Meter. Wobei diese wieder verhandelbar mit den Eigentümer sind. Ist ein Gebiet verhandelbar, zählt es zu den weichen Tabuzonen.
+				Weiche Tabuzonen sind zum Beispiel auch RAMSAR-Gebiete oder alte Laubwaldbestände.
+				<br/><br/>
+				Alle diese und mehr Kriterien sind in den Prozess der Erstellung der Karte mit eingeflossen, sodass das Ergebnis nun tatäschlich die rechtlich einwandfreien Potentialflächen in einer Karte ist.
+			<br/><br/>
+			<h2 id="3"> Virtuelle Landschaften: Schattenwurf und Sichtlinien </h2>
+				<b>Schattenwurfberechnung</b>
+				<br/><br/>
+				Um weitere Vorbereitungen für eine 3D-Modellierung einer Landschaft zu treffen gibt es noch weitere Möglichkeiten in ArcGIS. Es ist zum Beispiel möglich, den Schattenwurf von digitalisierten Ortschaften (Gebäuden) 
+				und Windrädern zu generieren. Das ist wichtig, da die Schatten wegen der großen Höhe der Windräder recht lang werden können und sich dadurch mögliche Anwohner möglicherweise belästigt fühlen. Um nun die Schattenwürfe
+				der Windräder zu bestimmen, müssen die Windräder mathematisch generiert werden, d.h. ihnen werden Maximalwerte für die Ausdehnungen der Windradblätter gegeben und damit der Schattenwurf berechnet.
+				<br/><br/>
+				<figure style="display:inline-block;">
+					<img onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_7_ShadowsA333.png"/>
+					<figcaption style="font-weight:bold">Schattenwurf des Gebietes 333</figcaption>
+				</figure>
+				<figure style="display:inline-block;">
+					<img onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_7_ShadowsB342.png"/>
+					<figcaption style="font-weight:bold;">Schattenwurf des Gebietes 342</figcaption>
+				</figure>
+				
+				<br/><br/>
+				<b>Sichtbarkeitsanalye</b>
+				<br/><br/>
+				Neben der Schattenwurfberechnung lässt sich auch eine Sichtbarkeitsanalye durchführen. Dazu werden die gleichen Maximalwerte genutzt wie bei der Schattenwurfberechnung, doch diesmal werden Beobachterpunkte willkürlich
+				in Wohngebieten gesetzt und ihnen die Höhe 1.70 Meter (durchschnittlich mannshoch) zugewiesen. In einigen nächsten Schritten wird versucht herauszufinden, ob der Beobachter Windräder sehen kann, und wenn ja, welche.
+				All dies wird in der Karte deutlich, in der klar zu sehen ist, dass im Grunde jedes Windrad von allen Beobachtern gesehen werden kann. Da diese jedoch in rechtlich einwandfreien Zonen stehen, ist das in Ordnung.
+				<br/><br/>
+				<figure style="display:inline-block;">
+					<img onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_8_SightlinesA333.png"/>
+					<figcaption style="font-weight:bold">Sichtlinien des Gebietes 333</figcaption>
+				</figure>
+				<figure style="display:inline-block;">
+					<img onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_8_SightlinesB342.png"/>
+					<figcaption style="font-weight:bold;">Sichtlinien des Gebietes 342</figcaption>
+				</figure>
+		<br/>
+		<p align="center"><a href="./gisv.html" style="font-weight:bold; text-decoration:underline;">Zurück</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+		<a href="./cityengine.html" style="font-weight:bold; text-decoration:underline;">Weiter</a></p>
+		<br/>	
+		</div>
+		<div id="footer">
+			Nikolaos Kolaxidis &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23.09.2016 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Universität Trier <br/>  
+			Erstellt mit <a class="footernoline" href="https://notepad-plus-plus.org/download/" target="_blank"> Notepad++</a> 
+			für <a class="footernoline" href="https://www.mozilla.org/en-US/firefox/all/#de" target="_blank"> Mozilla Firefox</a>
+		</div>
+	</div>
+	
+</body>
+</html>
+

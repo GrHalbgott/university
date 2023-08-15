@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Portfolio: GIS-Vergleich - Kavi_s6nikola</title>
+	<style type="text/css">
+		html,
+		body {
+			margin:0;
+			padding: 1% 2% 1% 2%;
+			height:100%;
+			width:95%;
+			font-family:calibri,arial;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}	
+		
+		link, vlink, alink, a {
+			text-decoration:none;
+			color:black;
+		}
+		a.noline {
+			text-decoration:none;
+			color:#000000;
+			display: block;     
+			position: relative;
+			padding:1.5em;
+			margin:-1.5em;
+		}
+		a.subnoline {
+			text-decoration:none;
+			display:block;
+			color:#000000;  
+			position: relative;
+			padding:1em;
+			margin:-1.05em -1.2em -1.05em -1.2em;
+		}
+		a.subnothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			color:#000000;
+			cursor:pointer;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.footernoline {
+			text-decoration:none;
+			font-style:italic;
+			font-weight:bold;
+			color:#FFFFFF;
+		}
+		a.line {
+			text-decoration:underline;
+			font-style:italic;
+			color:#000000;
+		}
+		a.nothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			font-weight:bold;
+			color:#000000;
+			cursor:default;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.nothing:hover {
+			color:#FFFFFF;
+			cursor:default;
+		}
+		
+		img.resize {
+			height:auto;
+			width:15vw;
+			margin:auto;
+			position:absolute;
+			top:-2.5vw;
+			bottom:auto;
+			right:0;
+			z-index:2;
+		}
+		img.arrow {
+			position:fixed;
+			right:1%;
+			bottom:2%;
+			height:auto;
+			width:4vw;
+			z-index:5
+		}
+		p.toptitle {
+			font-size:2vw;
+			text-decoration:underline; 
+			font-weight:bold;
+		}
+		p.fat {
+			font-weight:bold;
+			text-decoration:none;
+			line-height:150%;
+		}
+		object.pdfapp {
+			width:100%;
+			height:120vh;
+		}
+		
+		ul.dropdown {
+			text-align: left;
+			display: inline;
+			margin: 0 2em 0 0;
+			padding: 15px 4px 15px 0;
+			list-style: none;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			z-index:1;
+		}
+		ul.dropdown li.dropdown {
+			display: inline-block;
+			margin-right: -4px;
+			position: relative;
+			padding: 17px 20px;
+			background: #FFFFFF;
+			cursor: pointer;
+			transition: all 0s;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown:hover {
+			background: #AFAFAF;
+			color: #000000;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown ul.dropdown {
+			padding:0;
+			position: absolute;
+			top: 54px;
+			left: 0;
+			min-width: 150%;
+			height:justify;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			display: none;
+			opacity: 0;
+			visibility: hidden;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown { 
+			background: #AFAFAF;
+			display: block; 
+			color: #FFFFFF;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown:hover { 
+			background: #585858; 
+			color:#FFFFFF; 
+			z-index:2;
+		}		
+		ul.dropdown li.dropdown ul.dropdown li.dropdown a:hover { 
+			background: #585858; 
+			color:#FFFFFF;
+			text-decoration: none;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+			z-index:2;
+		}
+		li.dropdown:hover ul.dropdown li.dropdown ul.dropdown {
+			display: none
+		}
+		li.dropdown ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			position:absolute;
+			top:0;
+			left:100%;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown ul.dropdown li.dropdown {
+			background: #AFAFAF;
+		}
+		
+		#container {
+			min-height:100%;
+			position:relative;
+		}
+		#header {
+			position:relative;
+		}
+		#body {
+			padding-bottom:2.5em;	/* Height of the footer */
+		}
+		#footer {
+			position:absolute;
+			bottom:0;
+			text-align:center;
+			color:#FFFFFF;
+			width:98%;
+			height:2.5em;			/* Height of the footer */
+			background:#585858;
+		}
+		#dropdown {
+			text-align:center;
+			height:100%;
+			font-family:calibri,arial;
+		}
+		#pdfapp {
+			align:center;
+			width:auto;
+			min-height:100vh;
+		}
+	</style>
+	<script language="javascript">
+		var AngezeigteBreite = 200;
+		var GespeicherteBreite = 0;
+
+		function BildAnpassen(Bild)
+		{
+			if (Bild.width > AngezeigteBreite || GespeicherteBreite > AngezeigteBreite)
+			{
+				if (Bild.width == AngezeigteBreite)
+				{
+					Bild.width = GespeicherteBreite;
+				}
+				else
+				{
+					GespeicherteBreite = Bild.width;
+					Bild.style.cursor = "pointer";
+					Bild.width = AngezeigteBreite;
+				}
+			}
+		}
+	</script>
+</head>
+<body vlink="red" alink="red">
+	<div id="container">
+		<div id="header">
+			<p class="toptitle" align="center" title="Portfolio wurde erstellt von Nikolaos Kolaxidis"> Angewandte Modellierung und Kartographische Visualisierung </p>
+			<div><p title="Besuchen Sie die Uni-Trier-Hompage unter www.uni-trier.de"><a href="https://www.uni-trier.de/index.php?id=48" target="_blank"><img class="resize" src="./pics/logo.png" alt="Logo der Universität Trier"/></a></p></div>
+			<p title="Mit diesem Pfeil können Sie per Klick an den Seitenkopf springen"><a href="#top"><img class="arrow" src="./pics/arrow.png" alt="Nach oben"/></a></p>
+			<hr></hr>
+		</div>
+		<div id="body">
+			<div id="dropdown">
+				<ul class="dropdown">
+					<li class="dropdown"><a class="noline" href="./index.html" target="_self"> Startseite </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./index.html#1" target="_self"> Allgemeines zur Aufgabenstellung </a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="subnothing" href="./portfolio.html" target="_self"> Portfolio </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./pfbegin.html" target="_self"> Einführungsschritte </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#1" target="_self"> Einleitung und Grundlagen: &nbsp;&nbsp; GIS und Kartographie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#2" target="_self"> Fortgeschrittene GIS-Techniken: Map-Series </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#3" target="_self"> Einführung in Internetpräsentationen </a></li>
+								</ul>
+							</li>	
+							<li class="dropdown"><a class="nothing"> GIS-Vergeich </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#0" target="_self"> Einführung: GIS-Vergeich - kommerziell vs. Open-Source </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#1" target="_self"> Georeferenzierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#2" target="_self"> Digitalisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#3" target="_self"> Visualisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#4" target="_self"> Conclusio </a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="subnoline" href="./3dm.html" target="_self"> 3D-Modellierung </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#1" target="_self"> Einführung: 3D-Modellierung und virtuelle Landschaften </a></li>	
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#2" target="_self"> Potential erneuerbarer Energien in Rheinland-Pfalz: Windenergie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#3" target="_self"> Virtuelle Landschaften: Schattenwurf und Sichtlinien </a></li>
+								</ul>
+							</li>				
+								
+							<li class="dropdown"><a class="subnoline" href="./cityengine.html" target="_self"> ESRI-CityEngine </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#1" target="_self"> Einführung: ESRI CityEngine </a></li>
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#2" target="_self"> Präsentation der Webscene "Windenergie im Trierer Raum" </a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="noline" href="./impressum.html" target="_self"> Impressum </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./impressum.html#1" target="_self"> Datenschutzerklärung </a></li>
+						</ul>
+					</li>
+				</ul>
+				<br/>
+				<br/>
+			</div>
+
+			<h2 id="0">Einführung: GIS-Vergeich - kommerziell vs. Open-Source </a></h2>
+				<b>Was muss eine GIS-Software leisten?</b>
+				<br/><br/>
+				Zuerst muss eine GIS-Software in der Lage sein, verschiedenste Formate in die Programmoberfläche zu laden. Dabei kommen oft exotische Formate zum Einsatz, weswegen eine GIS-Software kompatibel zu vielen auch unbekannten Formaten sein sollte.
+				Dazu müssen layertechnische Möglichkeiten vorhanden sein, also die verschiedenen Ebenen von Informationen übereinander gelegt werden oder nur einzelne Ebenen angewählt werden können. 
+				Sind die Daten in das Programm geladen, so müssen Sachdaten mit Geometriedaten zu Geodaten verknüpft werden können. Mit diesen Geodaten sollte gearbeitet werden können, also zum Beispiel Flächengrößen berechnet werden können. 
+				Außerdem sollten Attributtabellen eingesehen und bearbeitet werden können, also Daten grundlegend gut verwaltet werden können. Schließlich sollten Karten exportiert werden können, die anschaulich gestaltet sind und
+				Informationen ansprechend wiedergeben. 
+				<br/><br/>
+				Um all diese Funktionen nutzen zu können, die genannt wurden und werden, sollte der Rechner über ausreichende Ressourcen verfügen, sprich eine hohe Rechenleistung und einen großen Speicherplatz zur Verfügung haben. 
+				Außerdem sollte gerade in der Kartographie ein hochauflösendes Display genutzt werden, um kleinste Unterschiede festzumachen, und schließlich Datenein- und Ausgabegeräte wie Scanner oder Drucker zur Verfügung stehen.
+				<br/><br/>
+				
+				<b>Kommerz vs. Open-Source</b>
+				<br/><br/>
+				Nach der weiteren Entwicklung der ersten GIS-Software und dem Aufkommen von weiteren GIS-Softwares haben sich viele Programmierer die Mühe gemacht, ähnliche Programme zu schreiben, die sie dann kostenfrei 
+				für die Allgemeinheit zur Verfügung stellten. Diese wurden ebenso wie die kommerziellen Programme immer weiter entwickelt. 
+				Sind wir heute an einem Punkt angekommen, an dem die kostenfreie GIS-Software, als Vertreter sei mal QGIS genannt, und die proprietäre GIS-Software, 
+				als Vertreter das schon genannte ArcGIS von ESRI, sich kaum in etwas nachstehen? 
+				<br/><br/>
+				Um dieser Frage nachzugehen seien hier drei Vergleichskategorien aufgeführt: Georeferenzierung, Digitalisierung und Visualisierung. 
+				<br/><br/>
+			
+			<h2 id="1"> Georeferenzierung </h2>
+			
+				<figure style="display:inline-block;">
+					<img id="aufg5GA" onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_5_Georeferenzierung_ArcGIS.png"/>
+					<figcaption style="font-weight:bold">Georeferenzierung mit ArcGIS</figcaption>
+				</figure>
+				<figure style="display:inline-block;">
+					<img id="aufg5GQ" onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_5_Georeferenzierung_QGIS.png"/>
+					<figcaption style="font-weight:bold;">Georeferenzierung mit QGIS</figcaption>
+				</figure>
+				
+				<p class="fat">Ähnlichkeiten:</p>	
+				Vorgehensweise. Die Schritte der Georeferenzierung sind in beiden Programmen ähnlich. Auch die Transparenzanspassung funktioniert bei beiden Programmen gut.
+				<br/><br/>
+				Ergebnis. Die Verwendung der Daten für weitere Anwendungen gestaltet sich aufgrund von richtiger Referenzierung als einfach und verlässlich.
+				<br/><br/>
+				<p class="fat">Unterschiede:</p>
+				In <b>QGIS</b> wird die Georeferenzierung in einem eigenen Fenster durchgeführt. Das kann unter Umständen zu Verwirrungen führen.
+				<br/><br/>
+				Projektion auf das Luftbild. Nach mehreren Versuchen in <b>QGIS</b> wurde nur dieses Ergebnis erreicht, welches ein verzerrtes Luftbild und eine dementsprechend verzerrte Projektion zeigt.
+				In <b>ArcGIS</b> war es wesentlich einfacher, die Projektion auf ein gerades Luftbild zu vollziehen. Trotzdem sind die Daten beider Ergebnisse gleich und korrekt.
+				<br/><br/>
+				Damit liegt in dieser Kategorie <b>ArcGIS</b> vorne, denn ein verzerrtes georeferenziertes Bild sieht einfach nicht aus. Wahrscheinlich lässt sich der Fehler in <b>QGIS</b> beheben.
+				<br/><br/>
+
+			<h2 id="2"> Digitalisierung </h2>
+			
+				<figure style="display:inline-block;">
+					<img id="aufg5DA" onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_5_Digitalisierung_ArcGIS.png"/>
+					<figcaption style="font-weight:bold">Digitalisierung mit ArcGIS</figcaption>
+				</figure>
+				<figure style="display:inline-block;">
+					<img id="aufg5DQ" onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_5_Digitalisierung_QGIS.png"/>
+					<figcaption style="font-weight:bold;">Digitalisierung mit QGIS</figcaption>
+				</figure>
+				
+				<p class="fat">Ähnlichkeiten:</p>	
+				Vorgehensweise. Die Digitalisierung funktioniert mit den gleichen Werkzeugen vollkommen problemlos.
+				<br/><br/>
+				Ergebnis. Die Abbildungen sehen sich sogar farblich ähnlich - beide Programme sind in dieser Kategorie gleichauf.
+				<br/><br/>
+				<p class="fat">Unterschiede:</p>
+				Tracer-Tool. Das Tracer-Tool in <b>ArcGIS</b>. Mit diesem Tool ist es möglich, vorher gezogene Linien exakt zu verfolgen und so geschlossene Flächen zu digitalisieren. In <b>QGIS</b> gibt es ein ähnliches, aber noch deutlich unausgereiftes Tool.
+				<br/><br/>
+				Anti-Aliasing. Wegen besserem Anti-Aliasing sehen die Linien in <b>QGIS</b> besser und weniger verpixelt aus, jedoch hat das keinerlei Auswirkungen auf Leistung oder Richtigkeit der Daten.
+				<br/><br/>
+				
+			<h2 id="3"> Visualisierung </h2>
+			
+				<figure style="display:inline-block;">
+					<img id="aufg5VA" onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_5_Visualisierung_ArcGIS.png"/>
+					<figcaption style="font-weight:bold">Visualisierung mit ArcGIS</figcaption>
+				</figure>
+				<figure style="display:inline-block;">
+					<img id="aufg5VQ" onClick="BildAnpassen(this)" onLoad="BildAnpassen(this)" src="./files/kavi_s6nikola_5_Visualisierung_QGIS.png"/>
+					<figcaption style="font-weight:bold;">Visualisierung mit QGIS</figcaption>
+				</figure>
+				
+				<p class="fat">Ähnlichkeiten:</p>	
+				Ergebnis. Die Karten schauen vergleichbar aus, auch sind die Zahlen gleich und die Farbabstufung ähnlich.
+				<br/><br/>
+				<p class="fat">Unterschiede:</p>
+				Vorgehensweise. Die Einstellungsdialoge sind unterschiedlich, bei <b>QGIS</b> sind es eher elementspezifische Einstellungen, bei <b>ArcGIS</b> eher grobe Layout-Einstellungen. Durch beide Dialoge sind jedoch ähnliche Ergebnisse machbar.
+				<br/><br/>
+				Nordpfeil. In <b>ArcGIS</b> kann man aus einer Liste sowohl Maßstab als auch Nordpfeil ganz einfach auswählen. Bei <b>QGIS</b> geht das nur über Einstellungsdialoge. Einen gut aussehenden Nordpfeil kann man nur mit viel
+				Sucherei und Einstellerei erstellen.
+				<br/><br/>
+				
+			<h2 id="4"> Conclusio </h2>
+				ArcGIS, als äußerst teure GIS-Software, ist in Sachen Funktionsumfang und Laufzeitstabilität eine top Software, bietet Anfängern bishin zu Experten alle nötigen Tools zur Arbeit in verschiedensten Bereichen.
+				Sollte etwas fehlen, ist es recht unkompliziert, PlugIns zu suchen und zu implementieren, sodass wirklich so ziemlich alle Wünsche gedeckt sein dürften. Auch die Programmoberfläche ist ansprechend gestaltet und 
+				bietet eine gute Übersicht. Die Such-Funktion in der ArcToolbox vereinfacht das Arbeiten mit verschiedensten Tools und ArcOnline ermöglicht das heutzutage so beliebte Sharing von eigenen Karten. ArcGIS ist jedoch
+				lizenzbeschränkt, heißt also es sind bestimmte Lizenzen für bestimmte Programmextras nötig. Trotzdem weißt ArcGIS eine ungeheure Menge an PlugIns auf, und die Einstellungsmöglichkeiten einzelner Elemente sind klar gegliedert.
+				<br/><br/>
+				Kann QGIS da mithalten?
+				<br/><br/>
+				In Sachen Funktionsumfang - absolut. Durch unzählige PlugIns und der ständigen Weiterentwicklung des Programmes steht QGIS ArcGIS in nichts nach. QGIS kommt mit mehr Formaten klar als ArcGIS.
+				Gerade bei exotischeren Formaten punktet QGIS, vor Allem weil es durch kostenfreie PlugIns ganz einfach durch das Programm nahezu für alle Anwendungsbereiche aufgerüstet werden kann. Dies ist einfacher 
+				gestaltet als in ArcGIS, da dort die Lizenz einige Probleme verursachen kann. Doch sind die Bibliotheken an PlugIns vergleichbar. Die Programmoberfläche ist natürlich Jedermanns Geschmacksache, doch gefällt sie
+				dem Autor besser als die von ArcGIS. Gerade der Dialog zu Objekteigenschaften ist wesentlich schöner und eindeutiger gestaltet. QGIS läuft auf Windows leider nicht ganz so stabil, das liegt vielleicht an einer 
+				schlechten Ressourcennutzung und in Folge dessen Ressourcenüberlastung. Von vertraulichen Quellen weiß man, dass QGIS auf Linux-Rechnern jedoch äußerst stabil läuft. Ein klarer Vorteil von QGIS gegenüber ArcGIS
+				ist auch die Tatsache, dass der Quellcode öffentlich zugängig ist, wodurch von aller Welt Verbesserungen am Programm vorgeschlagen oder unternommen werden können. Dadurch wird QGIS proprietärer GIS-Software 
+				immer ähnlicher, verbessert jedoch Fehler dieser.
+				<br/><br/>
+				Grundsätzlich lässt sich also sagen, dass das kostenfreie QGIS ganz klar mit dem ziemlich teuren ArcGIS mithalten kann, und bei Betrachtung des Preises ist es kein Wunder, dass immer mehr Benutzer zu QGIS greifen. 
+				Gerade für Anfänger oder fortgeschrittene Privatnutzer ist QGIS klar zu empfehlen. Experten, wie Professoren oder amtliche Kartographen es sind, greifen wahrscheinlich immernoch lieber zu ArcGIS, einfach, weil
+				die Software professioneller ist und mit den richtigen Lizenzen einen völlig unbeschränkten Funktionsumfang aufweist. Auch die Laufzeitstabilität ist bestimmmt ein entscheidender Faktor.
+		<br/>
+		<p align="center"><a href="./pfbegin.html" style="font-weight:bold; text-decoration:underline;">Zurück</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+		<a href="./3dm.html" style="font-weight:bold; text-decoration:underline;">Weiter</a></p>
+		<br/>
+		</div>
+		<div id="footer">
+			Nikolaos Kolaxidis &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23.09.2016 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Universität Trier <br/>  
+			Erstellt mit <a class="footernoline" href="https://notepad-plus-plus.org/download/" target="_blank"> Notepad++</a> 
+			für <a class="footernoline" href="https://www.mozilla.org/en-US/firefox/all/#de" target="_blank"> Mozilla Firefox</a>
+		</div>
+	</div>
+</body>
+</html>
+

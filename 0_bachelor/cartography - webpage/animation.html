@@ -1,0 +1,22 @@
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Animation - s6nikola</title>
+	<link rel="stylesheet" type="text/css" href="./scripts/style.css"/>
+	<script type="text/javascript" src="./scripts/prototype.js"></script>
+	<script type="text/javascript">
+		function change_content(elementname, filename) {
+			new Ajax.Updater(elementname, filename);
+		}
+	</script>
+</head>
+
+<body>
+	<section id="container">
+		<h2>Animation mit Scalable Vector Graphics</h2>
+		
+		<object type="image/svg+xml" data="./svg/unibus.svg" width="1000" height="auto"></object>
+	</section>
+</body>
+</html>
+

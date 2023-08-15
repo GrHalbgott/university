@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Startseite - Kavi_s6nikola</title>
+	<style type="text/css">
+		html,
+		body {
+			margin:0;
+			padding: 1% 2% 1% 2%;
+			height:100%;
+			width:95%;
+			font-family:calibri,arial;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}	
+		
+		link, vlink, alink, a {
+			text-decoration:none;
+			color:black;
+		}
+		a.noline {
+			text-decoration:none;
+			color:#000000;
+			display: block;     
+			position: relative;
+			padding:1.5em;
+			margin:-1.5em;
+		}
+		a.subnoline {
+			text-decoration:none;
+			display:block;
+			color:#000000;  
+			position: relative;
+			padding:1em;
+			margin:-1.05em -1.2em -1.05em -1.2em;
+		}
+		a.subnothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			color:#000000;
+			cursor:pointer;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.footernoline {
+			text-decoration:none;
+			font-style:italic;
+			font-weight:bold;
+			color:#FFFFFF;
+		}
+		a.line {
+			text-decoration:underline;
+			font-style:italic;
+			color:#000000;
+		}
+		a.nothing {
+			text-decoration:none;
+			display:block;
+			font-style:italic;
+			font-weight:bold;
+			color:#000000;
+			cursor:default;
+			padding:1.025em;
+			margin:-1.025em;
+		}
+		a.nothing:hover {
+			color:#FFFFFF;
+			cursor:default;
+		}
+		
+		img.resize {
+			height:auto;
+			width:15vw;
+			margin:auto;
+			position:absolute;
+			top:-2.5vw;
+			bottom:auto;
+			right:0;
+			z-index:2;
+		}
+		img.arrow {
+			position:fixed;
+			right:1%;
+			bottom:2%;
+			height:auto;
+			width:4vw;
+			z-index:5;
+		}
+		p.toptitle {
+			font-size:2vw;
+			text-decoration:underline; 
+			font-weight:bold;
+		}
+		object.pdfapp {
+			width:100%;
+			height:100vh;
+		}
+
+		ul.dropdown {
+			text-align: left;
+			display: inline;
+			margin: 0 2em 0 0;
+			padding: 15px 4px 15px 0;
+			list-style: none;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			z-index:1;
+		}
+		ul.dropdown li.dropdown {
+			display: inline-block;
+			margin-right: -4px;
+			position: relative;
+			padding: 17px 20px;
+			background: #FFFFFF;
+			cursor: pointer;
+			transition: all 0s;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown:hover {
+			background: #AFAFAF;
+			color: #000000;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown ul.dropdown {
+			padding:0;
+			position: absolute;
+			top: 54px;
+			left: 0;
+			min-width: 150%;
+			height:justify;
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+			display: none;
+			opacity: 0;
+			visibility: hidden;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown { 
+			background: #AFAFAF;
+			display: block; 
+			color: #FFFFFF;
+			z-index:1;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown:hover { 
+			background: #585858; 
+			color:#FFFFFF; 
+			z-index:2;
+		}		
+		ul.dropdown li.dropdown ul.dropdown li.dropdown a:hover { 
+			background: #585858; 
+			color:#FFFFFF;
+			text-decoration: none;
+			z-index:2;
+		}
+		ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+			z-index:2;
+		}
+		li.dropdown:hover ul.dropdown li.dropdown ul.dropdown {
+			display: none
+		}
+		li.dropdown ul.dropdown li.dropdown:hover ul.dropdown {
+			display: block;
+			position:absolute;
+			top:0;
+			left:100%;
+		}
+		ul.dropdown li.dropdown ul.dropdown li.dropdown ul.dropdown li.dropdown {
+			background: #AFAFAF;
+		}
+		
+		#container {
+			min-height:100%;
+			position:relative;
+		}
+		#body {
+			padding-bottom:2.5em;	/* Height of the footer */
+		}
+		#footer {
+			position:absolute;
+			bottom:0;
+			text-align:center;
+			color:#FFFFFF;
+			width:98%;
+			height:2.5em;			/* Height of the footer */
+			background:#585858;
+		}
+		#dropdown {
+			text-align:center;
+			height:100%;
+			font-family:calibri,arial;
+		}
+		#pdfapp {
+			align:center;
+			width:auto;
+			min-height:100%;
+		}
+	</style>
+	<script language="javascript">
+		var AngezeigteBreite = 200;
+		var GespeicherteBreite = 0;
+
+		function BildAnpassen(Bild)
+		{
+			if (Bild.width > AngezeigteBreite || GespeicherteBreite > AngezeigteBreite)
+			{
+				if (Bild.width == AngezeigteBreite)
+				{
+					Bild.width = GespeicherteBreite;
+				}
+				else
+				{
+					GespeicherteBreite = Bild.width;
+					Bild.style.cursor = "pointer";
+					Bild.width = AngezeigteBreite;
+				}
+			}
+		}
+		</script>
+</head>
+<body vlink="red" alink="red">
+	<div id="container">
+		<div id="header">
+			<p class="toptitle" align="center" title="Portfolio wurde erstellt von Nikolaos Kolaxidis"> Angewandte Modellierung und Kartographische Visualisierung </p>
+			<div><p title="Besuchen Sie die Uni-Trier-Hompage unter www.uni-trier.de"><a href="https://www.uni-trier.de/index.php?id=48" target="_blank"><img class="resize" src="./pics/logo.png" alt="Logo der Universität Trier"/></a></p></div>
+			<p title="Mit diesem Pfeil können Sie per Klick an den Seitenkopf springen"><a href="#top"><img class="arrow" src="./pics/arrow.png" alt="Nach oben"/></a></p>
+			<hr></hr>
+		</div>
+		<div id="body">
+			<div id="dropdown">
+				<ul class="dropdown">
+					<li class="dropdown"><a class="nothing"> Startseite </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./index.html#1" target="_self"> Allgemeines zur Aufgabenstellung </a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="noline" href="./portfolio.html" target="_self"> Portfolio </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./pfbegin.html" target="_self"> Einführungsschritte </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#1" target="_self"> Einleitung und Grundlagen: &nbsp;&nbsp; GIS und Kartographie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#2" target="_self"> Fortgeschrittene GIS-Techniken: Map-Series </a></li>
+									<li class="dropdown"><a class="subnoline" href="./pfbegin.html#3" target="_self"> Einführung in Internetpräsentationen </a></li>
+								</ul>
+							</li>	
+							<li class="dropdown"><a class="subnoline" href="./gisv.html" target="_self"> GIS-Vergeich </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#0" target="_self"> Einführung: GIS-Vergeich - kommerziell vs. Open-Source </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#1" target="_self"> Georeferenzierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#2" target="_self"> Digitalisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#3" target="_self"> Visualisierung </a></li>
+									<li class="dropdown"><a class="subnoline" href="./gisv.html#4" target="_self"> Conclusio </a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a class="subnoline" href="./3dm.html" target="_self"> 3D-Modellierung </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#1" target="_self"> Einführung: 3D-Modellierung und virtuelle Landschaften </a></li>	
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#2" target="_self"> Potential erneuerbarer Energien in Rheinland-Pfalz: Windenergie </a></li>
+									<li class="dropdown"><a class="subnoline" href="./3dm.html#3" target="_self"> Virtuelle Landschaften: Schattenwurf und Sichtlinien </a></li>
+								</ul>
+							</li>				
+								
+							<li class="dropdown"><a class="subnoline" href="./cityengine.html" target="_self"> ESRI-CityEngine </a>
+								<ul class="dropdown">
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#1" target="_self"> Einführung: ESRI CityEngine </a></li>
+									<li class="dropdown"><a class="subnoline" href="./cityengine.html#2" target="_self"> Präsentation der Webscene "Windenergie im Trierer Raum" </a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="noline" href="./impressum.html" target="_self"> Impressum </a>
+						<ul class="dropdown">
+							<li class="dropdown"><a class="subnoline" href="./impressum.html#1" target="_self"> Datenschutzerklärung </a></li>
+						</ul>
+					</li>
+				</ul>
+				<br/>
+				<br/>
+			</div>
+			
+			<b><h2 align="center">Herzlich Willkommen</h2></b>
+			<p align="center"> auf meiner Webseite zum Modul "Geovisualisierung" im Jahre 2016 der Universität Trier! <br/>
+			Sie können alle geforderten Aufgaben per Drop-Down-Menü unter der Über-Oberschrift erreichen. <br/>
+			Zudem bietet sich die Möglichkeit ein Impressum einzusehen, welches sowohl alle Quellen als auch alle rechtlichen Hinweise enthält. <br/>
+			Mit dem Pfeil in der rechten unteren Ecke werden Sie auf jeder Seite direkt nach oben gelangen können, um das Drop-Down-Menü anzuwählen.<br/>
+			<br/>
+			<big><strong><i> Viel Spaß mit meinem digitalen Portfolio! - Nikolaos Kolaxidis </i></strong></big></p>
+			<br/><br/><br/><br/>
+			
+			<h2 id="1" align="center"> Allgemeines zur Aufgabenstellung </h2>
+				<p align="center"> Die Aufgabe war das Anfertigen eines Portfolios zum Stoff, der im Modul "Geovisualisierung" behandelt wurde.
+				Neben Grundlagen der kartographischen Visualisierung und der angewandten (3D-)Modellierung wurden auch Inhalte wie der Aufbau von Webseiten mit HTML und CSS 
+				sowie Informationen zu erneuerbaren Energien und generellen Arbeitsschritten von professionellen Kartographen in solchen Themengebieten und mit geographischen Informationssystemen (GIS) vorgestellt.
+				Die Aufgabe der Studierenden war es nun einige Projekte mit diesen GIS-Programmen zu erarbeiten und die Hintergründe dazu im HTML-Format auf einer eigens dazu
+				erstellten Webseitenkollektion in Form eines Portfolios zu erläutern. Auf dieser Webseite befinden Sie sich gerade, daher wünscht Ihnen der Autor ohne weitere Worte zu verlieren einen informativen und angenehmen
+				Aufenthalt. <br />
+				Weiter geht es mit der folgenden Seite "Portfolio", auf der in einer kurzen Übersicht alle Themengebiete aufgelistet sind.</p>
+				<p align="center"><big><a href="./portfolio.html" style="font-weight:bold; text-decoration:underline;"><i> Hier</i></a> geht es zum Portfolio. </big></p>
+		</div>
+		<div id="footer">
+			Nikolaos Kolaxidis &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23.09.2016 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Universität Trier <br/>  
+			Erstellt mit <a class="footernoline" href="https://notepad-plus-plus.org/download/" target="_blank"> Notepad++</a> 
+			für <a class="footernoline" href="https://www.mozilla.org/en-US/firefox/all/#de" target="_blank"> Mozilla Firefox</a>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
+

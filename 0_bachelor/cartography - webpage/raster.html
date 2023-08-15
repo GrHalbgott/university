@@ -1,0 +1,125 @@
+<html>
+<head> 
+	<meta charset="UTF-8" name="author" content="Nikolaos Kolaxidis" />
+	<title> Rastergraphiken - s6nikola</title>
+	<link rel="stylesheet" type="text/css" href="./scripts/style.css"/>
+	<script type="text/javascript" src="./scripts/prototype.js"></script>
+	<script type="text/javascript">
+		function change_content(elementname, filename) {
+			new Ajax.Updater(elementname, filename);
+		}
+	</script>
+</head>
+
+<body>
+	<section id="container">
+		<h2>Rastergraphiken</h2>
+		
+		<p class="comment">Alle geringauflösenden Abbildungen wurden mit einer Auflösung von 1:240 aufgenommen und mit 125dpi im jeweiligen Format exportiert.</p>
+		<p class="comment">Alle hochauflösenden Abbildungen wurden mithilfe eines Photoviewers zur Veranschaulichung erstellt. Die Auflösung kann sich dadurch leicht unterscheiden.</p>
+		<table id="SAT" class="tab">
+			<caption style="text-align:left"><h3>Vergleich von Satellitenbildern ohne zusätzliche Vektorebene</h3></caption>
+			<tr>
+				<th class="tab"></th>
+				<th class="tab">JPEG</th>
+				<th class="tab">PNG</th>
+				<th class="tab">WEBP</th>
+			<tr>
+				<th class="tab"></th>
+				<td class="tab">
+					<img class="tabpicgroß" src="./pics/raster/SAT_JPG.jpeg"/>
+				</td>
+				<td class="tab">
+					<img class="tabpicgroß" src="./pics/raster/SAT_PNG.png"/>
+				</td>
+				<td class="tab">
+					<img class="tabpicgroß" src="./pics/raster/SAT_WEBP.webp"/>
+				</th>
+			</tr>
+			<tr>
+				<th class="tab">Dateigröße</th>
+				<td class="tab">199 KB</td>
+				<td class="tab">680 KB</td>
+				<td class="tab">109 KB</td>
+			</tr>
+			<tr>
+				<th class="tab">Lesbarkeit</th>
+				<td colspan="3">Bis zu einer Auflösung von ca. 1:100 erscheint die Detailgenauigkeit bei allen drei Formaten gleich. Wird die Auflösung weiter erhöht, entstehen folgende Unterschiede:</td>
+			</tr>
+			<tr>
+				<th class="tab"></th>
+				<td class="tab">
+					<img class="tabpicklein" src="./pics/raster/SAT_JPG_zoom.jpg"/>
+					<p>Grenzen zwischen Pixeln verschwimmen durch einen Unschärfeeffekt. Trotzdem noch lesbar, mittlere Bildqualität.</p>
+				</td>
+				<td class="tab">
+					<img class="tabpicklein" src="./pics/raster/SAT_PNG_zoom.png"/>
+					<p>Grenzen klar abgegrenzt, scharfe Pixel und Vektorelemente. Beste Bildqualität.</p>
+				</td>
+				<td class="tab">
+					<img class="tabpicklein" src="./pics/raster/SAT_WEBP_zoom.jpg"/>
+					<p>Im Vergleich sehr unscharfes Bild. Schlechteste Bildqualität.</p>
+				</td>
+			</tr>
+			<tr>
+				<th class="tab">Bewertung</th>
+				<td colspan="3">Bei einer geringen Auflösung ist das Format <b>WEBP</b> zu empfehlen, da hier die Bildqualität nicht eingeschränkt wird und die Dateigröße sehr webfreundlich ist. Werden aber kleine Auflösungen benutzt, empfiehlt sich bei geringen Dateigrößen das PNG-Format, ansonsten das <b>JP(E)G</b>-Format.</td>
+			</tr>
+		</table>
+		
+		<hr/>
+		
+		<table id="VRD" class="tab">
+			<caption style="text-align:left"><h3>Vergleich von Satellitenbildern mit zusätzlicher Vektorebene</h3></caption>
+			<tr>
+				<th class="tab"></th>
+				<th class="tab">JPEG</th>
+				<th class="tab">PNG</th>
+				<th class="tab">WEBP</th>
+			<tr>
+				<th class="tab"></th>
+				<td class="tab">
+					<img class="tabpicgroß" src="./pics/raster/VRD_JPG.jpeg"/>
+				</td>
+				<td class="tab">
+					<img class="tabpicgroß" src="./pics/raster/VRD_PNG.png"/>
+				</td>
+				<td class="tab">
+					<img class="tabpicgroß" src="./pics/raster/VRD_WEBP.webp"/>
+				</th>
+			</tr>
+			<tr>
+				<th class="tab">Dateigröße</th>
+				<td class="tab">216 KB</td>
+				<td class="tab">757 KB</td>
+				<td class="tab">123 KB</td>
+			</tr>
+			<tr>
+				<th class="tab">Lesbarkeit</th>
+				<td colspan="3">Bis zu einer Auflösung von ca. 1:100 erscheint die Detailgenauigkeit bei allen drei Formaten gleich. Wird die Auflösung weiter erhöht, entstehen folgende Unterschiede:</td>
+			</tr>
+			<tr>
+				<th class="tab"></th>
+				<td class="tab">
+					<img class="tabpicklein" src="./pics/raster/VRD_JPG_zoom.jpeg"/>
+					<p>Grenzen zwischen Pixeln verschwimmen durch einen Unschärfeeffekt. Trotzdem noch lesbar, mittlere Bildqualität.</p>
+				</td>
+				<td class="tab">
+					<img class="tabpicklein" src="./pics/raster/VRD_PNG_zoom.png"/>
+					<p>Grenzen klar abgegrenzt, scharfe Pixel und Vektorelemente. Beste Bildqualität.</p>
+				</td>
+				<td class="tab">
+					<img class="tabpicklein" src="./pics/raster/VRD_WEBP_zoom.jpg"/>
+					<p>Im Vergleich sehr unscharfes Bild. Schlechteste Bildqualität.</p>
+				</td>
+			</tr>
+			<tr>
+				<th class="tab">Bewertung</th>
+				<td colspan="3">Bei einer geringen Auflösung ist das Format <b>WEBP</b> zu empfehlen, da hier die Bildqualität nicht eingeschränkt wird und die Dateigröße sehr webfreundlich ist. Werden aber kleine Auflösungen benutzt, empfiehlt sich bei geringen Dateigrößen das PNG-Format, ansonsten das <b>JP(E)G</b>-Format.
+				<p>Zudem ist hier auffällig, dass allein durch Zuschalten der Vektorebene die Bilder größer werden. Darauf sollte also beim exportieren geachtet werden: unnötige Bildelemente ausblenden.</p></td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>
+
