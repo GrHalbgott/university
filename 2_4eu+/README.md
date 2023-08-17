@@ -1,1 +1,1 @@
-# 4EU+ - physical geographic field practice
+# Advanced geomorphology - Application of geophysical, geodetic and sedimentological methods in river catchments (4EU+ physical geographic field practice)
