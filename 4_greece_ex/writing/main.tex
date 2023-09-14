@@ -1,0 +1,597 @@
+% Geomorphica Submission Template
+% Last revised: May 23, 2023
+% adapted from Roberto Fernández 
+% changed by Niko Kolaxidis
+
+\documentclass[preprint]{geomorphica} % change to preprint
+\linespread{1.33} % Linespacing
+
+\usepackage[utf8]{inputenx} % encoding
+\usepackage{graphicx} % include figures
+\usepackage{flushend} % last page balancing
+\usepackage{notoccite} % citation in toc/lof/lot not counting
+\usepackage[T1]{fontenc} 
+\usepackage{sourcesanspro} % font
+\usepackage{hyperref} % hyperlinks
+\hypersetup{
+    hidelinks, % remove boxes around links
+}
+\usepackage{xurl} % word wrap for links
+\def\UrlFont{\em} % links are italic
+
+\newcommand\tabularnums{
+  \def\sourcesanspro@figurealign{T}
+  \def\sourcesanspro@figurestyle{LF}
+  \def\familydefault{SourceSansPro-TLF}
+  \fontfamily{SourceSansPro-TLF}
+  \selectfont
+}
+
+\renewcommand{\figurename}{Abbildung}
+\renewcommand{\tablename}{Tabelle}
+
+\begin{document}
+
+\pagenumbering{Roman}
+
+%%%%%%%%%%%%%
+% DECKBLATT %
+%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{center}
+
+\vspace{-20mm}
+\vspace*{20mm}
+
+\begin{Huge}
+\textbf{Die Bucht von Navarino}
+\end{Huge}
+
+\begin{LARGE}
+\textbf{Griechische Revolutionsgeschichte und ihre Bedeutung für Europa} \\ [6pt]
+\end{LARGE}
+
+\vspace{50mm}
+
+\begin{Large}
+Seminararbeit zur Griechenlandexkursion 2023 \\
+Geographisches Institut der Universität Heidelberg \\
+\end{Large}
+
+\vspace{50mm}
+
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{l l} 
+        vorgelegt von: & Nikolaos Kolaxidis \\ [6pt]
+        Studiengang: & M.Sc. Geographie \\ [6pt]
+        Matrikelnummer: & 3694017 \\ [6pt]
+        Email: & pd281@uni-heidelberg.de \\ [6pt]
+        Seminarleitung: & Prof. Dr. Ingmar Unkel \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\vspace*{\fill}
+14. September 2023
+
+\end{center}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%
+% VERZEICHNISSE %
+%%%%%%%%%%%%%%%%%
+
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+{\tabularnums
+ \tableofcontents
+}
+\newpage
+\renewcommand{\listfigurename}{Abbildungsverzeichnis}
+{\tabularnums
+\listoffigures
+}
+\renewcommand{\listtablename}{Tabellenverzeichnis}
+{\tabularnums
+\listoftables
+}
+\newpage
+
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%
+% EINFÜHRUNG %
+%%%%%%%%%%%%%%
+
+\section{Einführung in die Thematik}
+
+Es ist der 25. März 1821. 
+
+Im Fürstentum Moldau, in Konstantinopel und auf der Peloponnes entfachen organisierte Kämpfe von aufgebrachten griechischen Freiheitskämpfern, die sich gegen die osmanische Herrschaft auflehnen \cite{Zelepos2015}.
+Chaos bricht aus, einige der belagerten Ortschaften schließen sich der Bewegung an, andere leisten Widerstand.
+Kurze Zeit später werden die Aufstände von den Osmanen blutig niedergeschlagen.
+Lediglich auf der Peloponnes kann der Überraschungsmoment ausgenutzt und so einige erste Stützpunkte erobert werden \cite{Brewer2001}.
+Es beginnt eine Zeit vieler Schlachten und Massaker, die sich über mehrere Jahre hinziehen, weitere Staaten und Großmächte einbeziehen und schließlich in der Unabhängigkeit Griechenlands resultieren wird.
+
+Die Griechische Revolution im 19. Jahrhundert ist eines der wichtigsten Ereignisse des modernen Griechenlands und maßgeblich für die Gründung des heutigen unabhängigen griechischen Staates verantwortlich \cite{CarledgeVarnava2022}.
+Eine Besonderheit stellt die langjährige vorherige Planung auch von ausländischen Revolutionären dar, die schließlich in der Revolution mündete und das Eingreifen europäischer Großmächte in die Situation mit sich zog \cite{Zelepos2015, Dakin1952}.
+
+Dabei kommt der Bucht von Navarino eine besondere Rolle zu.
+Hier spielte sich die letzte große Schlacht der Revolution ab, die den Ausgang der Revolution maßgeblich beeinflusste und die Unabhängigkeit Griechenlands besiegelte \cite{James1837}.
+Die Bucht war aber auch lange vorher schon hart umkämpft und von großer Bedeutung für die Entwicklung von mykenischen bis mittelalterlichen Siedlungen und Städten in der Bucht \cite{Davis2008}.
+Das liegt vor allem an ihrer besonderen Geographie, die in der geographischen Einordnung näher erläutert werden wird.
+
+%%%%%%%%%%%%
+\subsection{Heutige Bedeutung der Revolution}
+
+Der 25. März ist heute ein griechischer Nationalfeiertag und wird in ganz Griechenland mit Paraden, auch militärischer Natur, und Schulfesten gefeiert \cite{MFA2023}.
+Dabei wird an den Beginn der Revolution erinnert und der griechischen Freiheitskämpfer gedacht, die ihr Leben für die Unabhängigkeit Griechenlands ließen \cite{CarledgeVarnava2022}.
+
+In der Bucht von Navarino selbst befindet sich heute auf der kleinen Insel Pilos eine Gedenkstätte, die an die Schlacht von Navarino erinnern soll (siehe Abbildung \ref{pic:overviewlarge}).
+Des Weiteren finden sich viele weitere Gedenkstätten und Denkmäler in der Bucht, die gefallene multinationale Soldaten beherbergen und an die Opfer gedenken sollen, zum Beispiel auch eine kleinere auf der kleinen Insel Chelonaki inmitten der Bucht (siehe Abbildung \ref{pic:overviewlarge}).
+
+Außerdem finden seit 2017 jährlich zum Jahrestag der Schlacht von Navarino die vom Gold Tourism Award 2020 ausgezeichneten sogenannten Navarinia statt, die mit kulturellen Veranstaltungen und einer Rekonstruktion der Schlacht inklusive Feuerwerk und einem brennenden Segelschiff an die Schlacht erinnern und die historischen Ereignisse aufarbeiten sollen \cite{Navarinia2023}.
+
+Diese Feierlichkeiten zeigen, dass die Schlacht von Navarino und die Griechische Revolution auch heute noch eine große Rolle für die griechische Bevölkerung spielen, abgesehen davon, dass sie für die Entstehung des modernen Griechenlands maßgeblich von Bedeutung war.
+
+%%%%%%%%%%%%
+\subsection{Ziel der Ausarbeitung}
+
+Wie ist es zur Revolution gekommen, welche Rolle spielte die Bucht von Navarino und wer kämpfte eigentlich wofür in der Schlacht von Navarino?
+Das sind Fragen, die im Laufe der Ausarbeitung beantwortet und erläutert werden sollen.
+
+Die Struktur der Ausarbeitung ist so aufgebaut, dass zuerst die Bucht von Navarino behandelt wird und warum sie für die griechische Geschichte bedeutsam ist.
+Darauf folgend wird die Geschichte des Osmanischen Reiches und dessen Rolle in Europa aufgezeigt, dabei die Machtverhältnisse der Großmächte Europas im 18. und 19. Jahrhundert beleuchtet und schließlich die Griechische Revolution inklusive der Schlacht von Navarino und deren Auswirkungen auf die spätere griechische, osmanische und europäische Geschichte erläutert.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GEOGRAPHISCHE EINORDNUNG %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{Geographische und historische Einordnung der Bucht von Navarino}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/overview.png}
+    \caption{Karte der Bucht von Navarino im Südwesten der Peloponnes, Griechenland. Eine Großdarstellung ist im Anhang unter Abbildung \ref{pic:overviewlarge} zu finden [eigene Darstellung]}
+    \label{pic:overviewsmall}
+\end{figure}
+
+Die Bucht von Navarino, heute auch als Bucht von Pylos genannt, befindet sich im Westen der Gemeinde Pylos-Nestor, welche im Südwesten des Regionalbezirks Messenien im Südwesten der Peloponnes in Griechenland liegt. 
+Sie ist eine der größten natürlichen Buchten der Ionischen Küste und beheimatet durch ihre besondere Geographie auch einen der sichersten Häfen, weshalb ihr in der Geschichte seit der mykenischen Hochkultur in Griechenland immer wieder eine große Rolle zukam und sie im Mittelpunkt vieler Schlachten stand \cite{Davis2008}.
+
+Die recht zyklische Bucht hat einen Durchmesser von etwa fünf Kilometern und ist durchschnittlich 20 Meter tief, wobei die tiefste Stelle etwa 80 Meter beträgt (siehe Abbildung \ref{pic:overviewsmall}) \cite{James1837}.
+Das Mittelmeerklima in der Bucht ist gemäßigt warm, die Klimaklassifikation nach Köppen-Geiger ist Csa und die Jahresmitteltemperatur beträgt 17 °C mit Höchsttemperaturen im Sommer von knapp über 30 °C und Tiefsttemperaturen im Winter von knapp unter 7 °C \cite{ClimateData2023}.
+
+Die vorgelagerte Ionische Insel Sfaktiria (siehe Abbildung \ref{pic:overviewlarge}) bietet eine natürliche Schutzmauer gegenüber des offenen Mittelmeeres und ist daher ein strategisch wichtiger Punkt für die Kontrolle der Bucht.
+Ihre größte Erhebung ist der Ilias mit 137 Metern, die Hänge sind recht steil mit teilweise 90 Metern hohen Klippen im Süden.
+Nördlich und südlich der Insel befinden sich zwei Einfahrten in die Bucht, die im Laufe der Geschichte von zwei Festungen, der Festung Palaiokastro im Norden und der Festung Neokastro im Süden, befestigt und kontrolliert wurden \cite{Bon1969}.
+
+Namensgeberin für die Bucht ist die Stadt Pylos, die am Fuß des 482 Meter hohen Agios Nikolaos am südöstlichen Ufer der Bucht liegt.
+Sie ist mit über 2000 Einwohnern die siebtgrößte Stadt Messeniens und das Zentrum der Gemeinde Pylos-Nestor \cite{ELSTAT2019}.
+Die moderne Stadt wurde 1829 nach der griechischen Revolution außerhalb der Festungsmauern des Neokastro von französischen Befreiungsmächten als Navarino gegründet und von König Otto I. von Griechenland in Referenz zu der antiken Stadt des Königs Nestor in Pylos geändert \cite{Davis2008}.
+
+Deren ursprüngliche Lage ist allerdings nicht gesichert, einen Hinweis liefert der etwa zwölf Kilometer nordöstlich der heutigen Stadt Pylos gefundene sogenannte Palast des Nestor, der nach dem mykenischen König Nestor aus Homer's Erzählungen (Ilias und Odyssee) benannt ist und in dem Nachweise gefunden wurden, dass der Ort schon in der mykenischen Zeit Pylos genannt wurde und dementsprechend schon in der Bronzezeit besiedelt war.
+Aber auch Ausgrabungen beim Bau des Palaiokastro und die Höhle des Nestor unterhalb der Festung (siehe Abbildung \ref{pic:overviewlarge}) liefern Hinweise auf eine mögliche antike Besiedelung durch gefundene Tonscherben.
+Hier wird der Standort des Hafens und der Akropolis des antiken Stadtkomplexes Pylos vermutet, welches sich noch weiter ins Landesinnere zog \cite{Davis2008, SmithFelton1855}.
+
+Eine der ersten Aufzeichnungen eines großen offenen Konflikts in der Bucht war die Schlacht von Sfaktiria 425 vor Christus zwischen dem von Athen geführten Attischen Seebund und dem Peloponnesischen Bund unter seiner Führungsmacht Sparta im Peloponnesischen Krieg von 431 bis 404 vor Christus.
+424 vor Christus wurde dann laut den Aufzeichnungen von den siegreichen Athenern eine Festung am heutigen Standort des Palaiokastro errichtet, welche allerdings bis heute nicht nachgewiesen werden konnte.
+Diese Aufzeichnungen sind ein weiterer Beleg dafür, dass die Bucht in antiken Zeiten besiedelt und von großem Interesse war \cite{Davis2008, SmithFelton1855, Pausanias2020}.
+
+Zwischen Antike und spätem Mittelalter ist über die Besetzungsverhältnisse der Bucht wenig bekannt, allerdings ist anzunehmen, dass sie sowohl vom römischen wie auch vom byzantinischen Reich besetzt war.
+Im 13. Jahrhundert wurde die Bucht von Pylos vom Lateinischen Kaiserreich erobert und die Festung Navarino südlich der Bucht Voidokilia, die nördlich der Bucht von Navarino liegt, am oben genannten möglichen Standort des Hafens und der Akropolis des antiken Stadtkomplexes Pylos, errichtet, um die Buchteinfahrt zu kontrollieren und zu befestigen.
+Im 16. Jahrhundert eroberte das Osmanische Reich die Bucht inklusive der Festung und errichtete eine zweite Festung namens Neokastro ("neue Festung") am südlichen Ende der Bucht an der zweiten Buchteinfahrt, wodurch dann Navarino zur besseren Unterscheidung in Palaiokastro ("alte Festung") umbenannt wurde \cite{Davis2008, Bon1969, SmithFelton1855}.
+
+Anfang des 18. Jahrhunderts wurde die Bucht von Navarino von Venezianern erobert und die Festung Neokastro erweitert.
+Die Osmanen eroberten die Bucht anschließend 1715 wieder zurück und bauten die Festung Neokastro erneut weiter aus, wodurch sie dann die heute sichtbare Ausmaße erhielt.
+Die Festung Palaiokastro wurde noch vor Ende des 18. Jahrhunderts von den Osmanen aufgegeben und verfiel, während die Festung Neokastro bis heute erhalten blieb und teilweise restauriert wurde \cite{Davis2008}.
+Sie zählt zu den größten und besterhaltenen Festungen Griechenlands und liefert einen Einblick in neuzeitliche osmanische militärische Baukunst und Befestigungsanlagen.
+Während der Revolution war die Festung Schauplatz mehrerer Kämpfe, allen voran die Belagerung und Eroberung der Festung durch Ibrahim Pascha im Jahr 1825, die große Schlacht von Navarino 1827 sowie die anschließende Eroberung und Befreiung durch die französische Morea Expedition 1828-30 \cite{Brewer2001}.
+
+Der Name Navarino wurde bis heute beibehalten und sowohl für die Bucht als auch für die Schlacht genutzt, die 1827 den Höhepunkt der griechischen Revolution darstellte.
+Daher wird der Name bei den folgenden Ausführungen ebenfalls beibehalten.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRIECHISCHE REVOLUTION %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Die Griechische Revolution und ihre Bedeutung für Europa}
+
+Die Griechische Revolution war eine langjährig geplante und erfolgreiche Revolution von griechischen Revolutionären gegenüber der osmanischen Herrschaft zwischen 1821 und 1830 \cite{CarledgeVarnava2022}. 
+Hintergrund dazu war die osmanische Eroberung des heutigen griechischen Staatsgebiets und die systematische Unterdrückung des griechischen Volkes, das Aufkommen von Nationalgedanken im europäischen Raum sowie unterschiedliche Interessen von europäischen Großmächten sowie Russland am Osmanischen Reich, die die Revolution zuerst zögerlich, aber schließlich maßgeblich unterstützten, um ihre eigenen Interessen durchzusetzen \cite{Zelepos2015, Dakin1952}.
+
+%%%%%%%%%%%%%%%
+\subsection{Vorgeschichte}
+
+Ein Großteil Griechenlands war seit dem 15. Jahrhundert Teil des Osmanischen Reiches, das sich über weite Teile des Balkans und des Nahen Ostens erstreckte.
+Ein geschichtlicher Überblick über das Osmanische Reich und dessen Rolle in Europa legt die Grundlage für die Griechischen Revolution.
+
+%%%%%%%%%%%%%%%
+\subsubsection{Das Osmanische Reich und seine Rolle in Europa und Griechenland}
+
+Das Osmanische Reich wurde um 1299 gegründet, der Begriff Osmanen als Stammesname 1301 erstmalig in Aufzeichnungen erwähnt, als sie in der Schlacht von Bapheus gegen das Byzantinische Reich einen großen Sieg erringen konnten.
+In den Folgejahren konnten sie weitere Gebiete in der heutigen Türkei gewinnen und bildeten so nach und nach eine immer größer werdende Macht gegenüber dem Byzantinischen Reich.
+1326 eroberten sie Bursa an der südöstlichen Marmarameerküste, circa 90 Kilometer südlich von Istanbul, welches zur Hauptstadt des Osmanischen Reiches ernannt wurde.
+Bursa war zu diesem Zeitpunkt ein bedeutender Handelsplatz der Seidenstraße, wodurch die Osmanen früh am transnationalen Handel teilnehmen und ihn teilweise kontrollieren konnten \cite{Finkel2007, Inalcik1991, Kinross1979}.
+
+Die Nachfahren Osmans I., des ersten Sultans des Osmanischen Reiches, fungierten als Staatsoberhäupter und Oberbefehlshaber der osmanischen Armee.
+Sie waren gleichzeitig auch die religiösen Führer des Islam, da sie als Kalifen die Nachfolge des Propheten Mohammed antraten.
+Die Sultane waren somit sowohl weltliche als auch religiöse Führer sowie alleinige Entscheidungsträger des Osmanischen Reiches \cite{Finkel2007, Kafadar1995, Lowry2003}.
+
+Sie erweiterten wie in Abbildung \ref{pic:ottomanrise} zu sehen das Osmanische Reich stetig, auch unter Zusammenschluss von anderen turkmenischen Völkern, und konnten durch den transkontinentalen Handel an Ressourcen dazugewinnen, die sie für die weitere Expansion nach Europa ab 1354 und die Eroberung der heutigen Türkei nutzten.
+Konstantinopel, Zentrum des Byzantinischen Reiches im 14. Jahrhundert, galt als die wichtigste Stadt, die es zu erobern galt.
+Aufgrund der starken Befestigungsanlagen und der strategisch günstigen Lage am Bosporus, der das Schwarze Meer mit dem Mittelmeer verbindet, gelang es den Osmanen unter Mehmend II. erst 1453 Konstantinopel zu erobern und das Byzantinische Reich zu beenden.
+Die Stadt wurde in Istanbul umbenannt und zur neuen Hauptstadt des Osmanischen Reiches ernannt, die es bis zum Fall des Reiches auch blieb \cite{Finkel2007, Kinross1979, Brandes2005}.
+Die Eroberung Konstantinopels war ein wichtiger Meilenstein in der Geschichte des Osmanischen Reiches, da es nun die Kontrolle über die wichtigsten Handelsrouten zwischen Europa und Asien (Seidenstraße und Bosporus) hatte und somit fast die volle Kontrolle über den transkontinentalen Handel, was ihnen eine klare Vormachtstellung bescherte \cite{Finkel2007, Kafadar1995, Imber2002}.
+
+1456 besetzte das Osmanische Reich, nachdem es das Königreich Serbien besiegte, das griechische Zentrum, Athen, wodurch der Großteil der heutigen Landesfläche Griechenlands unter osmanische Herrschaft fiel.
+Die Ionischen Inseln und die meisten Inseln im Ägäischen Meer sowie Kreta waren noch unter venezianischer Herrschaft, was sich aber im Laufe der Zeit durch Auseinandersetzungen zwischen dem Osmanischen und Venezianischen Reich änderte.
+Bis 1566 konnte das Osmanische Reich die meisten Inseln im Ägäischen Meer unter seine Herrschaft bringen, besetzte damit also fast das ganze heutige Griechenland bis auf die Ionischen Inseln sowie die Mani Halbinsel auf der Peloponnes, die nie vom Osmanischen Reich erobert wurden \cite{Finkel2007, Kinross1979}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/Ottoman Empire Rise.png}
+    \caption{Die Entwicklung des Osmanischen Reiches von 1307 bis zu seiner größten Ausdehnung 1683 \cite{Eynaud2014}}
+    \label{pic:ottomanrise}
+\end{figure}
+
+Es folgten weitere Gebietserweiterungen, unter anderem die Eroberung der Krim sowie große Teile des Balkans sowie des Nahen Ostens und Ägypten, sodass das Osmanische Reich wie in Abbildung \ref{pic:ottomanrise} zu sehen 1566 seinen vorläufigen Höhepunkt erreichte und mit Großbritannien, Frankreich und Russland zu einer der größten und mächtigsten Großmächte der Welt wurde \cite{Imber2002}.
+Einen Gegenspieler zum Osmanischen Reich stellte kurz danach die Heilige Liga von 1571 dar, die aus mehreren europäischen Staaten, darunter dem Königreich Spanien und der Republik Venedig, bestand und die osmanische Macht im Mittelmeer und deren Expansionsstreben zu brechen versuchte.
+Nicht Teil der Liga waren weder die Großmächte Frankreich, Großbritannien und Portugal noch das Heilige Römische Reich, die jeweils eigene Interessen im Umgang mit dem Osmanischen Reich hatten, die von aktiver Allianz und Handel bis hin zu Konflikten und offenem Krieg an anderen Orten rangierte.
+Die Heilige Liga konnte die osmanische Flotte in der Schlacht von Lepanto 1571 besiegen, was den ersten großen Rückschlag für das Osmanische Reich darstellte.
+Trotzdem konnte es im Balkan und im Nahen Osten bis 1683 weitere Kämpfe für sich entscheiden und seine Reichsgrenzen erweitern, darunter auch die Annexion von Kreta 1669, sodass nur noch die Ionischen Inseln sowie einige wenige Ägäische Inseln unter venezianischer Herrschaft blieben \cite{Kinross1979, Kafadar1995, Woodhouse1998}.
+
+Zu seinem erneuten Höhepunkt 1683 (siehe Abbildung \ref{pic:ottomanrise}) stand das Osmanische Reich sogar vor Wien mit dem Ziel auch das Habsburger Reich zu erobern, erlag aber in der Schlacht am Kahlenberg einer Allianz aus europäischen Großmächten, darunter das Heilige Römische Reich, Polen-Litauen sowie Venedig und der Kirchenstaat, und wurde besiegt \cite{Kinross1979, Kafadar1995, Jorga1990}.
+Es begann ein langsamer Niedergang, der sich bis nach Ende des ersten Weltkriegs hinzog und von verschiedenen Revolten, Gebietszu- und abnahmen und Reformen der Staatsverwaltung geprägt war \cite{Finkel2007, Anderson1966}.
+
+Der Status als Großmacht und dessen Machenschaften in Europa und dem Nahen Osten bis zum Indischen Ozean machten das Osmanische Reich sowohl interessant als Handelspartner, wurden aufgrund ihrer Expansionsbestreben und Kontrolle des Schwarzen Meeres vor allem vom Russischen Zarenreich aber eben auch als Gefahr angesehen, was viele Revolte und Kriege mit sich zog.
+Dazu kam, dass das Osmanische Reich ein islamischer Staat war, der christliche und jüdische Religionen in seinen Gebieten zwar dudelte, sie aber trotzdem systematisch unterdrückte und die nicht-muslimische Bevölkerung als Bürger zweiter Klasse, entsprechend des Millet-Systems, behandelte \cite{Jorga1990, Sugar1977}.
+
+Im folgenden Jahrhundert bis Mitte des 18. Jahrhunderts war das Reich recht stabil und erlebte zwischen 1739 und 1768 die längste Phase des Friedens auf europäischem Boden.
+Es kam allerdings immer wieder zu kleinen Revolten verschiedener Völker, die Unabhängigkeit von der zwar freien, aber diskriminierenden Herrschaft der Osmanen erzielen wollten.
+Dies destabilisierte die Situation im Osmanischen Reich zusätzlich zur drohenden Gefahr eines sich vereinigenden Persischen Reiches, welches sich im Nahen Osten ausbreitete.
+Großes Konfliktpotenzial stellte zudem das Schwarze Meer dar, da das Osmanische Reich die Kontrolle über die Meerenge des Bosporus bei Istanbul und somit den Zugang zum Schwarzen Meer hatte, was wiederum für Russland eine wirtschaftliche Bedrohung darstellte, da es keine Handelsrouten über das Schwarze Meer nutzen konnte \cite{Finkel2007, Kinross1979, Jorga1990, Anderson1966}.
+
+Einen Höhepunkt in den Auseinandersetzungen bildete der Russisch-Türkische Krieg 1768 bis 1774, der mit dem Vertrag von Küçük Kaynarca ein Ende fand.
+Das Resultat des Krieges, aus dem Russland siegreich hervorging, war die Etablierung eines unabhängigen Krim-Khanats, welches sich von der osmanischen Herrschaft löste und unter russischen Einfluss kam, sowie die Etablierung eines russischen Protektorats über die Donaufürstentümer Moldau und Walachei.
+Das bescherte dem Russischen Zarenreich einen Zugang zum Schwarzen Meer und somit eine neue Handelsroute, wodurch die Macht des Osmanischen Reiches massiv beeinträchtigt wurde.
+Zusätzlich dazu wurden die orthodoxe Kirche im Osmanischen Reich unter russischen Schutz gestellt, was christlich-orthodoxen Bürgern im sonst muslimisch geprägten Osmanischen Reich mehr Rechte und weniger Diskriminierung einräumte.
+Mit diesem Vertrag endete das alte Regime des Osmanischen Reiches und die Orientalische Frage nahm Gestalt an, welche den Umgang mit dem Osmanischen Reich in Europa durch die damaligen Großmächte zum Thema hatte \cite{Kinross1979, Woodhouse1998, Cronin1995, Hösch1964}.
+Diese beschäftige das politische Geschehen in Europa bis zum Ende des Osmanischen Reiches nach dem Ersten Weltkrieg \cite{Anderson1966}.
+
+%%%%%%%%%%%%%%%
+\subsubsection{Die Vorläufer der Griechischen Revolution im 18. und 19. Jahrhundert}
+
+Während des Russisch-Türkischen Kriegs von 1768 bis 1774 kam es 1770 zu einem Aufstand, der Orlow-Revolte, welche die ersten Anzeichen für eine sich ändernde Zeit für osmanische Provinzen lieferte \cite{Dakin1973}.
+Die Zarin Katharina die Große (Katharina II.) von Russland wollte eine frühe Antwort auf die Orientalische Frage und rief daher auch in Sympathie zur unterdrückten orthodoxen Kirche im Osmanischen Reich im sogenannten "Griechischen Projekt" auf der Peloponnes, damals Morea genannt, insbesondere auf der Mani Halbinsel, zum Aufstand gegen die osmanische Herrschaft auf.
+Ziel war die Stürzung und Aufteilung des Osmanischen Reiches zwischen den Russischen und Habsburger Reichen und die Wiederherstellung des Byzantinischen Reiches mit Zentrum in Konstantinopel \cite{Anderson1966, Dakin1973, Brewer2012}.
+
+Während der Revolte konnten Aufständische einige Gebiete auf der Peloponnes erobern, darunter auch Navarino, schlugen aber bei der Belagerung von Tripoli und auf Kreta aufgrund fehlender russischer Unterstützung fehl.
+Zudem "verfolgten diese Erhebungen noch keine explizit nationalemanzipatorische Programmatik und wiesen überhaupt nur recht unscharfe politische Ziele auf" \cite{Zelepos2015}, wodurch es an einem konkreten Ziel mangelte, was ein Mitgrund für das Scheitern sein könnte.
+Daraufhin folgten in verschiedenen Städten des Osmanischen Reiches Pogrome gegen die griechische Bevölkerung, die eroberten Gebiete wurden zurückerobert und die Revolte wurde beendet \cite{Hösch1964}.
+Trotzdem war der Sieg Russlands im Russisch-Türkischen Krieg für die griechische Bevölkerung von großer Bedeutung, da sie nun eine Schutzmacht hatten, die eine ernste Bedrohung gegenüber dem Osmanischen Reich darstellte. 
+Darüber hinaus konnten sie unter russischer Flagge frei im Schwarzen Meer und Mittelmeer handeln und so ihre wirtschaftliche Situation maßgeblich verbessern.
+Ein wesentlicher Punkt war auch, dass Russland in einigen Provinzen im Osmanischen Reich hohe administrative Positionen besetzen durfte, von denen die meisten griechischer Abstammung waren, was die Situation der griechischen Bevölkerung durch Einräumung von mehr Rechten verbesserte.
+Viele Griechen wanderten zudem nach Russland aus und ließen sich zum Beispiel auf der Krim oder in Kalmius Sloboda nieder, was 1780 den griechisch inspirierten Namen Mariupol erhielt \cite{Anderson1966, Hösch1964, Dakin1973, Brewer2012}.
+
+Zwischen 1773 und 1799 fanden zwei Revolutionen statt, die Vorbild für kommende Revolutionen sein sollten und maßgeblichen Einfluss auf die Geschichte Europas hatten.
+Zum einen die Amerikanische Revolution zwischen 1773-1783, bei der die Vereinigten Staaten von Amerika ihre Unabhängigkeit vom Britischen Empire erkämpften, und zum anderen die Französische Revolution von 1789 bis 1799, bei der das feudal-absolutistische Staatssystem zugunsten der Aufklärung und liberaler Demokratie gestürzt wurde.
+In beiden Revolutionen waren Menschenrechte und eine unabhängige freie Demokratie die grundlegenden Forderungen, was auch in anderen europäischen Ländern Spuren hinterließ und auch in der späteren Griechischen Revolution eine Rolle spielte \cite{Jourdan2022}. 
+
+Ein weiterer Vorbote der Griechischen Revolution war der Erste Serbische Aufstand von 1804 bis 1813 während der Serbischen Revolution, die als Antwort auf ein Massaker an 72 Adligen im Raum des heutigen Belgrads ausgerufen wurde und die Unabhängigkeit von der osmanischen Herrschaft anstrebte.
+Parallel dazu war das Osmanische Reich in einen weiteren Krieg gegen Russland verwickelt, dem Russisch-Türkischen Krieg von 1806 bis 1812, den Russland abermals für sich entscheiden konnte.
+Russland unterstütze daher die serbischen Aufstände und versprach sich davon eine Schwächung der osmanischen Militärmacht, die es sich zugunsten machen konnte.
+1815 begannen dann Verhandlungen über die Unabhängigkeit Serbiens vom Osmanischen Reich, die vom zweiten Serbischen Aufstand von 1815 bis 1817 begleitet wurden und in einem Waffenstillstand endeten.
+In der zweiten Phase der Serbischen Revolution von 1817 bis 1835 führten diplomatische Verhandlungen 1833 zur Anerkennung des souverän unabhängigen Fürstentums Serbien \cite{Jorga1990, Anderson1966, Ranke1829, Ilicak2022}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/Europa 1815.png}
+    \caption{Politische Lage in Europa nach dem Wiener Kongress 1815 \cite{Altenhof2016}}
+    \label{pic:europe1815}
+\end{figure}
+
+In Europa tobte derweilen ein anderer Konflikt, die Napoleanischen Kriege von 1803 bis 1815, die durch die Französische Revolution ausgelöst wurden und in denen Napoleon Bonaparte als französischer Kaiser die europäischen Großmächte in mehreren Kriegen besiegte und somit Frankreich zur Vormachtstellung in Europa verhalf.
+Dies führte Anfang des 19. Jahrhunderts zu einem großen Umbruch in Europa, da sie die Machtverhältnisse in Europa neu ordneten und die napoleonischen Ideale der Freiheit, Gleichheit und Brüderlichkeit in ganz Europa verbreiteten.
+Nach der Niederlage Napoleons in der Schlacht von Waterloo 1815 wurde der Wiener Kongress abgehalten, der die Situation in Europa und die Staatengrenzen nach den napoleonischen Kriegen regeln sollte. 
+Das Ergebnis kann in Abbildung \ref{pic:europe1815} betrachtet werden.
+Auffällig ist hierbei, dass das Osmanische Reich kein Teilnehmer am Kongress war und dementsprechend wohl als feindlich angesehen wurde, was durch die in der Karte dargestellte Militärgrenze in Kaisertum Österreich zum Osmanischen Reich untermalt wird \cite{Anderson1966, Jourdan2022, Ilicak2022}.
+
+Interne Revolutionen, Kriege und Konflikte an mehreren Fronten sowie die angespannte Situation in Europa schwächten das Osmanische Reich, welches immer mehr in den Fokus der Orientalischen Frage geriet.
+Dies ebnete den Weg für die Griechische Revolution.  
+
+%%%%%%%%%%%%%%%
+\subsubsection{Situation im Vorfeld der Revolution, Philhellenismus und die Filiki Etairia}
+
+Durch den Fall Konstantinopels und der Eroberung Griechenlands im 15. Jahrhundert flohen ein Teil der Eliten, darunter Gelehrte und Intellektuelle, nach Westeuropa, wo sie später die Renaissance in Italien maßgeblich beeinflussten, da sie die griechische Sprache, Kultur und Wissenschaft in Europa verbreiteten.
+Ein weiterer Teil der Bevölkerung, die sogenannten Klephten, der die drohende Gefahr der Unterdrückung kommen sah, floh in die Berge, in denen die Osmanischen Herrscher keine Hoheit ausübten, und wurde aufgrund der Absonderung gezwungen immer tiefer in die Kriminalität zu verfallen \cite{Brewer2001, Clogg1979}.
+
+Die Situation in Griechenland war durch das theokratische Millet-System von systematischer Diskriminierung geprägt.
+Es gab eine Reihe von Verboten, die nur für Nicht-Muslime galten, wie zum Beispiel das Verbot, Waffen zu tragen, Pferde zu reiten oder bestimmte Kleidung zu tragen.
+Zudem wurde eine sogenannte Kopfsteuer erhoben, die nur von Nicht-Muslimen für den Schutz des Sultans gezahlt werden musste, und es gab Berufe, die nur von Muslimen ausgeübt werden durften.
+Die Abschaffung der griechischen Sprachunterrichts führte zu Analphabetismus in der griechischen Bevölkerung vor allem auf dem Land, was die Kriminalitätsraten weiter in die Höhe trieb und spätere Revolutionsvorhaben erschwerte. 
+Der Kontakt mit der nicht-muslimischen Bevölkerung wurde von den entsprechenden kirchlichen Führungen abgewickelt, wobei Ethnien missachtet und nur die religiös-kirchliche Zugehörigkeiten ausschlaggebend für die Rechteerhaltung waren.
+Dadurch galten zum Beispiel alle orthodoxen Christen, egal ob griechischer, bulgarischer oder serbischer Abstammung, als Griechen und wurden als solche behandelt \cite{Woodhouse1998, Sugar1977, Clogg1979}.
+
+Im Osmanischen Griechenland gab es immer wieder kleinere Aufstände gegen die osmanische Herrschaft, die von Unzufriedenheit und religiösem Unmut geleitet waren, die aber meist schnell niedergeschlagen wurden.
+Es mangelte grundsätzlich an einem gemeinsamen großen Ziel, das die griechische Bevölkerung vereinte und für das sie kämpfen wollte.
+Die Orlow-Revolte war die erste große Erhebung gegen die osmanische Herrschaft, die aber letztlich aufgrund fehlender Unterstützung scheiterte.
+Begeistert von der Französischen Revolution und den napoleonischen Idealen begannen ausländische Schriftsteller und Intellektuelle, oft mit griechischen Wurzeln, die Idee eines gewaltsam erkämpften griechischen Nationalstaates zu verbreiten und nicht nur Gegenwartskritik zu üben \cite{Zelepos2015, Brewer2001, Dakin1952}.
+
+Die Revolutionen Ende des 18. und Anfang des 19. Jahrhunderts ließen den Glauben an eine erfolgreiche Revolution in Griechenland zu, allerdings fehlte eine Organisation, die eine führende Rolle übernehmen könnte, wobei zu der Zeit Russland als große Hilfsmacht betrachtet wurde, die Orlow-Revolte aber einen bitteren Nachgeschmack hinterlassten hat.
+Die Idee eines griechischen Nationalstaates wurde durch den Philhellenismus, der Liebe zum antiken Griechenland und der Klassik, verbreitet, die sich in der europäischen Bevölkerung durch die Renaissance ausbreitete.
+Viele Intellektuelle und Schriftsteller, darunter auch Goethe und Chateaubriand, verfassten Werke, in denen sie die griechische Kultur priesen und deren Schönheit und Importanz für die europäische Kulturgeschichte verdeutlichen wollten.
+1861, lange nach der Revolution, wurden in der Akropolis neben den griechischen Helden im Befreiungskampf die Namen der wichtigsten ausländischen Philhellenen verewigt.
+Darunter fallen Lord Byron aus Großbritannien, Charles-Nicolas Fabvier aus Frankreich, Johann Jakob Meyer aus der Schweiz sowie Santorre di Santarosa aus Italien, die alle maßgeblich an der Griechischen Revolution beteiligt waren \cite{Zelepos2015, Konstantinou2012, Clair2008}.
+
+1814 wurde die geheime Gesellschaft Filiki Etairia ("Freundesgesellschaft") gegründet, die sich diese Führung und vor allem das Dazugewinnen der griechischen Bevölkerung zur Aufgabe machte.
+Es war eine geheime Organisation von griechischen Intellektuellen und Revolutionären, die die griechische Unabhängigkeit von der osmanischen Herrschaft anstrebte und die griechische Bevölkerung auf die Revolution vorbereitete.
+Ihre Gründer waren ebenso wie die anschließenden ersten Mitglieder Kaufleute höchstens mittleren Standes, inkludierten mit der Zeit aber auch Personen anderer gesellschaftlichen Hintergründe und Stände wie Handwerker, Geistliche, Bauern und Lehrer.
+Sie bildeten somit eine Gruppe, die durch einen radikalen Umsturz der Verhältnisse nur relativ wenig zu verlieren, jedoch potentiell viel zu gewinnen hatte.
+Sie gründeten sich im russisch besetzten Odessa in der heutigen Ukraine und versuchten von dort aus die griechische Bevölkerung auf die Revolution vorzubereiten und einen Nationalgedanken zu etablieren, für den es sich zu kämpfen lohnte \cite{Zelepos2015, Dakin1952, Konstantinou2012, Clair2008}.
+
+Allerdings stand hinter diesen Plänen nicht das griechische Volk in seiner Gesamtheit.
+Die moderne Idee der Nationalität war vielen noch zu abstrakt, was auch der Analphabetisierungsrate und dementsprechend dem Nichtteilhaben an den revolutionären Ideen in Europa geschuldet war.
+Das Gewinnen von kampfwilligen Aufständischen gelang durch jahrelange geheime Machenschaften der Filiki Etairia und die Darstellung Russlands als Retter der griechischen Bevölkerung, die sich in der Vergangenheit bereits als Schutzmacht bewiesen hatten \cite{Dakin1952, Konstantinou2012}.
+Ein weiteres Problem stellte die militärische Stärke dar, weshalb schon früh Klepthen und Manioten in die Vorbereitungen mit einbezogen wurden.
+Diese waren weniger an einem ganzheitlichen Nationalstaat interessiert, vielmehr vermochten sie durch die Revolution ihren Einflussbereich zu erweitern.
+Sie bildeten später aufgrund ihrer Ausrüstung und Erfahrung trotzdem den Kern der militärischen Macht, der einige große Erfolge der Revolution auf der Peloponnes erzwingen konnte \cite{Dakin1952, Clair2008}. 
+
+%%%%%%%%%%%%%%%
+\subsection{Hinweis zur Literatursituation}
+
+Aufgrund der zeitlichen Umstände, in denen die Griechische Revolution stattfand, und des teils undurchsichtigen Verlaufs der Ereignisse, ist es schwierig, eine einheitliche und objektive Darstellung der Ereignisse zu finden. 
+In den ersten Jahrzehnten nach der griechischen Revolution von 1821 wurden verschiedene Texte veröffentlicht, darunter Erfahrungsberichte und historische Werke. Die Autoren dieser Texte waren oft aktive Teilnehmer der Revolution, sodass es schwierig war, zwischen historiographischen und nicht-historiographischen Werken zu unterscheiden, da die meisten Autoren versuchten, ihre Aussagen mit persönlichem Wissen und Dokumenten zu stützen \cite{Stathis2021}.
+
+Außerdem wurden diese Texte vor allem durch die politischen Standpunkte der Autoren während der Revolution beeinflusst, unabhängig von ihrer wissenschaftlichen Qualifikation.
+Zudem gab es Unterschiede in den Erzählstilen der Autoren, einige waren emotional engagiert, während andere einen distanzierteren Stil wählten, sodass die Beurteilung der historischen Qualität der Quellen besondere Herausforderungen darstellte. 
+Es gab auch historische Darstellungen der griechischen Revolution von ausländischen Autoren, die vor allem Philhellenen oder frühere geflohene Intellektuelle waren.
+Diese Autoren betrachteten die Griechische Revolution oft im Kontext des breiteren europäischen Konflikts zwischen Liberalen und Konservativen und vernachlässigen Erfahrungsberichte, die die tieferliegenden ideologischen Ansichten über die Revolution aus griechischer und osmanischer Seite beleuchteten. 
+Zusätzlich zu historischen Texten gab es literarische Werke über die Revolution, darunter Gedichte und Prosa, die oft in Andenken an Opfer und Kämpfer verfasst wurden.
+Einige dieser literarischen Werke beanspruchten historische Genauigkeit und trugen zur Verbreitung von historischem Wissen bei, sind aber schwierig auf Wissenschaftlichkeit zu prüfen \cite{Stathis2021}.
+
+Erst um 1860 wurden die ersten Lehrbücher zur Revolution veröffentlicht, die auf Quellen und Dokumenten beruhten, die ab 1855 durch öffentliche Hand gesammelt und vertieft wurden \cite{Stathis2021}.
+Da dies erst einige Jahrzehnte nach der Revolution und anderen historisch bedeutsamen Ereignissen dieser Zeit durchgeführt wurde, ist es sehr gut möglich, dass einige Dokumente verloren gegangen sind oder entsprechend abgeändert wurden, um Ereignisse zu verfälschen oder zu beschönigen. 
+Die dargestellten Ereignisse und Informationen sind daher immer im historischen Kontext und in dem Hinblick zu betrachten, dass nicht alle Einzelheiten, die oft zu weiteren wichtigen Ereignissen geführt haben, enthalten sind.
+
+%%%%%%%%%%%%%%%
+\subsection{Ausbruch und Verlauf der Revolution von 1821 bis 1827}
+
+Offiziell am 25. März 1821, am christlichen Tag der Verkündung des Herren, aber wahrscheinlich bereits früher, wurde die Revolution von der Filiki Etairia ausgerufen \cite{Zelepos2015}.
+Die Revolutionäre begannen die Revolution an drei Orten gleichzeitig zu entfachen, um den Überraschungsmoment auszunutzen und so die Chancen zur Stürzung der osmanischen Herrschaft zu erhöhen.
+Die Orte waren Konstantinopel als selbstverständliches Zentrum des neu zu erschaffenen Griechischen Reiches und als Hauptstadt des Osmanischen Reiches, die Peloponnes als strategisch wichtiger Ort, da sie durch ihre geographische Lage und die dortigen Festungen inklusive der bis dato nicht eroberten Mani Halbinsel einen guten Ausgangspunkt für die Revolutionäre bot, abgesehen davon, dass zu der Zeit die Peloponnes, auch Morea genannt, das "Griechenland" zu der Zeit war, und die Donaufürstentümer Moldau und Walachei, die von griechischen Phanarioten verwaltet wurden und somit als griechische Gebiete angesehen wurden \cite{Brewer2001, Dakin1973, Forster1958}.
+
+Der Versuch Alexander Ypsilantis', Phanariot, Philhellene und Oberbefehlshaber der aufständischen Gruppierungen, ein Freiwilligenbataillon aus Studenten und rumänischen Bauern unter Führung von Tudor Vladimirescu gegen die Osmanen zu führen, endete in Chaos, als die Rumänen die griechischen Phanarioten angriffen, anstatt gegen die Osmanen vorzugehen, da die Phanarioten jahrelang selber Unterdrücker waren und vorzugsweise eine Selbstverwaltung angestrebt wurde anstatt eine Auflehnung gegenüber der Großmacht.
+Dies führte dazu, dass die Revolte in den Donaufürstentümern niedergeschlagen wurde und Ypsilantis nach Österreich floh.
+In Istanbul wurde der Aufstand ebenfalls niedergeschlagen, die Osmanen erhängten zu Vergeltungszwecken den griechisch-orthodoxen Patriarchen und es folgte ein pogromähnliches Massaker an Griechen.
+Daraufhin verurteilten der neue Patriarch und andere kollaborierende Phanarioten die Revolution \cite{Brewer2001, Dakin1973, Clogg1979, Forster1958}.
+
+Der einzige Erfolg war auf der Peloponnes zu verzeichnen, dort schafften es die Manioten, Nachfahren der Spartaner, und Klephten einzunehmen und gegen die osmanische Bevölkerung Vorzurücken.
+Darunter fiel auch Navarino, was noch 1821 eingenommen wurde und wo 3.000 osmanische Bürger*innen getötet wurden.
+Die Griechen waren entsprechend erbarmungslos und massakrierten knapp 40 \% der osmanischen Bevölkerung in den eroberten Städten und deportierten den Rest, was wiederrum von den Osmanen durch Massaker beantwortet wurde.
+Das mit den größten Auswirkungen war das Massaker von Chios 1822, bei dem die Bevölkerung von Chios von knapp 100-120.000 Menschen zu 4/5 ausgelöscht, vertrieben oder versklavt wurde \cite{Brewer2001}.
+Das erzeugte starke Sympathien mit den Griechen und Abneigung gegen das Osmanische Reich bei den Philhellenen der Großmächte, die sich bisher bei der Revolution bedeckt gehalten haben.
+Prominente Persönlichkeiten wie Lord Byron aus Großbritannien sowie François-René de Chateaubriand und Eugène Delacroix aus Frankreich unterstützten die griechische Revolution moralisch und finanziell und erreichten mit Gedichten und Kunstwerken, die die Grausamkeiten der Osmanen darstellten, zusätzlich weitere Philhellenen in Westeuropa, die sich nach und nach der Revolution anschlossen.
+Dies blieb in den Großmächten nicht lange unerkannt, sodass dort mit Plänen für einen Waffenstillstand begonnen wurde \cite{Brewer2001, Dakin1973, Clogg1979, Konstantinou2012, Clair2008, Forster1958}.
+
+Nach den ersten Erfolgen nach Beginn der Revolution 1821 verhärteten sich die Fronten auf der Peloponnes und die Situation blieb größtenteils bis 1825 unverändert.
+Aufgrund der vorangegangenen Kriege war die Flotte des Osmanischen Reiches stark geschwächt, weshalb es keine Übermacht zur Rückeroberung nutzen konnte.
+Allerdings waren die Griechen, die zum größten Teil aus Partisanen, Bauern, Klepthen und einigen Phanarioten bestanden, nicht stark genug, um weiter vorzurücken, weshalb sie sich vor allem auf die Peloponnes fokussierten.
+Darüber hinaus führten interne Konflikte, rivalisierende Fraktionen und der Mangel an zentraler Führung zu Uneinigkeit und bürgerkriegsähnlichen Konflikten unter den Aufständischen, was die Situation zusätzlich erschwerte.
+Es folgten viele kleinere Konflikte, bei denen nur einzelne Städte erobert oder verteidigt werden konnten.
+Unter der Führung von Kolokotronis, Karaiskakis, Makriyannis, Diakos, Bouboulina und vielen anderen konnten die Griechen immer wieder die osmanischen Truppen zurückdrängen und die osmanische Armee schwächen, allerdings ohne große Gebietserweiterungen erreichen zu können \cite{Zelepos2015, Brewer2001, Clair2008}.
+
+Ein weiterer Grund für die Stagnation der Revolution waren Interventionen der Großmächte, die trotz des Philhellenismus eigene Interessen am Osmanischen Reich verfolgten und die Revolution nicht zu einem Sieg führen lassen wollten, damit Russland nicht widerstandslos die Vormachtstellung am Schwarzen Meer und damit einen Zugang mit Mittelmeer und wertvollen Handelsrouten erlangen konnte.
+Andererseits wollte auch Russland nicht, dass sich ein griechischer Staat emanzipierte, weil eine Koalition mit westlichen Großmächten befürchtet wurde, die die eigene Stellung an den transkontinentalen Handelsrouten gefährden könnte.
+Das ohnehin durch vorangegande Kriege geschwächte Osmanische Reich war derweilen im Krieg mit Persien, wo es weitere Ressourcen einsetzen musste.
+Dadurch wandte es sich erst an albanische Kämpfer, die 1823 den Großteil des osmanischen Heeres ausmachte, und dann schließlich an die selbstverwaltete ägyptische Provinz unter Muhammad Ali Pascha, dem er bei einer erfolgreichen Intervention Kreta und die Peloponnes versprach \cite{Zelepos2015, Brewer2001, Dakin1973, Clair2008}.
+
+Muhammad Ali Pasha schickte eine nach den napoleanischen Kriegen modernisierte Flotte unter Führung von seinem Sohn Ibrahim Pascha nach Griechenland, die die osmanische Armee auf der Peloponnes unterstützen sollte.
+1825 eroberte er bei der Schlacht von Sfaktiria den wichtigen Stützpunkt Navarino, von dem die osmanische Armee wesentlich einfacher in die Peloponnes einmarschieren konnte, da dadurch die Armee auf dem Seeweg beliefert werden konnte anstatt ihre Stützpunkte jede Jahreszeit umverlegen zu müssen.
+Die Griechen gaben kurze Zeit später auch das Neokastro auf, wodurch die Osmanen die volle Kontrolle über die Bucht von Navarino hatten \cite{Brewer2001}.
+
+Ein weiteres Massaker folgte 1826, welches sich nach der dritten Belagerung von Messolongi 1825-26 ereignete.
+Die Quellenlage ist hier unausgeglichen, mit wahrscheinlich übertriebenen Zahlen von griechischer und fehlenden Dokumenten und Aufzeichnungen von osmanischer Seite.
+Es ist allerdings anzunehmen, dass von etwa 10.000 Menschen, die sich in der Stadt befanden, nur 1.000 überlebt haben.
+Das löste erneut ein öffentliches Echo in Europa aus, was durch den Tod einiger Philhellenen, zusätzlich zum tragischen Tod Lord Byrons 1824, der im Ausland einen großen Impakt hatte, weiter bestärkt wurde.
+Trotz der erfolgreichen Belagerung erlitt Ibrahim Pasha große Verluste seiner Armee, die ihm die weitere Vorgehensweise, die geplante Einnahme der Mani Halbinsel und damit Eroberung eines kritischsten Teils der griechischen Militärmacht und dadurch wahrscheinliches Ende der Revolution, erschwerte \cite{Zelepos2015, Brewer2001, Dakin1973, Clair2008}.
+
+Da der Sultan zu externen Mächten gegriffen hat, kam für die Großmächte nun ebenfalls eine militärische Intervention in Frage, die sie mit einem Vertrag in die Tat umzusetzen versuchten. 
+Am 6. Juli 1827 kamen Großbritannien, Frankreich und Russland zusammen und schlossen den Londoner Vertrag 1827 ab.
+In diesem verlangten sie mit Hintergrund der politischen Stabilität in Europa und eingeschränkter Kontrolle des Osmanischen Reiches über die Handelsrouten im Mittelmeer einen schnellen Waffenstillstand zwischen den Griechen und Osmanen und dass ein griechischer unabhängiger Staat geschaffen werden sollte, der allerdings weiterhin Teil des Osmanischen Reiches bleiben sollte \cite{Zelepos2015, Schulz2011}.
+Die Griechen hatten dem Vertrag in Anbetracht der sich zuspitzenden Situation zugestimmt, der Sultan, der dadurch seine Niederlage eingestehen würde, jedoch nicht, da er aufgrund der neu erlangten Flottenstärke durch Ägypten einen Sieg gegenüber westeuropäische Flotten für wahrscheinlich hielt. 
+Um den Waffenstillstand durch militärische Präsenz zu erzwingen, wurde ein Flottenkommando der drei Mächte nach Griechenland geschickt, welches Nachschublieferungen über die See blockieren und Konflikte militärisch verhindern oder beenden sollte \cite{Zelepos2015, Brewer2001, Dakin1973, Woodhouse1965}.
+
+%%%%%%%%%%%%%%%
+\subsection{Die Schlacht von Navarino am 20. Oktober 1827}
+
+Die Drei-Mächte-Flotte, bestehend aus britischen, französischen und russischen Schiffen unter den Kommandos von Sir Edward Codrington, Henri De Rigny und Login Petrowitsch Heiden sollte die Konflikte auf der Peloponnes zum Stillstand bringen, um diplomatische Verhandlungen zur Klärung der Orientalischen Frage aufnehmen zu können.
+Wegen der zahlreichen Kleinkriege und Konflikte an verschiedenen Orten verteilten sie sich über Malta, Kreta, Ägypten und der Peloponnes und fungierten als Abschreckungs- und Aufhaltungsmaßnahme, um die osmanisch-ägyptische Flotte an der weiteren Rückeroberung der griechischen Stützpunkte zu hindern und entsprechende Nachschublieferungen für die Armee auf dem Land zu unterbinden \cite{Dakin1973, Woodhouse1965}.
+
+Ibrahim Pascha nutzte Navarino als Marinebasis, um Angriffe auf die Peloponnes zu starten, was die Bucht von Navarino zu einem der wichtigsten Stützpunkte der osmanisch-ägyptischen Flotte machte. 
+Codrington hatte daher die Anweisung, ihm kontrollierend zu folgen, sodass er sich immer wieder in der Nähe von Navarino aufhielt und so erfolgreich einige Angriffsversuche Ibrahim Paschas durch Warnschüsse abwehren konnte.
+Unter dem Oberkommando von Sir Edward Codrington vereinigten sich dann die Flotten der drei Großmächte und stießen in Navarino zusammen, um dortige Konflikte zwischen den Osmanen und Griechen effektiver verhindern zu können.
+Es gab einen Austausch zwischen Codrington und Ibrahim Pascha als direkter Konktakt zum Sultan, der einen Waffenstillstand und die Umsetzung des Londoner Vertrags von 1827 zum Ziel hatte.
+Aufgrund von Missverständnissen und weiteren Konflikten im Umland kam es zu Truppenbewegungen, die von der Drei-Mächte-Flotte unterdrückt werden sollten.
+Zugleich zog ein schwerer Sturm auf, der die Drei-Mächte-Flotte am 20. Oktober 1827 aus Schutzgründen in die Bucht trieb, wo sie auf die osmanisch-ägyptische Flotte traf.
+Tabelle \ref{tab:schlachtschiffe} zeigt die entsprechenden Flottenstärken, wobei ersichtlich ist, dass die osmanisch-ägyptische Flotte absolut gesehen deutlich mehr Schiffe zur Verfügung hatte.
+Aufgrund der beiden Flottengrößen war der Raum in der Bucht begrenzt und die Schiffe kamen sich recht nah, wobei die Drei-Mächte-Flotte die klare Anweisung hatte, nur Demonstrations- und Kontrollzwecke auszuüben und keine Angriffe zu starten \cite{James1837, Anderson1966, Dakin1973, Clogg1979, Forster1958, Schulz2011, Woodhouse1965}.
+
+\begin{table}[h]
+    \caption{Anzahl der an der Schlacht beteiligten Schiffe und deren Kanonen. Anzahl der Kanonen in Klammern, verändert nach \cite{James1837}}
+    \begin{center}
+        \begin{tabular}{c c c}
+            \hline
+            Art & Drei-Mächte-Flotte & Osmanisch-ägyptische Flotte \\
+            \hline
+            Linienschiffe & 11 (810) & 3 (228) \\
+            Fregatten & 9 (406) & 17 (818) \\
+            Andere Schiffe & 7 (74) & 58 (1134) \\
+            \hline
+            Total & 27 (1290) & 78 (2180) \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:schlachtschiffe}
+\end{table}
+
+Laut Codrington's Berichten, die später vom Marinehistoriker William James in der Neuauflage seines Werk "The Naval History of Great Britain" 1837 zusammengefasst und veröffentlicht wurden \cite{James1837}, kam es nach einer Abstandsforderung einer britischen Fregatte an ein ägyptisches Schiff zu einem Schusswechsel, der aufgrund der angespannten Situation schnell zu einem Vernichtungskampf zwischen der der osmanisch-ägyptischen und der Drei-Mächte-Flotte mutierte.
+Der entsprechende Ausgang der Schlacht kann in Tabelle \ref{tab:schlachtverluste} eingesehen werden.
+Wie zu sehen ist, wurde die osmanisch-ägyptische Flotte in nur vier Stunden fast komplett vernichtet, wobei die Drei-Mächte-Flotte kaum Verluste zu beklagen hatte.
+Das lag wohl an der moderneren Flotte und der besseren Ausbildung der Besatzungen, die die osmanisch-ägyptische Flotte zwar im Gegensatz zu anderen Staaten, aber nicht gegen die Großmächte, insbesondere der damaligen Weltmacht Großbritannien, aufweisen konnte.
+Darüber hinaus war wahrscheinlich ebenso entscheidend, dass die Linienschiffe der Drei-Mächte-Flotte mit einem Schlag ganze Schiffe versenken konnten, was, strategisch sinnvoll eingesetzt, wesentliche Vorteile hat \cite{James1837, Dakin1973, Woodhouse1965}.
+
+\begin{table}[h]
+    \caption{Verluste der Schlacht. Pfeile zeigen vorher - nachher, Bilanz in Klammern, verändert nach \cite{James1837}}
+    \begin{center}
+        \begin{tabular}{c c c}
+            \hline
+            Art & Drei-Mächte-Flotte & Osmanisch-ägyptische Flotte \\
+            \hline
+            Linienschiffe & 11 (0) & 3 $\rightarrow$ 2 (-1) \\
+            Fregatten & 9 (0) & 17 $\rightarrow$ 5 (-12) \\
+            Andere Schiffe & 7 (0) & 58 $\rightarrow$ 11 (-47) \\
+            \hline
+            Total & 27 (keine) & 78 $\rightarrow$ 18 (-60) \\
+            \hline
+            Tote  & 172 & ca. 3.000-6.000 \\
+            Verwundete & 470 & ca. 1100 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:schlachtverluste}
+\end{table}
+
+Alle Zahlen stammen von Codrington's Berichten, der ebenfalls Berichte anderer Kapitäne zusammenfasste.
+Zahlen von osmanischer Seite fehlen größtenteils, wodurch es zu möglichen Zahlendrehern zum Beispiel bei den Toten und Verwundeten auf osmanischer Seite gekommen sein kann \cite{James1837}.
+Die Schlacht von Navarino war die letzte große Seeschlacht, die ausschließlich mit Segelschiffen ausgetragen wurde, obwohl zu der Zeit bereits fahrtüchtige dampfbetriebene Schiffe existierten.
+Das wirft die Frage auf, wie die militärischen Machtverhältnisse zwischen den Großmächten wirklich war, was in dieser Ausarbeitung aber kein Thema sein wird. 
+
+%%%%%%%%%%%%%%%
+\subsection{Nachwirkungen der Schlacht von Navarino und die Gründung des Königreichs Griechenland}
+
+Nach der Schlacht von Navarino war die Revolution allerdings noch nicht vorbei, das ging nur, wenn der Sultan den Londoner Vertrag  von 1827 akzeptieren würde.
+Durch die Schlacht und der Zerstörung der osmanisch-ägyptischen Flotte war das Osmanische Reich stark geschwächt, wodurch Russland 1828 dem Osmanischen Reich abermals den Krieg erklärte, was im Russisch-Türkischen Krieg 1828-29 mündete.
+Es gab Forderungen, dass Ibrahim Pascha seine Truppen im Rahmen der Revolution aus der Peloponnes abziehen sollte, was er aber entgegen der Zustimmung Muhammad Ali Pashas nicht tat, weshalb Frankreich die Morea-Expedition im August 1828 zur Peloponnes schickte.
+Diese sollte den Londoner Vertrag von 1827 umsetzen und mit militärischen Operationen, insbesondere der Befreiung von besetzen Städten und Stützpunkten, die Unabhängigkeit Griechenlands garantieren.
+Sie eroberten bis zum Ende 1828 die meisten Stützpunkte der Osmanen, darunter Navarino, Methoni und Patras, zurück und gründeten im Folgejahr die heutige Stadt Pylos \cite{Anderson1966, Dakin1973, Woodhouse1965}.
+
+Russland konnte derweilen bis nach Istanbul vordringen und wurde nur noch von den anderen Großmächten aufgehalten, die die Eroberung des Osmanischen Reiches durch Russland verhindern wollten.
+Der Sultan kapitulierte und wollte den Londoner Vertrag von 1827 akzeptieren, allerdings waren die Griechen nach dem Umschwung in der Revolution durch die Schlacht von Navarino und der Rückeroberung der Stützpunkte im Vorteil und forderten die souveräne Unabhängigkeit, also ein eigener Staat ohne Teil des Osmanischen Reiches zu sein.
+Dadurch kamen die Londoner Protokolle 1830 zustande, die die Forderungen zu einem unabhängigen Griechenland stellten.
+1832 folgte dann der Vertrag von Konstantinopel, in dem der Sultan die Unabhängigkeit Griechenlands und damit das Ende der Griechischen Revolution anerkannte.
+Damit wurde das Königreich Griechenland gegründet \cite{Zelepos2015, Dakin1973, Clair2008, Woodhouse1965}.
+
+Das Königreich Griechenland beschränkte sich wie in Abbildung \ref{pic:greeceexpansion} zu sehen bei seiner Anerkennung 1832 zunächst auf die Peloponnes und das heutige West- und Zentralgriechenland.
+Die Großmächte entschieden, nachdem das erste Staatsoberhaupt Griechenlands ermordet wurde und es zu einem Machtvakuum kam, selbst einen König zu stellen.
+Dabei kam es zu Unstimmigkeiten über den Thron, wobei schließlich Prinz Otto von Wittelsbach (Bayern) zum König ernannt wurde, der den hellenisierten Namen Othon I. erhielt.
+Dieser regierte absolutistisch und verwehrte dem griechischen Volk Grundrechte, was ihm in den späteren Jahren seiner Regentschaft zum Verhängnis wurde.
+Er wurde 1862 abgesetzt und Prinz Wilhelm aus Dänemark-Deutschland, Urgroßvater des 2022 gekrönten Königs Charles III. von Großbritannien, folgte ihm als König Georg I. auf den Thron.
+Er brachte als Throngeschenk die Ionischen Inseln mit, die bis dato unter britischer Schutzhoheit standen.
+Er konnte mit militärischen Kampagnen das immer schwächer werdende Osmanische Reich weiter zurückdrängen und so die Grenzen des Königreichs Griechenland erweitern.
+Bis 1923 konnte Griechenland so stückweise, wie Abbildung \ref{pic:greeceexpansion} zeigt, seine heutigen Grenzen definieren.
+Zudem gab es auf beiden Seiten, griechisch und osmanisch, sogenannte Bereinigungen, in denen versucht wurde auch aus religiösen Gründen möglichst die Herkunftsgeschlechter zu trennen.
+Daraus folgten Verfolgungen, Deportationen, Pogrome und Konflikte auf beiden Seiten bis zum Ersten Weltkrieg \cite{Brewer2001, Dakin1952, Clair2008, Forster1958, Woodhouse1965}.
+
+%%%%%%%%%%%%%%%
+\subsection{Heutige Auswirkungen des Konzerts der Großmächte}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/Ottoman Empire Decline.jpg}
+    \caption{Der Verfall des Osmanischen Reiches von 1774-1914, \cite{KappaXX}}
+    \label{pic:ottomandecline}
+\end{figure}
+
+Durch den Sieg Russlands nach dem Russisch-Türkischen Krieg 1828-29 und seiner Vormachtstellung am Schwarzen Meer entfachte die Orientalische Frage erneut, nur war das Ziel nicht mehr die erreichte Kontrolle des Osmanischen Reiches, sondern die Kontrolle über das Expansionsgeschehen Russlands.
+Es folgten zwei weitere Kriege mit Russland, der elfte zwischen 1877 und 1878 endete in der Unabhängigkeit der Balkanstaaten, was das Osmanische Reich entsprechend Abbildung \ref{pic:ottomandecline} weiter schwächte.
+Schon 1831 erklärte auch Muhammad Ali Pasha dem Sultan den Krieg, da er die ihm versprochenen Gebiete, darunter Syrien und Kreta, auch nach Verlust eines Großteils seiner Flotte bei der Schlacht von Navarino nicht erhalten hatte.
+Der erste Ägyptisch-Osmanische Krieg 1831-33 führte dazu, dass der Sultan Russland um Hilfe bitten musste, um die Ägypter in ihrem Vormarsch Richtung Istanbul abzuhalten.
+Dieses Ereignis markierte den Beginn eines immer wiederkehrenden Musters, bei dem der Sultan die Hilfe ausländischer Mächte benötigte, um sich zu schützen.
+Dadurch machte er sich immer mehr von den Großmächten abhängig, was das Osmanische Reich zum Spielball im Konzert der Großmächte machte und den Zerfall des Reiches beschleunigte \cite{Karsh2007}.
+
+Dies zog sich weiter bis zum Ersten Weltkrieg, an dem das Osmanische Reich als Mittelmacht im Bündnis mit dem Deutschen Reich teilnahm.
+Nach dem Krieg wurde das Osmanische Reich aufgelöst und die Großmächte teilten es entsprechend ihrer Interessen ungeachtet ethnischer Gruppierungen und demographischen Grenzen wie in Abbildung \ref{pic:ethnien1917} zu sehen ist auf, was bis heute regionale Konflikte nach sich zieht \cite{Finkel2007, Kinross1979, Jorga1990, Anderson1966, Karsh2007}.
+
+%%%%%%%%%%%%%%%%%%%
+% ZUSAMMENFASSUNG %
+%%%%%%%%%%%%%%%%%%%
+
+\section{Zusammenfassung}
+
+Die erfolgreiche Griechische Revolution von 1821 bis 1829 war Teil eines revolutionären Zeitalters für Europa und die Welt, in dem sich die Ideen der Aufklärung und der Französischen Revolution verbreiteten und die Menschen dazu inspirierten, sich gegen die Unterdrückung durch Monarchien und Kirche aufzulehnen.
+Sie wurde unterstützt von den damaligen Großmächten Großbritannien, Frankreich und Russland, die versuchten eigene Interessen in einer Art Stellvertreterkrieg durchzusetzen, in den sie schließlich selbst aktiv eingriffen.
+Dies war ein maßgeblicher Grund für den Erfolg der Griechischen Revolution, die durch die Schlacht von Navarino 1827 und die Zerstörung der osmanisch-ägyptischen Flotte zum einen vorläufig entschieden wurde, zum anderen dadurch aber auch dazu beigetragen hat, dass das Osmanische Reich weiter an Macht verlor und schließlich im Ersten Weltkrieg aufgelöst und durch die Großmächte ungeachtet der Ethnien und regional verankerter Volksgruppen aufgeteilt wurde.
+Dies hat bis heute Auswirkungen auf die politische Situation im Nahen Osten und auf die Beziehungen zwischen den Staaten, die aus dem Osmanischen Reich hervorgegangen sind.
+
+Die Griechische Revolution war ein Sinnbild für das Konzert der Großmächte und die damit verbundenen Interessen, welches die politische Situation im 19. und Anfang des 20. Jahrhunderts prägte und die Weltgeschichte maßgeblich beeinflusste.
+Somit hatte die Griechische Revolution und insbesondere die Schlacht von Navarino eine bedeutende Rolle in der späteren europäischen und nahöstlichen Geschichte.
+
+Griechenland ist heute ein unabhängiger geschichtsträchtiger Staat, in dem jährlich am 25. März den Anfängen der Griechischen Revolution und deren Opfern gedacht wird, die die Griechen von der fast vier Jahrhunderte andauernden osmanischen Herrschaft befreite. 
+Die Bucht von Navarino als Austragungsort der entscheidenden Schlacht der Griechischen Revolution ist heute ein beliebtes Touristenziel, das viele Denkmäler beherbergt, die an die Schlacht, an die multinationalen Kämpfer und Philhellenen und die vielen Opfer der Revolution erinnern.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% LITERATURVERZEICHNIS %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\renewcommand\refname{Literaturverzeichnis}
+\bibliographystyle{bibliography}
+\bibliography{literature}
+
+%%%%%%%%%%
+% ANHANG %
+%%%%%%%%%%
+
+\newpage
+\appendix
+\section*{Anhang}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{pics/Greece Expansion.png}
+    \caption{Expansion Griechenlands nach Gründung des Königreichs 1832 bis nach Ende des Zweiten Weltkriegs \cite{HistoricairRursus2007}}
+    \label{pic:greeceexpansion}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textwidth, angle=90]{pics/Ethnien 1917.jpg}
+    \caption{Karte der Ethnien der Mittelmächte 1917 vor der Zerteilung des Nahen Ostens durch die Großmächte im Anschluss des Ersten Weltkrieges, \cite{Cassell1917}}
+    \label{pic:ethnien1917}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textwidth, angle=90]{pics/overview_annotations.png}
+    \caption{Großdarstellung der Karte der Bucht von Navarino im Südwesten der Peloponnes, Griechenland, mit Annotationen [eigene Darstellung]}
+    \label{pic:overviewlarge}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Eidesstattliche Erklärung %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Eidesstattliche Erklärung}
+
+Ich, Nikolaos Kolaxidis, Matrikel-Nr. 3694017, versichere hiermit, dass ich diese Arbeit mit dem Thema
+\begin{quote}
+\textit{Die Bucht von Navarino} \\ \textit{Griechische Revolutionsgeschichte und ihre Bedeutung für Europa}
+\end{quote}
+selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe, wobei ich alle wörtlichen und sinngemäßen Zitate als solche gekennzeichnet habe.
+
+Die Arbeit wurde bisher keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht.
+
+\vspace{10mm}
+
+Dossenheim, den 14.09.2023 \\
+
+\vspace{5mm}
+
+\rule[-0.2cm]{5cm}{0.5pt}
+
+Nikolaos Kolaxidis
+
+\end{document}
