@@ -1,0 +1,462 @@
+%% Copernicus Publications - AGILE-GISS Template for LaTeX Manuscript Preparation
+%% ---------------------------------
+%% This template should be used for copernicus-agile.cls
+%% The class file together with some style files and the fontawesome5 package (optional use of the orcid iD icon) are bundled in the AGILE LaTeX template package.
+%% For further assistance please refer to the AGILE web site (respective Conference subpages) at:
+%% https://agile-online.org/
+
+%% 2-column AGILE papers, please don't edit the following line
+\documentclass[agile, final]{copernicus-agile}
+
+%% \usepackage commands included in the copernicus-agile.cls:
+%\usepackage[german, english]{babel}
+%\usepackage{tabularx}
+%\usepackage{cancel}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{amsthm}
+%\usepackage{float}
+%\usepackage{subfig}
+%\usepackage{rotating}
+%\usepackage{hyperref}
+%\usepackage{fontawesome5} %required to display the ORCID iD icon
+\usepackage{enumitem}
+\hypersetup{
+    colorlinks=true,
+    filecolor=magenta,
+    urlcolor=blue,
+    linkcolor=blue,
+    citecolor=black,
+    }
+% \linenumbers %Please keep commented for submission of final version/uncomment if line numbers should be displayed during document preparation
+
+\begin{document}
+
+\title{Guidelines for Accessibility in public transport routing for visually impaired}
+
+% \Author[affil]{given_name}{surname}
+% If an ORCID iD is available, please add the iD number after the surname by using the command \orcid{0000-xxxx-xxxx-xxxx}. The command definition requires the fontawesome5 package (version > 5.13.0)
+
+\Author[1]{Nikolaos}{Kolaxidis}
+\Author[2]{Till}{Frankenbach}
+\Author[1,2]{Clemens}{Langer}
+
+\affil[1]{Affiliation1: Institute for Geography, Heidelberg University, Heidelberg, Germany}
+
+%% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
+
+%% If an author is deceased, please mark the respective author name(s) with a dagger, e.g. "\Author[2,$\dag$]{Anton}{Smith}", and add a further "\affil[$\dag$]{deceased, 1 July 2019}".
+
+%% If authors contributed equally, please mark the respective author names with an asterisk, e.g. "\Author[2,*]{Anton}{Smith}" and "\Author[3,*]{Bradley}{Miller}" and add a further affiliation: "\affil[*]{These authors contributed equally to this work.}".
+
+\correspondence{Author Name (\color{blue}email address)}
+
+\firstpage{1}
+
+\maketitle
+
+\begin{abstract}
+These are author guidelines for full and short paper contributions to AGILE conferences published in the open access AGILE: GIScience Series by Copernicus Publications (version 1). Authors have to follow these guidelines for the preparation of their contributions. The AGILE conference organisers may decide to reject contributions that do not follow these author guidelines.
+\keywords{template, formatting, reproducible paper guidelines}
+\end{abstract}
+
+%% \introduction  %% \introduction[modified heading if necessary]
+
+\introduction[Scope of the Author Guidelines]
+\labe l{intro}
+AGILE conference proceedings are published as volumes of the open access journal AGILE: GIScience Series (AGILE-GISS) by Copernicus Publications (\url{https://www.agile-giscience-series.net/}). These guidelines describe the formatting of AGILE: GIScience Series contributions and reflect the author guidelines on manuscript composition, references, mathematical notation and English guidelines specified by Copernicus Publications (\url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}). Authors of full and short papers of the AGILE: GIScience series need to follow the specified formatting guidelines.
+
+\subsection{Reproducible Paper Guidelines}
+The AGILE conference series supports the principles of reproducibility of computational research. Submissions must follow to the AGILE Reproducible Paper Guidelines available online at: \url{https://doi.org/10.17605/OSF.IO/CB7Z8}. Detailed instructions are summarized in section 2.2. below. You can discuss questions regarding reproducible research on the AGILE Discourse server at \url{https://discourse.agile-online.org/c/reproducible/5}.
+
+\subsection{Full and Short Papers}
+Full papers: 4000--6000 words of original and unpublished fundamental scientific research. PhD students are especially encouraged to submit full papers.
+
+Short papers: 2000--3000 words of original and unpublished fundamental scientific research, including work in progress and strategic (industrial and governmental) submissions.
+
+\subsection{Review of Contributions}
+The contributions to AGILE conferences undergo a double blind review performed by members of the scientific programme committee. Full papers that pass the scientific review process undergo a review of their reproducibility by members of the reproducibility committee. The outcome of the reproducibility review does not impact acceptance of the contribution. If papers can be at least partially reproduced, a reproducibility report will be published and the \textit{Reproducible AGILE badge} is added to the article’s landing page on the proceedings website. Authors are strongly encouraged to insert a plain DOI link (i.e., \url{https://doi.org/the_doi}, not a reference) to the reproducibility report in the camera-ready manuscript. Find details about the reproducibility review process at \url{https://osf.io/7rjpe/}.
+
+Please \textbf{omit author names and affiliations in the first submission} to the review to assure a double blind review. Names and affiliations shall be provided in the revised version once the contribution has been accepted.
+
+\subsection{Preprints}
+A preprint is a paper that is made available publicly via a community preprint server, e.g., EarthArXiv (\url{https://eartharxiv.org/}), or institutional document repositories prior to (or simultaneous with) submission to a journal or conference. A deposition of a preprint is not considered as prior publication and will not jeopardize consideration for AGILE-GISS.
+
+Authors must include a link/DOI to the preprint in their submission to AGILE-GISS. This is to include the open communications between researchers, e.g., comments on the preprint, in the peer review process. Authors may use any license of their choice for the preprint, but must retain copyright or must ensure the license is in line with the AGILE-GISS licensing. It is the author’s responsibility to update the preprint with a publication reference both in the preprint (with full citation) and in the preprint server metadata (the peer-reviewed paper’s DOI), if their submission to AGILE-GISS is accepted and published.
+
+Preprints may be cited (like other peer reviewed and non-peer-reviewed sources) accurately, clearly marked as such in the references.
+
+\section{Sections}
+These guidelines provide specifications for some of the typical sections of a scientific paper.
+
+\subsection{Abstract and Keywords}
+The abstract should be the first section after the title, author names, emails and affiliations. The word limit for abstracts is 250 words.
+
+Abstracts are followed by 3--5 keywords that reflect the content of the paper.
+
+\subsection{Data and Software Availability Section}
+Contributions to AGILE conferences generally include a methods section as one element of the main body of the text. The method section has to include a sub-section called \textit{Data and Software Availability}. This sub-section documents all data, software, and computational infrastructure used in computational research to support reproduction, or otherwise mentions reasons for not publishing these resources.
+
+Details on the reproducible paper guidelines applied in the AGILE: GIScience series, a pre-submission checklist and best practice examples from the Geoinformatics domain are available online: \url{https://doi.org/10.17605/OSF.IO/CB7Z8}.
+
+\subsection{Acknowledgments, Appendix and other Sections}
+A series of sections can be included to complement the scientific part of the work:
+\begin{itemize}[itemsep=0em plus0.5em,topsep=0.2em plus0.5em]
+%%[...] options can be used if enumitem package is installed and can be used to change vertical spaces. Otherwise please comment/delete.
+\item Acknowledgements: mentions of people involved in the preparation of the contribution and mentions of funding sources;
+\item  Author contribution: an indication of the contributions of individual authors; authors may use CRediT (Contributor Roles Taxonomy, \url{http://credit.niso.org/}), document random/alphabetical order, or co-first authorship.
+\item  Appendix: supplementary material can be provided in an appendix at the very end of the paper (after references).
+\end{itemize}
+
+% For two-column wide figures use
+\begin{figure*}[ht]
+% Use the relevant command to insert your figure file.
+% For example, with the graphicx package use
+  \includegraphics[width=16cm]{figures/example_figure-2.png}
+% figure caption is below the figure
+\caption{An example figure spanning over both columns.}
+\label{fig:1}       % Give a unique label
+\end{figure*}
+%
+
+\section{Layout and Formatting}
+This template implements the formatting guidelines for the AGILE: GIScience series; the following sections summarize these.
+
+\subsection{Page Layout and Margins}
+The page layout is A4 in size, in portrait format. Single pages in landscape format are not allowed.
+
+Page margins are given in Table\,\ref{tab:1}.
+
+\begin{table}[h]
+\caption{Page margin settings}
+\begin{tabular}{lrr}
+\tophline
+Setting&\multicolumn{2}{c}{A4 size paper}\\
+\middlehline
+&mm&inches\\ \cline{2-3}
+Front page: Top&50&2\\
+Top&25&1\\
+Bottom&25&1\\
+Left and right&20&0.8\\
+Column width&82&3.2\\
+Column spacing&6&0.25\\
+\bottomhline
+\end{tabular}
+%\belowtable{} % Table Footnotes
+\label{tab:1} % Give a unique label
+\end{table}
+
+
+\subsection{Header and Footer}
+The contribution shall not include any entries in header and footer. Page numbers, the AGILE logo, peer review statement, license information (CC BY 4.0 License), citation information, and document object identifier (DOI) will be included in the header and footer by the publisher.
+
+\subsection{Font types}
+The font types are limited to the following all based on Times New Roman. Please use the predefined styles of this document.
+
+\begin{itemize}[itemsep=0em plus0.2em,topsep=0.2em plus0.5em]
+%%[...] options can be used if enumitem package is installed and can be used to change vertical spaces. Otherwise please comment/delete.
+\item MS Title: 17 pt, bold, colour AGILE blue (rgb(0, 77, 156));
+\item Authors: 12 pt. To be used for authors and the indication of the corresponding author in brackets;
+\item Affiliation: 10 pt. to be used for Email addresses of authors and their affiliations;
+\item Heading 1: 16 pt, bold;
+\item Heading 2: 12 pt, bold;
+\item Heading 3: 12 pt;
+\item Normal: 10 pt, line line spacing 1.15;
+\item Caption: 9 pt, bold.
+\end{itemize}
+
+\subsection{Footnotes}
+Footnotes shall be avoided to the degree possible. In case footnotes are necessary, please use the regular footnote command. %\footnote{}.
+
+
+\subsection{Figures and Tables}
+Figures and tables can be placed in a single column, or span over both columns if required. The figure caption names the number of the figure as indicated in the example. Reference to figures in text shall use abbreviations like Fig.\,\ref{fig:1}, where a non-breaking space is added before the number. The caption of the figure spells out Figure\,1.
+
+% For one-column wide figures use
+\begin{figure}[ht]
+% Use the relevant command to insert your figure file.
+% For example, with the graphicx package use
+  \includegraphics[width=8.2cm]{figures/agile-logo_cmyk.pdf}
+% figure caption is below the figure
+\caption{The logo of AGILE -- the Association of Geographic Information Laboratories in Europe.}
+\label{fig:2}       % Give a unique label
+\end{figure}
+%
+
+Figures and tables spanning over both columns should be placed at the top of the page (see example Fig.\,\ref{fig:1}).
+
+Larger figures, e.g., full page graphics, should be added in the appendix.
+
+Tables shall be referenced in the text with Table\,\ref{tab:1}. where a non-breaking space is added before the number; the caption of the table spells out Table\,1.
+
+\section{Equations}
+Equations are numbered sequentially and referenced in the text with Eq.\, (\ref{eq:1}).
+
+\begin{equation}
+Y=\frac{\Delta M_{0}}{\Delta[\textnormal{isoprene}]}
+\label{eq:1}
+\end{equation}
+
+\subsection{References}
+References in the text are using the author date format as the following examples \citep{bib1_2019,bib3_2020,bib4_2021}. In case of more than two authors, the list of authors is abbreviated \citep[e.g.][]{bib2_2020,bib5_2020,bib6_2019}. A non-breaking space is used in “et\,al.”.
+
+The section providing the references is indicated with the term references as heading 1, without numbering. The references are sorted alphabetically on first author surnames. The information provided covers author names, title of the publication, publication outlet, volume and issue, page numbers, DOI and year.
+
+The references section on the website of Copernicus Publishers for manuscript preparation provides detailed examples for referencing various types of publications. In addition, download links for Endnote, Bibtex and CSL (for Mendeley, Zotero etc.) style files: \url{https://publications.copernicus.org/for_authors/manuscript_preparation.html}.
+
+%%just to ad a few more reference examples
+%\citep{bib3_2020,bib4_2021,bib5_2020,bib6_2019}
+
+
+%\conclusions  %% \conclusions[modified heading if necessary]
+%\lipsum[5-8]
+
+%% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
+%% It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
+
+%\codeavailability{TEXT} %% use this section when having only software code available
+
+
+%\dataavailability{TEXT} %% use this section when having only data sets available
+
+
+%\codedataavailability{TEXT} %% use this section when having data sets and software code available
+
+
+%\sampleavailability{TEXT} %% use this section when having geoscientific samples available
+
+
+%\videosupplement{TEXT} %% use this section when having video supplements available
+
+
+%\appendix
+%\section{}    %% Appendix A
+
+%\subsection{}     %% Appendix A1, A2, etc.
+
+
+%\noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
+
+%% Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
+
+%% Option 1: If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
+%% They will be correctly named automatically.
+
+%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
+%% To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+
+%\appendixfigures  %% needs to be added in front of appendix figures
+
+%\appendixtables   %% needs to be added in front of appendix tables
+
+%% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
+
+
+
+%\authorcontribution{TEXT} %% this section is mandatory
+
+%\competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
+
+%\disclaimer{TEXT} %% optional section
+
+%\begin{acknowledgements}
+%TEXT
+%\end{acknowledgements}
+
+
+%% REFERENCES
+
+%% The reference list is compiled as follows:
+
+%\begin{thebibliography}{}
+
+%\bibitem[AUTHOR(YEAR)]{LABEL1}
+%REFERENCE 1
+
+%\bibitem[AUTHOR(YEAR)]{LABEL2}
+%REFERENCE 2
+
+%\end{thebibliography}
+
+%% Since the AGILE LaTeX package includes the BibTeX style file agile.bst, authors experienced with BibTeX only have to include the following two lines:
+%%
+
+\bibliographystyle{copernicus-agile}
+\bibliography{example.bib}
+
+%%
+%% URLs and DOIs can be entered in your BibTeX file as:
+%%
+%% URL = {http://www.xyz.org/~jones/idx_g.htm}
+%% DOI = {10.5194/xyz}
+
+
+%% LITERATURE CITATIONS
+%%
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al. (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+
+
+
+%% FIGURES
+
+%% When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage
+%% between bibliography and first table and/or figure as well as between each table and/or figure.
+
+% The figure files should be labelled correctly with Arabic numerals (e.g. fig01.jpg, fig02.png).
+
+
+%% ONE-COLUMN FIGURES
+
+%%f
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure}
+%
+%%% TWO-COLUMN FIGURES
+%
+%%f
+%\begin{figure*}[t]
+%\includegraphics[width=12cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure*}
+%
+%
+%%% TABLES
+%%%
+%%% The different columns must be seperated with a & command and should
+%%% end with \\ to identify the column brake.
+%
+%%% ONE-COLUMN TABLE
+%
+%%t
+%\begin{table}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table}
+%
+%%% TWO-COLUMN TABLE
+%
+%%t
+%\begin{table*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table*}
+%
+%%% LANDSCAPE TABLE
+%
+%%t
+%\begin{sidewaystable*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{sidewaystable*}
+%
+%
+%%% MATHEMATICAL EXPRESSIONS
+%
+%%% All papers typeset by Copernicus Publications follow the math typesetting regulations
+%%% given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry,
+%%% 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
+%%%
+%%% Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
+%%% Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
+%%% Items/objects which are defined are typeset in roman font (Car A, Car B)
+%%% Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
+%%% Abbreviations from 2 letters are typeset in roman font (RH, LAI)
+%%% Vectors are identified in bold italic font using \vec{x}
+%%% Matrices are identified in bold roman font
+%%% Multiplication signs are typeset using the LaTeX commands \times (for vector products, grids, and exponential notations) or \cdot
+%%% The character * should not be applied as mutliplication sign
+%
+%
+%%% EQUATIONS
+%
+%%% Single-row equation
+%
+%\begin{equation}
+%
+%\end{equation}
+%
+%%% Multiline equation
+%
+%\begin{align}
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8
+%\end{align}
+%
+%
+%%% MATRICES
+%
+%\begin{matrix}
+%x & y & z\\
+%x & y & z\\
+%x & y & z\\
+%\end{matrix}
+%
+%
+%%% ALGORITHM
+%
+%\begin{algorithm}
+%\caption{...}
+%\label{a1}
+%\begin{algorithmic}
+%...
+%\end{algorithmic}
+%\end{algorithm}
+%
+%
+%%% CHEMICAL FORMULAS AND REACTIONS
+%
+%%% For formulas embedded in the text, please use \chem{}
+%
+%%% The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
+%
+%\begin{reaction}
+%%% \rightarrow should be used for normal (one-way) chemical reactions
+%%% \rightleftharpoons should be used for equilibria
+%%% \leftrightarrow should be used for resonance structures
+%\end{reaction}
+%
+%
+%%% PHYSICAL UNITS
+%%%
+%%% Please use \unit{} and apply the exponential notation
+
+%\copyrightstatement{TEXT} %% This section is optional and can be used for copyright transfers.
+
+%\texlicencestatement Licence TEST
+
+
+\end{document}
