@@ -1,0 +1,4 @@
+name: advgeo
+dependencies:
+  - python
+  - poetry
