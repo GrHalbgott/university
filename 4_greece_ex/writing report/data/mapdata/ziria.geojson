@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "ziria",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "full_id": "n26863467", "osm_id": "26863467", "osm_type": "node", "natural": "peak", "source:url": null, "man_made": null, "alt_name:en": null, "int_name": null, "name:etymology:wikipedia": null, "name:etymology:wikidata": null, "summit:cross": null, "alt_name": null, "summit": "yes", "source:prominence": "2374-510 (Col at the S of Voutsaras)", "prominence": "1864", "name:tr": "Killene Dağı", "name:sv": "Kyllini", "name:sk": "Kylléne", "name:ru": "Килини", "name:nn": "Kyllíni", "name:nl": "Cyllene", "name:la": "Cyllene", "name:ja": "キュレーネー", "name:fr": "Kyllini (Ziria)", "name:eu": "Zilene", "name:es": "Cilene", "name:de": "Kyllini (Ziria)", "name:cs": "Kyllini", "name:ca": "Mont Cil·lene", "wikidata": "Q1232572", "name:grc": null, "name:el": "Κυλλήνη (Ζήρεια)", "wikipedia": "el:Κυλλήνη όρος", "name:en": "Kyllini (Ziria)", "name": "Κυλλήνη", "ele": "2374" }, "geometry": { "type": "Point", "coordinates": [ 22.3957984, 37.9391027 ] } }
+]
+}

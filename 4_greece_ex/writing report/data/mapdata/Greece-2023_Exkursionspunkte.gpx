@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gpx version="1.1" creator="Guru Maps Pro/5.3.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gom="https://gurumaps.app/gpx/v3" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd https://gurumaps.app/gpx/v3 https://gurumaps.app/gpx/v3/schema.xsd">
+ <metadata>
+  <name>Greece-2023</name>
+  <time>2023-09-24T07:21:29.744Z</time>
+ </metadata>
+ <wpt lat="37.9259456571" lon="22.9938471762">
+  <name>Stop 1-1</name>
+  <desc>Isthmia</desc>
+  <time>2023-09-24T07:21:14.924Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9360510543" lon="22.9829071756">
+  <name>Stop 1-2</name>
+  <desc>Isthmia</desc>
+  <time>2023-09-24T07:45:34.966Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9355675136" lon="23.0871085141">
+  <name>Stop 1-3</name>
+  <desc>Sousaki </desc>
+  <time>2023-09-24T09:38:15.840Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9981575845" lon="22.9695425915">
+  <name>Stop 1-4</name>
+  <desc>Kloster-Störung</desc>
+  <time>2023-09-24T12:11:48.438Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.0285704711" lon="22.8535571151">
+  <name>Stop 1-5</name>
+  <desc>Heraion - Perachora </desc>
+  <time>2023-09-24T13:05:29.455Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.0252680848" lon="22.8753122992">
+  <name>Stop 1-6</name>
+  <desc>Vouliagmeni </desc>
+  <time>2023-09-24T14:13:10.796Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.6084425002" lon="22.845321077">
+  <name>Stop 2-2</name>
+  <desc>Tiryns Damm</desc>
+  <time>2023-09-25T10:49:28.906Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.5978792299" lon="22.8001299217">
+  <name>Stop 2-1</name>
+  <desc>Tiryns </desc>
+  <time>2023-09-25T10:50:06.542Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.8074226325" lon="22.7109537154">
+  <name>Stop 2-3</name>
+  <desc>Ancient Nemea</desc>
+  <time>2023-09-25T12:08:35.097Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.921340255" lon="22.5340843688">
+  <name>Stop 3-1</name>
+  <desc>Quelle Kefalari. Stymphalia </desc>
+  <time>2023-09-26T06:36:22.037Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.8699725758" lon="22.4649815851">
+  <name>Stop 3-2</name>
+  <desc>Stymphalia Dorf</desc>
+  <time>2023-09-26T07:31:24.314Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.8604379428" lon="22.4617678341">
+  <name>Stop 3-3</name>
+  <desc>Ancient Stymphalos </desc>
+  <time>2023-09-26T09:03:54.776Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.8513014851" lon="22.480338676">
+  <name>Stop 3-4</name>
+  <desc>Hadrian Aquädukt Stymphalia </desc>
+  <time>2023-09-26T11:58:52.703Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9576145599" lon="22.5803031615">
+  <name>Stop 4-1</name>
+  <desc>Winery Gioulis </desc>
+  <time>2023-09-27T06:57:03.393Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.8737147536" lon="22.3592824468">
+  <name>Stop 4-2</name>
+  <desc>Pheneos-Stymphalia Pass</desc>
+  <time>2023-09-27T09:33:08.038Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.956262959" lon="22.4279639314">
+  <name>Stop 5-1</name>
+  <desc>Megagiannis Schluckloch, Ziria</desc>
+  <time>2023-09-28T06:54:49.287Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9462264639" lon="22.4310984845">
+  <name>Stop 5-2</name>
+  <desc>Ziria Ski Center </desc>
+  <time>2023-09-28T07:25:22.786Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.945607215" lon="22.4313235185">
+  <name>Baum 1 Kiefer</name>
+  <desc>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</desc>
+  <time>2023-09-28T07:47:28.640Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9398303422" lon="22.4311535751">
+  <name>Stop 5-3</name>
+  <desc>Hermes-Höhle </desc>
+  <time>2023-09-28T08:35:04.905Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9396325181" lon="22.4305071106">
+  <name>Baum 2 - Tanne</name>
+  <desc>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</desc>
+  <time>2023-09-28T09:34:27.917Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9288880089" lon="22.4234117831">
+  <name>Baum 3 - Tanne</name>
+  <desc>Ziria </desc>
+  <time>2023-09-28T10:21:23.852Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.9481179218" lon="22.4308458001">
+  <name>Baum 4 - Kiefer </name>
+  <desc>Ziria </desc>
+  <time>2023-09-28T14:12:08.343Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.1417299855" lon="21.5514065157">
+  <name>Stop 6-1</name>
+  <desc>Kato Achaia</desc>
+  <time>2023-09-29T08:12:52.820Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.6406533402" lon="21.6273961496">
+  <name>Stop 6-3</name>
+  <desc>Kladeios Mauer</desc>
+  <time>2023-09-29T12:11:35.970Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.0061205765" lon="21.2843814707">
+  <name>Stop 6-4</name>
+  <desc>Kotychi Lagune</desc>
+  <time>2023-09-29T14:22:54.955Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.1517743258" lon="21.3852497553">
+  <desc>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</desc>
+  <time>2023-09-29T15:37:46.951Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.1518790167" lon="21.3844736882">
+  <name>Baum 5 - Prokopos</name>
+  <desc>Kiefer </desc>
+  <time>2023-09-29T15:47:18.223Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.2849303311" lon="22.0268394876">
+  <name>Stop 7-1</name>
+  <desc>Selianitika </desc>
+  <time>2023-09-30T08:11:49.050Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.2559268204" lon="22.075746078">
+  <name>Stop 7-2</name>
+  <desc>Aigion </desc>
+  <time>2023-09-30T08:12:14.784Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.2552403869" lon="22.0538447185">
+  <name>Stop 7-3</name>
+  <desc>Meganitas</desc>
+  <time>2023-09-30T09:04:07.239Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.1792585116" lon="22.0837050676">
+  <name>Stop 7-4</name>
+  <desc>Pyrgaki - Delta-Konglomerate </desc>
+  <time>2023-09-30T09:59:35.426Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.1577739163" lon="22.0812195476">
+  <name>Stop 7-5</name>
+  <desc>Pyrgaki - Agios Blasios</desc>
+  <time>2023-09-30T10:31:03.299Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="38.1118423353" lon="22.0872364752">
+  <name>Stop 7-6</name>
+  <desc>Plataniotissa</desc>
+  <time>2023-09-30T11:18:06.507Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9884168985" lon="21.6491011799">
+  <name>Stop 9-2 </name>
+  <desc>Romanos</desc>
+  <time>2023-10-02T07:44:27.790Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9893184084" lon="21.6517190681">
+  <name>Stop 9-1</name>
+  <desc>NEO/Costa Navarino</desc>
+  <time>2023-10-02T09:48:17.975Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9574898299" lon="21.6860292696">
+  <name>Stop 9-3</name>
+  <desc>Gialova Lagune</desc>
+  <time>2023-10-02T10:24:01.099Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9585263125" lon="21.6573027318">
+  <name>Stop 9-4</name>
+  <desc>Palaiokastro</desc>
+  <time>2023-10-02T11:27:14.959Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9196179856" lon="21.7026702041">
+  <name>Stop 9-5</name>
+  <desc>Pylos</desc>
+  <time>2023-10-02T13:49:43.270Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.8178707243" lon="21.7047237425">
+  <name>Stop 10-1</name>
+  <desc>Methoni </desc>
+  <time>2023-10-03T06:43:52.733Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.8111210799" lon="21.7284382776">
+  <name>Stop 10-2</name>
+  <desc>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</desc>
+  <time>2023-10-03T08:08:25.399Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.8074476111" lon="21.8108086528">
+  <name>Stop 10-3</name>
+  <desc>Finikoundas </desc>
+  <time>2023-10-03T08:44:43.035Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.8266957033" lon="21.8851808067">
+  <name>Stop 10-4</name>
+  <desc>Quelle von Noupeli</desc>
+  <time>2023-10-03T10:04:44.319Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.837459391" lon="21.888477338">
+  <name>Stop 10-5</name>
+  <desc>Kloster Agios Theodoros</desc>
+  <time>2023-10-03T11:17:04.001Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9849341871" lon="21.8562260955">
+  <name>Stop 11-2</name>
+  <desc>Polylimnion Wasserfall </desc>
+  <time>2023-10-04T08:25:49.993Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="36.9113204078" lon="21.692121787">
+  <name>Stop 11-1</name>
+  <desc>Niokastro Pylos </desc>
+  <time>2023-10-04T13:56:20.706Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.6224955922" lon="22.354748788">
+  <name>Stop 11-3</name>
+  <desc>Kapsia Höhle </desc>
+  <time>2023-10-04T13:57:22.005Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.5959870954" lon="22.6886276504">
+  <name>Stop 12-1</name>
+  <desc>Kefalari Argolis Quelle</desc>
+  <time>2023-10-05T07:56:29.190Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.5509513149" lon="22.7178605778">
+  <name>Stop 12-2</name>
+  <desc>Lerna </desc>
+  <time>2023-10-05T08:47:56.536Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.5163065848" lon="22.7380556247">
+  <name>Stop 12-3</name>
+  <desc>Liveri </desc>
+  <time>2023-10-05T09:14:22.938Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.5961230961" lon="23.0792272208">
+  <name>Stop 13-1</name>
+  <desc>Epidavros</desc>
+  <time>2023-10-06T07:49:30.848Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.4696650206" lon="23.1680205324">
+  <name>Stop 13-2</name>
+  <desc>Dolinen, Didyma </desc>
+  <time>2023-10-06T09:33:58.837Z</time>
+  <type>0</type>
+ </wpt>
+ <wpt lat="37.4224830504" lon="23.1311945973">
+  <name>Stop 12-3</name>
+  <desc>Franchthi Höhle </desc>
+  <time>2023-10-06T11:43:20.599Z</time>
+  <type>0</type>
+ </wpt>
+</gpx>

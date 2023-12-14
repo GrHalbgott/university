@@ -1,0 +1,1096 @@
+% Geomorphica Submission Template
+% Last revised: May 23, 2023
+% adapted from Roberto Fernández 
+% changed by Niko Kolaxidis
+
+\documentclass[preprint]{geomorphica} % change to preprint
+\linespread{1.33} % Linespacing
+
+\usepackage[utf8]{inputenx} % encoding
+\usepackage{graphicx} % include figures
+\usepackage{wrapfig} % wrap text around figures
+\usepackage{subcaption} % subfigures
+\usepackage{flushend} % last page balancing
+\usepackage{notoccite} % citation in toc/lof/lot not counting
+\usepackage[T1]{fontenc} 
+\usepackage{sourcesanspro} % font
+\usepackage{hyperref} % hyperlinks
+\hypersetup{
+    hidelinks, % remove boxes around links
+    pdftitle={2023 - Exkursionbericht Griechenland - N. Kolaxidis},
+    pdfpagemode=FullScreen,
+}
+\usepackage{xurl} % word wrap for links
+\def\UrlFont{\em} % links are italic
+
+\newcommand\tabularnums{
+  \def\sourcesanspro@figurealign{T}
+  \def\sourcesanspro@figurestyle{LF}
+  \def\familydefault{SourceSansPro-TLF}
+  \fontfamily{SourceSansPro-TLF}
+  \selectfont
+}
+
+\renewcommand{\figurename}{Abbildung}
+\renewcommand{\tablename}{Tabelle}
+
+\begin{document}
+
+\pagenumbering{Roman}
+
+%%%%%%%%%%%%%
+% DECKBLATT %
+%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{center}
+
+\vspace{-20mm}
+\vspace*{20mm}
+
+\begin{Huge}
+\textbf{Exkursionsbericht zur Großexkursion 2023}
+\end{Huge}
+
+\vspace{25mm}
+
+\begin{LARGE}
+\textbf{Griechenland und die Peloponnes \\ 24.09.-05.10.2023} \\ [6pt]
+\end{LARGE}
+
+\vspace{50mm}
+
+\begin{Large}
+Geographisches Institut der Universität Heidelberg
+\end{Large}
+
+\vspace{50mm}
+
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{l l} 
+        vorgelegt von: & Nikolaos Kolaxidis \\ [6pt]
+        Studiengang: & M.Sc. Geographie \\ [6pt]
+        Matrikelnummer: & 3694017 \\ [6pt]
+        Email: & pd281@uni-heidelberg.de \\ [6pt]
+        Exkursionsleitung: & Prof. Dr. Ingmar Unkel \\
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\vspace*{\fill}
+14. Dezember 2023
+
+\end{center}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%
+% VERZEICHNISSE %
+%%%%%%%%%%%%%%%%%
+
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+{\tabularnums
+ \tableofcontents
+}
+\newpage
+
+\pagenumbering{arabic}
+\newcounter{day}
+
+%%%%%%%%%%%%%%
+% EINFÜHRUNG %
+%%%%%%%%%%%%%%
+
+\phantomsection
+\section*{Einführung}
+\addcontentsline{toc}{section}{Einführung}
+
+Dieser Exkursionsbericht beschreibt die Großexkursion des Geographischen Instituts der Universität Heidelberg nach Griechenland und die Peloponnes vom 24.09. bis 05.10.2023. Die Exkursion wurde von Prof. Dr. Ingmar Unkel geleitet, der 14 Studis mitnahm auf eine ereignis- und erfahrungsreiche Tour quer über die Peloponnes, in der die Geologie, die Archäologie sowie die Kultur der Peloponnes behandelt wurden.
+
+Diese Einführung dient dazu, einige Grundlagen zu schaffen, die für das Verständnis des Exkursionsberichts notwendig sind. Dazu gehören zwei große die Peloponnes formende geologische Kräfte, Karstsysteme, die Heldentaten des Herakles sowie die antike griechische Geographie.
+
+\subsection*{Geologie der Peloponnes}
+\addcontentsline{toc}{subsection}{Geologie der Peloponnes}
+
+Im Folgenden wird ein kurzer Überblick über zwei zentrale geologische Kräfte gegeben, die die Peloponnes formten und weiterhin formen. Anhand mehrerer Exkursionspunkte konnten diese in der Landschaft erkannt und diskutiert werden.
+
+\subsubsection*{Hellenischer Inselbogen}
+\label{sec:hellarc}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \vspace{-5mm}
+    \centering
+    \includegraphics[width=3.25in]{pics/einführung/hellenic_arc.png}
+    \caption{Karte des Hellenischen Inselbogens mit den wesentlichen tektonischen Einheiten \cite{Karkani.Evelpidou.ea2022}}
+    \label{pic:hellarc}
+\end{wrapfigure}
+
+Der Hellenische Inselbogen, auch bekannt als Ägäischer Inselbogen, ist eine tektonische Struktur im südlichen Griechenland. Dieser Bogen entstand durch die Subduktion der Afrikanischen Platte unter die Eurasische, näher der Ägäischen Mikroplatte während der Phase der alpidischen Orogenese. Er umfasst entsprechend Abb. \ref{pic:hellarc} den Hellenischen Tiefseegraben (Hellenic Subduction Zone) an der äußeren Seite, einen nichtvulkanischen äußeren Bogen (Back-Arc Cretan Basin), der die Ionischen Inseln, Kreta und Rhodos umfasst, sowie einen vulkanischen inneren Bogen, den Kykladenbogen (Aegean Volcanic Arc), der sich über 450 Kilometer von der Ostküste der Peloponnes bis zur türkischen Küste erstreckt. Diese Struktur führt zu einer erhöhten seismischen Aktivität und ist mit dem Korinthischen Graben eine der aktivsten Erdbebenzonen in Europa \cite{Armijo.Lyon-Caen.ea1992}.
+
+Der Hellenische Tiefseegraben sorgt dafür, dass sich die Peloponnes von West nach Ost faltet, da von Westen her die Afrikanische Platte die Peloponnes hebt. Die Faltungen können anhand der sogenannten Finger der südlichen Peloponnes beobachtet werden, hier ist eine Horst- und Grabenstruktur erkennbar, die auf genau diese Faltung hinweist. Auch die Ausrichtung der Gebirge lässt auf diese Faltungen schließen, zum Beispiel des Taygetos-Gebirges nördlich der Halbinsel und mittleren Fingers Mani mit seiner Nord-Süd-Ausdehnung, welches mit dem Profitis Ilias (2.407 Meter) die höchste Erhebung der Peloponnes aufweist \cite{Armijo.Lyon-Caen.ea1992}. Zusätzlich ist das Meso- und Mikrorelief durch weitere Faltungen und Störungen geprägt, die sich durch die gesamte Peloponnes ziehen und zum Beispiel bei längeren Autofahrten durch Auf- und Abfahrten gut zu beobachten sind.
+
+\subsubsection*{Golf von Korinth}
+\label{sec:golfkorinth}
+
+\begin{figure}[hp]
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pics/einführung/golf korinth.png} 
+        \caption{Strukturelle Karte des Golfes von Korinth mit den Brüchenkomplexen. Wassertiefen in Metern.}
+        \label{pic:golfkorinth}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pics/einführung/brüche.png}
+        \caption{Schematischer Querschnitt durch den Golf von Korinth.}
+        \label{pic:brüche}
+    \end{subfigure}
+    \caption{Geologie des Golfes von Korinth \cite{morettiGulfCorinthActive2003}.}
+\end{figure}
+
+Der Golf von Korinth (siehe Abb. \ref{pic:golfkorinth}) wurde bereits intensiv untersucht, da sein südliches Ufer spektakuläre Gesteinsformationen aufweist und er mit dem oben beschriebenen Kykladenbogen die seismisch aktivste Zone Europas ist. Es wird angenommen, dass die Ausdehnung des Grabens, welcher den Golf geschaffen hat, sowohl auf den gravitativen Kollaps der dicken Kruste, die von der früheren alpidische Orogenese durch Subduktion der Afrikanischen unter die Eurasische Platte (siehe Kapitel \ref{sec:hellarc}) herrührt, als auch auf die Ausdünnung der Lithosphäre in der Region des ägäischen Rückenbogens zurückzuführen ist. Die hohe Ausdehnungsrate von bis zu 1,5 cm/Jahr und Hebungsrate (Uplift) von ca. 1mm/Jahr am Südufer führt zu regelmäßigen Erdbeben in der Region \cite{morettiGulfCorinthActive2003}.
+
+Wichtig für das Verständnis im folgenden Exkursionsbericht sind die Störungen, die in Abb. \ref{pic:brüche} eingesehen werden können. Sie sind weniger als zwei Millionen Jahre alt und verlaufen von West nach Ost, nahezu parallel zum Graben. Durch Absenkung der Grabenmitte, wo auch die tiefsten Stellen des Golfes (um die 800 Meter) gemessen wurden, heben sich die Grabenschultern, die aufgrund der Masse und Starrheit der Lithosphäre in Blöcken brechen. Dadurch entstehen auf der Oberfläche wie in Abb. \ref{pic:brüche} zu sehen stufenartige Störungen. Diese bewegen sich relativ zueinander unterschiedlich und verursachen durch die Bewegung Erdbeben (siehe dazu Abb. \ref{pic:schollen} im Anhang). Sie sind dabei nicht nur an der Oberfläche zu beobachten, sondern reichen bis in mehrere Kilometer Tiefe, wo sie in größere (Makro-)Störungen zusammenlaufen.
+
+\subsubsection*{Karstsystem}
+\label{sec:karst}
+
+Eine zentrale geologische Grundlage auf der Peloponnes und ganz Griechenland ist der Karst, der einen Großteil der Landesfläche bedeckt. Der Karst ist ein komplexes System von verschiedensten ober- und unterirdischen Gesteinsformationen, die alle durch Lösungs- und Kohlensäureverwitterung entstehen. Typische Gesteine für Karst sind Kalkstein, Dolomit und Gips. Die Lösung dieser Gesteine erfolgt durch Säuren wie Kohlensäure durch Kohlenstoffdioxid (CO\textsubscript{2}) in der Atmosphäre, die das Gestein in leichter lösliche Substanzen umwandeln \cite{Zepp2017}.
+
+Der Prozess, durch den die komplexen Karstsysteme entstehen, wird Verkarstung genannt. Primäre Formen des Karsts auf der Peloponnes, die auch während der Exkursion behandelt wurden, sind entsprechend Abb. \ref{pic:karst} Karsthöhlen, Schlucklöcher (Abflüsse) und Karsttöpfe (Quellen) sowie Poljen, erodierte flache Täler, die keinen oberflächlichen Abfluss, sondern nur Schlucklöcher zur Entwässerung aufweisen. In Karstgebieten findet durch das schnelle Versickern des Niederschlagswassers im Untergrund daher selten oberirdischer Abfluss statt \cite{unkelHydraHermesHerkules2020}. Trotzdem können sich an Grenzgebieten zwischen wasserdurchlässigen und -undurchlässigken Schichten Seen bilden, wie während der Exkursion erlebt werden konnte.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/einführung/karst.png}
+    \caption{Schematische Darstellung verschiedener Karst-Phänomene auf der nördlichen Peloponnes [verändert nach \cite{unkelHydraHermesHerkules2020}].}
+    \label{pic:karst}
+\end{figure}
+
+\subsection*{Heldentaten des Herakles}
+\addcontentsline{toc}{subsection}{Heldentaten des Herakles}
+
+Der Halbgott Herakles ist einer der berühmtesten griechischen Helden und Sohn des Zeus. Er ist bekannt für seine Heldentaten, die er im Auftrag des Königs Eurystheus von Mykene ausführte. Darunter waren die Besiegung des Nemeischen Löwen und der Lernäischen Hydra sowie die Vertreibung der Stymphalischen Vögel. Ganze sechs der als unlösbar geltenden zwölf Aufgaben wurden auf der Peloponnes gelöst. Die Aufgaben, die er erfüllen musste, sind dabei in der Literatur oft unterschiedlich beschrieben, da sie aus mündlichen Überlieferungen stammen und einige nachträglich in andere Sagen eingebettet wurden, wodurch die Inhalte etwas angepasst werden mussten. Oft kann jedoch ein Zusammenhang zwischen Geschichten und Realität hergestellt werden. "Die Erzähler der alten Mythen haben Elemente der Landschaft, in der sie lebten, in ihren Geschichten eingearbeitet. Sie haben dabei auch versucht, Phänomene der Natur auf ihre Weise zu erklären" \cite{unkelHydraHermesHerkules2020}. Cindy Clendenon entwickelte in diesem Zuge das Konzept der “Hydromythologie”, ein Ansatz, um “hydrologische Wurzeln von Erzählungen, die in der Vergangenheit natürliche Wasserphänomene in nicht-wissenschaftlicher Weise erklärten” \cite{Clendenon2009} zu untersuchen. Es wird angenommen, dass die Geschichten ein Mittel der Kommunikation waren, um technisches oder landschaftliches Wissen an analphabetische Gruppierungen weiterzugeben, weswegen sie vereinzelt zu heutigen wissenschaftlichen Erkenntnissen hinzugenommen werden, um ein Verständnis für vergangene reale Taten zu gewinnen.
+
+Drei der Orte der Heldentaten wurden während der Exkursion besucht und aufgegriffen, weil sie spannende Einblicke in mögliche hydrologische Zusammenhänge aus der damaligen Zeit geben können. Diese hydromythologischen Ansätze werden an den entsprechenden Stellen diskutiert.
+
+\subsection*{Antike Geographie - Pausanias}
+\addcontentsline{toc}{subsection}{Antike Geographie - Pausanias}
+
+Pausanias der Perieget, griechisch für "Herumführer", war ein griechischer Reiseschriftsteller und Geograph des 2. Jahrhunderts n. Chr., der für sein Werk "Beschreibung Griechenlands" bekannt ist, in dem er seine Beobachtungen der antiken griechischen Monumente und Stätten aus erster Hand beschreibt. Er wurde um 110 n. Chr. in Kleinasien geboren und bereiste von etwa 150 bis 180 n. Chr. das griechische Festland, um einen umfassenden Bericht über die griechische Geographie und Kultur zu verfassen. Zudem reiste er auch in Italien, Anatolien, Ägypten und dem Nahen Osten \cite{habichtPausaniasUndSeine1985}. Anfänglich von einigen Klassizisten als bloße literarische Figur abgetan, hat die moderne archäologische Forschung Pausanias' Beschreibungen bestätigt. Sein Werk ist ein wichtiges Hilfsmittel zum Verständnis der Verbindung zwischen Archäologie, Mythologie sowie Geschichte und heutigen wissenschaftlichen Erkenntnissen in der Region Peloponnes und darüber hinaus.
+
+In diesem Exkursionsbericht wird auf Pausanias' Beschreibungen zurückgegriffen, um die historischen und archäologischen Hintergründe der besuchten Orte zu beleuchten. Er wird allerdings nicht explizit als Quelle genannt, er ist oft indirekt in den Beschreibungen unseres Leiters Ingmar inkludiert, die hier im Bericht wiedergegeben und in den Kontext gesetzt werden.
+
+%%%%%%%%%%%%%%%%%%%%%
+% Exkursionsverlauf %
+%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[height=\textwidth, angle=90]{pics/maps/overview.png}
+    \caption{Übersichtskarte über den Exkursionsverlauf.}
+    \label{pic:overview}
+\end{figure}
+
+\section*{Exkursionsverlauf}
+\addcontentsline{toc}{section}{Exkursionsverlauf}
+
+Die Exkursion startete im Nordosten der Peloponnes im Regionalbezirk Korinthia und verlief gegen den Uhrzeigersinn um die Peloponnes herum mit einigen Abstechern in das Landesinnere. Wie in Abb. \ref{pic:karst} gezeigt und in Unkel \cite{unkelHydraHermesHerkules2020} beschrieben, wurde auch der Weg des Wassers vom Ziria über den See Stymphalia bis hin zu den Karstquellen in der Argolis nachverfolgt. Zusätzlich wurden archäologische Stätten wie Festungen sowie Museen besucht, die einen Einblick in die Natur- und Kulturgeschichte der Peloponnes lieferten. Weitere landschaftsprägende Elemente wie Vulkane, Strände, Lagunen und Aufschlüsse zeigten theoretische Konzepte aus universitären Veranstaltung in der Praxis. Einige Klosterbesuche und Städtetrips rundeten das Programm ab. 
+
+%%%%%%%%%
+% TAG 1 %
+%%%%%%%%%
+
+\stepcounter{day}
+\section{24.09.2023}
+
+\begin{figure}[!h]
+    \vspace{-5mm}
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag1.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag1}
+\end{figure}
+
+Der \theday. Tag konzentrierte sich auf den Regionalbezirk Korinthia im Nordosten der Peloponnes, dort wurden östlich des Kanals von Korinth verschiedene landschaftliche sowie kulturelle Sehenswürdigkeiten angefahren.
+
+\subsection{Isthmia, Kanal von Korinth}
+
+Der Kanal von Korinth (Abb. \ref{pic:kanal}) bei Isthmia verbindet auf dem Isthmus von Korinth, der die Peloponnes mit dem griechischen Festland verband, den Golf von Korinth im Nordwesten und den Saronischen Golf im Südosten. Nach Fertigstellung des Kanals 1893 wurde aus der Halbinsel Peloponnes per Definition, dass eine Insel im Gegensatz zu einer Halbinsel keinen direkten Landweg zum Festland hat, eine Insel. Das Ziel war die Verkürzung der Umrundung der Peloponnes um 131 Nautische Meilen, was ca. 243 Kilometer entspricht.
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    \includegraphics[width=2in]{pics/1/kanal.png}
+    \caption{Kanal von Korinth Richtung Saronischer Golf.}
+    \label{pic:kanal}
+\end{wrapfigure}
+
+Der Kanal ist entsprechend einer Infotafel ca. 6.343 Meter lang und auf Meeresspiegelhöhe knapp 25 Meter breit, sodass nur kleinere Schiffe den Kanal passieren dürfen. Die wirtschaftliche Bedeutung hält sich heute aufgrund der Motorisierung der Schifffahrt in Grenzen (2009 passierten 12.500 Schiffe den Kanal).
+
+\subsection{Aufschnitt am Kanal von Korinth}
+
+Die Wände des Kanals geben wie in Abb. \ref{pic:aufschnitt} zu sehen durch seine Tiefe einen guten Einblick in die zuvor angesprochene geologische Geschichte des Isthmus, des Golfes von Korinth sowie des Meeresspiegels in Glazial- und Interglazialperioden. Hier sind vor allem Sedimentschichten unterschiedlicher Zusammensetzung und Farbe zu erkennen, die eine gewisse Zyklizität aufweisen, was auf wiederkehrende Änderungen der Landschaft hindeutet. Die Zusammensetzungen der Schichten zeigen durch die Größe der Sedimentpartikel auf, wie hoch der Meeresspiegel gestanden haben muss. Sie zeigen darüber hinaus sowohl lakustrine als auch fluviale Depositionen auf, die bis zu ca. 2,5 - 3 Millionen Jahre alt sind. Nachgewiesene Foraminiferen, einer der Proxies für maritime Umgebungen, in hellen und homogenen Zwischenschichten geben Hinweise darauf, dass die ehemalige Seen- und Flusslandschaft von marinen Gewässern überlagert wurden, was die Zyklizität der Sedimente untermalt.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/1/aufschnitt.jpg}
+    \caption{Aufschnitt am Kanal von Korinth.}
+    \label{pic:aufschnitt}
+\end{figure}
+
+Zusätzlich zu den Schichten können auch Störungen beobachtet werden, die auf die tektonische Aktivität des Golfes und die Hebung der Grabenschultern hindeuten. Solche Störungen werden auch an anderen Stopps beobachtet, weisen durch ihre West-Ost-Ausrichtung stets auf die Hebung und Brechung der Grabenschultern, die von oberflächlichen Mikro- bis Makrostörungen in mehreren Kilometern Tiefe reichen können.
+
+Außerdem wurden am Standort weitere Infos bezüglich des Eukalyptus gegeben, der im Umland wächst und nicht natürlich in Griechenland vorkommt. Dieser ist wirtschaftlich aufgrund seines schnellen Wachstums über die Zeit immer wichtiger geworden, brennt aber durch seine ätherischen Öle besonders stark und schnell, was bei Waldbränden zu einem zunehmenden Problem wird. Eukalyptusbäume konnten daraufhin im Laufe der Exkursion immer wieder beobachtet werden, werden aber nicht näher beschrieben oder genannt.
+
+\subsection{Vulkan Sousaki}
+
+Der schlafende Sousaki ist der nordwestlichste Vulkan des oben angesprochenen Kykladenbogens am Isthmus von Korinth. Er war zuletzt vor 2,5 - 3 Millionen Jahren aktiv, verursacht allerdings weiterhin kleinere Erdbeben, die zu einer erneuten Aktivierung des Vulkans führen können.
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    \includegraphics[width=2in]{pics/1/fumarole.png}
+    \caption{Fumarole am Vulkan Sousaki.}
+    \vspace{-10mm}
+    \label{pic:fumarole}
+\end{wrapfigure}
+
+An Fumarolen treten warme Gase aus, die vor allem nach Schwefel riechen und das Gestein rings um die Fumarolen gelblich färben (Abb. \ref{pic:fumarole}). Es wird empfohlen keine metallhaltigen Gegenstände an die Fumarolen zu legen, da die Gase schweflige bis Schwefelsäuren bilden können, die die Gegenstände korrodieren (Brille ist als Maßstab nicht geeignet!). 
+
+Über Zusammensetzung und Verwitterungsprozesse der Gesteine geben vor allem die unterschiedlichen Farben Aufschluss, die von gräulich über gelb (oben beschrieben) bis zu rostrot rangieren. Hier ist anzunehmen, dass es sich um Rost durch aufsteigenden Wasserdampf im eisenhaltigen Gestein handelt (rot) oder um die Akkumulation von Asche, die zu Gestein geformt wurde (grau).
+
+\subsection{Harnischfläche an Straße}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/1/ph_harnisch.jpg}
+    \caption{Harnischfläche entlang der Straße bei Agios Patapios. Zu sehen ist auch die Grenze zwischen Block und Störungsfläche mit Schuttablagerungen [Foto: Phillip Hienle].}
+    \label{pic:harnisch}
+\end{figure}
+
+Nordwestlich des Klosters Agios Patapios ist an der Straße eine Harnischfläche (Abb. \ref{pic:harnisch}) entlang einer Störung zu entdecken, die die Blockbewegung der Grabenschultern nachvollziehbar visualisiert. Durch Streichen mit der Hand kann anhand von schuppenartigen kleinen Einschnitten im Fels erfühlt werden, in welche Richtung sich die Blöcke bewegt haben. Es ist anzunehmen, dass sich der obere beziehungsweise vom Graben entferntere Teil relativ gesehen nach oben und der untere beziehungsweise näher zum Graben liegende Teil nach unten bewegt hat (siehe dazu Abb. \ref{pic:schollen}).
+
+\subsection{Heraion}
+
+Am westlichsten Ende der Landzunge, die die Bucht von Korinth nördlich einfasst, befindet sich die antike Tempelanlage Heraion, die, entsprechend des Namens, der Göttin Hera gewidmet war. Hera stand für Familie und für das Wohlbefinden der Frauen, was ein Hinweis darauf sein kann, dass hier die Seefahrer verabschiedet wurden und mit Opfergaben ein erfolgreiches Wiederkehren zur Familie erhofft wurde.
+
+An diesem Ort kam die Diskussion auf, dass solche Tempelanlagen häufig neben Störungen gebaut wurden. Eine Theorie ist, dass aufsteigende Gase mögliche bewusstseinsverändernde Wirkungen hatten; eine andere besagt, dass der Bau an Störungen, also auf sich bewegenden Blöcken, längerfristig sicherer ist als auf größeren Freiflächen, die leichter brechen und neue Störungen verursachen können. Es konnte nicht abschließend geklärt werden, ob eine der beiden Theorien zutrifft, was wohl auch die weiterhin offene Debatte in der Literatur widerspiegelt.
+
+An den Felsen sind auf Meeresspiegelhöhe viele kleine Löcher zu sehen, welche von Lithophagen (Steinfresser) verursacht wurden. Sie destabilisieren das Gestein, welches durch maritime physische Kräfte nach und nach zerfällt. In den Felsen selbst knapp 10-15 Meter überhalb des heutigen Meeresspiegels sind Schichten von Muschelkalk zu erkennen, deren Position durch den Uplift der Grabenschultern im Golf von Korinth erklärt werden können.
+
+\subsection{Vouliagmeni Lagune}
+
+Östlich des Heraion liegt ein ehemaliger See, der durch einen anthropogenen Durchbruch im 19. Jahrhundert zum Meer hin zur Lagune wurde. Die Lagune Vouliagmeni weißt aufgrund ihrer Tiefe ab ca. 35 m anoxische Bedingungen am Grund auf und ist deshalb in Seeform geeignet als Klimaarchiv (hat Warven ausgebildet). Problematisch ist jedoch der Durchbruch zum Ozean, der das Ökosystem durch Brackwasser und höhere Fließgeschwindigkeiten und Turbulenzen massiv beeinträchtigt hat, was in Bohrungen nachverfolgt werden kann \cite{emmanouilidisHolocenePaleoclimateVariability2022}.
+
+%%%%%%%%%
+% TAG 2 %
+%%%%%%%%%
+
+\stepcounter{day}
+\section{25.09.2023}
+
+\begin{figure}[!h]
+    \vspace{-5mm}
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag2.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag2}
+\end{figure}
+
+Am \theday. Tag stand weiterhin Korinthia mit der antiken Stätte Nemea im Fokus, allerdings gab es mit der antiken Festung Tiryns und ihrem Damm auch einen Abstecher in die Argolis.
+
+\subsection{Festung Tiryns}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \vspace{-5mm}
+    \centering
+    \includegraphics[width=2in]{pics/2/torstein.png}
+    \caption{Trägerstein des Tores von Tiryns. In der Mitte die Halterung des Torbalkens.}
+    \vspace{-10mm}
+    \label{pic:torstein}
+\end{wrapfigure}
+
+Die antike Festung Tiryns nördlich von Nafplio war eine Vorfestung der antiken Hauptstadt Mykene, welche nordwestlich weiter im Landesinneren geschützt zwischen Bergen lag. Die größte Ausdehnung konnte um ca. 1300 v. Chr. erreicht werden. Damals war die Festung unterteilt in Unter-, Mittel- und Oberburg, welche unterschiedliche Funktionen innehatten und unterschiedlich erhalten geblieben sind. Dass der Standort noch vor der Festung bereits genutzt wurde, wird durch tieferliegende zyklische Bauwerke ersichtlich. Diese werden auf das 3. Jahrtausend v. Chr. datiert. Die Mauern der Festung werden als zyklopisch bezeichnet, entsprechend der Legende der mächtigen Zyklopen, die die großen Gesteinsbrocken bewegt zu haben scheinen. Tatsächlich werden eine große Anzahl an Nutztieren dafür notwendig gewesen sein, die allerdings ebenfalls viel Nahrung benötigten, was die Versorgung der Festung mit Nahrungsmitteln erschwert oder die Festung handelsabhängig gemacht haben dürfte.
+
+Der Zusammenhang mit Mykene wird nicht nur durch die Lage ersichtlich, auch das Tor (siehe Abb. \ref{pic:torstein}) mit den eben geschnittenen Konglomeratgesteinen und der Größe des Steins, was zu der Zeit vor allem der Machtdemonstration diente, scheint Mykene nachempfunden zu sein. Auch andere markante Punkte wurden mit geschnittenen Konglomeratgesteinen verziert (siehe Abb. \ref{pic:konglomerat}). Zusätzlich dazu ist neben dem Megaron, dem Herrscherthron im Zentrum der Oberburg für den sogenannten Wanax, ein zweiter Thronraum zu finden, der wahrscheinlich für den Herrscher von Tiryns gedacht war, wenn der mykenische Herrscher anwesend war (kleiner Wanax). In Zusammenhang mit dem Megaron ist auch ein Vorraum mit schwarzem ebenem Kalkgestein zu finden, der als Empfangs- und ritueller Reinigungsraum für Gäste gedient haben könnte. Ein Argument dafür ist eine scheinbare Abwasserleitung, die aus dem Raum in den Boden führt.
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/2/konglomerat.jpg}
+    \caption{Eben geschnittenes Konglomeratgestein am Eingang zum Megaron/Innenhof.}
+    \label{pic:konglomerat}
+\end{wrapfigure}
+
+Um 1200 v. Chr. gab es einen Zusammenbruch der Kultur und die Festung wurde in Folge dessen aufgegeben. Bisher stand aufgrund mächtigen fluvialen Sedimenten lange die Theorie im Raum, dass ein Tsunami für die Vernichtung der Unterburg verantwortlich war. Doch wurde durch Ausgrabungen und geowissenschaftliche Datierungen ersichtlich, dass es wiederkehrende Überschwemmungen und Bauperioden in dem Bereich gab \cite{birndorferGeoarchaeologicalAnalysesTiryns2022}. Zudem wurde weiter bergab eine planierte Ebene gefunden, die wahrscheinlich als Siedlungsebene diente. Die Festung weist überdies noch sogenannte Siringes auf, 10-20 Meter lange unterirdische Tunnel, die zu Frischwasser führen, was während Belagerungen von großem Vorteil war. Diese Dinge zeigen, dass die Bewohner Tiryns bereits in der Antike über Mittel verfügten, sich gegen Naturkatastrophen zu wappnen und die Umwelt zu ihrem Vorteil zunutze zu machen, weswegen die Tsunamitheorie im Bezug zur Vernichtung der Festung und Untergang der mykenischen Bevölkerung von Tiryns inzwischen nicht mehr vertreten wird. Darüber hinaus konnten Birndorfer et al. \cite{birndorferGeoarchaeologicalAnalysesTiryns2022} zeigen, dass ein zuvor als tsunamieähnliches Ereignis mit mehreren Metern Ablagerungen aus mehreren kleineren Überflutungen mit zwischenzeitlichen Bauperioden und wiederkehrenden Überflutungen besteht. Die Überschwemmungsserie und ein größeres Ereignis um 1200 v. Chr. hat wahrscheinlich unter anderem zum Bau des Damms von Tiryns geführt. 
+
+\subsection{Damm von Tiryns}
+
+Durch die Überschwemmungsserie und wahrscheinlicher Änderung des Flussverlaufs des Lakissa durch Schlammlawinen wurde zum Schutz der Festung ca. vier Kilometer östlich der Festung ein zehn Meter hoher und 300 Meter langer Damm errichtet. An diesem angeschlossen wurde ein ca. 1,5 Kilometer langen Kanal, der das Wasser um die Festung herum nach Süden in das Flussbett des Manessi leitete.
+
+Im Bezug zum Untergang der Festung Tiryns wurde oft von klimatischen Bedingungen gesprochen. Der Damm, seine Ausmaße und auch die wiederkehrenden Überschwemmungen im Bereich der Festung Tiryns jedoch stellen einen Beweis dafür dar, dass die Bewohner Tiryns in der Lage waren aktiv in die Umwelt einzugreifen, sie an sich und sich an sie anzupassen und sich so auch gegen klimatische Änderungen zu schützen. Der Untergang der mykenischen Bevölkerung auch in anderen Siedlungen muss also mit anderen Faktoren zusammenhängen, die noch nicht abschließend geklärt sind \cite{unkelHydraHermesHerkules2020}.
+
+\subsection{Nemea}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/2/nemea.png}
+    \caption{Kalkfelsen mit vielen Höhleneingängen bei Nemea, der Sage nach hauste hier der Löwe von Nemea.}
+    \label{pic:nemea}
+\end{wrapfigure}
+
+In den Sagen von Homer wird Nemea als Teil der Aufgaben von Herakles genannt. Dort lebte in den karstigen und von Löchern durchsäghten Felsen ein Löwe, der die Bevölkerung terrorisierte. Herakles besiegte den Löwen durch Verschließen der vielen Löcher im Fels bis auf eines und trug ihn anschließend als Trophäe über seine Schultern. Die Felsen, in denen der Löwe gelebt haben soll, sind heute noch zu sehen (Abb. \ref{pic:nemea}).
+
+Zu seinen Ehren wurden die Nemeischen Spiele abgehalten, die Teil der vier Standorte umfassenden Olympiade waren. Auf dem heutigen Gelände der Ausgrabungsstätte sind die Überreste eines Zeustempels (erbaut laut Infotafel um ca. 330 v. Chr.) und des Stadions zu sehen, in dem die Spiele stattfanden. Die Anlage verfiel, nachdem die Spiele bereits im 2. Jhr. v. Chr. nach Argos verlegt wurden.
+
+\subsection{Unwetterwarnungen}
+
+Der Tag wurde aufgrund von Unwetterwarnungen vorzeitig beendet. Auf dem abendlichen Rückweg nach dem Restaurantbesuch wurde die Gruppe vom Unwetter erwischt, welches zu Stromausfällen im Übernachtungsort und zu Überschwemmungen in der Umgebung führte.
+
+%%%%%%%%%
+% TAG 3 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{26.09.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag3.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag3}
+\end{figure}
+
+Am nächsten Tag konnte die Exkursion dann weitergeführt werden. Die Straßen waren wieder befahrbar, doch blieben trotzdem einige Unwetterwarnungen bestehen.
+Am \theday. Tag standen die Polje und der See Stymphalia sowie dessen Entwicklungsgeschichte und heutige Nutzung in Korinthia im Fokus.
+
+\subsection{Quelle Kefalari, Stymphalia}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/3/ts_quelle trocken.jpeg}
+    \caption{Der sich im Dorf Stymphalia befindende Karsttopf, hier trocken [Foto: Tabea Storch].}
+    \label{pic:karsttopftrocken}
+\end{wrapfigure}
+
+Die Quelle Kefalari, zu deutsch "Kopfquelle" oder "Quelle am Kopf" (nicht in Abb. \ref{pic:karsttopftrocken} abgebildet), ist eine der drei Quellen, die den Stymphalia See speisen. Sie ist eine Karstquelle, die durch Verkarstungsprozesse des Kalksteingebirges entstanden ist. Ursprünglich über den Fluss Stymphalos in den Golf von Korinth schüttend, änderte sich die Fließrichtung durch Hebung der Grabenschultern des Grabens im Golf von Korinth, wodurch der Endsee Stymphalia (siehe Abb. \ref{pic:stymphalia}) entstehen konnte. Weitere Quellen entstanden mit der Zeit und füllten den See. Der Endsee bildet dabei den Schnittpunkt zwischen Karst- (wasserdurchlässig) und Konglomeratgestein (wasserundurchlässig) auf knapp 600 Metern Höhe über NN.
+
+\subsection{Stymphalia mit Karsttopf und Umland}
+\label{sec:stymphalia}
+
+Beim Besuch des Dorfes Stymphalia konnte wie in Abbildung \ref{pic:karsttopftrocken} zu sehen ein trockener Karsttopf betrachtet werden. Ebenfalls besprochen wurde hier die landwirtschaftliche Nutzung der Ebene. Wichtig hierbei ist auch die Abzweigung des Wassers mehrerer Quellen durch verschiedene Interessenten, sowohl lokale Landwirte als auch eine Wasserfabrik, die das Wasser als "Ziria" vermarktet. Dadurch wird der See zusätzlich zu klimatischen Änderungen belastet und verliert an Wasserfläche. Überraschend für griechische landwirtschaftliche Flächen ist das Fehlen von Zitrusfrüchten und Olivenbäumen. Dies ist auf die Höhenlage und des dadurch eher kälteren Klimas zurückzuführen. Stattdessen stehen hier viele feuerresistente und feuchtklimaliebende Platanen, Weiden, Walnüsse sowie Maulbeeren, letztere für die Seidenproduktion. 
+
+\subsection{Antikes Stymphalos und Stymphalia See}
+\label{sec:stymphalos}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/3/kb_stymphalia.jpg}
+    \caption{Der von Schilf bewachsene See Stymphalia in der Stymphalia-Polje [Foto: Kristin Brümmer].}
+    \label{pic:stymphalia}
+\end{figure}
+
+Das antike Stymphalos ist bekannt durch Herakles' Sagen, in denen er gegen die Stymphalischen Vögel, die das Gebiet terrorisierten, kämpfte und sie je nach Auslegung erlegte oder verscheuchte. Die Vögel hatten dabei eisernes Gefieder, galten als unverwundbar und grassierten in der damals recht sumpfigen Ebene um den Stymphalia See. Hier ist auch der hydromythologische Ansatz interessant, der in der Sage die Verwandlung der sumpfigen Ebene rund um den See in fruchtbares Ackerland sieht. "Die tödlichen Vögel könnten dabei [metaphorisch] für die Mücken und damit verbundene Krankheiten stehen, die die lokale Bevölkerung vor der Erfindung von Insektiziden quälten" \cite{unkelHydraHermesHerkules2020}. 
+
+Heute verschwindet einer der einzigen verbliebenen natürlichen Seen durch klimatische Änderungen immer weiter und ist hauptsächlich von Schilf bewachsen (siehe Abb. \ref{pic:stymphalia}), der durch den niedrigen Seespiegel und mangelndem Management die größte Fläche des Sees einnimmt. In Stymphalos ist eine mit eingefasste Quelle zu sehen, die zu Pausanias' Zeiten ganzjährig geschüttet hat, heutzutage aber im Sommer und vor allem Spätsommer trocken fällt. Aufklärungsversuche über den Klimawandel, zum Schutz des Ökosystems sowie des nachhaltigen Umgangs mit dem Wasser durch Schilder und Infotafeln stoßen auf Abneigung durch die lokale Bevölkerung, lediglich ein Museum leistet diese nötige Aufklärung und zeigt sowohl die Geschichte des Sees und der Region wie auch Problematiken im Umgang mit dem Ökosystem (siehe Kapitel \ref{sec:museum}).
+
+\subsection{Hadrian Aquädukt Stymphalia \& Schluckloch}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    \includegraphics[width=2in]{pics/3/ts_hadrian.jpeg}
+    \caption{Kanalähnlicher Teil des Handrian Aquädukts [Foto: Tabea Storch].}
+    \label{pic:hadrian}
+    \vspace{-5mm}
+\end{wrapfigure}
+
+Um die Wasserversorgung des 30 Kilometer entfernten antiken Korinths zu gewährleisten, lies Hadrian ca. 130 n. Chr. ein 60-70 Kilometer langes Aquädukt bauen, welches das Wasser des Flusses Stymphalos sowie Regenwasser durch die Ebene und über das Gebirge bis nach Korinth transportierte. Durch den Bau wurde das hydrologische Ökosystem um den See massiv beeinträcht. Erst nach Aufgabe des Aquädukts im 5.-6. Jahrhundert n. Chr. konnte sich der Seespiegel erholen \cite{seguin2500YearsAnthropogenic2019}. Viele Teile des Aquädukts sind heute noch erhalten, wie zum Beispiel auch ein kanalähnliches Gebilde (siehe Abb. \ref{pic:hadrian}), welches heute noch regelmäßig Regenwasser führt und durch bewegliche Tore für die Bewässerung der Felder genutzt wird.
+
+Zusätzlich zum Aquädukt wurde ein Schluckloch besichtigt, welches das Wasser des Sees aufnimmt und in das Karstsystem leitet. Das Wasser, das im Schluckloch abläuft, entspringt 2-3 Tage später 42 Kilometer südöstlich bei den Quellen von Lerna und Kiveri (siehe Abb. \ref{pic:tag12}). Laut Pausanias soll es vorgekommen sein, dass das Schluckloch verschlossen wurde, um Wasser im See durch Überflutung zu speichern. Außerdem wusste er (vermutlich durch Walnüsse oder Eicheln) damals schon, dass das Wasser wieder in der Argolis bei Lerna und Kiveri entspringt \cite{unkelHydraHermesHerkules2020, seguin2500YearsAnthropogenic2019}. Dies zeigt, dass die antiken Griechen bereits damals ein ausgeprägtes hydrologisches Verständnis hatten und in der Lage waren, aktiv in die Umwelt einzugreifen und sie sich zunutze zu machen. Heute ist das Schluckloch befestigt, um eine Überflutung des Sees sowie Unfälle zu verhindern.
+
+\subsection{Unwetter}
+
+Auch dieser Tag wurde aufgrund von Unwetterwarnungen vorzeitig beendet. Allerdings wurde die Exkursionsgruppe dann auf dem Rückweg von einem starken Unwetter überrascht, welches zu Felssturz und Erdrutschen auf den Straßen sowie Überschwemmungen im Tal führte. Diese Erfahrung war für die Exkursionsgruppe sehr eindrücklich und hat die Härte von Unwettern und dessen morphologischen Auswirkungen verdeutlicht. Physische Geographie und Hydromorphologie aus erster Hand sozusagen.
+
+%%%%%%%%%
+% TAG 4 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{27.09.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag4.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag4}
+\end{figure}
+
+Die Straßen am Morgen nach dem Unwetter teils wieder befahrbar und die Unwetterwarnungen hatten sich gelegt, daher konnte die Exkursion fortgesetzt werden.
+Am \theday. Tag wurde die Exkursion im Bereich Stymphalia fortgesetzt und auf das Nachbartal Pheneos erweitert.
+
+\subsection{Winzer Gioulis}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/4/ts_quelle schüttet.jpeg}
+    \caption{Der sich im Dorf Stymphalia befindende Karsttopf, nach dem Unwetter nun schüttend [Foto: Tabea Storch].}
+    \label{pic:karsttopfschüttet}
+    \vspace{-5mm}
+\end{wrapfigure}
+
+Der Besuch beim Winzer Gioulis hat gezeigt, dass die klimatischen Bedigungen im Bereich von Pheneos und Stymphalia stark variieren und im dortigen Tal wirre Klimaverhältnisse herrschen. Der Temperaturgradient beträgt 55° C, von -20 in den Winter- bis 35° C in den Sommermonaten. Das ergibt kumulative Temperaturänderungen im Jahr über 200° C, dazu sind die Temperaturen in den übergebenden höheren Lagen meist höher als im Tal, wo der Wein wächst, da Kaltwinde von den Bergen das Tal auskühlen. Der Klimawandel sowie damit einhergehende Unwetter machen den Winzern zu schaffen, da die Ernteerträge stark schwanken und die Qualität des Weins beeinträchtigt wird. Deshalb spezialisieren sie sich auf höherwertige Weine und passen die Rebsorten an die klimatischen Bedingungen an.
+
+\subsection{Erneuter Besuch Stymphalia mit Karsttopf}
+
+Ein erneuter Besuch während der Vorbeifahrt im Dorf Stymphalia zeigte, dass der in Kapitel \ref{sec:stymphalia} betrachtete Karsttopf nun schüttete (siehe Abb. \ref{pic:karsttopfschüttet}), was auf die starken Regenfälle der letzten Tage und auf das starke Unwetter vom Vortag zurückzuführen ist. Dies zeigt die Geschwindigkeit, in der sich das Wasser im Karstsystem bewegt und wie schnell es auf Niederschläge reagiert.
+
+\subsection{Pheneos-Stymphalia Pass}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/4/ph_pheneospass.jpg}
+    \caption{Die Pheneos-Polje vom Pheneos-Stymphalia Pass aus betrachtet [Foto: Phillip Hienle].}
+    \label{pic:pheneospass}
+\end{figure}
+
+Auf den östlichen Hängen der Pheneos-Polje zwischen der Täler Stymphalia und Pheneos wächst unüblich für den Bereich Tannen- statt Kiefernwald, was auf mögliche klimatische oder anthropogene Einflüsse weist. Sie wachsen auf schiefrigem Grund, was als Störungszone inmitten des Kalkgesteins die Hänge destabilisiert. Dadurch finden sich vermehrt Hangsicherungsmaßnahmen auf dem Pass. In Abb. \ref{pic:pheneospass} ist eine Aussicht in die Pheneos-Polje zu sehen. Auf der Westseite der Pheneos-Polje ist eine Wasserkante erkennbar, die auf einen ehemaligen See hindeutet. Alt-Pheneos im Nordwesten des Tales liegt auf dieser Wasserkante, was auf einen antiken See mit Nutzung hindeutet \cite{seguinReconstructionPalaeoenvironmentalVariability2020}.
+
+\subsection{Östliches Pheneos-Schluckloch}
+
+In der Polje selbst findet sich auf der Südostseite ein Schluckloch, welches entgegen des Schlucklochs in Stymphalia das Wasser nicht nach Südosten, sondern nach Westen in den Fluss Ladon leitet \cite{unkelHydraHermesHerkules2020}. Es spielte eine wichtige geschichtliche Rolle während des Unabhängigkeitskrieges. Es ist anzunehmen, dass das Schluckloch zur Schaffung neuen Ackerlandes geöffnet wurde, wodurch der See in Pheneos verschwand. Beim Rückzug der Osmanen gegen die Widerständler aus dem Gebiet sprengten sie 1824 das Schluckloch, was zu einem Wasserstau und zur Entstehung eines Sees führte. Dieser war bis zu 40 Meter tief und ist heute anhand einer zweiten Wasserkante auf der Westseite sichtbar \cite{seguinReconstructionPalaeoenvironmentalVariability2020}. Nach Ankunft König Othons I. wurde das Schluckloch 1837 durch Erdbeben wieder geöffnet, wodurch der See verschwand und neues Ackerland genutzt werden konnte, was ihm einen legendären Status einbrachte. Später wurde das Schluckloch befestigt, gesichert und kontrolliert, was auch heute noch zu sehen ist (siehe Abb. \ref{pic:pheneos}).
+
+\subsection{Museum Stymphalia}
+\label{sec:museum}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/4/ts_pheneosSL.jpeg}
+    \caption{Ingmar und ich auf Erkundungstour: bebautes und befestigtes östliches Pheneos-Schluckloch [Foto: Tabea Storch].}
+    \label{pic:pheneos}
+\end{wrapfigure}
+
+Im Norden des Sees von Stymphalia befindet sich das Environment Museum of Stymphalia. Das Umweltmuseum zeigt die Verbindung zwischen Mensch und Natur im Stymphalia-Becken. Es fördert das Bewusstsein für ökologische Themen und bewahrt das Wissen über die regionale traditionelle Technologie, die hier bereits in der antike, aber auch später, genutzt wurde. Die Ausstellung besteht aus zwei Teilen: einer über die Umwelt der Region und einer über deren Einfluss auf menschliche Aktivitäten. Verschiedene Medien wie Bilder, Modelle und interaktive Anwendungen werden genutzt, um den Inhalt zu vermitteln, einschließlich eines Querschnitts des Sees, um die reiche Flora und Fauna zu zeigen.
+
+\subsection{Akropolis des antiken Stymphalos}
+
+Unterhalb des Museums liegt die Akropolis des antiken Stymphalos, wie oben in Kapitel \ref{sec:stymphalos} beschrieben. Sie wurde auf einem Hügel erbaut, der die Anlage vor Hochwasser schützen sollte. Bekannt wurde Stymphalos neben den Sagen von Herakles auch durch Homer's Sagen, in denen 5.000 Hopliten zur Unterstützung von Kämpfen ausgesandt wurden. Dadurch wird geschätzt, dass Stymphalos über 20.000 Bewohner haben musste, was allerdings bis heute nicht bewiesen werden konnte.
+
+%%%%%%%%%
+% TAG 5 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{28.09.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag5.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag5}
+\end{figure}
+
+Am \theday. Tag wurde der 2.374 m hohe Ziria an der Grenze zwischen Stymphalia und Pheneos erklommen und die Hermeshöhle besucht.
+
+\subsection{Megagiannis Schluckloch, Ziria}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/5/ts_megagiannis.jpeg}
+    \caption{Das Schluckloch Megagiannis im Tal vor dem Ziria Ski Center [Foto: Tabea Storch].}
+    \label{pic:megagiannis}
+\end{wrapfigure}
+
+Auf der Fahrt zum Ziria Ski Center, unserer Base für den Aufstieg des Ziria, konnte das Schluckloch Megagiannis (siehe Abb. \ref{pic:megagiannis}) bestaunt werden. Mega, ein geläufiges Wort für große Dinge, passt hierbei sehr gut zum Schluckloch, da es ein recht großes (mehrere Zehnermeter Durchmesser), kegelartiges Loch inmitten eines flachen Tals ist. Es ist anzunehmen, dass das Loch vor allem nach Niederschlagsereignissen, wenn die Feuchtgebiete im Tal überfluten, aktiv wird und das Wasser talabwärts leitet. Ansonsten bleibt es recht inaktiv. Die Beweidung mit Kühen und Pferden um das Schluckloch herum führt dazu, dass das Wasser mit Kot verschmutzt wird und daher nicht als Trinkwasser geeignet ist. 
+
+\subsection{Ziria Ski Center}
+
+Unüblich für die Peloponnes, findet sich auf dem Ziria ein recht neues Skigebiet, welches allerdings nicht sehr groß ist und hauptsächlich von Athener*innen genutzt wird. Die Begeisterung für Winter- und Schneesport ist in Griechenland nicht sehr groß, primär geht es sowohl im Sommer- als auch im Winter darum, das Gebiet visuell zu genießen und eine Auszeit von der Stadt zu nehmen. Trotzdem ist im Winter bei großen Schneemengen viel Betrieb, ineinander übergehende Skizonen deuten auf eine gute ausgebaute Infrastruktur hin und eine Seilbahn ermöglicht den schnellen Aufstieg zu den Pisten. Interessant sind die zahlreichen gespaltenen und/oder fehlenden Baumkronen entlang der Hänge der Ziria, die regelmäßig von Blitzen getroffen werden und unter der Schneelast im Winter abbrechen.
+
+\subsection{Hermes-Höhle}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=3.25in]{pics/5/ts_hermes.jpeg}
+    \caption{Hermes-Höhle [Foto: Tabea Storch].}
+    \label{pic:hermes}
+\end{wrapfigure}
+
+Auf ca. 1.614 Metern Höhe über NN liegt der Eingang zur Hermeshöhle, bekannt als mythologischer Geburtsort des gleichnamigen griechischen Götterboten. Obwohl recht abgelegen, konnten menschliche Spuren in der Karsthöhle bis in die Antike nachverfolgt werden, was die ausgeprägte Landschaftswahrnehmung der antiken Griechen unterstreicht, die in der bildhaften und phantasievollen Mythologie geschichtlich verworben wurde. Das Alter der Stalagmiten in der Höhle (siehe Abb. \ref{pic:hermes}) wurde mithilfe der Uran-Thorium-Datierung auf ca. 450.000 bis 2.000 Jahre datiert \cite{unkelHydraHermesHerkules2020}.
+
+\subsection{Karren und Kalzitadern}
+
+Die Verkarstung ist ein vielschichtiger Prozess, der verschiedene morphologische Strukturen hervorbringt. Eine Kleinform davon sind Karren, Risse im Kalkgestein, die durch durch Gesteinsauflösung entstehen und Wege des Wassers von der Oberfläche ins Karstinnere nachzeichnen. Sie treten vor allem an flachen Gesteinsoberflächen în Gebieten mit hoher Niederschlagserosion auf, wie das am Ziria der Fall ist. Sie können von unter einem Zentimeter bis mehrere Meter reichen. Werden solche Risse durch Lösung und Ausfällung des Kalzits verfüllt, werden sie als Kalzitadern bezeichnet.
+
+\subsection{Grenze weißes zu rotes Gestein}
+
+Während des Anstiegs auf den Ziria wird ab einer bestimmten Höhe ein Wechsel der offenliegenden Gesteine sichtbar. Sie ändern ihr Farbe von dem typischen Karstweiß/-grau zu einem rötlichen Farbton. Dieser Wechsel ist auf die unterschiedliche Zusammensetzung der Gesteine zurückzuführen, die sich in unterschiedlichen Tiefen gebildet haben. Es handelt sich dabei um Radiolarite, aquagene marine Tiefseegesteine aus Tiefen von über 3,5 Kilometern. Sie wurden durch Hebung der Grabenschultern des Golfes von Korinth an die Oberfläche gebracht und sind heute auf dem Gebirge zu finden. Die rote Farbe kommt von verwitterten Eisenoxiden in ariden Verhältnissen, sind die Gesteine Staunässe ausgesetzt, erscheinen sie eher grünlich. 
+
+Als Karbonat-Kompensationstiefe wird die Grenze bezeichnet, unter der keine Karbonatschlämme mehr akkumuliert werden können, da die Löserate durch Solvatation höher ist als die Akkumulationsrate. Unterhalb dieser Grenze bilden sich Radiolarite, oberhalb eher Kalkgesteine. Dieser Wechsel ist auf dem Ziria sichtbar. 
+
+\subsection{(Unser) Gipfel des Ziria}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/5/sf_gipfel.png}
+    \caption{Unser Gipfel des Ziria mit markanten Felsformationen und Aussicht bis zum Golf von Korinth [Foto: Simon Federle].}
+    \label{pic:ziria}
+\end{figure}
+
+Nach mehrstündigem Aufstieg konnte schließlich der Gipfel gesehen werden, wurde aber nicht weiter erklommen, da die Wetterverhältnisse keine schöne Aussicht ermöglichten. Stattdessen wurde er umgangen und ein anderer Punkt knapp über 2.000 Meter mit markanten Felsformationen als Gipfel erkoren. Diese entstanden wohl einerseits durch Niederschlagserosion vor Ort und andererseits durch Frostsprengung weiter oben im Hang und sind dann wahrscheinlich durch gravitative Massenbewegungen an die Stelle gerutscht, an der sie heute liegen. Sie boten eine wunderbare Aussicht nach Nordosten auf den Golf von Korinth und die umliegenden Gebirge (siehe Abb. \ref{pic:ziria}).
+
+%%%%%%%%%
+% TAG 6 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{29.09.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag6.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag6}
+\end{figure}
+
+Der \theday. Tag wurde im Norden der Peloponnes südlich von Patras in den Regionalbezirken Achaia und Elis fortgesetzt. Dort erwarteten uns die antike Stätte Olympia sowie die Lagunen von Kotychi und Prokopos.
+
+\subsection{Kato Achaia}
+
+Kato (griechisch für unten) Achaia, eine Kleinstadt mit ca. 7000 Einwohnern im südwestlich von Patras, ist der untere Kern der multiplen Orte der Transhumanz. Die fehlende Stadtentwicklung für ein Großwachstum ist dem geschuldet, dass Patras als Oberzentrum alle Stadtfunktionen vereint und sozioökonomisch anzieht. Auffällig hier ist, was auch für die meisten anderen Städte in Griechenland gilt: alle Kirchen sehen ähnlich aus und bauen auf einem ähnlichen Muster auf, was auf die weite Verbreitung der orthodoxen Kirche deutet, und viele der Balkone der Wohnhäuser zeigen zur Straße hin. Das verdeutlicht den sozialen Aspekt der Griechen, die gerne mit ihren Nachbarn kommunizieren.
+
+Eine besondere Straße zeigt viele Knoblauchketten und rote Tücher auf Balkonen. Hier findet eine Agglomeration der Sinti und Roma statt, die sich aufgrund der strukturierten sozialen Ausgrenzung in diesem Viertel zusammengefunden haben.
+
+\subsection{Antikes Olympia}
+\label{sec:olympia}
+
+\begin{figure}[h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pics/6/ph_muschelkalk.jpg} 
+        \caption{Muschelkalk in verbauten Säulen.}
+        \label{pic:muschelkalk}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pics/6/ph_blei.jpg}
+        \caption{Verbindungsstifte aus Blei in antiken Mauerwerken.}
+        \label{pic:blei}
+    \end{subfigure}
+    \caption{Baumaterialien im Antiken Olympia [Fotos: Phillip Hienle].}
+\end{figure}
+
+Olympia, eine der bekanntesten antiken Stätten Griechenlands, ist der Geburtsort der Olympischen Spiele sowie Teil der zuvor angesprochenen vier Stätten umfassenden Olympiade. Sie wurden zu Ehren des Zeus abgehalten, der in der Antike als höchster Gott verehrt wurde. Die Blütezeit der Stätte war ca. 400-500 v. Chr. Neben sportlichen Bauten wie dem Stadion, in dem die Spiele stattfanden, gab es auch andere Einrichtungen wie Tempel zu Ehren verschiedener Götter, Thermen sowie Schatzhäuser. Meist wurde Muschelkalk aus der mittleren Trias mit gut sichtbaren Muscheln (siehe Abb. \ref{pic:muschelkalk}) verbaut.
+
+Es kursieren verschiedene Zerstörungstheorien bezüglich des Untergangs von Olympia. Eine davon ist abermals eine Tsunamitheorie wie auch in Tiryns, die auf Grundlage von gefundenen Schlammablagerungen aufgestellt wurde. Allerdings befindet sich die Küste ca. 11,5 Kilometer Luftlinie entfernt und das Flusstal des Kladeios, welcher an Olympia vorbeifließt, ist eher meandrierend, was die Wucht eines Tsunamis stark gebremst hätte, sodass die Ablagerungen nicht so mächtig sein könnten, wie sie es sind. Verschiedene Studien zeigen durch Bohr- und Laborversuche, dass einige der Ablagerungen als hochenergetische Sedimentationen identifiziert werden könnten. Allerdings kann nicht abschließend geklärt werden, ob die Ablagerungen tsunamogenen Ursprunges sind \cite{Vött.Willershäuser.ea2019}. Eine weitere Möglichkeit können Schlammlawinen sein, die durch mehrere Starkniederschlagsereignisse innerhalb kurzer Zeit der umliegenden Hügel verursacht wurden.
+
+Nach langjährigen Ausgrabungen sind heute viele Teile der Säulen, Grundrisse und Mauern erhalten. Die Stabilität der Mauern konnte durch Verbindungsstifte aus Blei erhöht werden, was zum Großteil über die Zeit vermutlich gestohlen wurde, von denen aber vereinzelte Exemplare aber noch heute wie in Abb. \ref{pic:blei} zu sehen erhalten sind.
+
+\subsection{Kladeios Mauer}
+
+Im Bezug zur Schlammlawinentheorie, die den Untergang von Olympia beschreibt, ist entlang des Kladeios eine im Hang eingebettete Mauer zu finden. Diese diente wahrscheinlich dem Schutz vor Hochwasser, allerdings steht sie auf der falschen Seite zu Olympia (Querschnitt: Hang - Mauer - Kladeios - Olympia - Hang). Das wirft die Frage auf, ob hinter ihr im Hang unter dem Wald weitere Teile von Olympia oder weitere Siedlungen gefunden werden können. Allerdings wurden bis dato dort noch keine Untersuchungen durchgeführt.
+
+\subsection{Kotychi Lagune}
+
+Die Kotychi Lagune im Nordwesten der Peloponnes ist mit 750 Hektar und zehn Zentimetern bis ein Meter Tiefe die größte Lagune Griechenlands. Sie wird durch einen fünf Kilometer langen schmalen Sandstreifen vom Meer getrennt, was bei Stürmen Meerwasser in die Lagune weht. Sie ist also auch als Haff zu bezeichnen, die durch die Nehrung vom Meer getrennt ist. Entstanden ist sie durch küstenparallele Strömungen ähnlich der Bodden in Norddeutschland, wobei der Sand nach Norden zum Strand von Kalogria, einem der beliebtesten Sandstrände der Peloponnes, geweht wird. Es wird angenommen, dass die Lagune entsprechend vieler anderer Lagunen im Mittelmeerraum vor über 6.000 Jahren entstand \cite{unkelDrivingMechanismsHolocene2014} und heute die am weitesten erodierte und damit entwickelte Küstenlinie zu sehen ist. Die Lagunenbildung im mittleren Holozän kann durch den postglazialen Meeresspiegelanstieg und dessen erhöhte Strömungsgeschwindkeiten, die mehr Sand auf der Bank akkumulieren konnten. Die Lagune ist heute ein wichtiger Rastplatz für Zugvögel und beherbergt viele verschiedene Vogelarten, darunter auch die unüblichen Flamingos.
+
+\subsection{Prokopos Lagune}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/6/ph_prokopos.jpg}
+    \caption{Prokopos Lagune [Foto: Phillip Hienle].}
+    \label{pic:prokopos}
+\end{figure}
+
+Wie viele andere Orte auf der Peloponnes gehört auch die Prokopos Lagune zur NATURA 2000, einem Netzwerk von Schutzgebieten in der Europäischen Union. Die Lagune ist wie Kotychi ein Rastplatz für viele Zugvögel und beherbergt eine reiche Flora und Fauna (siehe Abb. \ref{pic:prokopos}). Auf direktem Weg zum Meer liegt der beliebte Strand Kalogria.
+
+Ca. zehn Jahre nach dem Bau 2009-2010 wurde auch hier durch die lokale Bevölkerung Vandalismus betrieben und die Hütten und Infotafeln, die für Gruppen und Touristen aufgebaut wurden, wurden zerstört. Dies zeigt abermals, dass das Bewusstsein für Natur- und Tierschutz keinen guten Stellenwert bei der lokalen Bevölkerung hat, die sich durch andere Problematiken in ihrer Existenz bedroht fühlen. Der sich in der nähe befindende Militärflugplatz Araxos mit regelmäßigen Miltärübungen stellt einen Konstrast zur ruhigen Natur der Lagune dar.
+
+%%%%%%%%%
+% TAG 7 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{30.09.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag7.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag7}
+\end{figure}
+
+Am \theday. Tag wurden Orte und Sehenswürdigkeiten östlich von Patras, unter Anderem die Störungen Aigion und Pyrgaki, der Fluss Meganitas sowie das Baumheiligtum Plataniotissa im Regionalbezirk Achaia angefahren.
+
+\subsection{Selianitika}
+
+Die Stadt Selianitika ist wie Kato Achaia auch durch Transhumanz entstanden. Sie ist ein beliebter Urlaubsort für Exilgriech*innen und Athener*innen und hat daher eine große Anzahl an Ferienwohnungen und -häusern. Der schmale steinige Strand zeigt die Vielfalt an geologischen Gesteinen, die im Golf von Korinth vorkommen und durch Kontinentalhänge abgelagert wurden. Es finden sich verschiedene Gesteinsphasen, die sich durch plötzliche gravitative Massenbewegungen an den Steilhängen entlang des Golfes und deren fluvialen/marinen Transport erklären lassen. 
+
+\subsection{Aigion}
+
+Die Aigionstörung kann in Abb. \ref{pic:brüche} wiedererkannt werden. Es handelt sich um eingangs erklärte Schollenbrüche, die als Steilwände sichtbar sind. Durch die Nähe zum Graben des Golfs von Korinth und direkter Mündung in eine Hauptstörung ist die Hebungsrate hier besonders hoch und das Gebiet erdbebengefährdet. Das International Continental Scientific Drilling Program plant kilometertiefe Bohrungen am Strand mit dem Ziel, die Aigionstörung zu durchbrechen und Erkenntnisse über Tiefe, Schräglage und andere Eigenschaften der Störung zu erhalten. Schwierigkeiten bereiten allerdings die geschätzte Schrägstellung der Schollen, die unter Umständen viel tiefer liegen als gedacht, sowie die Mündung in die Hauptstörung im Untergrund, was bei Eingriff ins statische System zu Erdbeben führen kann. 
+
+\subsection{Meganitas Fluss}
+
+Der Meganitas Fluss zeigt eindrücklich die Stärke fluvialen Transports von Geröll, welches zumeist Konglomeratgestein ist. Der Transport ist allerdings nicht weit, da das Geröll nur kantengeglättet ist. Es ist also anzunehmen, dass das Geröll aus umliegenden Bergen stammt und durch Starkniederschläge abgetragen wurde. Das helle, lockere und schluffig-tonige Sedimentmaterial an den Steilwänden entlang des Flusses lässt sich durch die marine Transgression des Meeres wahrscheinlich während der Interglaziale erklären.
+
+\subsection{Pyrgaki}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/7/ts_pyrgaki.jpeg}
+    \caption{Fore- und Topset des beckenwärts vorstoßenden Deltas mit sich überlagernden Schwemmfächern in Pyrgaki [Foto: Tabea Storch].}
+    \label{pic:pyrgaki}
+\end{figure}
+
+Eine weitere Störung im Bruchsystem entsprechend Abb. \ref{pic:brüche} ist Pyrgaki. Auf ca. 800 Metern Höhe über NN kann ein für Geolog*innen und Geowissenschaftler*innen freudiger Anblick auf ein freiligendes Fore- und Topset des beckenwärts vorstoßenden Deltas und dessen sich überlagernden Schwemmfächer genossen werden.
+
+\subsection{Kloster Agios Blasios}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \vspace{-15mm}
+    \centering
+    \includegraphics[width=3.25in]{pics/7/blasios.png}
+    \caption{Aussicht vom Kloster Agios Blasios, rechts der sympathische Erzähler Ingmar.}
+    \label{pic:blasios}
+\end{wrapfigure}
+
+Ein kurzer Zwischenhalt am Kloster Agios Blasios ermöglichte eine beeindruckende Aussicht (siehe Abb. \ref{pic:blasios}) in einen kleinen Grand Canyon. Das Kloster selbst gleicht eher einer kleinen einräumigen Kapelle.
+
+\subsection{Plataniotissa}
+
+Die Kirche im Baum - das Baumheiligtum Plataniotissa in der Nähe der Stadt Kalavrita ist ein besonderes Heiligtum, welches der Legende nach nur innerhalb einer Nacht eine Ikone von Wanderern in den Stamm einschloss und so als heilig erklärt wurde. Sie hat einen Umfang am Stammfuß von 23 Metern und ist damit die größte bekannte Platane der Welt. Der Legende nach bestand sie bereits im 4. Jahrhundert n. Chr. Leider ist sie im letzten Jahr wie in Abb. \ref{pic:plataniotissa} zu sehen von einer unbekannten Krankheit befallen worden. Bauarbeiten und die Versiegelung des Stammes sind Versuche, um das Heiligtum zu retten.
+
+\vspace*{\fill}
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=0.33\textheight]{pics/7/plataniotissa.png}
+    \caption{Plataniotissa, die Kirche in der größten Platane der Welt. Nach Befall einer unbekannten Krankheit 2022 wird durch Bauarbeiten versucht, den Stamm und das Heiligtum zu retten.}
+    \label{pic:plataniotissa}
+\end{figure}
+
+%%%%%%%%%
+% TAG 8 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{01.10.2023 - Pausentag}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/8/ph_voidokilia.jpg}
+    \caption{Ochsenbauchbucht (Voidokilia), vom Palaiokastro aus betrachtet. Rechts ist ein Teil der Gialova Lagune zu sehen [Foto: Phillip Hienle].}
+    \label{pic:voidokilia}
+\end{figure}
+
+Zwischen Tag 7 und Tag 8 gab es eine längere Transferfahrt von Patras in den Südwesten von Messenien. Tag \theday wurde dann als Pausentag genutzt. Ein Besuch am Strand von Romanos sowie die Erkundung der Ochsenbauchbucht (Voidokilia, siehe Abb. \ref{pic:voidokilia}) und der Höhle des Nestor unterhalb des Palaiokastro (siehe Kapitel \ref{sec:palaiokastro}) standen auf dem spontanen Programm. Das NEO (siehe Kapitel \ref{sec:neo}) hatte Fahrräder zur Verfügung gestellt, welche sich für die Erkundung der Gegend als sehr nützlich erwiesen, obwohl das Relief recht häufige Faltungen aufwies.
+
+%%%%%%%%%
+% TAG 9 %
+%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{02.10.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag9.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag9}
+\end{figure}
+
+Die Bucht von Navarino sowie deren Umgebung im Südwesten Messeniens wurden am \theday. Tag behandelt.
+
+\subsection{Navarino Environmental Observatory}
+\label{sec:neo}
+
+Das Navarino Environmental Observatory (NEO) ist eine 2009 von der Universität Stockholm, der Abteilung für atmosphärische Umwelt der Stiftung für biomedizinische Forschung der Akademie von Athen und einigen Tourismusunternehmen in Messinien gegründete Umweltforschungsstation. Es ist als Zentrum für Forschung und Bildung im Mittelmeerraum gedacht, in dem Wissenschaft, Wirtschaft, Gesellschaft und politische Entscheidungsträger in internationaler Zusammenarbeit zusammenkommen, um eine nachhaltigere Zukunft in einem sich verändernden Klima zu schaffen. Es diente uns freundlicherweise für die Zeit in Messenien als Unterkunft.
+
+Verschiedene Projekte, unter anderem auch das Monitoring der Gialova Lagune und die Aufklärung über anthropogene Eingriffe (siehe Kapitel \ref{sec:gialova}), welches von Christos vorgestellt wurde, werden hier von verschiedenen Einrichtungen durchgeführt und mit Stakeholdern diskutiert. Das NEO hängt mit dem Costa Navarino zusammen (siehe Kapitel \ref{sec:costa}) und wirkt wie ein Kompensationsprojekt, um die negativen Auswirkungen des Resorts auf die Umwelt zu kompensieren. Die Arbeiten, die das NEO produziert, sind dennoch von großer Bedeutung für die Aufklärung der lokalen Bevölkerung, die unbedingt in  den Umweltschutz integriert werden muss.
+
+\subsection{Costa Navarino}
+\label{sec:costa}
+
+Das 5-Sterne-Resort Costa Navarino, welches in den letzten Jahren massiv gewachsen ist und allmählich das Landschaftsbild um die Bucht von Navarino (siehe Kapitel \ref{sec:navarino}) bestimmt, soll ein Paradebeispiel für nachhaltigen Tourismus sein und zur sozioökonomischen Entwicklung der Gegend um die Bucht beitragen. Allerdings bietet sich heute eher ein Bild von abgeschottetem Luxustourismus, welches durch die Einzäunung der Resorts und starken Kontrollen der Zugänge zu den Geländen verdeutlicht wird. Innerhalb weniger Jahre wurden weitere Flächen erkauft und in Resortgelände umgewandelt. Nachhaltigkeit wird dabei im Costa Navarino laut Webseite (\url{https://www.costanavarino.com/navarinoresidences/sustainability/}) groß geschrieben: Umsetzungen wie ein Recycling- und Kompostierungssystem, lokale und nachhaltig eingesetzte Baustoffe, ein Zufluchtsort für streunende Hunde und Katzen sowie die Zusammenarbeit mit dem Meeresschildkrötenschutz sind einige der Projekte, die auf ein nachhaltiges Image abzielen. Eine Kritik daran ist allerdings, dass Projekte in dem Gebiet, wie das Anlegen von Naturgebieten zwar durchgeführt werden, allerdings nur, um das Gebiet für die Tourist*innen attraktiver zu machen. Zum Beispiel wurden Olivenbäume aus dem Resortbereich entfernt, um Golfplätze anzulegen, um daraufhin die Olivenbäume wieder an anderen passenderen Positionen wieder einzupflanzen.
+
+Knapp eine Millarde Euro wurden bereits in die Entwicklung des Gebiets investiert und es wurden viele Arbeitsplätze geschaffen, allerdings kommt wenig von den Einnahmen bei der lokalen Bevölkerung an. Auch die über elf Millionen Euro Investition in die lokale Infrastruktur sind eher Verkehrswege für das Costa Navarino. Wie viel von den nachhaltigen Aktionen tatsächlich den Luxustourismus kompensieren kann, ist fraglich. Auch die Steigerung der Fluzahlen um über 400 \% wird im Zuge der Nachhaltigkeit genannt, was eher wie Werbung für öknomisch starke Stakeholder wirkt. Es wird vermutet, dass das NEO (Kapitel \ref{sec:neo}) als Kompensationsprojekt gegründet wurde.
+
+\subsection{Romanos Bucht}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    \includegraphics[width=2in]{pics/9/salz.png}
+    \caption{Salzablagerungen in Kuhlen der Beach Rock-Formationen.}
+    \label{pic:salz}
+\end{wrapfigure}
+
+Die Bucht bei Romanos ist ein Paradebeispiel für Strömungsmechanik und die physikalische Punktstreuung von Wellen. Entsteht ein Durchbruch am Strand, kann Wasser durch Wellen eingespült werden und Erosionsprozesse beginnen den Durchbruch zu erweitern. Der Durchbruch fächert entsprechend der Punktstreuung von Wellen aus und die Strömungsgeschwindkeiten nehmen ab. Dadurch wird das Sediment, welches durch die Wellenbewegung in die Bucht getragen und aufgewirbelt wird, abgelagert, Kalk fällt aus und Beach Rock formt sich. Dies ist in Abb. \ref{pic:romanos} als mittlerer Streifen zu sehen. An den Seiten dieses Streifens wird die Strömungsgeschwindkeit aber wieder höher, sodass das Sediment wieder aufgewirbelt wird und sich die Bucht weiter ausfächert. Solche Prozesse sind vergleichsweise schnell, sie dauern einige Zehner bis hin zu mehreren Tausend Jahren.
+
+Am Strand von Romans nördlich und südlich der Bucht kann vor allem Beach Rock gefunden werden, zu Stein verklebter Sand (siehe Abb. \ref{pic:romanos}). Der Klebstoff ist dabei ausgefälltes Kalziumkarbonat. Datiert kann Beach Rock durch die Luminiszenz von Quarz, dabei kamen Alter von mindestens ca. 28.000 Jahren raus. Das würde einer Zeit entsprechen, zu der in dem Gebiet bereits menschliche Aktivitäten nachgewiesen werden konnten. Dabei geben verschiedene Höhen, auf denen Bech Rock vorkommt, Aufschluss über das Alter. Es wird angenommen, dass die Schichten durch tektonische Prozesse auf die Küste angehoben werden, was heißen würde, dass höher liegender Beach Rock älter ist. Große Brocken von Beach Rock mit höherem Alter, verteilt am Strand, können dabei Hinweise auf die oft diskutierten tsunamiartigen Ereignisse oder Erdbeben geben.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/9/ph_romanos.jpg}
+    \includegraphics[width=\textwidth]{pics/9/ts_beachrock.jpeg}
+    \caption{Oben: Bucht bei Romanos mit einer interessanten Entwicklungsgeschichte [Foto: Phillip Hienle]. Unten: Verschiedene Beach Rock-Formationen am Strand von Romanos [Foto: Tabea Storch].}
+    \label{pic:romanos}
+\end{figure}
+
+Zwischen den Beach Rock-Formationen konnten noch einige Salzablagerungen (siehe Abb. \ref{pic:salz}) beobachtet werden. Diese entstehen wenn Wellen Meerwasser in die Kuhlen spülen, welches dann durch die intensive Sonnenstrahlung verdunstet.
+
+\subsection{Gialova Lagune}
+\label{sec:gialova}
+
+Die Gialova Lagune (siehe Abb. \ref{pic:voidokilia}), ein weiteres NATURA 2000-Gebiet nördlich der Bucht von Navarino (siehe Kapitel \ref{sec:navarino}), umfasst 225,5 Hektar mit zusätzlichen 85,2 Hektar umgebender Feuchtgebiete. Die Lagune wird durch einen schmalen Zugang mit dem offenen Meer verbunden und erhält seinen Frischwasserzufluss nur noch aus Niederschlägen und einem kontrollierten artesischen Quellwasser östlich der Lagune. Frühere feuchtklimatische Bedingungen zwischen 5.600 und 3.300 Jahren vor heute führten durch küstenparallele Sandströme in der östlichen Bucht von Navarino zur Entstehung der Lagune, die anfangs ein offenes System mit kleinen Sandbarrieren zur Bucht von Navarino war. An den Punkten der Strömungsneutralisation zwischen Meerwasser und Frischwasser bildeten sich entsprechende Sandbänke. Seit etwa 3.300 Jahren ist die Lagune durch die zusammengewachsene Divari-Sandbarriere südlich der Lagune von der Bucht getrennt, wobei ein kleiner offener Zugang zum Meer bleibt \cite{emmanouilidisMiddleLateHolocene2018, Maneas.Makopoulou.ea2019}. 
+
+Doch infolge des Klimawandels, insbesondere der hohen Evaporation im Sommer, und der menschlichen Eingriffe, wie umfangreiche Drainagemaßnahmen seit den 1960er Jahren, in denen der Fluss Xerolagados umgeleitet wurde, hat sich der Frischwasserzufluss verringert. Dies führte zu stark erhöhten Salzkonzentrationen in der Lagune (über 70 mg/L) im Vergleich zum normalen Meerwasser (30-35 mg/L), welches verheerende Auswirkungen auf die Flora und Fauna, insbesondere auf den aquatischen Lebensraum für zahlreiche Arten, hat. Es wird angenommen, dass bei den recht stabilen klimatischen Bedingungen in der Region eher die anthropogenen Eingriffe die Hauptursache für diese drastischen Veränderungen sind \cite{Maneas.Makopoulou.ea2019, avramidisDepositionalEnvironmentsSediment2015}. Das NEO (siehe Kapitel \ref{sec:neo}) versucht durch Projekte die lokale Bevölkerung über diese Problematiken aufzuklären und mit ihnen zusammen Lösungswege zu erarbeiten.
+
+\subsection{Palaiokastro}
+\label{sec:palaiokastro}
+
+Das Palaiokastro, griechisch für "alte Festung", ist eine fränkische Festungsruine südlich der Bucht Voidokilia. Ausgrabungen in der Festung und der Höhle des Nestor unterhalb der Festung liefern Hinweise auf eine mögliche Besiedelung seit der Bronzezeit. Nach der Schlacht von Sfaktiria 425 v. Chr. zwischen dem von Athen geführten Attischen Seebund und dem Peloponnesischen Bund unter seiner Führungsmacht Sparta, wurde laut antiken Aufzeichnungen von den siegreichen Athenern eine Festung am heutigen Standort des Palaiokastro errichtet, welche allerdings bis heute nicht nachgewiesen werden konnte \cite{Davis2008}. Im 13. Jahrhundert wurde die Bucht von Pylos (siehe Kapitel \ref{sec:navarino}) von den Franken erobert und die Festung Navarino am wahrscheinlichen Standort der athenischen Festung errichtet. Im 16. Jahrhundert eroberte das Osmanische Reich die Bucht inklusive der Festung und errichtete eine zweite Festung namens Niokastro, griechsch für "neue Festung" (siehe Kapitel \ref{sec:niokastro}), am südlichen Ende der Bucht an der zweiten Buchteinfahrt, wodurch dann Navarino zur besseren Unterscheidung in Palaiokastro ("alte Festung") umbenannt wurde \cite{Davis2008}.
+
+Im Anschluss wurden die Besatzungsverhältnisse mehrfach gewechselt, bis die Festung vor Ende des 18. Jahrhunderts von den Osmanen aufgegeben wurde und verfiel. Die Ruine ist heute über einen steilen Wanderweg aus dem Süden frei zugänglich und bietet eine wunderbare Aussicht auf die Buchten Voidokilia (siehe Abb. \ref{pic:voidokilia}) und Navarino sowie die umliegende Landschaft.
+
+\newpage
+
+\subsection{Aussicht auf Bucht von Navarino}
+\label{sec:navarino}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \centering
+    \includegraphics[width=2in]{pics/9/pylos.jpg}
+    \caption{Denkmal für die Schlacht von Navarino 1827 in Pylos. Von links im Uhrzeigersinn: der Osmane Ibrahim Pascha und die drei Flottenkommandeure Login Petrowitsch Heiden (Russland), Henri de Rigny (Frankreich) sowie Oberkommandant der 3-Mächte-Flotte Sir Edward Codrington (Großbritannien).}
+    \label{pic:pylos}
+\end{wrapfigure}
+
+Die Bucht von Navarino, heute wegen der Stadt Pylos in der südlichen Bucht auch als Bucht von Pylos genannt, befindet sich im Westen der Gemeinde Pylos-Nestor in Messenien. Sie ist eine der größten natürlichen Buchten der Ionischen Küste und beheimatet durch ihre besondere Geographie auch einen der sichersten Häfen, weshalb ihr in der Geschichte seit der mykenischen Hochkultur in Griechenland immer wieder eine große Rolle zukam und sie im Mittelpunkt vieler Schlachten stand \cite{Davis2008}. Die vorgelagerte Ionische Insel Sfaktiria (siehe Abb. \ref{pic:tag9}) bietet eine natürliche Schutzmauer gegenüber des offenen Mittelmeeres. Nördlich und südlich der Insel befinden sich zwei Einfahrten in die Bucht, die im Laufe der Geschichte von zwei Festungen, der zuvor angesprochenen Festung Palaiokastro im Norden und der in Kapitel \ref{sec:niokastro} behandelten Festung Niokastro im Süden, befestigt und kontrolliert wurden. 
+
+Größte Wichtigkeit erhielt die Bucht während des Unabhängigkeitskrieges, als es 1827 zu einer großen Seeschlacht zwischen den Großmächten Großbritannien, Frankreich sowie Russland und dem Osmanischen Reich (siehe Abb. \ref{pic:pylos}) kam, in der die Flotte des Osmanisch-Ägyptischen Reiches vernichtend geschlagen wurde. Dies führte im Nachhinein zur Unabhängigkeit Griechenlands und dem langsamen Zerfall des Osmanischen Reiches durch das Aufflammen des Konzerts der Großmächte (mehr Infos dazu siehe meine Hausarbeit im Vorfeld der Exkursion mit dem Thema \hyperlink{ref:ha}{Die Bucht von Navarino - Griechische Revolutionsgeschichte und ihre Bedeutung für Europa}).
+
+Die moderne Stadt Pylos wurde 1829 nach der griechischen Revolution außerhalb der Festungsmauern des Niokastro von französischen Befreiungsmächten als Navarino gegründet und von König Otto I. von Griechenland in Referenz zu der antiken Stadt des Königs Nestor, die durch das Palaiokastro und der Höhle darunter mit bronzezeitlichen Nachweisen in der Region vermutet wird, in Pylos geändert.
+
+%%%%%%%%%%
+% TAG 10 %
+%%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{03.10.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag10.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag10}
+\end{figure}
+
+Am \theday. Tag wurde der Südwesten der Peloponnes erkundet. Dazu gehörten die Festung Methoni sowie Finikoundas und das Kloster Agios Theodoros.
+
+\subsection{Aquädukt Niokastro}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \vspace{-10mm}
+    \centering
+    \includegraphics[width=2in]{pics/10/niokastro.png}
+    \caption{Aquädukt des Niokastro.}
+    \label{pic:niokastro}
+    \vspace{-10mm}
+\end{wrapfigure}
+
+Das in Kapitel \ref{sec:niokastro} behandelte Niokastro musste wie andere Orte auch mit Wasser versorgt werden. Dazu wurde ein Aquädukt angelegt, welches Wasser aus dem umliegenden Gebirge in die Festung leitete. Das sogenannte Aquädukt von Kamares nach römischem Vorbild ist an der gezeigten Stelle in Abb. \ref{pic:niokastro} ca. 3,5 Meter hoch.
+
+\subsection{Methoni}
+
+Die Festung Methoni ist eine der größten Festungen Griechenlands und wurde im 13. Jahrhundert von den Venezianern erbaut, was durch Löwenwappen auf den Außenwänden erkenntlich ist. Sie wurde auf einer vorgelagerten Landzunge am südwestlichsten Punkt der Peloponnes erbaut und kontrolliert daher die Umfahrt im Südwesten. Die Festung wurde im Laufe der Zeit von verschiedenen Herrschern genutzt und ausgebaut, unter anderem von den Osmanen, die sie als Gefängnis nutzten, sowie der Wehrmacht im Zweiten Weltkrieg. Die Schwierigkeit sie einzunehmen wird durch Anschauen der schroffen Küstenlinie im Westen in Abb. \ref{pic:methoni} deutlich. Auf der Ostseite liegt die Anlegestelle, die geschützt und ruhig liegt. Die Einfahrt in die Anlegestelle wurde von den Osmanen mit einem für sie typischen Bourtzi, einem auf der äußersten Spitze des Kaps erbauten Festungssturm (siehe Abb. \ref{pic:methoni}), geschützt.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/10/sf_methoni.jpeg}
+    \caption{Die beiden Seiten im Westen und Osten der Festung Methoni von Norden aus betrachtet. Links: Bourtzi auf der Südostseite der Festung Methoni. Mit diesem Festungssturm kontrollierten die Osmanen die Einfahrt in die Anlegestelle. Rechts: die schroffe Küstenlinie westlich der Festung Methoni [Foto: Simon Federle]..}
+    \label{pic:methoni}
+\end{figure}
+
+\subsection{Straßenaufschluss - Faltungen}
+
+Etwa zwei Kilometer östlich von Methoni auf der Fahrt von West nach Ost konnten im Straßenaufschluss Faltungen (siehe Abb. \ref{pic:faltungen}) im Gestein beobachtet werden. Sie entstanden durch die eingangs erwähnte tektonische Aktivität des Hellenischen Tiefseegrabens im Westen der Peloponnes. Im Zuge des Aufschlusses wurde besprochen, dass von West nach Ost im Süden der Peloponnes eine Horst- und Grabenstruktur beobachtet werden kann, die sowohl kleinteilig (einige hundert Meter entlang der Straße) als auch großräumig (die Finger der Peloponnes) auftritt. Das hügelige Relief der Peloponnes ist auf diese Faltungen und die resultierenden Faltungserhebungen zurückzuführen. 
+
+\subsection{Finikoundas}
+
+Die Strandstadt Finikoundas ist wie auch der restliche Süden der Peloponnes ein beliebter Urlaubsort für deutsche Touristen. Interessant ist hier die Struktur der Promenade, die unüblich beidseitig befahrbar ist und deren Straßen wohl aufgrund von Erosion vielfach überbaut ist. Zudem existieren Parkplätze direkt am Strand mit Aussicht auf das Meer, was auf die Ausrichtung auf den Autotourismus hindeutet.
+
+An der Küste ist Flysch sichtbar, was eine marine sedimentäre Formation ist, die aus abwechselnden Schichten von Tonsteinen und grobkörnigeren Gesteinen wie Sandsteinen besteht. Diese Sedimente entstehen während der Gebirgsbildung und können aufgrund intensiver Verformung sogar zu metamorphen Gesteinen werden. Sie repräsentieren das erodierte Material einer entstehenden Gebirgskette und gelangen in Form von Suspensionsströmen in den Ablagerungsraum.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/10/ts_faltung.jpeg}
+    \caption{Faltungen im Straßenaufschluss [Foto: Tabea Storch].}
+    \label{pic:faltungen}
+\end{figure}
+
+\subsection{Quelle von Noupeli}
+\label{sec:noupeli}
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \vspace{-15mm}
+    \centering
+    \includegraphics[width=2in]{pics/10/ts_theodoros.jpeg}
+    \caption{Ikonographien des Zentralbaus des Klosters Agios Theodoros [Foto: Tabea Storch].}
+    \label{pic:theodoros}
+\end{wrapfigure}
+
+Die recht unspektakuläre Quelle von Noupeli konnte als Erholungsort und für eine Mittagspause dienen. An ihr wurden verschiedene Aspekte besprochen. Zypressen zum Beispiel treten in Griechenland selten großflächig auf, sondern sie konzentrieren sich meist vereinzelt an sprituellen oder anderweitig wichtigen Orten. Platanen und Weiden weisen oft auf eine hohe Wasserverfügbarkeit bis hin zu Quellen hin. Die Quelle von Noupeli ist ein gutes Beispiel dafür, da sie von Platanen und Weiden umgeben ist. Die Wasserversorgung in den entlegenden Gebirgsregionen ist oft unterentwickelt, die Trinkwasserversorgung wird meist durch Quellen sichergestellt. Diese sind meist eingefasst und erschlossen, wie es die Quelle von Noupeli beispielhaft ist. Ein damit einhergehendes Problem ist der hygienische Aspekt aufgrund der unbekannten Verweildauer des womoöglich ungereinigten Wassers im Karstsystem.   
+
+\subsection{Kloster Agios Theodoros}
+
+Versteckt zwischen Olivenhainen und meterhohem Schilf liegt das alte Kloster Agios Theodoros. Die Ikonographien im Inneraum (siehe Abb. \ref{pic:theodoros}) lassen auf ein hohes Alter schließen. Auch wenn die Kirche recht klein ist, ist der Aufbau trotzdem wieder ähnlich wie bei anderen orthodoxen Kirchen.
+
+%%%%%%%%%%
+% TAG 11 %
+%%%%%%%%%%
+
+\stepcounter{day}
+\section{04.10.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag11.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag11}
+\end{figure}
+
+Der \theday. Tag war der längste Transfertag (Messenien im Südwesten in die Argolis im Nordosten der Peloponnes). Auf dem Weg wurden die Festung Niokastro, die Polylimnion Wasserfälle sowie die Kapsia Höhle besucht, zu der es eine Führung gab.
+
+\subsection{Niokastro Pylos}
+\label{sec:niokastro}
+
+In Kapitel \ref{sec:navarino} wurde bereits die Geschichte der Bucht von Navarino sowie der "neuen Festung" Niokastro angerissen. Erbaut im 16. Jahrhundert vom Osmanischen Reich, wurde sie in zwei Phasen von den Venezianer und den Osmanen ausgebaut, wodurch sie dann die heute sichtbare Ausmaße erhielt. Die Festung Palaiokastro wurde noch vor Ende des 18. Jahrhunderts von den Osmanen aufgegeben und verfiel, während die Festung Niokastro bis heute erhalten blieb und teilweise restauriert wurde \cite{Davis2008}. Sie zählt zu den größten und besterhaltenen Festungen
+Griechenlands und liefert einen Einblick in neuzeitliche osmanische militärische Baukunst und Befestigungsanlagen. Während des Unabhängigkeitskrieges war die Festung Schauplatz mehrerer Kämpfe, allenvoran die Belagerung und Eroberung der Festung durch Ibrahim Pascha im Jahr 1825, die große Schlacht von Navarino 1827 sowie die anschließende Eroberung und Befreiung durch die französische Morea Expedition 1828-30, nach der Griechenland die souverände Unabhängigkeit erlangen konnte \cite{Brewer2001}.
+
+\subsection{Polylimnion Wasserfall}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/11/ts_polylimnion.jpeg}
+    \caption{Polylimnion mit kleinem Wasserfall und Blick in einen der zahlreichen kleinen Seen [Foto: Tabea Storch].}
+    \label{pic:polylimnion}
+\end{figure}
+
+Polylimnion, griechisch für "viele Seen", ist eine Schlucht 32 Kilometer von Kalamata entfernt, die durch mehrere Wasserfälle und kleine Seen ein kleines Paradies inmitten von Messenien schafft. Die Seen entstanden womöglich durch die Erosion von Karststufen durch die dort fließenden Bäche und Wasserfälle, welche heute ein beliebtes Erfrischungsziel bieten. Hier sind die feuchtklimaliebenden Platanen vorherrschend. 
+
+\subsection{Kapsia Höhle mit Führung}
+\label{sec:kapsia}
+
+Die 1887 erstmal erschlossene Kapsia Höhle inmitten einer Poljenlandschaft mit über 40 Schlucklochkomplexen konnte 2020 für Staunen sorgen, als durch Zufall zweier Erkundungstouren von zwei verschiedenen Höhlen eine Verbindung zwischen ihnen gefunden werden konnte. Nach weiterer Erkundung wurden bisher 2,5 Kilometer Höhlensystem erkundet. Die Höhle selbst ist eine Karsthöhle mit weit entwickelten Tropfsteinformationen. Die vordere Höhle ist hochgradig erschlossen, mit ausgebautem Betonpfad durch die Höhle und interaktiver Beleuchtung (siehe Abb. \ref{pic:kapsia}). Neben Stalagmiten und Stalagtiten sind auch viele Stalagnate vorhanden, die üblicherweise eher selten vorkommen. In Abb. \ref{pic:kapsia} ist eine klare Schwemmlinie zu sehen, die auf 1500 Jahre vor heute datiert wurde. Sie verläuft durch die komplette Höhle und zeigt welche Tropfsteine älter und jünger sind (jüngere Tropfsteine überlagern die Schwemmlinie). 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/11/ph_kapsia.jpg}
+    \caption{Vorderer hochgradig erschlossener Bereich der Kapsia Höhle. Künstliche beleuchtet sinddie Schwemmlinie von vor 1.500 Jahren sowie die weit entwickelten Tropfsteinformationen sichtbar. Im Hintergrund der Laufsteg mit Metallgeländer [Foto: Phillip Hienle].}
+    \label{pic:kapsia}
+\end{figure}
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \vspace{-5mm}
+    \centering
+    \includegraphics[width=2.66in]{pics/11/sf_kapsiafächer.png}
+    \caption{Fächerartige Tropfsteinformation mit Zackenkante in der Kapsiahöhle [Foto: Simon Federle].}
+    \label{pic:kapsiafächer}
+\end{wrapfigure}
+
+Ein Nebenraum der Höhle, welcher als Cave of Bones bezeichnet wird, beherbergt eine große Anzahl an menschlichen Knochen. Zuerst als Opfer der durch den Schwemmfächer angezeigten Überschwemmung eingeordnet, wurde der Nutzen aufgrund Knochen unterschiedlichen Alters überdacht. Wahrscheinlich wurde der Raum von den Einheimischen als heilige Stätte genutzt, um ihre Toten zu bestatten, oder auch als heiliger Ort, um Götter mittels Opfergaben zu ehren.
+
+Tropfsteinformationen können neben den bekannten Stalagformen auch andere Formen wie Fächer, Zacken oder andere annehmen. Der fächer in Abb. \ref{pic:kapsiafächer} zum Beispiel ist durchscheinend und zeigt seine Wachstumsgeschichte mithilfe von unterschiedlich gefärbten Schichten. Am Rand bilden sich zackenartige Strukturen, die wahrscheinlich durch eine Wechselwirkung zwischen Luftströmen sowie Elektrostatik zustande kommen. Sie sind auch innerhalb des Fächers sichtbar als vertikale Streifen zu den recht horizontalen Schichten. Stalagtiten haben im Gegensatz zu Seesedimenten ein wesentlich geringeres hydrologisches Einzugsgebiet, können aber in großer Anzahl aus mehreren benachbarten Höhlensystemen hochgenaue Erkenntnisse zur historischen Wasserverfügbarkeit und damit indirekt der Klimarekonstruktion liefern.
+
+%%%%%%%%%%
+% TAG 12 %
+%%%%%%%%%%
+
+\stepcounter{day}
+\section{05.10.2023}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag12.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag12}
+\end{figure}
+
+Am \theday. Tag wurde die Argolis knapp neben dem Gebiet von Tag 2 erneut besucht und aus hydrologischer Sicht betrachtet.
+
+\subsection{Heliotopos Apartments}
+
+Bei den Heliotopos Apartments, unserer Unterkunft in Tolo, wurden Aspekte bezüglich des Untergangs von Kulturen behandelt. Es wird oft angenommen, dass die Wasserverfügbarkeit eine entscheidende Rolle beim Untergang spielt, doch zeigt Tiryns mit seinem Damm, dass die Menschen schon vor 3000 Jahren in der Lage waren, aktiv in die Umwelt einzugreifen und sie sich zunutze zu machen. Simpler Wassermangel wird also nicht der Grund für den Untergang gewesen sein, höchstens während langer Trockenphasen zur Abwanderung (siehe dazu auch \cite{unkelHydraHermesHerkules2020}). Ein wichtiger Punkt bei antiken Kulturen ist, dass auch sie bereits offen Volkswirtschaften waren, auch wenn die Festungen und Städte oft als abweisend und autark angesehen werden. Intensiver Handel mit anderen Kulturen unterstütze die Entwicklung und schaffte Zugang zu neuem Wissen.
+
+Schätzungen von Einwohnerzahlen und dadurch Größe von Siedlungen erweisen sich oft als schwierig, es gibt aber einige Faustregeln, die bei der Schätzung helfen können. Zum Beispiel wird eine gewisse landwirtschaftliche Fläche pro Einwohner benötigt, die aus der nötigen Kalorienanzahl pro Mensch pro Tag errechnet werden kann. Ist der Raum außerhalb der Siedlung nicht vorhanden, kann die Siedlung nicht größer werden. Zur Unterhaltung der Felder und Unterstützung zum Bau von Festungen waren aber auch Tiere nötig, die ebenfalls Nahrung durch Landwirtschaft benötigten. Das treibt die benötigte landschaftliche Fläche weiter in die Höhe. Sicherlich kam es dabei auch zu Überschneidungen von nötigen Flächen zwischen Siedlungen. Hier kam es nicht immer zum Krieg, oft wurden auch Kooperationen eingegangen, die die gegenseitige Nahrungsmittelversorgung sicherten. 
+
+\subsection{Quelle Kefalari, Argolis}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/12/ph_kefalari.jpg}
+    \caption{Rückwärts laufende Quelle Kefalari [Foto: Phillip Hienle].}
+    \label{pic:kefalari}
+\end{figure}
+
+Die Quelle Kefalari ist einer der bekanntesten Karstquellen in der Argolis. Das Wasser hier stammt vor allem von der arkadischen Hochebene um Tripoli, vor allem der Argon Pedion Polje. Allerdings wird viel Wasser von verschiedenen Interessenten abgezapft noch bevor es ins Karstsystem eintritt, wodurch der komplette Komplex im Sommer trocken fallen kann. Dadurch entsteht der besondere Effekt wie bei unserem Besuch, dass das Wasser zurück in die Quelle fließt, welches in dem Fall als Schluckloch fungiert (siehe Abb. \ref{pic:kefalari}). Eine Problematik eines solchen niedrigen Grundwasserspiegels durch Trockenfallen des Karstes ist die Unterwanderung durch salziges Meerwasser, welches durch die Nähe zum Meer in den Karst eindringen kann. Dadurch versalzt das Grundwasser und es ist nicht mehr landwirtschaftlich und pflanzlich nutzbar, wodurch die Landschaft verödet. Daher sollte das System strengstens gemonitored werden und entsprechende Abzapfungen kontrolliert. Einige Ikonographien in der Kirche zeigen Quellen und Wasserläufe, was auf ein langes Verhältnis der Menschen zu den Quellen schließen lässt.
+
+\subsection{Quelle von Lerna}
+
+Eine der Quellen, die unter anderem durch durch das Schluckloch bei Stymphalia bedient wird, ist die im Gegensatz zu Kefalari nur durch ein einfaches Betonbecken gefasste Quelle von Lerna. Hier kmäpfte der Sage nach Herakles gegen die mehrköpfige Hydra, der beim Abschlagen der Köpfe neue Köpfe wuchsen. Das Versiegeln mit Feuer war die einzige Möglichkeit, das Ungeheuer zu besiegen. Auch hier kann wieder ein hydromythologischer Ansatz genutzt werden, um einen Wahren Kern in der Geschichte zu erkennen. Hydra, das altgriechische Wort für Wasser, lässt vermuten, dass es sich um die Kontrolle von Wasser gehandelt haben muss. Die Überlegung, dass mehrere neue Wasserläufe entstehen, wenn einer blockiert wird, liegt nicht fern. Dabei sollen aber auch nicht alle Wasserläufe blockiert werden, sondern sie sollen in einen zentralen münden - der unsterbliche Hauptkopf der Hydra, der begraben wurde statt verbrannt \cite{unkelHydraHermesHerkules2020}. Diese Sage ist wie andere Sagen von Herakles der Versuch, technisches Wissen, hier im Bezug zur Regulierung von Wasserläufen, womöglich ein Delta, an eine analphabetische Bevölkerung weiterzugeben.
+
+\subsection{Kiveri - Quelle im Meer}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/12/ts_kiveri.jpeg}
+    \caption{Die Quelle Kiveri mit Pumpwerk [Foto: Tabea Storch].}
+    \label{pic:kiveri}
+\end{figure}
+
+Eine weitere Quelle, aus der Wasser aus Stymphalia zu Tage tritt, ist die Quelle bei Kiveri. Hier kommen allerdings auch Wässer aus der arkadischen Hochebene um Tripoli, insbesondere der Argon Pedion Polje sowie der Kapsas Polje (siehe Kapitel \ref{sec:kapsia}), dazu. Das besondere an ihr ist, dass sie ins Meer schüttet. Deswegen wurde sie durch eine Mauer eingeschlossen, sodass das Süßwasser für die Landwirtschaft genutzt werden kann (siehe Abb. \ref{pic:kiveri}). Ein Pumpwerk ermöglicht dabei die technische Leitung des Wassers in die umliegenden großflächigen Agrarflächen der Argolis.
+
+\newpage
+
+\subsection{Nafplio}
+
+Nafplio, die provisorische Hauptstadt Griechenlands zum Ende des Unabhängigkeitskrieges, zählt heute knapp 14.000 Einwohner und ist bei Touristen aufgrund ihrer schmalen Gassen (siehe Abb. \ref{pic:nafplio}) und der Geschichtsträchtigkeit beliebt. Im Vergleich zu Tolo ist sie weitaus internationaler ausgerichtet, besitzt modernere Infrastruktur und ist auch höherpreisiger bei Übernachtunsmöglichkeiten und Freizeitangeboten. Dafür bietet sie aber auch mehr Angebot, alleine die drei Festungen Palamidi, Akronafplia und Bourtzi ziehen jährlich tausende Touristen an.
+
+\vspace*{\fill}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.66\textwidth]{pics/12/nafplio.png}
+    \caption{Einladende schmale Gasse in Nafplio, typisch die Balkone zur Straße hin.}
+    \label{pic:nafplio}
+\end{figure}
+
+%%%%%%%%%%
+% TAG 13 %
+%%%%%%%%%%
+
+\newpage
+
+\stepcounter{day}
+\section{06.10.2023}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/maps/tag13.png}
+    \caption{Stationen des \theday. Tages.}
+    \label{pic:tag13}
+\end{figure}
+
+An Tag \theday wurden die antike Stätte Epidavros, die Dolinen von Didyma sowie die Franchthi Höhle in der östlichen Argolis besucht.
+
+\subsection{Epidavros}
+
+Die antike Stätte Epidavros ist bekannt für eines der besterhaltesten antiken Amphitheater der Welt (siehe Abb. \ref{pic:epidavros}). Es fasst nach Erweiterungen bis zu 14.000 Zuschauer und hat eine legendäre Akustik. Sie ist so fein abgestimmt, dass ein Münzwurf oder einfaches Klatschen in der Mitte bis in die oberen Ränge gehört werden kann. Ein Selbstversuch hat gezeigt, dass normales Reden im Zentrum für das Verständis vieler Worte in den oberen Rängen ausreicht, lautes Reden wird deutlich verstanden. Das Theater wurde vor allem für Dramen zur Belustigung der Zuschauer genutzt, die Hochphase erlebt es ca. 400 v. Chr. in der klassisch-hellenistischen Zeit. Werden griechische und römische Amphitheater verglichen, fällt vor allem die Lage der Bauten auf: griechische Amphitheater sind meist in einen Hang eingebettet, römische stehen üblicherweise frei.
+
+Der weitere Komplex der Stätte zeigt diverse Tempel sowie ein Stadion, welches ebenfalls für die Panhellenischen Spiele genutzt wurde. Epidavros galt dem Gott der Heilkunst, Asklepios, sowie dessen Vater Apollon und fungierte als Heilstätte für viele Menschen bis in die Christianisierung hinein, die durch den sogenannten Traumschlaf auf eine Begegnung mit Asklepios und dessen Heilung hofften. Genau wie in Olympia (siehe Kapitel \ref{sec:olympia}) sind die meisten Bauwerke aus Muschelkalk (siehe Abb. \ref{pic:muschelkalk}) gebaut.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/13/ts_epidavros.jpeg}
+    \caption{Amphitheater von Epidavros. Ausgezeichnete antike Akustik: in den oberen Rängen kann bei Stille ein Münzwurf im Zentrum gehört werden [Foto: Tabea Storch].}
+    \label{pic:epidavros}
+\end{figure}
+
+\subsection{Dolinen, Didyma}
+
+Einsturzdolinen entstehen durch Einstürzen von Karsthöhlen. In Didyma können zwei beobachtet werden (siehe Abb. \ref{pic:didyma}), von denen eine ein Höhlenheiligtum in Form einer kleinen orthodoxen Kirche, eingebettet in die Dolinenwand (in Abb. \ref{pic:didyma} unten rechts), beinhaltet. Untypisch für die Schichtungen, die erkennbar sind, sind die Lage von Sedimenten überhalb von Karstgesteinen. Die Sedimente bestehen hauptsächlich aus Konglomeraten und Brekzien, sind also wahrscheinlich Schuttfächer von den umliegenden Bergen. Zudem steht hier, wie in Kapitel \ref{sec:noupeli} beschrieben, eine einzelne Zypresse direkt am Heiligtum und weißt dadurch auf eine spirituelle Stätte hin.
+
+Die Doline in Abb. \ref{pic:didyma} unten ist größer und aufgrund vielen Gerölls nicht gut begehbar. Auffällig ist ihre kreisrunde Form. 
+
+\subsection{Franchthi Höhle}
+
+Die Franchti Höhle im Osten des Argolischen Golfes (siehe Abb. \ref{pic:franchti}) wurde nachweislich seit dem Jungpaläolithikum vor ca. 40.000 Jahren bis zum Ende des Neolithikums vor ca. 5.000 Jahren von Menschen genutzt. Nicht dauerhaft besiedelt, aber immer wieder als temporärer Aufenthaltsort genutzt, wurden hier viele Artefakte aus verschiedenen Zeitaltern gefunden. Sie überblickt heute die Bucht von Kiladia, Teil des Argolischen Golfes. 
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/13/ph_didyma.jpg}
+    \includegraphics[width=\textwidth]{pics/13/ph_didyma2.jpg}
+    \caption{Einsturzdolinen in Didyma. Obere mit Höhlenheiligtum [Fotos: Phillip Hienle].}
+    \label{pic:didyma}
+\end{figure}
+
+Aufgrund der globalen Veränderungen des Meeresspiegels in der Vorgeschichte war die Bucht allerdings in Wirklichkeit eine kleine Küstenebene, die eine Sieldung der frühen Bronzeit beherbergte. Dort lebten wohl auch Siedler aus dem Neolithikum, die die Höhle unregelmäßig, zum Beispiel während Starkniederschlägen, nutzten. Untersuchungen zufolge kamen die Siedler wohl aus dem Nahen Osten und aktuelle Datierungen zeigen, dass das Neolithikum in der Franchthi Höhle früher begann als irgendwo anders in Griechenland \cite{Emery.Beck.ea2016}. Das wirft natürlich Fragen der Ausbreitung des Neolithikums auf, welche bisher grob durch die Route Afrika - Anatolien - Balkan - Mitteleuropa beschrieben werden konnte. Der Süden der Peloponnes und insbesondere die Franchti Höhle sind allerdings im Vergleich schon früher besiedelt gewesen als es der Landweg zugelassen hätte. Daher wird vermutet, dass die Siedler über das Meer kamen, was allerdings wegen der Vergänglichkeit der genutzen Materialen in der Seefahrt (Holz, Seile) schwierig nachzuweisen ist. Weitere Untersuchungen stehen noch aus und sollen Klarheit über das Rätsel bringen.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{pics/13/franchti.jpg}
+    \caption{Franchthi Höhle. Unten rechts unser sympathischer Leiter Ingmar.}
+    \label{pic:franchti}
+\end{figure}
+
+%%%%%%%%%%%%%
+% Abschluss %
+%%%%%%%%%%%%%
+
+\newpage
+
+\section*{Abschluss}
+\addcontentsline{toc}{section}{Abschluss}
+
+Am Abreisetag (Tag 14) wurde vor Abflug noch die Stätte Sounion südöstlich von Athen besucht, die Poseidon gewidment war. Die Stätte liegt auf einer Landzunge und bietet einen wunderbaren Rundumblick auf das Meer, ein schöner Abschluss einer schönen Exkursion.
+
+Abschließend bleibt nur zu sagen, dass ich dankbar bin für eine schöne, ereignisreiche und vielseitige Exkursion mit einer tollen, sympathischen Gruppe und einem wunderbaren Leiter. Die Peloponnes birgt viele interessante Orte, sowohl Natur als auch Kulturstätten, die es zu entdecken gab und weiterhin gibt. Das ausgezeichnete Essen vermisse ich jetzt schon und jeden Tag was neues zu erleben ist und bleibt der beste Alltagswechsel.
+
+Darüber hinaus hat die Exkursion einen guten Einblick in die Geologie und Geomorphologie der Region geben können und theoretische Grundlagen aus Vorlesungen praktisch vertieft. Die Erfahrungen und Erkenntnisse durch und während der Exkursion werden mir sicherlich noch lange im Gedächtnis bleiben.
+
+Ein letztes Foto zeigt die frische Kommunikation auf Augenhöhe zwischen Studis und Ingmar sowie die Emotionen, die durch viele unserer Kommentare ausgelöst wurden. Love it!
+
+\vspace{10mm}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.66\textwidth]{pics/abschluss.jpeg}
+    \caption{Verzweifelter Ingmar und die lachenden Studis. Dies wurde übrigens unser Gruppenbild im Chat.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% LITERATURVERZEICHNIS %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\renewcommand\refname{Literaturverzeichnis}
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\bibliographystyle{bibliography}
+\bibliography{literature}
+
+\hypertarget{ref:ha}{Die in Kapitel \ref{sec:navarino} angesprochene Hausarbeit kann unter \url{https://github.com/GrHalbgott/university/blob/main/4_greece_ex/paper.pdf} eingesehen werden.}
+
+%%%%%%%%%%
+% ANHANG %
+%%%%%%%%%%
+
+\newpage
+
+\appendix
+\section*{Anhang}
+\addcontentsline{toc}{section}{Anhang}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=0.66\textheight]{pics/einführung/schollen.png}
+    \caption{Bewegungen und Brüche der Grabenschultern am Graben von Korinth. Aus dem Exkursionsführer, nach Doris Kramer (2016, CAU)}
+    \label{pic:schollen}
+\end{figure}
+
+\end{document}

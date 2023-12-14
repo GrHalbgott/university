@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gom="https://gurumaps.app/kml/v1">
+ <Document>
+  <name>Greece-2023</name>
+  <gx:TimeStamp>2023-09-24T07:21:29.744Z</gx:TimeStamp>
+  <atom:author>
+   <atom:name>Guru Maps Pro/5.3.6</atom:name>
+  </atom:author>
+  <Placemark>
+   <name>Stop 1-1</name>
+   <description>Isthmia</description>
+   <gx:TimeStamp>2023-09-24T07:21:14.924Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.9938471762,37.9259456571,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 1-2</name>
+   <description>Isthmia</description>
+   <gx:TimeStamp>2023-09-24T07:45:34.966Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.9829071756,37.9360510543,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 1-3</name>
+   <description>Sousaki </description>
+   <gx:TimeStamp>2023-09-24T09:38:15.840Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>23.0871085141,37.9355675136,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 1-4</name>
+   <description>Kloster-Störung</description>
+   <gx:TimeStamp>2023-09-24T12:11:48.438Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.9695425915,37.9981575845,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 1-5</name>
+   <description>Heraion - Perachora </description>
+   <gx:TimeStamp>2023-09-24T13:05:29.455Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.8535571151,38.0285704711,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 1-6</name>
+   <description>Vouliagmeni </description>
+   <gx:TimeStamp>2023-09-24T14:13:10.796Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.8753122992,38.0252680848,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 2-2</name>
+   <description>Tiryns Damm</description>
+   <gx:TimeStamp>2023-09-25T10:49:28.906Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.845321077,37.6084425002,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 2-1</name>
+   <description>Tiryns </description>
+   <gx:TimeStamp>2023-09-25T10:50:06.542Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.8001299217,37.5978792299,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 2-3</name>
+   <description>Ancient Nemea</description>
+   <gx:TimeStamp>2023-09-25T12:08:35.097Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.7109537154,37.8074226325,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 3-1</name>
+   <description>Quelle Kefalari. Stymphalia </description>
+   <gx:TimeStamp>2023-09-26T06:36:22.037Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.5340843688,37.921340255,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 3-2</name>
+   <description>Stymphalia Dorf</description>
+   <gx:TimeStamp>2023-09-26T07:31:24.314Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4649815851,37.8699725758,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 3-3</name>
+   <description>Ancient Stymphalos </description>
+   <gx:TimeStamp>2023-09-26T09:03:54.776Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4617678341,37.8604379428,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 3-4</name>
+   <description>Hadrian Aquädukt Stymphalia </description>
+   <gx:TimeStamp>2023-09-26T11:58:52.703Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.480338676,37.8513014851,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 4-1</name>
+   <description>Winery Gioulis </description>
+   <gx:TimeStamp>2023-09-27T06:57:03.393Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.5803031615,37.9576145599,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 4-2</name>
+   <description>Pheneos-Stymphalia Pass</description>
+   <gx:TimeStamp>2023-09-27T09:33:08.038Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.3592824468,37.8737147536,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 5-1</name>
+   <description>Megagiannis Schluckloch, Ziria</description>
+   <gx:TimeStamp>2023-09-28T06:54:49.287Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4279639314,37.956262959,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 5-2</name>
+   <description>Ziria Ski Center </description>
+   <gx:TimeStamp>2023-09-28T07:25:22.786Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4310984845,37.9462264639,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Baum 1 Kiefer</name>
+   <description>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</description>
+   <gx:TimeStamp>2023-09-28T07:47:28.640Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4313235185,37.945607215,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 5-3</name>
+   <description>Hermes-Höhle </description>
+   <gx:TimeStamp>2023-09-28T08:35:04.905Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4311535751,37.9398303422,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Baum 2 - Tanne</name>
+   <description>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</description>
+   <gx:TimeStamp>2023-09-28T09:34:27.917Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4305071106,37.9396325181,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Baum 3 - Tanne</name>
+   <description>Ziria </description>
+   <gx:TimeStamp>2023-09-28T10:21:23.852Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4234117831,37.9288880089,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Baum 4 - Kiefer </name>
+   <description>Ziria </description>
+   <gx:TimeStamp>2023-09-28T14:12:08.343Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.4308458001,37.9481179218,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 6-1</name>
+   <description>Kato Achaia</description>
+   <gx:TimeStamp>2023-09-29T08:12:52.820Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.5514065157,38.1417299855,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 6-3</name>
+   <description>Kladeios Mauer</description>
+   <gx:TimeStamp>2023-09-29T12:11:35.970Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.6273961496,37.6406533402,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 6-4</name>
+   <description>Kotychi Lagune</description>
+   <gx:TimeStamp>2023-09-29T14:22:54.955Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.2843814707,38.0061205765,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <description>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</description>
+   <gx:TimeStamp>2023-09-29T15:37:46.951Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.3852497553,38.1517743258,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Baum 5 - Prokopos</name>
+   <description>Kiefer </description>
+   <gx:TimeStamp>2023-09-29T15:47:18.223Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.3844736882,38.1518790167,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 7-1</name>
+   <description>Selianitika </description>
+   <gx:TimeStamp>2023-09-30T08:11:49.050Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.0268394876,38.2849303311,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 7-2</name>
+   <description>Aigion </description>
+   <gx:TimeStamp>2023-09-30T08:12:14.784Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.075746078,38.2559268204,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 7-3</name>
+   <description>Meganitas</description>
+   <gx:TimeStamp>2023-09-30T09:04:07.239Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.0538447185,38.2552403869,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 7-4</name>
+   <description>Pyrgaki - Delta-Konglomerate </description>
+   <gx:TimeStamp>2023-09-30T09:59:35.426Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.0837050676,38.1792585116,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 7-5</name>
+   <description>Pyrgaki - Agios Blasios</description>
+   <gx:TimeStamp>2023-09-30T10:31:03.299Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.0812195476,38.1577739163,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 7-6</name>
+   <description>Plataniotissa</description>
+   <gx:TimeStamp>2023-09-30T11:18:06.507Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.0872364752,38.1118423353,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 9-2 </name>
+   <description>Romanos</description>
+   <gx:TimeStamp>2023-10-02T07:44:27.790Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.6491011799,36.9884168985,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 9-1</name>
+   <description>NEO/Costa Navarino</description>
+   <gx:TimeStamp>2023-10-02T09:48:17.975Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.6517190681,36.9893184084,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 9-3</name>
+   <description>Gialova Lagune</description>
+   <gx:TimeStamp>2023-10-02T10:24:01.099Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.6860292696,36.9574898299,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 9-4</name>
+   <description>Palaiokastro</description>
+   <gx:TimeStamp>2023-10-02T11:27:14.959Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.6573027318,36.9585263125,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 9-5</name>
+   <description>Pylos</description>
+   <gx:TimeStamp>2023-10-02T13:49:43.270Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.7026702041,36.9196179856,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 10-1</name>
+   <description>Methoni </description>
+   <gx:TimeStamp>2023-10-03T06:43:52.733Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.7047237425,36.8178707243,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 10-2</name>
+   <description>Peloponnes, Westgriechenland und Ionische Inseln, Griechenland</description>
+   <gx:TimeStamp>2023-10-03T08:08:25.399Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.7284382776,36.8111210799,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 10-3</name>
+   <description>Finikoundas </description>
+   <gx:TimeStamp>2023-10-03T08:44:43.035Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.8108086528,36.8074476111,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 10-4</name>
+   <description>Quelle von Noupeli</description>
+   <gx:TimeStamp>2023-10-03T10:04:44.319Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.8851808067,36.8266957033,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 10-5</name>
+   <description>Kloster Agios Theodoros</description>
+   <gx:TimeStamp>2023-10-03T11:17:04.001Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.888477338,36.837459391,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 11-2</name>
+   <description>Polylimnion Wasserfall </description>
+   <gx:TimeStamp>2023-10-04T08:25:49.993Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.8562260955,36.9849341871,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 11-1</name>
+   <description>Niokastro Pylos </description>
+   <gx:TimeStamp>2023-10-04T13:56:20.706Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>21.692121787,36.9113204078,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 11-3</name>
+   <description>Kapsia Höhle </description>
+   <gx:TimeStamp>2023-10-04T13:57:22.005Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.354748788,37.6224955922,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 12-1</name>
+   <description>Kefalari Argolis Quelle</description>
+   <gx:TimeStamp>2023-10-05T07:56:29.190Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.6886276504,37.5959870954,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 12-2</name>
+   <description>Lerna </description>
+   <gx:TimeStamp>2023-10-05T08:47:56.536Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.7178605778,37.5509513149,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 12-3</name>
+   <description>Liveri </description>
+   <gx:TimeStamp>2023-10-05T09:14:22.938Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>22.7380556247,37.5163065848,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 13-1</name>
+   <description>Epidavros</description>
+   <gx:TimeStamp>2023-10-06T07:49:30.848Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>23.0792272208,37.5961230961,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 13-2</name>
+   <description>Dolinen, Didyma </description>
+   <gx:TimeStamp>2023-10-06T09:33:58.837Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>23.1680205324,37.4696650206,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+   <name>Stop 12-3</name>
+   <description>Franchthi Höhle </description>
+   <gx:TimeStamp>2023-10-06T11:43:20.599Z</gx:TimeStamp>
+   <styleUrl>#BookmarkStyle_0</styleUrl>
+   <Point><coordinates>23.1311945973,37.4224830504,0.0</coordinates></Point>
+  </Placemark>
+  <Style id="BookmarkStyle_0">
+   <IconStyle>
+    <Icon>
+     <href>http://shared.gurumaps.app/s/img/bookmark/BookmarkStyle_0.png</href>
+    </Icon>
+   </IconStyle>
+  </Style>
+ </Document>
+</kml>
