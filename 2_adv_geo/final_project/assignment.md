@@ -75,15 +75,15 @@ The following files should be created in the output folder:
 
 ## Apply the best practices of scientific programming 
 
-- [ ] Use of functions and classes. Store them in a package and/or modules, not in your main script. 
-- [ ] Ensure good code style and comments. Use pre-commit. 
-- [ ] Write good documentation == good readme. Use a template for this. 
-- [ ] Provide an easy to execute example of your program in your readme.
-- [ ] Set up a clear folder and file structure (see below 'Project folder structure')   
-- [ ] Constantly create commits throughout the development process. Both students need to create commits!
-- [ ] Use vectorized functions if possible.
-- [ ] Write unit tests (minimum of 3 tests)
-- [ ] User friendly error handling, i.e. give the user meaningful error message so they can solve the problem themselves
+- [x] Use of functions and classes. Store them in a package and/or modules, not in your main script. 
+- [x] Ensure good code style and comments. Use pre-commit. 
+- [x] Write good documentation == good readme. Use a template for this. 
+- [x] Provide an easy to execute example of your program in your readme.
+- [x] Set up a clear folder and file structure (see below 'Project folder structure')   
+- [x] Constantly create commits throughout the development process. Both students need to create commits!
+- [x] Use vectorized functions if possible.
+- [x] Write unit tests (minimum of 3 tests)
+- [x] User friendly error handling, i.e. give the user meaningful error message so they can solve the problem themselves
 
 ### Project folder structure 
 
