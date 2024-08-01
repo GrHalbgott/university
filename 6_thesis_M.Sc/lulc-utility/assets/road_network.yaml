@@ -1,0 +1,96 @@
+# These are the tags of the road network that are queried from OSM
+tags:
+- '@osmId'
+- geometry
+- highway
+- maxspeed
+- maxspeed:type
+- source:maxspeed
+- zone:maxspeed
+- zone:traffic
+
+##############
+# Road types #
+##############
+
+# These are the road types that are queried from OSM (under 0.2 % of global proportion)
+road_types:
+- motorway
+- motorway_link
+- trunk
+- trunk_link
+- primary
+- secondary
+- tertiary
+- unclassified
+- cycleway
+- footway
+- living_street
+- path
+- pedestrian
+- residential
+- service
+- track
+
+# These are the optimized road types after preprocessing them
+road_types_optimized:
+- highways
+- primary
+- secondary
+- tertiary
+- unclassified
+- cycleway
+- footway
+- path
+- residential
+- service
+- track
+
+##########
+# Speeds #
+##########
+
+# This is the ISO code of the country the AOI belongs to for zone-dependent speed limits
+country_iso: DE
+
+# These are the tags of the road network which can be utilized for the speed class generation (with prioritized order)
+speed_cols:
+- zone:maxspeed
+- zone:traffic
+- maxspeed:type
+- source:maxspeed
+- maxspeed
+
+# These are the types of speed zones which will be transformed to maxspeed values
+speed_zone_types:
+- living_street
+- urban
+- rural
+- trunk
+- motorway
+
+# This dictionary maps speed limits to classes for categorization.
+speed_limit_classes:
+  # These are the upper bounds for each speed limit class.
+  class_bounds:
+  - 1
+  - 10
+  - 30
+  - 50
+  - 70
+  - 90
+  - 110
+  - 130
+  - 255
+  # These are the labels of the speed limit classes.
+  # Each class corresponds to the same index in the 'class_bounds' list
+  # For example index 1 in bounds (10) is the lower bound of very_low etc.
+  class_labels:
+  - walk
+  - very_low
+  - low
+  - medium
+  - high
+  - very_high
+  - very_high+
+  - unlimited

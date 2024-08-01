@@ -1,0 +1,16 @@
+name: graph-ma
+dependencies:
+  - pip==23.1.2
+  - geopandas==0.13.2
+  - osmnx==1.9.1
+  - seaborn==0.13.2
+  - pyarrow==15.0.2
+  - folium
+  - mapclassify
+  - yaml
+  - pathlib
+  - jupyter
+  - contextily      
+  - tqdm
+  - pip:
+    - ohsome==0.2.0

@@ -1,0 +1,696 @@
+\chapter{Theoretical Background}
+\label{sec:theory}
+
+This chapter provides the theoretical background for the study. It first gives an introduction to \gls{lulcm} and semantic segmentation. Afterwards, basics of \glspl{nn} and \glspl{dnn} are explained, including training concepts and some milestone model architectures for \gls{cv}. A deeper dive into the attention mechanism and the SegFormer architecture follows, which forms the primary theoretical emphasis of the study. This enables the integration of contextual data into the feature space, which is approached in the next chapter.
+
+%%%%%%%%%%
+\section{\glsfmtshort{lulc} Mapping}
+
+Being a classical remote sensing task and having largely profited from advancements in \gls{ml}, \gls{lulcm} is the process of segmenting satellite images into \gls{lulc} classes as seen in figure \ref{fig:lulc_seg} \autocite{Li.Cai.ea2024}. They represent natural and anthropogenic features on the Earth's surface, whereas \enquote{land use} is the human activity that takes place on the land, such as agriculture, forestry, or urban development, and \enquote{land cover} refers to the physical characteristics of the land, such as vegetation, water, or soil \autocite{Zhang.Li2022}. \gls{lulc} are critical components of the Earth's ecosystems and essential for monitoring and managing the environment \autocite{Zhao.Tu.ea2023}. Especially in the context of climate change and the quoted \glspl{sdg}, \gls{lulcm} is a key factor for understanding the impact of human activities on the environment and for developing strategies to mitigate these impacts \autocite{Moharram.Sundaram2023}.
+
+\textcite{Wang.Sun.ea2023} present a plethora of different \gls{lulc} products of different spatial scale, ranging from local to global products in both low and high spatial resolution. The literature on \gls{lulc} products is vast, with many studies focusing on the development of automated algorithms for creating better \gls{lulc} maps with higher resolutions on greater scales. These studies have used a variety of methods, including \gls{ml}, \gls{dl}, and traditional image processing techniques, to classify land cover and land use types, primarily from remote sensing data, but also by utilizing data fusion methods \autocite{Alhassan.Henry.ea2020,Comber.Wulder2019,Rangel.Terven.ea2024,Wang.Sun.ea2023,Yu.Liang.ea2014}.
+
+Traditionally, \gls{lulcm} was done manually or semi-automated using remote sensing data and domain knowledge. \gls{lulc} areas could be identified by their spatial distribution, phenotype, and morphology. Remote sensing data, especially satellite imagery, has been crucial for \gls{lulcm} since the Landsat-1 satellite in 1972, which carried the first multi-spectral camera system. Through this, \gls{lulc} areas could additionally be identified by their different spectral properties \autocite{Ustin.Middleton2021,Zhang.Li2022}. Satellite imagery has some unique characteristics, which is why it is used for \gls{lulcm}. It offers different spatial and temporal scales, can carry different payloads targeted at specific tasks like multi- and hyper-spectral imagery, and generates huge amounts of data in short time, both an advantage and a challenge \autocite{Rolf.Klemmer.ea2024}. At this time, despite \gls{lulcm} being highly accurate due to the expertise of the interpreter, it was time-consuming, spatially inefficient, and prone to discrepancies due to different interpretations \autocite{Rangel.Terven.ea2024,Tzepkenlis.Marthoglou.ea2023}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/lulc-m segmentation.pdf}
+    \caption[\glsfmtshort{lulc} Mapping]{Exemplary depiction of the \gls{lulc} mapping process from an RGB satellite image (left) to a segmented map of different \gls{lulc} classes (right), somewhere in southwestern Germany. Utilizing sophisticated \gls{dl} methods, more \gls{lulc} classes can be identified which otherwise could be not distinguished with the human eye. The segmentation method utilized different data than the satellite image depicted.}
+    \label{fig:lulc_seg}
+\end{figure}
+
+Over the years, advances in remote sensing technology have led to satellites with better resolutions also in multi-spectral wavelengths, thus improving the quality of satellite images and \gls{lulcm} simultaneously \autocite{Alhassan.Henry.ea2020,Cao.Zhu.ea2018,Kussul.Lavreniuk.ea2017,Zhang.Li2022}. But, their size and complexity have also increased, making manual interpretation even more challenging. With the recent progress in \gls{ai} and \gls{ml}, especially in the domain of \gls{cv}, \gls{lulcm} can be done more efficiently, both regarding time and spatial resolution \autocite{Comber.Wulder2019,Zhao.Tu.ea2023}. This progress highlights the shift from broad, general maps to highly detailed ones, offering precise information about land patterns and uses \autocite{Comber.Wulder2019,Ongsulee2017,Zhang.Li2022}. Although many algorithms for \gls{lulcm} exist and they already perform quite well, it continues to be a challenging task because of the high abstraction level from single pixels to objects to whole landscapes and the complexity of landscapes with various \gls{lulc} types \autocite{Qi.Wu.ea2015,Zhao.Tu.ea2023}.
+
+\textcite{Rangel.Terven.ea2024,Basheer.Wang.ea2022} name a plethora of different \gls{ml} models which have been successfully utilized for \gls{lulcm}, including \glspl{rf}, \glspl{ann}, as well as ensemble learning methods. \autocite{Li.Cai.ea2024,Moharram.Sundaram2023,Rangel.Terven.ea2024}. However, the most promising results are dominated by \gls{dl} models like \glspl{cnn}, Autoencoders, Transformers, and their follow-ups, published only recently \autocite{Li.Cai.ea2024,Rangel.Terven.ea2024,Tzepkenlis.Marthoglou.ea2023}. This is also shown by \textcite{Boston.VanDijk.ea2022,Kussul.Lavreniuk.ea2017}. They compared the performance of \glspl{cnn} and \glspl{rf} for \gls{lulcm} and found that the \glspl{cnn} outperformed the \glspl{rf} in terms of accuracy and computational efficiency. A similar conclusion was made by \textcite{Digra.Dhir.ea2022,Moharram.Sundaram2023,Tzepkenlis.Marthoglou.ea2023}, who value the \gls{dl} approaches more promising for \gls{lulcm} than other \gls{ml} models, emphasizing their high potential for innovative advancements in the future.
+
+%%%%%%%%%%
+\section{Semantic Segmentation}
+
+There are two main types of \gls{dl} based \gls{cv} methods that have proven their suitability for \gls{lulcm}, particularly image classification and image segmentation \autocite{Boston.VanDijk.ea2022,Digra.Dhir.ea2022,Kussul.Lavreniuk.ea2017}. While classification utilizes object detection methods to label whole images based on the detected primary object in them, segmentation assigns each pixel to a class based on its spectral properties and spatial relationships, allowing for a more detailed analysis of the image \autocite{Alhassan.Henry.ea2020,Li.Cai.ea2024,Rangel.Terven.ea2024,Szeliski2022}. It is important to differentiate between classification and segmentation, as these terms are occasionally used interchangeably by authors \autocite{Cao.Zhu.ea2018,Onim.Ehtesham.ea2020}. This confusion arises because segmentation involves categorizing segments, essentially classifying them into different groups, therefore, incorporating classification \autocite{Alhassan.Henry.ea2020}.
+
+Because image segmentation considers all pixels in an image and not only the whole image, it is more suitable for detailed \gls{lulcm} mapping \autocite{Li.Cai.ea2024}. Moreover, it distinguishes itself from image classification and object detection by its necessity to segment even unknown objects. To be more specific, it has to acquire new knowledge about a class without prior knowledge about it \autocite{Guo.Liu.ea2018}. This proves an additional challenge on the one hand, but a strong advantage on the other hand. Furthermore, \textcite{Chen.Liu.ea2023,Guo.Liu.ea2018} state that semantic segmentation requires less preprocessing of the data and is more efficient in predicting end-to-end ground features, because it processes multi-spectral images in full rather than patch- or feature-based. That makes image segmentation all in all very suitable for tasks like \gls{lulcm}.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{0.24\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/sseg_1.png}
+        \caption{Original Image.}
+    \end{subfigure}
+    \begin{subfigure}{0.24\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/sseg_2.png}
+        \caption{Semantic Segmentation.}
+    \end{subfigure}
+    \begin{subfigure}{0.24\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/sseg_3.png}
+        \caption{Instance Segmentation.}
+    \end{subfigure}
+    \begin{subfigure}{0.24\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/sseg_4.png}
+        \caption{Panoptic Segmentation.}
+    \end{subfigure}
+    \caption[Types of Image Segmentation]{The three different image segmentation types compared to the original image (A), semantic (B), instance (C), and panoptic segmentation (D). Adapted from \textcite{Kirillov.He.ea2019,Szeliski2022}.}
+    \label{fig:segmentation}
+\end{figure}
+
+In image segmentation, there are three main types: instance segmentation, semantic segmentation, and panoptic segmentation, which are exemplarily shown in figure \ref{fig:segmentation}. Instance segmentation, strongly building on object detection methods, identifies every significant object within an image and creates precise pixel-level outlines for their visible areas. In semantic segmentation, each pixel of the whole image is assigned to a class without distinguishing between different objects within the same class. Panoptic segmentation is a combination of these two, identifying and segmenting significant objects, but also assigning everything else in the image to classes \autocite{Li.Cai.ea2024,Minaee.Boykov.ea2022,Szeliski2022}.
+
+In the context of \gls{lulcm}, semantic segmentation is advantageous for its missing focus on specific objects, but classes distributed over the whole image. Semantic in this context means that similar features inherit similar characteristics, they are \enquote{semantically} related \autocite{Shanmugamani2018}. Contrary to the other two image segmentation types, semantic segmentation treats all instances of a class as a single entity. This means that if an image contains multiple objects of the same class, such as several cars, semantic segmentation does not distinguish between different cars but labels all pixels belonging to any car as \enquote{car}. The focus is on understanding the image at a class level, identifying and categorizing the entire area of the image into meaningful classes based on the spectral properties of the pixels and function of the regions, without concern for individual object identities. Thus, \gls{lulcm} is preferably done by utilizing semantic segmentation, although other methods also are suitable \autocite{Li.Cai.ea2024,Minaee.Boykov.ea2022,Shanmugamani2018,Szeliski2022}.
+
+%%%%%%%%%%
+\section{Machine \& \glsentrylong{dl}}
+
+In order to understand the process of \gls{lulcm} using semantic segmentation and why \gls{dl} is so computationally demanding, it is necessary to have a basic understanding of the fundamentals of \gls{ml}, \gls{dl}, and the training process of \glspl{ann}. \gls{dl} is a subfield of \gls{ml}, a field that emphasizes data-driven pattern recognition. Unlike traditional programming, where tasks are solved by explicitly programming rules, \gls{ml} algorithms learn these rules from the data on their own. This \enquote{black box} approach, where the input is data and the output is an applicable model rather than a result, has revolutionized many fields \autocite{Bernard2021,Sarker2021,Shinde.Shah2018}. \gls{ml} algorithms are adept at recognizing complex patterns in data. Once these patterns are learned, they can be applied to new problems for prediction. This has led to their widespread use in diverse fields such as \gls{cv} and \gls{nlp}. They are suitable for a plethora of tasks, such as classification, regression, transcription, translation, anomaly detection, and missing value imputation, along with many others. The choice of model depends on the task at hand, the data available, and the desired outcome \autocite{Goodfellow.Bengio.ea2016}.
+
+The main difference between \gls{ml} and \gls{dl} is the complexity of the models. \gls{ml} models are usually simpler and have fewer parameters, making them easier to interpret and faster to train. However, they need elaborate manual preprocessing of data, feature extraction, and feature selection to perform well. \gls{dl} models, on the other hand, are more complex and have more parameters, making them harder to interpret and slower to train. But, they can learn complex patterns from raw data, eliminating the need for manual feature extraction and selection. This makes them more suitable for tasks where the data is complex and the patterns are not easily discernible. Furthermore, \gls{dl} models are highly scalable, adapting to the problem at hand, and offer a high degree of generalization, where the same model architectures can be used with different data for multiple tasks \autocite{Alzubaidi.Zhang.ea2021}.
+
+In \gls{dl}, models mimic the complex \gls{nn} of the human brain to analyze and interpret data. Multi-layered (deep) \glspl{ann} are employed for feature extraction, utilizing these features for predictive and decision-making purposes. The advantages of \gls{dl} include the capability to process complex and voluminous data, achieve high accuracy, and autonomously identify data features, further enhancing its suitability for named fields \autocite{Bernard2021,Szeliski2022}. Nonetheless, it faces challenges such as the need for extensive datasets for training, significant computational resources, and specific data quality demands. Moreover, the models are difficult to interpret due to their \enquote{black box} approach and high complexity. Still, \gls{dl} incorporates a range of architectures of cutting-edge models, which played a crucial role in the progression of the field, offering solutions to previously challenging problems and paving the way for new research and practical applications \autocite{Sarker2021,Cao2022,Reichstein.Camps-Valls.ea2019}.
+
+\gls{ml} and \gls{dl} algorithms can be split into two main paradigms: supervised and unsupervised. In supervised learning, the algorithm learns from labeled data, where the input data is paired with the correct output. The algorithm learns to map the input data to the output data, making predictions based on this mapping. In unsupervised learning, the algorithm learns from unlabeled data, where the input data is not paired with the correct output. The algorithm learns to find patterns in the data without \enquote{knowing} what the data is, clustering similar data points together or reducing the dimensionality of the data \autocite{Goodfellow.Bengio.ea2016,Shinde.Shah2018,Szeliski2022,Zhang.Lipton.ea2023}. There are also subclasses like semi- and self-supervised, but these are not as relevant at this point.
+
+Semantic segmentation can be both, supervised and unsupervised \autocite{Guo.Liu.ea2018,Hamilton.Zhang.ea2022,Zhao.Tu.ea2023}. But, for \gls{lulcm}, as it requires labeled data to learn the mapping between the input data and the output data, it usually is supervised, although much research is focused on semi- and self-supervised learning methods \autocite{Guo.Liu.ea2018,Li.Cai.ea2024}. Nevertheless, the basic architectures and training concepts are the same for both paradigms. 
+
+%%%%%%%%%%
+\section{\glsentrylongpl{ann}}
+
+In their essence, \glspl{ann}, called \glspl{nn} from this point on, are constructs of multiple multiplication and addition operations, which are performed on the input data to produce an output. They are composed of multiple layers of interconnected nodes, or neurons, that process data in a hierarchical manner. Each layer of an \gls{nn} performs a specific transformation on the input data, and the output of one layer serves as the input to the next layer. The final layer of the network produces the output, which is used to make predictions or decisions \autocite{Goodfellow.Bengio.ea2016}. These operations are carried out in the form of matrix multiplications and additions, where the features' weights are learned during the training process. This involves adjusting the weights of the model to minimize the difference between the predicted output and the actual output, using a process called backpropagation. Different kinds of layers, such as convolutional, pooling, and fully connected, as well as activation functions, regularization techniques, and optimization algorithms, are used to build the different architectures of \glspl{nn} and \glspl{dnn} \autocite{Goodfellow.Bengio.ea2016,LeCun.Bengio.ea2015,Szeliski2022,Zhang.Lipton.ea2023}.
+
+Some of these terms are explained in more detail in the following sections with the focus on classification tasks, as they are the basis for semantic segmentation and the development of the SegFormer. \gls{ml} and especially \gls{dl} are vast fields with much current research going on. This study only provides an overview of the basics to understand the SegFormer architecture and the framework of the utilized \gls{lulcu}. For further information, especially for a deeper explanation of the mathematical background, the works of \textcite{Bernard2021,Bishop2006,Goodfellow.Bengio.ea2016,Nielsen2015,Zhang.Lipton.ea2023} are recommended, among others.
+
+%%%%%%%%%%
+\subsection{Perceptrons}
+
+In \gls{ml}, the simplest \gls{nn} is the Perceptron, an algorithm for supervised binary classification, capable of predicting whether an input belongs to a given class \autocite{Rosenblatt1957}. Consisting solely of one artificial neuron (called simply neuron from this point on), the perceptron is inspired by the biological neuron in the brain's nervous system, capable of classifying linearly separable data \autocite{Rosenblatt1957,Szeliski2022}. The following detailed explanation of the Perceptron is summarized from \textcite{Bernard2021,Bishop2006,Goodfellow.Bengio.ea2016,LeCun.Bengio.ea2015,Nielsen2015,Szeliski2022,Zhang.Lipton.ea2023}, where more details can be found.
+
+%%%%%%%%%%
+\subsubsection*{Architecture \& Forward Propagation}
+\label{subsec:perceptron}
+
+Technically not a network, the perceptron, visualized in figure \ref{fig:perceptron}, utilizes a single neuron to make binary classifications. It consists of three main components: input features, weights, and bias. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=.66\textwidth]{Figures/theory/perceptron.pdf}
+    \caption[Perceptron Architecture]{Schematic visualization of the Perceptron's architecture. In gray the artificial neuron. Conceptualized from \textcite{Nielsen2015,Sarker2021}.}
+    \label{fig:perceptron}
+\end{figure}
+
+The input features are the characteristics or properties of the data item being classified, represented as a vector \( \mathbf{x} = [x_1, x_2, \ldots, x_n] \), where \( n \) is the number of features. Each \( x_i \) is a numerical value indicating the presence or magnitude of a specific characteristic of the input. Each feature \( x_i \) is associated with a weight \( w_i \), which are adjustable parameters that determine the importance of each feature in the classification process. Initially, these weights can be set to small random values or zeros.
+
+In addition to weights, the Perceptron includes a bias \( b \), an additional parameter that helps adjust the output independently of the input features. The bias allows the decision boundary to shift to a specific value range, increasing the model's flexibility for particular tasks.
+
+The Perceptron computes a weighted sum \autocite{Nielsen2015,Szeliski2022} of the input features plus the bias with
+\begin{equation}
+    z = \sum_{i=1}^n w_i x_i + b
+\end{equation}
+as shown inside the neuron in figure \ref{fig:perceptron}. This sum, \( z \), is also known as the activation value, which is fed into a so called activation function. For binary classification, the Perceptron uses a step activation function, which outputs one class label if \( z \) is above a certain threshold (typically zero) and another class label if it is below. Therefore, this function transforms the linear combination of inputs into a binary decision. The process of feeding input vectors into the neuron, which calculates the weights sum and applies the activation function, is called forward propagation, the first step in the training process of the Perceptron.
+
+%%%%%%%%%%
+\subsubsection*{Training}
+\label{subsec:training_perceptron}
+
+Training the Perceptron involves adjusting the weights and bias to minimize classification errors on a training dataset. This process is iterative and involves a straightforward algorithm consisting of forward and backward passes through the model, called steps. Initially, weights \( w_i \) and bias \( b \) are set to small random values or zeros. For each training example \([\mathbf{x}^{(t)}, y^{(t)}]\), where \( y^{(t)} \) is the true label for a specific training sample, the weighted sum \( z \) is computed. The activation function is applied to get the predicted output \( \hat{y}^{(t)} \). Then, the error \( e^{(t)} \) \autocite{Bishop2006} is calculated as
+\begin{equation}
+    e^{(t)} = y^{(t)} - \hat{y}^{(t)}
+\end{equation}
+and the weights and bias are updated based on the error. The updates are done using the learning rate \( \eta \), which controls how much the weights are adjusted  \autocite{Zhang.Lipton.ea2023}. The weight update is proportional to the product of the error, the input feature, and the learning rate, while the bias update is proportional to the product of the error and the learning rate, specifically,
+\begin{equation}
+    w_i \leftarrow w_i + \eta \cdot e^{(t)} \cdot x_i^{(t)} \quad\text{and}\quad b \leftarrow b + \eta \cdot e^{(t)}.
+\end{equation}
+
+Minimizing the error by updating weights and biases is done for multiple steps, until the algorithm reaches a state where further training does not significantly alter both components. At this point it has reached convergence, indicating that it has effectively learned from the training data.
+
+%%%%%%%%%%
+\subsubsection*{Inference}
+
+Once the Perceptron is trained, having adjusted its weights and biases to minimize classification errors on the training dataset, it can then be used to classify new, unseen data. The process for classifying new data points involves calculating the weighted sum using the learned weights and biases, applying the activation function, and outputting the predicted class label, all in only one forward pass. This process is known as inference, where the model applies the learned patterns to new data to make predictions.
+
+In some cases, after initial deployment, the Perceptron's performance might be evaluated further. If the classification accuracy on new data is not satisfactory, additional adjustments or retraining with more data might be necessary.
+
+%%%%%%%%%%
+\subsubsection*{Activation Functions}
+\label{subsec:activation}
+
+While the Perceptron is simple and intuitive, it has a defining limitation. It can only solve problems that are linearly separable and might struggle converging with other data. To overcome this limitation, other activation functions \( h \) like the very popular \gls{relu} \autocite{Szeliski2022} can be utilized. This allows non-linear decision boundaries with
+\begin{equation}
+    h(z) = max(0, z),
+\end{equation}
+whereas \( z \) is the aforementioned weighted sum, put into a different mathematical context. This effectively forms a new type of neuron which responds differently to the data. Other popular activation functions include sigmoid, tanh, and adaptations of \glspl{relu}, among others. They all are aimed at introducing directed non-linearity into the model, allowing it to learn more complex patterns in the data tailored at specific tasks and laying the foundation for more complex \gls{nn} architectures.
+
+%%%%%%%%%%
+\subsection{\glsentrylongpl{mlp}}
+\label{subsec:mlp}
+
+Using Perceptrons as the basis, more complex \gls{nn} architectures can be constructed by organizing neurons into multiple consecutive layers. Such architectures are similar to Perceptrons, as they also consist of inputs, neurons, and outputs, with the difference that they introduce layers of these three components, effectively forming a neur(on)al network with multiple Perceptrons. \glspl{nn} usually have three groups of layers, an input layer, an output layer, and at least one hidden layer in between. Figure \ref{fig:mlp} visualizes a more complex \gls{nn}. This architecture is called a \gls{ffn}, for information is fed forward through the network without loops \autocite{Nielsen2015,Sarker2021,Szeliski2022}. The hidden layers consist of multiple neurons which perform the weighted summation and application of the activation function, while the output layer produces the final prediction.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=.9\textwidth]{Figures/theory/mlp.pdf}
+    \caption[\glsentrylong{mlp} Architecture]{Detailed schematic visualization of the \glsfmtshort{mlp} architecture with two hidden layers and one output, all fully connected. The nodes represent neurons, weights are implicitly included in the arrows. Weight summation and activation functions are added representatively to the top neurons. Different activation functions are used solely for illustration. Conceptualized from \textcite{Bernard2021,Nielsen2015,Szeliski2022}.}
+    \label{fig:mlp}
+\end{figure}
+
+In the case of the depicted network, the layers are fully connected, meaning that each neuron in one layer is connected to every neuron in the next layer, feeding their activated weighted sum into the next layer of neurons. A network that consists only of fully connected layers is called \gls{mlp}. Despite its name, it usually uses non-linear activation functions and therefore other types of neurons than Perceptrons. This architecture, alongside using non-linear activation functions and different types of connections between the layers, allows models to learn complex patterns in the data, forming the foundation for the majority of subsequent \gls{dnn} \autocite{Goodfellow.Bengio.ea2016,Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsubsection*{Increase in Complexity}
+
+\glspl{mlp} can be increased in complexity and, thus, training capabilities. By adding more neurons to a hidden layer, the network gets wider, enhancing its capacity to capture diverse information from the input data. However, this can lead to a higher tendency for overfitting, where the model learns the training data too well to generalize effectively to new data. On the other hand, adding more hidden layers results in a deeper network, capable of learning more complex patterns. This depth, though, demands more computational resources and a larger dataset for effective training. A network with just one hidden layer is termed a shallow \gls{nn}, whereas those with multiple hidden layers are referred to as \glspl{dnn} \autocite{Bernard2021,Nielsen2015,Zhang.Lipton.ea2023}. The \gls{mlp} in figure \ref{fig:mlp}, for example, is a \gls{dnn} with two hidden layers and a (maximal) width of four neurons, for illustration purposes.
+
+%%%%%%%%%%
+\subsubsection*{Softmax Function}
+\label{subsec:softmax}
+
+Along with offering more neurons and layers for a deeper understanding of patterns in the data, \glspl{mlp} offer another enhancement. When using them for multi-class classification, the output layer can consist of multiple neurons corresponding to the different classes rather than resulting in only one output as shown in both the aforementioned \glspl{nn}. Depending on applied weights and biases, the raw output scores (logits) can be scaled differently, making their comparison and fusion difficult. For this purpose, a so called softmax function (called simply softmax from this point on) is introduced, where the logits are passed through. The softmax produces a vector with normalized logits, converting them into probabilities. These probabilities indicate the likelihood of the input data belonging to each class, allowing the model to make a decision based on the highest probability \autocite{Goodfellow.Bengio.ea2016,Szeliski2022}.
+
+The formula for the softmax for class \( i \) over all classes \( j \) is given by
+\begin{equation}
+    \hat{y}_i = \frac{\exp(o_i)}{\sum_{j} \exp(o_j)} \quad\text{resulting to}\quad \mathbf{\hat{y}} = \text{softmax}(\mathbf{o}),
+\end{equation}
+whereas \( o_i \) is the logit and \( \hat{y}_i \) the predicted probability for class \( i \), respectively. Note that the largest value of \( \mathbf{o} \) corresponds to the class with the highest probability according to \( \mathbf{\hat{y}} \) \autocite{Goodfellow.Bengio.ea2016,Szeliski2022,Zhang.Lipton.ea2023}. 
+
+The softmax applies the exponential function to each logit, magnifying the differences among them. This means higher logits get much larger probabilities than lower ones. Additionally, since all logits are made positive through exponentiation and normalized by dividing by the total of all exponentiated logits, the output values are constrained between 0 and 1, summing up to 1, effectively making them interpretable as probabilities \autocite{Nielsen2015,Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\section{Training (Deep) \glsentrylongpl{nn}}
+\label{subsec:training}
+
+As seen in section \ref{subsec:training_perceptron}, the perceptron is trained by calculating one error term \( e^{(t)} \) and updating the one bias and the according weights. In contrast to that, training \glspl{nn} is more complex due to their multi-layer structure, where every neuron inherits and produces weights and biases. It involves minimizing a loss function through an iterative optimization process known as gradient descent. This process is enabled by backpropagation, an algorithm that efficiently computes gradients for adapting each parameter in the network. In this section, these concepts are explained in more detail to provide a better understanding of the complex training process of \glspl{nn}, which also applies to \glspl{dnn}, in order to show why \gls{dl} is so computationally demanding. Additionally, these concepts come into effect in the \gls{lulcu}, especially optimization techniques, to increase the training efficiency and make the framework adaptable and scalable. 
+
+%%%%%%%%%%
+\subsection{Tensors \& Feature Space}    
+
+The first thing to mention is the data which is used in \gls{ml} and \gls{dl}, specifically focusing on tensors and the feature space, which are fundamentally interconnected. Tensors, which can be scalars (0D), vectors (1D), matrices (2D), or higher-dimensional arrays (3D, 4D, etc.), represent numerical data within the feature space. They can be arithmetically altered, providing a flexible datatype for efficiently handling data, and are used to represent input data, weights, biases, and intermediate results during training and inference. They are the fundamental data structure in \gls{dl}, allowing for efficient computation and storage of large amounts of data \autocite{Goodfellow.Bengio.ea2016,Zhang.Lipton.ea2023}
+
+The shape of a tensor directly reflects the structure of the feature space. For example, an image with a resolution of \( 100 \times 100 \) pixels and three color channels (RGB) can be represented as a 3D tensor with the shape \( (100, 100, 3) \), where the first two dimensions represent the spatial dimensions of the image, height and width, and the third represents the color channels, red, green, and blue. The channels represent the value vectors of the features, in this case pixels, so all the information values the pixels can have on multiple dimensions (red, green, and blue) in the according image spaces. Therefore, feature space primarily means the channels of the tensors. More channels mean larger feature space, as features can have more information values describing the features/pixels \autocite{Bernard2021,Bishop2006,Courtial.Touya.ea2022,Szeliski2022,Zhang.Lipton.ea2023}.
+
+\enquote{Input data} from this point on means input tensor, feature space means dimensionality or channels of the according tensor.
+
+%%%%%%%%%%
+\subsection{Loss Functions}
+\label{subsec:loss}
+
+The loss function is a measure of the model's performance, indicating how well the model's predictions match the true labels, similar to the error when training perceptrons. Loss functions are used to aggregate the error over all instances, including softmax vectors, and map it to a non-negative value to guide the learning process. Again, the goal is to reach convergence by minimizing this aggregated loss, thereby improving the model's predictions. For different tasks and different datasets, specific loss functions can be used to and enhance the adaptability and flexibility of \glspl{nn} \autocite{Bernard2021,Goodfellow.Bengio.ea2016,Janocha.Czarnecki2017}. 
+
+Common loss functions include the Mean Squared Error for regression tasks and the \gls{cle} for classification tasks \autocite{Goodfellow.Bengio.ea2016,Janocha.Czarnecki2017,Szeliski2022}. \gls{cle}, also called the log loss, measures the performance of a classification model whose output is a probability value between 0 and 1, indicating the belonging to a class (softmax). The loss \( L \) is defined as
+\begin{equation}
+    L_{\gls{cle}}(y,\hat{y}) = -\sum_{i} y_{i} \log(\hat{y}_{i}),
+\end{equation}
+whereas \( y_{i} \) is the true label (0 or 1) and \( \hat{y}_{i} \) is the predicted probability for class \( i \), respectively \autocite{Zhang.Lipton.ea2023}. Minimizing this loss function ensures that the predicted probabilities are as close as possible to the true labels.
+
+An example: for a three-class classification problem, the softmax vector is \( [0.1, 0.7, 0.2] \). Suppose the true label is class 2, so classes 1 and 3 are 0/false and class 2 is 1/true. The \gls{cle} is calculated as
+\begin{equation}
+    L_{\gls{cle}} = -(0\cdot\log(0.1) + 1\cdot\log(0.7) + 0\cdot\log(0.2)) = -\log(0.7) \approx 0.155
+\end{equation}
+while for a true label of class 3, the loss would be \( -\log(0.2) \approx 0.7 \). This simple example shows that the loss function penalizes the model more for incorrect predictions. For a perfect probability of 1 for the true class, the loss would be 0, indicating a perfect prediction \autocite{Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsection{Gradient Descent}
+
+In order to minimize the loss, the weights and biases of all neurons have to be adjusted. This is where gradient descent comes into play, an optimization algorithm originally proposed by Cauchy in 1847 \autocite{Netrapalli2019}. Gradient descent is used to minimize the loss function by iteratively adjusting the model's parameters in the opposite direction of the gradient of the loss function with respect to the parameters. Figure \ref{fig:gd} visualizes this concept of gradient descent. \textcite{Goodfellow.Bengio.ea2016} explain it this way: \enquote{Suppose we have a function \( y = f(x) \), where both \( x \) and \( y \) are real numbers. The derivative of this function is denoted as \( f'(x) \)  or as \( \frac{dy}{dx} \). The derivative \( f'(x) \) gives the slope of \( f(x) \) at the point \( x \). In other words, it specifies how to scale a small change in the input to obtain the corresponding change in the output} \autocite[81]{Goodfellow.Bengio.ea2016}. So, the gradient is the derivative of the loss function, mathematically representing the slope of the loss function at a specific point \autocite{Nielsen2015,Szeliski2022}. This is why all calculations in \glspl{nn} aimed at training the model, especially the loss function, have to be differentiable, so the gradient can be calculated. This restricts the usage of some activation functions and loss functions.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{0.73\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{Figures/theory/gradient_descent.png}
+        \caption{Mathematical Gradient Descent \autocite{Goodfellow.Bengio.ea2016}.}
+        \label{fig:gd}
+    \end{subfigure}
+    \begin{subfigure}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/gd_landscape.png}
+        \caption{Gradient Descent visualized as a landscape. Adapted from \textcite{Bernard2021}.}
+        \label{fig:gd_landscape}
+    \end{subfigure}
+    \caption[Gradient Descent]{Illustrating how the gradient descent algorithm uses the derivatives of a function to follow the function downhill to a minimum.}
+\end{figure}
+
+In visual language, gradient descent can be described as moving downhill in a mountainous landscape to reach the lowest point. The landscape represents the feature space, where each position on the surface represents a particular set of parameters (weights and biases) of the model. Figure \ref{fig:gd_landscape} visualizes this further, showing the landscape for two parameters \( w_1 \) and \( w_2 \) and the current point \( w_{init} \), representing the current step's loss gradient. The steepness and direction of the slope at the current position represent the gradient of the loss function. Gradient descent aims to find the direction of which the network should shift its parameters to further minimize errors along the steepest path possible. This is done iterative, adjusting the parameters based on the gradient for each step \autocite{Bernard2021,Goodfellow.Bengio.ea2016,Nielsen2015,Szeliski2022}.
+
+%%%%%%%%%%
+\subsubsection*{Global \& Local Minima}
+
+In \glspl{dnn}, the landscape is much more complex with multiple dimensions and many parameters, usually millions, often even exceeding the number of training samples. In that high-dimensional feature space, this over-parametrization creates multiple local minima along the global minimum. The gradient descent follows the steepest path towards the next minimum, so it often aims towards the local minimum rather than the global minimum, which would represent the best model performance with the lowest loss. This is why the gradient descent is called a local optimization method \autocite{Bernard2021,Szeliski2022}.
+
+Yet, the high-dimensionality is the problem and the solution at the same time. Because of so many parameters, there are multiple options to achieve a good model performance, even if the global minimum is not reached. \enquote{Also, the dimension of the cost-function space is so high that there is often a way out: even when the network seems to get stuck in a minima, one of the many directions might allow for escape. Finally, the gradient descent procedure is likely to end up in a local minima that has a large basin of attraction} \autocite[289]{Bernard2021}, which would be an acceptable minimum \autocite{Bernard2021,Goodfellow.Bengio.ea2016,Szeliski2022}.
+
+%%%%%%%%%%
+\subsubsection*{\glsentrylong{sgd}}
+
+For large \glspl{dnn}, calculating the gradient descent is computationally inefficient, because it would need to sum the loss function over all training samples. Instead, the \gls{sgd} is utilized, which only uses a single training sample \( n \) to calculate the gradient of the according loss function \( L_n(w) \). But, because only using a single sample results in a noisy and inaccurate estimate of a suitable descent direction, the losses and gradients of a small subset of the training data are summed with 
+\begin{equation}
+    L_\mathcal{B}(\mathbf{w}) = \sum_{n \in \mathcal{B}} L_n(\mathbf{w}) 
+\end{equation}
+for the vector of weights \( \mathbf{w} \) consisting of the according weights of the minibatch \( \mathcal{B} \), a small subset of the training data \autocite{Szeliski2022}. Using this method, a similar estimate of the gradient descent direction can be calculated without needing the entire training dataset. This speeds up the training process and allows for more frequent updates of the model's parameters \autocite{Bernard2021,Goyal.Dollar.ea2018,Netrapalli2019,Szeliski2022,Zhang.Lipton.ea2023}.
+
+After calculating the \gls{sgd}, the weights can be updated by taking a step in the gradient direction with a temporal dependency by using
+\begin{equation}
+    \mathbf{w}^{(t+i)} \leftarrow \mathbf{w}^{(t)} - \eta^{(t)} \cdot \mathbf{g}^{(t)}
+\label{eq:sgd}
+\end{equation}
+with the summed gradient \( \mathbf{g} \) denoted as
+\begin{equation}
+    \mathbf{g} = \nabla_\mathbf{w} L_\mathcal{B},
+\end{equation}
+whereas \( i \) are the steps ahead of the current step \( t \) and \( \eta^{(t)} \) the current learning rate, a hyperparameter that controls the size of the step taken in the gradient direction \autocite{Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsubsection*{Learning Rate \& Optimizers}
+
+The learning rate is crucial for the training process, as it determines how quickly the model learns and how well it generalizes to new data. If the learning rate is too small, the convergence will be too slow, and if it is too large, the model might not even converge and training infinitely until terminated. The choice of learning rate depends on the specific task, the dataset, and the model architecture, and it is usually tuned through hyperparameter optimization \autocite{Bernard2021,Szeliski2022}.
+
+To enhance this procedure, optimizers can be utilized, of which the the Adam optimizer \autocite{Kingma.Ba2015} is the most popular one. Most of these optimizers, also called adaptive learning rate methods, follow a simple principle to optimize the learning rate: when successive gradients are in the same direction, the learning rate is increased, are the gradients in the opposite directions, it is decreased. They often implement further optimization techniques to optimize their optimization method, like decaying averages of gradients, but this will not be elaborated further at this point. The automatic adaptation of the learning rate allows for optimized convergence, increasing the model's efficiency and achieving good loss minimization \autocite{Bernard2021,Kingma.Ba2015,Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsection{Backpropagation}
+
+Efficiently computing the \gls{sgd} and updating the according weights is mandatory for training \glspl{dnn}. This is done via \enquote{backward propagation of errors}, backpropagation for short \autocite{Szeliski2022}.
+
+During forward propagation (explained in section \ref{subsec:perceptron}), the input data is passed through the network, layer by layer, to produce an output. Each layer applies its weights and activation functions to transform the data. The output is then compared to the true label using a loss function, which quantifies the error of the network's prediction. In order to effectively apply the \gls{sgd}, it has to be calculated how much each parameter in the network contributed to the overall error. For this, a backward pass is performed \autocite{Goodfellow.Bengio.ea2016,Szeliski2022,Zhang.Lipton.ea2023}.
+
+The first step in backpropagation is to propagate the error backward through the network. For each neuron, the error is determined by the errors of the neurons in the subsequent layer that it connects to. This is computed similarly to forward propagation but in reverse. After propagating the error backward, the gradient of the loss function with respect to each weight and bias is calculated. This is done by multiplying the propagated error by the gradient of the activation function of the current neuron. The chain rule of calculus is utilized here, which allows the calculation of the gradient of a composed function. \textcite{Szeliski2022} explains this intuitively: \enquote{this backpropagation rule has a very intuitive explanation. The error [...] for a given unit depends on the errors of the units that it feeds multiplied by the weights that couple them together. This is a simple application of the chain rule} \autocite[286]{Szeliski2022}. Once the gradients are computed, they are used to update the network's parameters using the gradient descent rule shown above in equation \ref{eq:sgd} \autocite{Goodfellow.Bengio.ea2016,LeCun.Bottou.ea2012,LeCun.Bengio.ea2015,Szeliski2022,Zhang.Lipton.ea2023}. 
+
+In summary, backpropagation involves a forward pass to calculate the output and error, followed by a backward pass to propagate the error and compute gradients. These gradients are then used to adjust the weights and biases of the network, thereby minimizing the loss function iteratively. This process enables the network to learn from the data and improve its performance over time. Backpropagation is critical for training \glspl{dnn} effectively and is one of the foundational algorithms in the fields of \gls{ml} and especially \gls{dl} \autocite{Goodfellow.Bengio.ea2016,LeCun.Bengio.ea2015,Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsection{Training Loop}
+
+In summary, despite being similar to training Perceptrons, training \glspl{dnn} requires much more additional assumptions, optimizations, and calculations. Together, \gls{sgd} and backpropagation enable the \gls{nn} to learn effectively. Gradient descent acts as the guide, directing the network towards minimizing the loss by adjusting the parameters in the right direction. Backpropagation ensures that the adjustments are computed efficiently, considering how each parameter influences the loss through the network's layers. This combination allows the \gls{nn} to learn from data, improve its predictions over time, and ultimately achieve better performance on the given task \autocite{Szeliski2022,LeCun.Bottou.ea2012}.
+
+During the training process, the network undergoes forward and backward propagation multiple times, corresponding to each step of gradient descent until convergence is reached. This iterative process is known as iteration, often used interchangeably with step. The training loop involves passing the training dataset multiple times through the network (multiple steps) in smaller groups called batches. This enables parallel computing and higher training efficiency. In each step, the network processes these batches, makes predictions for each data point, and adjusts its parameters during backpropagation based on the error of these predictions. Through this iterative process, the network's weights are fine-tuned, enabling the network to learn complex patterns and make accurate predictions. If the entire dataset is fed through the network forward and backward once, an epoch is completed. For the \gls{nn} to learn effectively, usually multiple epochs are used, which explains why \gls{nn} are computationally demanding \autocite{Bernard2021,Szeliski2022,LeCun.Bottou.ea2012,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsubsection*{Batch Size}
+
+The size of batches usually can be controlled via a batch size hyperparameter, parameters not part of the model, but tuning the network. Of all the training samples in the entire training dataset, a random selection of the size of this hyperparameter is extracted and passed through the network. A small batch size can lead to faster convergence, but it can also introduce noise into the training process. A large batch size can provide a more stable estimate of the gradient, but it can also slow down the training process. The choice of batch size depends on the specific task, the dataset, and the computational resources available \autocite{Bernard2021,Szeliski2022}. 
+
+In semantic segmentation, for example, where samples are single images with multiple bands, the batch size depends on the size of the images, the number of bands, and the available memory. A batch size that is too large can lead to memory issues, while a batch size that is too small maybe is not enough to find enough distant relationships between pixels, reducing the accuracy of distributed classes. By tuning the batch size, the training process can be optimized for efficiency and performance, ensuring that the network learns effectively and generalizes well to new data \autocite{Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsubsection*{Dataset Split}
+
+Furthermore, the training data is usually split in training and test sets in order to train the model and evaluate its performance in one go. The training set is used to train the model, while the test set is used to evaluate the model's performance on new, unseen data, part of the initial dataset, but strictly not used during training. When working with tunable hyperparameters, the training dataset is further split into a training and a validation set, which is used to track the loss of the model and use it to optimize hyperparameters, also with unseen data. The difference between validation and test sets is that validation sets are used during training to optimize the model, but test sets are only used once after the training to \enquote{test} the model's inference capability \autocite{Alzubaidi.Zhang.ea2021,Zhang.Lipton.ea2023}.
+
+The largest part of the dataset is usually the training set, to have a large enough sample size to learn from, usually followed by the validation set and finally, the smallest, the test set \autocite{Szeliski2022}.
+
+%%%%%%%%%%
+\subsubsection*{Model Performance}
+
+Successful training of a \gls{nn} is indicated by the model's performance on the test set. The model's performance is evaluated using metrics such as accuracy, precision, recall, and \( F_{1} \) score, depending on the specific task (more on this topic in section \ref{subsec:metrics}). These metrics provide insights into the model's performance, indicating how well it generalizes to new data and how effectively it makes predictions. By evaluating the model's performance on the test set, the effectiveness of the model can be assessed, and further adjustments can be made to improve its performance \autocite{Bernard2021,Szeliski2022,Zhang.Lipton.ea2023}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=.66\textwidth]{Figures/theory/fitting.png}
+    \caption[Concept of Over-, Under-, and Optimal Fitting of \glsentrylongpl{nn}]{Evaluating the performance of \gls{nn} results to three possible outcomes, of which balanced (or optimal) fitting is desired \autocite{Alzubaidi.Zhang.ea2021}.}
+    \label{fig:fitting}
+\end{figure} 
+
+There are three possible fittings when evaluating the model's performance during training: underfitting, overfitting, and optimal fitting, as visualized in figure \ref{fig:fitting}. Underfitting occurs when the model is too simple to capture the patterns in the data, resulting in poor performance on both the training and validation/test sets. Overfitting occurs when the model learns the training data too well, including noise and irrelevant patterns, leading to poor generalization on the validation set or new data, respectively. Optimal (or balanced) fitting occurs when the model learns the underlying patterns in the data and generalizes well to new data, achieving high performance on both the training and validation/test sets. In the best case, the loss decreases for both the training and validation sets and the accuracy increases. By evaluating the model's performance on the different data sets, the model's fitting can be assessed, and further adjustments can be made to improve its performance \autocite{Alzubaidi.Zhang.ea2021,Bernard2021,Szeliski2022,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsection{Regularization \& Normalization}
+\label{subsec:regularization}
+
+When training such networks, it can happen that the model overfits, a common issue in \gls{ml} \autocite{Szeliski2022}. This is where regularization come into play. Regularization techniques are designed to prevent overfitting by constraining the model's complexity and ensuring it generalizes well to new data. Techniques, such as dropout, batch regularization, and early stopping, help prevent overfitting by constraining the model's complexity and ensuring it generalizes well to new data. \autocite{Alzubaidi.Zhang.ea2021,Bernard2021,Nielsen2015,Szeliski2022}.
+
+Early stopping mechanisms, such as a maximum number of epochs or a minimum error threshold, both, upon reaching, terminate the training to reduce overfitting. One very common early stopping mechanism is tracking the error on the validation set and terminating the training if the error does not decrease by a certain (small) amount for a certain number of steps. This is called a patience criterion. Early stopping mechanism can also be optimized, especially when restricting the number of epochs the model is trained on. If the number of epochs is too low, the model may not have enough time to learn the patterns in the data, and the performance may be poor. Contrary, if the number of epochs is too high, the model may overfit the training data, and the performance may be poor on new data. By setting specific restrictive mechanisms, the model can be trained much more efficient, sometimes saving a lot of time and costs \autocite{Goodfellow.Bengio.ea2016,Zhang.Lipton.ea2023}.
+
+Another technique widely used in \glspl{nn} to improve generalization by reducing overfitting is Dropout, first introduced by \textcite{Srivastava.Hinton.ea2014}. Dropout randomly sets a fraction of the connections between neurons to zero at each step, which helps to prevent co-adaptation of neuronal information. In other words, for every step, it randomly breaks up the connection between some of the neurons. This technique is especially useful for \glspl{dnn}, where overfitting is a common issue due to the high number of parameters and the complexity of the model. By randomly dropping connections, Dropout forces the network to learn more robust features and prevents it from relying too heavily on specific neurons, improving generalization and reducing overfitting \autocite{Goodfellow.Bengio.ea2016,Srivastava.Hinton.ea2014,Szeliski2022}.
+
+Input-wise, batch normalization is used to normalize the input data to the network, ensuring that the data has normal distribution. This helps to stabilize the training process and accelerates convergence by ensuring that the input data is within a specific range. By normalizing the input data, batch normalization helps to prevent the network from becoming too sensitive to the input data's scale and distribution, improving its generalization performance and training efficiency \autocite{Bernard2021,Bjorck.Gomes.ea2018,Szeliski2022,Zhang.Lipton.ea2023}. However, batch normalization has some drawbacks, such as the requirement of large batch sizes to accurately estimate the statistics, which can be computationally expensive and memory-intensive. It also introduces additional computation during training and may not perform well in online learning scenarios or when the batch size is small \autocite{Ba.Kiros.ea2016,Szeliski2022}.
+
+To tackle the drawbacks of batch normalization, layer normalization was introduced by \textcite{Ba.Kiros.ea2016}. This technique normalizes the activations of each layer across the feature dimension for each individual data point, rather than across the batch. This means that for each data point, the normalization is performed on the features within that single data point, ensuring that the mean and variance are calculated for each individual sample's features. By doing so, layer normalization stabilizes the training process and improves the model's generalization performance. It is particularly effective for scenarios with variable batch sizes, as it does not rely on batch statistics. This independence from batch size makes it more stable when batch sizes are small or when using sequential models. By ensuring consistency in the distribution of activations, layer normalization helps the model learn more robust features, reduces the risk of overfitting, accelerates the training process, and improves convergence, making it an essential technique for training \glspl{dnn} effectively \autocite{Ba.Kiros.ea2016,Bernard2021,Szeliski2022}.
+
+%%%%%%%%%%
+\subsection{Computational Demand}
+
+So all in all, training \glspl{ann} and \glspl{dnn} is a complex process and involves a lot of different calculations. That is the reason why especially \gls{dl} needs a lot of computational power. As a general rule, the deeper and more complex networks get, the more computational resources are needed to train the model effectively. The computational demand of training \glspl{dnn} is a significant challenge in the field of \gls{dl}, as it limits the scalability and accessibility of these models to researchers and practitioners with limited resources. However, advancements in hardware and software, such as distributed training, parallelization, and cloud computing, have helped to address these challenges and make \gls{dl} more accessible to a wider audience. Furthermore, every model architecture incorporates a lot of optimization techniques, which not only increase the model's performance, but also its efficiency.
+
+Still, the focus often lies on the model's performance rather than its computational efficiency, which can lead to resource-intensive models with great performance that are not practical for repeated real-world applications \autocite{Getzner.Charpentier.ea2023,Lazzaro.Cina.ea2023,Mehlin.Schacht.ea2023,Thompson.Greenewald.ea2022}. Therefore, it is essential to consider the computational demand of training \glspl{dnn} and optimize the model architecture and training process even further to ensure that the model is efficient and scalable. This should be a key consideration when designing and training \glspl{dnn} for real-world applications, especially in the field of remote sensing, where large datasets and complex models are common.
+
+%%%%%%%%%%
+\section{\glsentrylongpl{dnn} for \glsentrylong{cv}}
+
+The \gls{mlp} architecture and its further developments have been presented as powerful tools for learning complex patterns in data, making them popular for a wide range of \gls{ml} tasks. However, \glspl{mlp} have limitations, especially when dealing with high-dimensional data like images, audio, and text, where spatial relationships are crucial. They treat input values, whether directly adjacent or on opposite sides of an image or a sentence, as equally related since every value is connected to every neuron in a fully connected layer. This approach overlooks the spatial relationships between these input values, which are critical for understanding images and text, leading to the loss of important information \autocite{Nielsen2015}.
+
+To address these limitations, more advanced \gls{dnn} architectures have been developed. \glspl{dnn} enhance \glspl{ann} by incorporating multiple successive layers of transformations, effectively making them \enquote{deep}, thus the term for such networks \autocite{Goodfellow.Bengio.ea2016,LeCun.Bengio.ea2015}. Additionally, they incorporate new types of layers, tuned activation functions, and optimization techniques. These enhancements, when combined, can significantly improve the performance and capability of \glspl{dnn}, making them powerful tools for an even wider range of complex \gls{ml} and \gls{dl} tasks \autocite{Bernard2021,Nielsen2015,Szeliski2022,Zhang.Lipton.ea2023}.
+
+In this section, some of the most important types of \glspl{dnn} for \gls{cv} are introduced, particularly \glspl{cnn} and encoder-decoder architectures, along with residual networks. While there are many \glspl{dnn} designed for various tasks, this study focuses on \gls{lulcm}, therefore, these are described as they address specific challenges in \gls{cv}, especially object detection and semantic segmentation, with images as inputs.
+
+%%%%%%%%%%
+\subsection{\glsentrylongpl{cnn}}
+
+Based on the \gls{mlp} and improving it by introducing two new types of hidden layers, \glspl{cnn} are specialized \glspl{dnn} for \gls{cv} tasks. They are designed to process multi-dimensional grid-like data, particularly images, by exploiting the spatial relationships between pixels. This makes them particularly well-suited for tasks like image classification, object detection, and image segmentation, where the input data has spatial structures that need to be preserved and learned \autocite{LeCun.Kavukcuoglu.ea2010,Szeliski2022}.
+
+In comparison to \glspl{mlp}, the inputs to \glspl{cnn} are not single pixels, but rather whole images. In such grid-like inputs, which are seen as 2nd-order tensors (images with one band) to simplify the explanations, every pixel in these images has a specific pixel value. In \glspl{mlp}, every pixel would be fully connected to the next layer of neurons to classify each pixel. This would result in a huge number of parameters, which would be computationally expensive and inefficient. Furthermore, as mentioned above, the spatial relationships between the pixels would be omitted, disregarding critical information of the image. \glspl{cnn} solve this problem by using convolutional layers, which apply a set of learnable filters to the input image. These filters slide (convolve) in small focus areas over the input, performing element-wise multiplications and summing up the results to produce feature maps. This process is known as convolution, and it helps in detecting local patterns, such as edges, textures, and shapes, irrespective of their position in the image. These are crucial for recognizing more complex structures in higher layers. As the network progresses, the depth of the convolutional layer increases and the layers get more coarse, enabling it to learn more abstract features like objects \autocite{Alzubaidi.Zhang.ea2021,Dumoulin.Visin2018,Nielsen2015,Szeliski2022,Zhang.Lipton.ea2023}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/theory/cnn/cnn.png}
+    \caption[\glsentrylong{cnn} Architecture]{Graphical representation of the general architecture of \glspl{cnn} \autocite{Moharram.Sundaram2023}.}
+    \label{fig:cnn}
+\end{figure}
+
+A typical \gls{cnn} architecture consists of several key layers, including convolutional, pooling, and fully connected layers, often in multiple repetitions, as seen in figure \ref{fig:cnn}. To clarify what \glspl{cnn} are, \textcite{Goodfellow.Bengio.ea2016} put it simply like this: \enquote{convolutional networks are simply neural networks that use convolution in place of general matrix multiplication in at least one of their layers} \autocite[326]{Goodfellow.Bengio.ea2016}. The convolution operation is done in convolutional layers, therefore, they are the fundamental building blocks of \glspl{cnn}. 
+
+%%%%%%%%%%
+\subsubsection*{Convolutional Layers}
+\label{subsec:convolution}
+
+Convolution is best described with a graphical representation of the operation, as seen in figure \ref{fig:convolution}. Using a specified and learnable filter, called kernel, the pixels of the image are grouped into patches of the size of the kernel, in this case a \( 3 \times 3 \) grid, as shown exemplary in the figure-like table \ref{tab:kernel}. These groups function as the input to the subsequent hidden neurons, which usually also are pixels on a so called output feature map. To generalize, these neurons are called activations. As mentioned above, convolutional layers are not fully connected layers, so not every pixel is connected to every activation in the next layer. Instead, the kernel is applied to each of these groups, multiplying each pixel value with the corresponding kernel value. These processed pixel values are then connected to a activation of the subsequent layer by applying the kernel-weighted sum, shown as the dark colored values of the smaller grids in figure \ref{fig:convolution}, effectively reducing the input values to this activation. These groups, which resemble the inputs to the activations, are called (local) receptive fields of the according activation \autocite{Alzubaidi.Zhang.ea2021,Dumoulin.Visin2018,Szeliski2022}.
+
+\begin{table}[htb]
+    \centering
+    \caption[\( 3 \times 3 \) Kernel]{The \( 3 \times 3 \) kernel used for convolution in figure \ref{fig:convolution}.}
+    \begin{tabular}{|c|c|c|}
+        \toprule
+        0 & 1 & 2 \\
+        \midrule
+        2 & 2 & 0 \\
+        \midrule
+        0 & 1 & 2 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:kernel}
+\end{table}
+
+This process of applying the kernel-weighted sum is repeated for each pixel group in the image by sliding over the image horizontally and vertically, as depicted in figure \ref{fig:convolution}. Different kernels can be used to form multiple output feature maps, as seen in figure \ref{fig:cnn} \autocite{Alzubaidi.Zhang.ea2021,Dumoulin.Visin2018,Szeliski2022}. The input feature map with a spatial dimension of \( 24 \times 24 \times 1 \) pixels (height, width, depth), for example, is convoluted four times with a kernel size of \( 4 \times 4 \) each time, resulting in an output feature map of the spatial dimension of \( 21 \times 21 \times 4 \) pixels. Using multiple kernels, which is equivalent to making the network wider, can help the network learn different features.
+
+The behavior of a convolution layer can further be specified by additional parameters, including stride, padding, dilation, and grouping \autocite{Dumoulin.Visin2018,Szeliski2022}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/theory/cnn/convolution.png}
+    \caption[Convolution]{Graphical representation of the convolution operation. The input values of size \( 3 \times 3 \) are multiplied by the kernel, denoted as subscript numbers in the input cells and shown in table \ref{tab:kernel}. The result is a kernel-weighted sum of the inputs, resulting in an output feature map. Adapted from \textcite{Dumoulin.Visin2018}.}
+    \label{fig:convolution}
+\end{figure}
+
+Stride is the parameter that specifies the sliding movement over the image. It determines the step size of the kernel as it slides over the input feature map. A stride of 1 means that the kernel moves one pixel at a time, while a stride of 2 means that the kernel moves two pixels at a time. Stride affects the spatial dimensions of the output feature map, as it determines how many times the kernel is applied to the input feature map. It also determines how detailed the output feature map is by including selected information.
+
+Padding is applied in two cases: first, to ensure that the output feature map has the same spatial dimensions as the input feature map, and second, to prevent the loss of information at the edges of the input feature map. Padding involves adding values around the input feature map, which allows the kernel to slide over the input without losing information at the edges, as shown in figure \ref{fig:padding}. The amount of padding added to the input feature map is determined by the size of the kernel and the desired spatial dimension of the output feature map. A usual choice is to add zeros around the input feature map, which is called zero padding.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.8\textwidth]{Figures/theory/cnn/padding.png}
+    \caption[Padding]{Padding operation during convolution. Around the edges of the input feature map, zeros are added to enlarge the output feature map and to include all information of the edges \autocite{Dumoulin.Visin2018}.}
+    \label{fig:padding}
+\end{figure}
+
+Dilation enlarges the receptive fields by skipping columns and rows of the input feature map, as shown in figure \ref{fig:dilation}. This can be effective when the images are large and include large details, as dilation needs less slides over the image to fully capture it without losing too much information.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.8\textwidth]{Figures/theory/cnn/dilation.png}
+    \caption[Dilation]{Dilation operation during convolution. The receptive field is enlarged by adding space in between the input pixels \autocite{Dumoulin.Visin2018}.}
+    \label{fig:dilation}
+\end{figure}
+
+Especially when the images have multiple channels, grouping can be used to reduce the computational load. Instead of applying a single kernel to all input channels, the channels are divided into groups, and each group is convolved with a separate set of kernels. This approach reduces the number of parameters and the amount of computation required, making the network more efficient.
+
+Convolutional layers can be stacked to form deeper \glspl{nn}, with each layer learning different features at different levels of abstraction. The output of the convolutional layers is typically passed through an activation function, such as \gls{relu} (see section \ref{subsec:activation}), to introduce non-linearity into the network. This allows the network to learn complex patterns and relationships in the data, making it more powerful and expressive.
+
+The convolution explained above is an example of a 2D convolution, but the process can be generalized to nD convolutions. For instance, in a 3D convolution, the kernels would be cuboids and would slide across the height, width, and depth of the input feature maps. The resulting output feature maps would also be cuboids, but could be flattened to a 2D matrix for further processing, depending on the requirements of the task at hand. This makes \glspl{cnn} very flexible and scalable \autocite{Dumoulin.Visin2018}.
+
+%%%%%%%%%%
+\subsubsection*{Pooling Layers}
+
+The second important building block of \glspl{cnn} are pooling layers, often following convolutional layers as shown in figure \ref{fig:cnn}. Pooling operations reduce the spatial dimensions of feature maps in order to reduce the computational load and the number of parameters. Also, they help in reducing the sensitivity to noise and irrelevant details in the input data. Furthermore, by summarizing the presence of features in a particular region of the input, they effectively downsample the input representation, making the network less sensitive to small translations and distortions in the input data. This provides a form of translation invariance, meaning that small shifts in the input image will not significantly affect the pooled output. This helps in recognizing objects in varying positions within the image. Overall, pooling is an essential operation in \glspl{cnn} additionally to convolutions, contributing to the model's ability to generalize well to new data by focusing on the most important features and reducing the effect of noise and minor variations. Pooling helps in making the network more efficient and robust \autocite{Gholamalinezhad.Khosravi2020,LeCun.Bengio.ea2015}.
+
+Pooling works similar to convolution, only that it uses a different function with the aim to reduce the spatial dimensions of feature maps rather than \enquote{read} the input data. There are two main types of pooling, average and max pooling, although multiple other enhancements can also be added. In average pooling, shown in figure \ref{fig:average_pooling}, the average value of each patch is calculated. On the other hand, in max pooling, shown in figure \ref{fig:max_pooling}, the maximum value of each patch is selected \autocite{Dumoulin.Visin2018,Gholamalinezhad.Khosravi2020,LeCun.Bengio.ea2015}. The sizes of patches are adjustable as in convolutional layers, and the sliding parameters can be applied here as well.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/cnn/pooling_average.png}
+        \caption{Average Pooling.\\The average of the patch is calculated.}
+        \label{fig:average_pooling}
+    \end{subfigure}
+    \begin{subfigure}{.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/theory/cnn/pooling_max.png}
+        \caption{Max Pooling.\\Of the patch, the maximal value is selected.}
+        \label{fig:max_pooling}
+    \end{subfigure}
+    \caption[Pooling Methods]{Average (A) and max pooling (B) operations to reduce the spatial dimensions of feature maps. Adapted from \textcite{Dumoulin.Visin2018}.}
+\end{figure}
+
+For instance, in figure \ref{fig:cnn}, a pooling layer is applied after the convolutional layer, reducing the spatial dimensions of the feature maps from \( 21 \times 21 \times 4 \) to \( 7 \times 7 \times 4\) by using a filter of size \( 3 \times 3 \). After the second convolution layer, another pooling layer is applied, further reducing the spatial dimension of the feature maps to \( 1 \times 1 \times 1 \), which then can be fed to a fully connected layer.  
+
+%%%%%%%%%%
+\subsubsection*{Fully Connected Layers}
+
+Usually at the end of \glspl{cnn}, the downsampled feature maps are flattened to a 1D vector and passed through fully connected layers, as shown in figure \ref{fig:cnn}. These layers are similar to the hidden layers in \glspl{mlp}, connecting every neuron in one layer to every neuron in the next layer, leading to a final output layer for classification or regression tasks, as explained for \glspl{mlp} in section \ref{subsec:mlp} \autocite{Alzubaidi.Zhang.ea2021}.
+
+%%%%%%%%%%
+\subsubsection*{\glsfmtshortpl{cnn} for Segmentation}
+
+Based on the \gls{cnn}, the \gls{fcn} was developed by \textcite{Long.Shelhamer.ea2015} in order to extend the \gls{cnn} architecture to perform pixel-wise classification. The \gls{fcn} uses convolutional layers to extract features from the input image and upsampling layers to generate a dense prediction map. This allows the network to produce pixel-wise class labels for the entire image, making it suitable for segmentation. \glspl{fcn} has been widely used in various \gls{cv} tasks, including object detection, image segmentation, and image classification, and has been the foundation for many other advanced architectures \autocite{Long.Shelhamer.ea2015,Minaee.Boykov.ea2022,Noh.Hong.ea2015}.
+
+%%%%%%%%%%
+\subsection{Encoder-Decoder Architectures}
+
+Even though \glspl{fcn} are suitable for image segmentation and have shown great performance, they have two main limitations. First, the networks have a predefined fixed-size receptive field based on the chosen kernel size, which can lead to fragmented or mislabeled objects that are substantially larger or smaller than the receptive field. Second, the detailed structures of objects are often lost or smoothed because of sparse label maps and the simplified upsampling procedure \autocite{Badrinarayanan.Kendall.ea2017,Liu.Yu.ea2018,Noh.Hong.ea2015}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/theory/encoder_decoder.png}
+    \caption[Encoder-Decoder Architecture]{Graphical representation of the Deep Deconvolution Network architecture, an Encoder-Decoder for image segmentation proposed by \textcite{Noh.Hong.ea2015}.}
+    \label{fig:encoder_decoder}
+\end{figure}
+
+To address these limitations, encoder-decoder architectures have been developed, which consist of two main parts: an encoder and a decoder, as shown in figure \ref{fig:encoder_decoder}. The encoder part is typically a \gls{cnn} that processes the input image and extracts features at different levels of abstraction. The decoder part of the architecture is usually a series of upsampling and deconvolutional layers, reverting the feature extraction process to generate an output segmentation mask with the same spatial dimensions as the input image. This architecture is particularly well-suited for semantic segmentation tasks, where the goal is to assign a class label to each pixel in the image \autocite{Minaee.Boykov.ea2022,Noh.Hong.ea2015}.
+
+The key innovation, the decoder, utilizes reverting operations including unpooling and deconvolution in order to reconstruct to initial spatial relationships between pixels. In unpooling, stored locations of maximum activations selected during the max pooling operation in the encoder are employed to place each activation back to its original pooled location. This unpooling strategy is particularly useful to reconstruct the structure of input object. After that, the feature map is enlarged, but sparse, as zeros have been used to fill in the feature maps. Deconvolution densifies feature maps by applying convolutions as well. However, contrary to convolutional layers, which connect multiple input activations within the receptive field to a single activation, deconvolutional layers associate a single input activation with multiple outputs. The learned filters act as bases for reconstructing an input object's shape \autocite{Badrinarayanan.Kendall.ea2017,Chen.Papandreou.ea2015,Noh.Hong.ea2015}.
+
+Hierarchically arranged, these layers capture varying levels of detail, with lower (deeper) layers focusing on the object's overall shape and higher layers encoding class-specific fine details. This structure allows the network to incorporate class-specific shape information directly into semantic segmentation, a feature often overlooked in purely convolutional approaches \autocite{Chen.Papandreou.ea2015,Noh.Hong.ea2015}.
+
+%%%%%%%%%%
+\subsection{\glsentrylongpl{resnet}}
+\label{subsec:residuals}
+
+\glspl{cnn} have been the backbone of many advancements in \gls{cv} tasks, designed to learn hierarchical representations of data through a series of convolutional layers, which capture spatial hierarchies by applying filters that detect features such as edges, textures, and more complex patterns. However, as deeper and more powerful networks were created, a significant challenge was encountered: the vanishing gradient problem, where gradients become too small to effectively update the parameters in the early layers. This leads to slow or stalled training and can prevent the network from learning effectively \autocite{He.Zhang.ea2016,Zhang.Lipton.ea2023}.
+
+To overcome this limitation, \glspl{resnet} were introduced by \textcite{He.Zhang.ea2016}. They address the vanishing gradient problem by incorporating shortcut connections, also known as skip or residual connections, which allow the network to bypass one or more layers. This innovative architecture enables the creation of much deeper networks by ensuring that gradients can flow more easily through the network during backpropagation. 
+
+To enable this, the inputs to activations are added after the activations to the weighted sums before being fed into the activation functions, as depicted in figure \ref{fig:residual}. Using this, the parameters that need to be learned and adapted are reduced. \enquote{In a regular block ([figure \ref{fig:residual}] left), the portion within the dotted-line box must directly learn the mapping \( f(x) \). In a residual block ([figure \ref{fig:residual}] right), the portion within the dotted-line box needs to learn the residual mapping \( g(x) = f(x) - x \), making the identity mapping \( f(x) = x \) easier to learn} \autocite[313]{Zhang.Lipton.ea2023}.
+
+In summary, while \glspl{cnn} laid the groundwork for understanding and processing visual data, the introduction of \glspl{resnet} marked a significant advancement by enabling the training of much deeper networks. This innovation has not only improved performance on a wide range of \gls{cv} tasks, but also inspired further developments in the field of \gls{dl} \autocite{Goodfellow.Bengio.ea2016,Szeliski2022,Zhang.Lipton.ea2023}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.66\textwidth]{Figures/theory/cnn/residual.png}
+    \caption[Residual Learning Block]{Residual (right) vs. regular block (left) in a \gls{nn}. \enquote{In a regular block (left), the portion within the dotted-line box must directly learn the mapping \( f(x) \). In a residual block (right), the portion within the dotted-line box needs to learn the residual mapping \( g(x) = f(x) - x \), making the identity mapping \( f(x) = x \) easier to learn} \autocite[313]{Zhang.Lipton.ea2023}.}
+    \label{fig:residual}
+\end{figure}
+
+%%%%%%%%%%
+\section{Spatial Context \& Attention in \glsentrylong{cv}}
+
+In the section above, some of the most important \gls{dl} architectures and techniques for \gls{cv} have been introduced. Regarding the topic of this study, the inclusion of contextual information into a model, the key topic of context and its suitable implementation have to be highlighted as well. Therefore, the following section will introduce the concepts of context and attention in \gls{dl} and how they can be used to improve the performance of \glspl{dnn} for \gls{cv} tasks. This functions as a background to the SegFormer, the model utilized by the study's experiment framework, the \gls{lulcu}.
+
+In \gls{dl}, context refers to the additional information that surrounds a particular piece of data, assisting to interpret and provide a fuller understanding of that data. In \gls{cv} and semantic segmentation, the spatial context of features is crucial for accurately interpreting visual scenes. For instance, in an image of a city street, the context includes not just the individual pixels or segments but also their relationships to each other. Recognizing a car involves understanding the context provided by the road, nearby buildings, pedestrians, and other cars. This contextual information helps to distinguish between objects and improve the accuracy of segmentation \autocite{Ding.Jiang.ea2020,Zhang.Zhang.ea2022}.
+
+Traditional \glspl{cnn} capture context through the aforementioned receptive fields. Convolution assumes that nearby pixels are more important than far away pixels, weighting close locality more. As the network grows deeper, the receptive fields grow. This expansion means that activations in deeper layers have a wider view of the input image, allowing the network to capture and integrate information from larger spatial regions. Thus, more complex patterns or features are recognized. But, it comes at a cost of low spatial resolution for the segmentation result, in which blurry class boundaries and the loss of object details become a challenge. Also, receptive fields are limited by their fixed size and locality in each layer, depending on the specification by the model architecture. Therefore, the relationship between distant parts of the image might still be poorly captured, especially in complex scenes requiring long-range dependencies. Dilation enlarges the receptive field more efficiently than other techniques, but still comes with drawbacks like lower resolution or omission of pixels due to the inflation of the kernel with zeros \autocite{deSantanaCorreia.Colombini2022,Cordonnier.Loukas.ea2020,Liu.Yu.ea2018,Luo.Li.ea2017,Ma.Liu.ea2019,Szeliski2022,Xie.Wang.ea2021}.
+
+Tackling these challenges initially in language models and subsequently in \gls{cv} tasks, attention mechanisms were introduced. Attention is a concept deriving from cognitive psychology, summarized by \textcite{deSantanaCorreia.Colombini2022} as: \enquote{Attention is a behavioral and cognitive process of focusing selectively on a discrete aspect of information, whether subjective or objective, while ignoring other perceptible information [...], playing an essential role in human cognition and the survival of living beings in general} \autocite[6038]{deSantanaCorreia.Colombini2022}.
+
+Its development and implementation in \gls{dl} models is a major research topic because it enables models to focus on specific parts of the input data that are most relevant to the task at hand, effectively weighting the importance of different input elements and their context. It allows the model to dynamically adjust the focus and available processing resources on the most relevant parts of the input data, regardless of their distance from each other. This enhances the model's ability to capture dependencies and relationships, especially in sequences or complex scenes, effectively understanding the relationship between features and their important context \autocite{Alhichri.Alswayed.ea2021,deSantanaCorreia.Colombini2022}.
+
+For this study and the spatial contextual information inclusion approach, attention is a key concept and critical for success. The SegFormer model, which is used in the experiment framework, the \gls{lulcu}, is based on the Transformer architecture, which is known for its attention mechanisms. The following section will introduce attention mechanisms in \gls{dl} and how they can be used to improve the performance of \glspl{dnn} for \gls{cv} tasks.
+
+Most current state-of-the-art models in \gls{dl} for \gls{nlp} or \gls{cv} use some form of attention. To understand why attention mechanisms are so effective in \gls{dl}, it is essential to recognize that \glspl{nn} fundamentally serve as function approximators. The ability of \glspl{nn} to approximate various functions depends significantly on their architecture. Traditional \glspl{nn} function through sequences of matrix multiplications and element-wise non-linearities, with interactions between input or feature vector elements limited to addition. Attention mechanisms revolutionize this process by generating a mask that multiplies the features. This seemingly simple adjustment substantially expands the spectrum of functions that \glspl{nn} can approximate accurately. As a result, it enables entirely new applications and greatly enhances performance on complex tasks \autocite{Alhichri.Alswayed.ea2021,Cordonnier.Loukas.ea2020}.
+
+In image segmentation, precise delineation of object boundaries is essential. Attention mechanisms can refine these boundaries by focusing on the relevant context around edges, improving the segmentation quality. To do this, they allow the model to consider the entire image when determining the importance of each pixel or region. This global perspective ensures that even distant parts of the image can influence the segmentation decision, enhancing accuracy. Unlike fixed receptive fields, attention mechanisms can adjust focus based on the input data. For instance, if a scene contains a small but crucial detail (like a traffic light in the background), attention can highlight this detail and incorporate it into the segmentation process \autocite{Chen.Yang.ea2016,deSantanaCorreia.Colombini2022}.
+
+Attention is often described by using the analogy of dictionaries, a key data structure in multiple programming languages. They consist of key-value pairs, denoted as \( k_i, v_i \), and a query \( q \), which can be used to return the value \( v_i \) associated with a specific key \( k_i \). In \glspl{nn}, these three instances are vectors. The query vector \( q \) represents the specific input feature that the model should measure its importance of. The key vectors \( k_i \) represent all relevant inputs in the sequence that the model should consider when processing the query, so the relational data which shows how important the query is. The value vectors \( v_i \) are the actual information associated with the keys that the model will use to form its final output. By using the query to search the keys, the model can retrieve the most relevant information from the key-value pairs, allowing it to focus on the most important parts of the input data \autocite{Brauwers.Frasincar2023,Han.Wang.ea2023,Szeliski2022,Vaswani.Shazeer.ea2017,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsection{Self-Attention \& \glsentrylong{sdpa}}
+
+\gls{sdpa} and self-attention are often used interchangeably, although self-attention is the broader concept, which incorporates \gls{sdpa}. Self-attention is the idea of each feature in a dataset attending to all other features in the same dataset and estimating the relevance of one feature to other features. When implemented, self-attention allows each feature to focus on other features in the dataset to build a richer representation of the features' context.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.66\textwidth]{Figures/theory/attention.png}
+    \caption[Attention Mechanisms]{General attention mechanisms. Left: \glsentrylong{sdpa}. Right: \glsentrylong{mha}. \glsentrylong{mha} consists of several attention layers running in parallel \autocite{Liu.Zhang.ea2024,Vaswani.Shazeer.ea2017}.}
+    \label{fig:attention}
+\end{figure}
+
+Figure \ref{fig:attention} shows two common implementations of self-attention, whereas the left one, \gls{sdpa}, is part of the right one. As shown in the figure, the inputs to the attention layer are not vectors, but rather multi-dimensional tensors consisting of these vectors, denoted as \( Q, K \), and \( V \), according to query, key, and value tensor, respectively. However, the attention works channel-wise, so the explanations will focus on the channels of the tensors, which are considered matrices. 
+
+The first step of an attention layer is to calculate the attention scores \( S \), which measure how relevant each key is to the query. This is typically done using a dot product between the query matrix \( Q \) and the key matrix \( K \) with
+\begin{equation}
+    S(Q, K) = Q \cdot K^T,
+\end{equation}
+also called matrix multiplication, denoted in the figure as \enquote{MatMul}, whereas \( K^T \) is the transposed key matrix. Transposing is necessary to generate a dot product of \( Q \) and \( K \), assuming \( Q \) is a \( n \cdot d_k \) matrix and \( K \) a \( m \cdot d_k \) matrix, respectively, resulting in a \( n \times m \) matrix when multiplying \( Q \) with the transposed matrix \( K^T \).
+
+The output of the attention function is a weighted sum of the value matrix \( V \), based on \( Q \) and \( K \). This dot product results in scores that can become very large when the dimensionality of the key vectors, \( d_k \), is high. To prevent this and ensure gradient stability, the scores are normalized by dividing them by the square root of \( d_k \), as in
+\begin{equation}
+    S_{norm}(Q, K) = \frac{S(Q, K)}{\sqrt{d_k}},
+\end{equation}
+denoted in the figure as \enquote{Scale}. After this step, an optional mask can be applied to restrict the attention only to past and current tokens, important for sequential inputs like in \gls{nlp}. Nonetheless, as explained similarly in section \ref{subsec:softmax}, these normalized scores are then passed through a softmax function (\enquote{SoftMax}) to obtain the probabilities \( P \) with
+\begin{equation}
+    P(Q, K) = \text{softmax}(S_{norm}(Q, K)) = \frac{\exp(S_{norm}(Q, K)_i)}{\sum_{j} \exp(S_{norm}(Q, K)_j)}.
+\end{equation}
+Finally, the value matrix is multiplied by the softmax score to obtain the weighted sum \( Z \) of the value matrix, again denoted in the figure as \enquote{MatMul}, whose result is the output of the attention layer. This can be expressed as
+\begin{equation}
+    Z(Q, K, V) = P(Q, K) \cdot V,
+\end{equation}
+where vectors with larger probabilities receive additional attention from the subsequent layers as they have higher weights, meaning higher importance for the query. 
+
+This four-step process can be unified into a single function \autocite{Vaswani.Shazeer.ea2017} as
+\begin{equation}
+    \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d_k}}\right) \cdot V.
+\end{equation}
+
+This process in the attention layer is called \gls{sdpa}, as it scales the dot product of the query and key vectors by the square root of the key vector dimensionality. This ensures that the gradients remain stable during training and that the model can effectively learn the attention weights. Figure \ref{fig:self-attention} shows the attention layer for multi-dimensional feature maps, as used in \gls{cv} tasks. Note that \( 1 \times 1 \) convolutions are used, which are reducing dimensionalities by applying a kernel of size \( 1 \times 1 \times d_k \) to the input feature maps \autocite{Cordonnier.Loukas.ea2020,Pan.Ge.ea2022}. Because only one head is used, this approach is called single-head (self-)attention.
+
+This section was summarized from \textcite{Bahdanau.Cho.ea2014,Brauwers.Frasincar2023,Han.Wang.ea2023,Khan.Naseer.ea2021,Liu.Zhang.ea2024,Szeliski2022,Vaswani.Shazeer.ea2017,Zhang.Lipton.ea2023}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.8\textwidth]{Figures/theory/attention_block.png}
+    \caption[Self-Attention Block in \glsentrylong{cv}]{An example self-attention block used in \gls{cv}. Given the input sequence of image features, the triplet of key, query, and value is calculated followed by attention calculation and applying it to reweight the values. A single head is shown here and an output projection \( W \) is finally applied to obtain output feature maps with the same dimension as the input feature maps \autocite{Khan.Naseer.ea2021}.}
+    \label{fig:self-attention}
+\end{figure}
+
+%%%%%%%%%%
+\subsection{\glsentrylong{mha}}
+
+In order to capture multiple relationships between multiple features, enhancing the self-attended feature maps, \gls{mha} is used. This mechanism is achieved by running multiple \gls{sdpa} layers in parallel as shown in figure \ref{fig:attention}, each with its own set of learnable parameters. Note that in the figure, the inputs are denoted as \( X \) and \( Y \), which represent the possibility of using different input datasets. If \(X = Y\), self-attention is used. If \(X \neq Y\), then cross-attention is applied, where the queries come from one set \(X\) and the keys and values come from another set \(Y\) \autocite{Bi.Zhu.ea2021,Khan.Naseer.ea2021,Liu.Zhang.ea2024}.
+
+In a \gls{mha} layer, each head calculates the \gls{sdpa} for its own set of queries, keys, and values. The outputs of these attention layers are concatenated and passed through a final linear transformation \( W^O \) to generate the output of the multi-head attention layer, as in
+\begin{equation}
+    \begin{aligned}
+        \text{MultiHead}(Q, K, V) &= \text{Concat}(\text{head}_1, \ldots, \text{head}_h) \cdot W^O \\
+        \text{where head}_i &= \text{Attention}(Q \cdot W_i^Q, K \cdot W_i^K, V \cdot W_i^V),
+    \end{aligned}
+\end{equation}
+where \( W \) are learnable parameters of linear transformations multiplied with the attention calculation per matrix and \( h \) is the number of attention heads \autocite{Vaswani.Shazeer.ea2017}. 
+
+This mechanism allows the model to capture multiple relationships between features, enhancing the model's ability to learn complex patterns and relationships in the data. The number of layers or heads is a hyperparameter that can be adjusted to balance the model's capacity and computational complexity, although in the original work of \textcite{Vaswani.Shazeer.ea2017}, they employed 8 parallel attention heads \autocite{Han.Wang.ea2023,Khan.Naseer.ea2021,Liu.Zhang.ea2024,Vaswani.Shazeer.ea2017,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\subsection{Positional Encoding}
+
+During the attention process, the position of activations is not considered, as all inputs are processed simultaneously, but only the relationships between them. The position of features, however, is of high importance for recognizing larger objects and combining context information features to the activations. To address this, positional encoding, an additional positional vector, is added to the inputs, allowing the model to capture the positional information of activations. Positional encoding is often implemented using sinusoidal functions, enabling the model to learn relative positions and generalize to longer sequences during inference. Positional encoding can either be fixed or learned and relative, adapted to enhance performance for specific tasks and inputs \autocite{Cordonnier.Loukas.ea2020,Han.Wang.ea2023,He.Zhang.ea2016,Khan.Naseer.ea2021,Liu.Zhang.ea2024,Vaswani.Shazeer.ea2017,Zhang.Lipton.ea2023}.
+
+%%%%%%%%%%
+\section{Attention-Based Architectures for \glsentrylong{cv}}
+
+Transformers rely solely on attention layers, bypassing the conventional use of convolutions and other techniques found in models like \glspl{cnn} and similar. Consisting of a Transformer encoder and decoder, they have been widely used in \gls{nlp} tasks, achieving state-of-the-art performance on various benchmarks, even serving as the basis for the GPT series \autocite{Tzepkenlis.Marthoglou.ea2023,Zhang.Lipton.ea2023}. Transformers have also been adapted for \gls{cv} tasks, leading to the development of \glspl{vit}, which have shown promising results on image classification, object detection, and semantic segmentation tasks \autocite{Bi.Zhu.ea2021,Han.Wang.ea2023,Khan.Naseer.ea2021,Liu.Zhang.ea2024}. \textcite{Khan.Naseer.ea2021} give an overview over a plethora of models utilizing self-attention for \gls{cv}. They split all the models they reviewed into the two categories single-head self-attention and \gls{mha}, of which the latter are also denoted as \glspl{vit}. The Transformer architecture, introduced by \textcite{Vaswani.Shazeer.ea2017}, is the foundation for many of the models reviewed by \textcite{Khan.Naseer.ea2021} and also of the SegFormer, the model utilized by the research framework of this study, the \gls{lulcu}. 
+
+%%%%%%%%%%
+\subsection{\glsentrylong{vit}}
+
+Given the advancements achieved by Transformers in the realm of \gls{nlp} in the recent years since their introduction in 2017, there has been an increasing interest to explore their potential within the scope of \gls{cv} \autocite{Khan.Naseer.ea2021}. Multiple models have been developed for this task, as \textcite{Cordonnier.Loukas.ea2020} proposed that attention could replace convolutions completely, introducing a prototype called the Fully Attentional Network. However, none had a similar impact as the \gls{vit}, introduced by \textcite{Dosovitskiy.Beyer.ea2020} in 2020. It functions as an extension of the Transformer model adapted for image classification tasks. The characteristic feature of the \gls{vit} is that images are split into patches and fed linearly into the model rather than as single pixels. When trained on mid-sized datasets, the \gls{vit} has shown modest accuracy compared to \glspl{cnn}. But trained on large datasets, the \gls{vit} outperformed \glspl{cnn} clearly \autocite{Bi.Zhu.ea2021,Dosovitskiy.Beyer.ea2020,Khan.Naseer.ea2021}.
+
+Figure \ref{fig:vit} shows the architecture of the \gls{vit}. The key part is the Transformer Encoder, which is a combination of an attention block as described above and an \gls{mlp}. The \gls{vit} disregards the Transformer decoder and replaces it with a standard \gls{mlp} head as decoder. Because Transformers are mainly developed for \gls{nlp} tasks with sequential data, the idea for the \gls{vit} was to split the input image so that it resembles a sequence of inputs. However, treating every pixel as input is not efficient, therefore, the image is split into \( 16 \times 16 \) non-overlapping image patches. These are flattened, linearly transformed into fixed-size vectors, enriched with positional encoding vectors, and finally fed into the Transformer encoder. When used for image classification tasks, an extra learnable classification vector \( [class] \) is added during these preprocessing steps, which acts as a representative vector for the entire image \autocite{Han.Wang.ea2023,Khan.Naseer.ea2021,Liu.Zhang.ea2024,Park.Kim2022,Szeliski2022}.
+
+The encoder is based on the encoder block of the Transformer, as it, as well, consists of multiple blocks of normalization, \gls{mha}, and \gls{ffn} layers. When the preprocessed image patches are fed into the encoder, layer normalization, as explained in \ref{subsec:regularization}, is applied, and then they are fed into a \gls{mha} layer. Residual connections, as explained in \ref{subsec:residuals}, are used to counter the vanishing gradient problem. The output of the \gls{mha} layer is again layer normalized before passed through a \gls{ffn} layer, specifically an \gls{mlp}, with another residual connection \autocite{Dosovitskiy.Beyer.ea2020,Geva.Schuster.ea2021,Liu.Zhang.ea2024,Park.Kim2022,Szeliski2022,Zhang.Lipton.ea2023}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/theory/vit.png}
+    \caption[\glsentrylong{vit} Architecture]{Graphical representation of the architecture of the \gls{vit} \autocite{Dosovitskiy.Beyer.ea2020}.}
+    \label{fig:vit}
+\end{figure}
+
+The output of the Transformer encoder block is passed through an \gls{mlp} classification head, which is a simple \gls{mlp} with a final \gls{gelu} softmax activation function, an adapted \gls{relu}, to predict the class of the input image. The \gls{vit} has shown state-of-the-art performance on various image classification benchmarks, demonstrating the potential of the Transformer architecture for \gls{cv} tasks \autocite{Dosovitskiy.Beyer.ea2020,Geva.Schuster.ea2021,Liu.Zhang.ea2024,Park.Kim2022,Szeliski2022}.
+
+%%%%%%%%%%
+\subsection{Follow-Ups of the \glsentrylong{vit}}
+
+Despite its strong performance, \gls{vit} has two main limitations: first, it produces low-resolution features on a single scale instead of multi-scale ones, and second, it has high computational costs when processing large images \autocite{Xie.Wang.ea2021}. Building a base for many follow-ups, the \gls{vit} can be adapted to tackle these limitations and be made more efficient and performant by changing the decoder head from an \gls{mlp} to different other blocks, like using a Transformer decoder block or a \gls{cnn}, and adapting the encoder by implementing additional components, such as convolutional layers, more efficient attention mechanisms, different positional encodings, and hierarchical structures \autocite{Han.Wang.ea2023,Khan.Naseer.ea2021}.
+
+One milestone in enhancing the \gls{vit} and adapting it to dense prediction tasks was the \gls{pvt} by \textcite{Wang.Xie.ea2021}, introducing the first hierarchical design for \glspl{vit} with progressive shrinking spatial-reduction attention. This enhances the detection of different scaled features, similar to the architectures of \glspl{cnn} and encoder-decoder models. Another one was the Swin Transformer by \textcite{Liu.Lin.ea2021}, which uses a shifting windows approach for splitting images in changing square-shaped blocks of patches and merging them afterwards, resembling block-wise convolution with a Transformer. The \gls{setr} by \textcite{Zheng.Lu.ea2021} demonstrated the suitability of pure Transformer blocks without convolutions or resolution reduction for semantic segmentation, building the base for further follow-ups in this field \autocite{Han.Wang.ea2023,Khan.Naseer.ea2021,Xie.Wang.ea2021}.
+
+As the publication dates of these papers show, applying Transformer architectures to \gls{cv} is a very current research field, leaving a lot of development potential for the future, as stated by \textcite{Digra.Dhir.ea2022,Moharram.Sundaram2023,Tzepkenlis.Marthoglou.ea2023,Xie.Wang.ea2021}. That is why currently a plethora of adapted and enhanced architectures are published, aimed towards tackling various tasks, sometimes generally enhancing the architecture, sometimes tackling very specific use cases.
+
+Evolving the \gls{vit} and some of its follow-ups, especially the \gls{pvt} and the \gls{setr}, into a more flexible and efficient direction, the SegFormer was introduced also in 2021 by \textcite{Xie.Wang.ea2021}. It is the model utilized by the \gls{lulcu} in the experiment framework of this study, therefore, the following section gives an overview of the SegFormer and its architecture.
+
+%%%%%%%%%%
+\subsection{SegFormer}
+\label{subsec:segformer}
+
+All background information given above, from perceptrons over training \glspl{dnn}, convolutional layers, and attention mechanisms, to Transformers and the \gls{vit}, leads to the SegFormer, proposed by \textcite{Xie.Wang.ea2021}. It incorporates advancements in \gls{dl} of the last decades in one model architecture, aiming at providing an efficient and flexible way to tackle various segmentation tasks. \textcite{Xie.Wang.ea2021} demonstrate that their model performs equally well or even better in semantic segmentation than others while using significantly fewer parameters, thus being more efficient in terms of computational resources. \textcite{Chen.Liu.ea2023,Lin.Cheng.ea2023,Tzepkenlis.Marthoglou.ea2023} further show that due to its adaptability and performance, the SegFormer is a strong competitor to other \gls{dl} models for \gls{cv} and also for \gls{lulcm}. This makes the \gls{lulcu} with the incorporated SegFormer a suitable candidate for the integration of a road network into the feature space in order to assess the impact of spatial contextual information on the model's performance and resource consumption.
+
+The SegFormer is a robust and efficient semantic segmentation framework with a positional-encoding-free hierarchical Transformer encoder and a lightweight All-\gls{mlp} decoder that \enquote{yields a powerful representation without complex and computationally demanding modules} \autocite[2]{Xie.Wang.ea2021}. The hierarchical Transformer encoder with four stages is based on the \gls{pvt} encoder and is referred to as \gls{mit} \autocite{Khan.Naseer.ea2021,Liu.Zhang.ea2024}. \textcite{Xie.Wang.ea2021} state that they extend the \gls{vit} and \gls{setr} by adapting the encoder and decoder, a novel approach, as normally only mainly the Transformer encoder of the \gls{vit} is considered.
+
+%%%%%%%%%%
+\subsubsection*{Improvements Over Predecessors} 
+
+The SegFormer has some advantages over other \glspl{vit}, as stated by \textcite{Xie.Wang.ea2021} themselves, comparing the SegFormer primarily to the \gls{setr}. First, the training process is more efficient, as a much smaller training dataset is used for pre-training. Also, the encoder is smaller than the one implemented in the \gls{vit} and can capture both high-resolution coarse and low-resolution fine features due to its hierarchical structure in four stages. Most \glspl{vit} at this point, including the \gls{setr}, can only generate low-resolution feature maps. The omission of the positional encoding in the encoder is another advantage, as it allows the model to adapt to arbitrary image resolutions without impacting the performance. \gls{vit} and \gls{setr} use fixed shape positional encoding which decreases the accuracy when the inference resolution differs from the training resolution, as interpolation has to be used to make up the different resolutions. The All-\gls{mlp} decoder takes advantage of the Transformer blocks which apply both local and global attention based on their hierarchy. The decoder aggregates these attentive features, combining local and global attention, resulting in powerful multi-scaled representations. Additionally, the decoder is simpler and less computationally demanding than the one implemented in the \gls{setr}, leading to a negligible computational overhead. Comparing the performance and efficiency of the SegFormer with the \gls{setr}, the Swin Transformer, the \gls{pvt}, and a \gls{fcn}, alongside others, it is safe to say that the SegFormer is able to outperform them all while being more efficient, achieving higher \gls{iou} scores while using less parameters \autocite{Lin.Cheng.ea2023,Tzepkenlis.Marthoglou.ea2023,Wang.Wang.ea2023,Xie.Wang.ea2021}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/theory/erfa.png}
+    \caption[Effective Receptive Field Analysis of the SegFormer]{Effective receptive field analysis of all stages of the SegFormer compared to DeepLabv3+, average over 100 images from the Cityscapes benchmark. The boxes to the far right are zoomed-in representations of Stage-4 and the head of the SegFormer, respectively \autocite{Xie.Wang.ea2021}.}
+    \label{fig:erfa}
+\end{figure}
+
+In regard to the task at hand, which focuses on the contextual information of spatial features, \textcite{Xie.Wang.ea2021} present an effective receptive field analysis, showing that the receptive field of the SegFormer is much larger without being complex, resembling \enquote{convolutions at lower stages, while able to output highly non-local attentions that effectively capture contexts at Stage-4} \autocite[5]{Xie.Wang.ea2021}. The SegFormer takes advantage of the Transformer block as it generates both global and highly local attention at the same time, shown in the different phases of figure \ref{fig:erfa}. These are merged in the decoder, where it \enquote{renders complementary and powerful representations by adding few parameters} \autocite[5]{Xie.Wang.ea2021}. Seen in the colored boxes to the far right in the figure, it is observable that the decoder produces a stronger local attention while keeping the same global attention level \autocite{Xie.Wang.ea2021}. This is useful for this study, as the SegFormer \enquote{understands} belonging spatial contextual information to features over a larger context area.
+
+%%%%%%%%%%
+\subsubsection*{Architecture} 
+
+Figure \ref{fig:segformer} shows the architecture of the SegFormer, emphasizing its simplicity, as it only has two main computation blocks, the \gls{mit} block in the encoder and the \gls{mlp} in the decoder, shown broken down below the architecture. As in the \gls{vit}, before feeding the \gls{mit} with input tensors, the images have to be transformed into input sequences to extract features from them. This is done via Overlap Patch Embeddings, which split the images into multiple overlapping patches of size \( 4 \times 4 \), contrary to \( 16 \times 16 \) by the \gls{vit}, generating a vector for each of them \autocite{Lin.Cheng.ea2023,Wang.Wang.ea2023,Xie.Wang.ea2021}. These image patches are then fed into the \gls{mit} as the aforementioned \( Q, K \), and \( V \) tensors. The \gls{mit} consists of three submodules, the Efficient \gls{mha}, the Mix-\gls{ffn}, and Overlap Patch Merging.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/theory/segformer.pdf}
+    \caption[SegFormer Architecture]{Graphical representation of the architecture of the SegFormer by \textcite{Xie.Wang.ea2021}. \gls{mit} block and \gls{mlp} layer are broken down below the architecture.}
+    \label{fig:segformer}
+\end{figure}
+
+The efficient \gls{mha} block is similar to the \gls{mha} with the implemented \gls{sdpa} explained above and shown in figure \ref{fig:attention}. Compared to the traditional \gls{sdpa}, it reduces computational load and the number of parameters, enhancing runtime efficiency and mitigating overfitting. The \gls{mha} is a computational bottleneck as each of the attention heads has the same dimensions \( N \times C \), where \( N = H \times W \) is the length of the sequence, and the \gls{sdpa} has to calculate the similarity matrix between any two positions. This results in a computational complexity of \( O(N^2) \), which reduces the efficiency of the attention block drastically for large images. The efficient self-attention block introduces a reduction ratio \( R \), similar to the sequence reduction process introduced in the \gls{pvt}, in order to reduce the input sequence length with 
+\begin{equation}
+    \begin{aligned}
+        \hat{K} &= \text{Reshape}\left(\frac{N}{R}, C \cdot R\right) (K) \\
+        K &= \text{Linear}\left(C \cdot R, C\right) (\hat{K}).
+    \end{aligned}
+\end{equation}
+
+The reshaping operation divides the key tensor \( K \) into smaller patches of size \( \frac{N}{R} \), each having \( C \cdot R \) elements. After reshaping, a linear transformation is applied to transform the input from \( C \cdot R \) to \( C \) dimensions, effectively transforming \( K \) from prior \( N \times C \) to \( \frac{N}{R} \times C \). This reduces the number of parameters and the computational complexity of the \gls{mha} block from \( O(N^2) \) to \( O\left(\frac{N^2}{R}\right) \), as shown in figure \ref{fig:effi_attention}. The figure shows a similar attention block like figure \ref{fig:attention}, with the difference that the according shapes with the reduction ratio are included for visualization \autocite{Lin.Cheng.ea2023,Wang.Wang.ea2023,Xie.Wang.ea2021}. \( R \) is set by \textcite{Xie.Wang.ea2021} to \( [64, 16, 4, 1] \) from stage-1 to stage-4 in the SegFormer, representing the increase in spatial detail and decrease in the need of sequence reduction. These parameters are adaptable.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=.66\textwidth]{Figures/theory/effi_attention.png}
+        \caption{Efficient Self-Attention, used in the \gls{mha}.}
+        \label{fig:effi_attention}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=.66\textwidth]{Figures/theory/mix-ffn.png}
+        \caption{Mix-\glsentrylong{ffn} after the efficient \gls{mha}.}
+        \label{fig:mix-ffn}
+    \end{subfigure}
+    \caption[\glsentrylong{mit} Block of the SegFormer]{Graphical representation of the \glsentrylong{mit} block of the SegFormer with the efficient self-attention (A) and the Mix-\gls{ffn} (B). Adapted from \textcite{Wang.Wang.ea2023}, added a residual connection in the Mix-\gls{ffn} as in \textcite{Lin.Cheng.ea2023}.}
+    \label{fig:segformer_block}
+\end{figure}
+
+The output of the efficient \gls{mha} is then propagated into a Mix-\gls{ffn}, which is broken down in figure \ref{fig:mix-ffn}. The limitation of a fixed positional encoding is omitted by utilizing zero padding, as explained in section \ref{subsec:convolution}, in combination with \( 3 \times 3 \) convolutions to indirectly encode the positional information. The according Mix-\gls{ffn}, combining an and convolution into a \gls{ffn}, can be described as
+\begin{equation}
+    x_{out} = \text{\gls{mlp}}(\text{\gls{gelu}}(\text{Conv}_{3 \times 3}(\text{\gls{mlp}}(x_{in})))) + x_{in},
+\end{equation}
+where \( x_{in} \) is the feature from the efficient \gls{mha} module \autocite{Lin.Cheng.ea2023,Wang.Wang.ea2023,Xie.Wang.ea2021}. \textcite{Xie.Wang.ea2021} show that these depth-wise convolutions are sufficient for efficiently providing positional information.
+
+After propagating the images through the efficient \gls{mha} and Mix-\gls{ffn} layers, Overlap Patch Merging is applied to merge the overlapping patches into a complete image. In the \gls{vit}, merging non-overlapping patches can lead to boundary effects where the transitions between patches are not smooth, resulting in discontinuities in segmentation tasks. In the SegFormer, overlapping patches are merged using a specific convolutional operation to blend the edges of patches. This ensures that adjacent patches with similar or identical category labels are fused together smoothly. This means that the semantic meaning of the image is preserved, and the segmentation map is semantically coherent \autocite{Lin.Cheng.ea2023,Xie.Wang.ea2021}.
+
+The image patches derived from splitting the input image into \( 4 \times 4 \) patches at the beginning are propagated through multiple of these \gls{mit} blocks, which obtain multi-level features at 1/4, 1/8, 1/16, and 1/32 of the original image resolution, annotated in figure \ref{fig:segformer} on the top. All of these features are directly fed into the All-\gls{mlp} decoder, which fuses them together and generates the segmentation mask in four main steps \autocite{Lin.Cheng.ea2023,Xie.Wang.ea2021}..
+
+Initially, the multi-level features \( F_i \) from the encoder are passed through an \gls{mlp} layer to normalize the channel dimensions. In the layer, these features are upsampled to 1/4th of their original size in a second step. In the third step, another \gls{mlp} layer fuses the concatenated features together to \( F \). Finally, a subsequent \gls{mlp} layer processes the fused feature map to generate the segmentation mask \( M \), achieving a resolution of \( \frac{H}{4} \times \frac{W}{4} \times N_{cls} \), where \( N_{cls} \) is the number of categories for the segmentation. \textcite{Lin.Cheng.ea2023,Wang.Wang.ea2023,Xie.Wang.ea2021} provide the according formulas to describe these operations.
+
+The SegFormer is highly scalable, as it provides tuning the hyperparameters of the \gls{mit} encoder, resulting in multiple model variants from \gls{mit}-B0 with 3.7 to \gls{mit}-B5 with 82 Million parameters, offering the possibility to utilize it for real-time or high performance applications \autocite{Xie.Wang.ea2021}. For the \gls{lulcu}, the SegFormer is a strong candidate, as it is designed to be efficient and flexible while achieving high performance. Its capability to capture contextual information over long-ranges effectively and efficiently is crucial and beneficial for the integration of spatial features into the feature space of the \gls{lulcu}.
+
+%%%%%%%%%%
+\section{Summary}
+
+\gls{dl} is a diverse field with many different models and techniques, each with its own strengths and weaknesses. This chapter provided an introduction into \gls{dl} with an overview of some of the most important models and concepts for \gls{cv}. From the simplest \glspl{nn}, Perceptrons, to advanced architectures like \glspl{cnn} and attention-based architectures like the \gls{vit}, all played a role in the development of the SegFormer, which is the basis for the \gls{lulcu} experiment framework used in this study. The highly complex training process of these architectures is the reason why \gls{dl} models are so computationally demanding, especially as datasets become larger and computational power increases. That is why optimizing the computational efficiency of such models is increasingly critical. The SegFormer is designed to be more efficient and flexible than comparable architectures, making it a strong candidate for the \gls{lulcu} experiment framework. In that regard, the next chapter will introduce the methodology used to evaluate the impact of spatial contextual information on the performance and resource consumption of the SegFormer in the \gls{lulcu}, proofing a concept utilizable for other \gls{dl} tasks in the \gls{cv} domain as well.

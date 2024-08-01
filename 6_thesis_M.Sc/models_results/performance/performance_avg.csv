@@ -1,0 +1,6 @@
+group,num_channels,mean_train_acc,mean_val_acc,mean_test_acc,mean_train_iou,mean_val_iou,mean_test_iou
+baseline,5,66.46,68.53,71.63,35.09,35.37,33.45
+ext1,6,66.92,69.94,70.72,36.4,34.55,37.09
+ext2,16,68.34,73.69,70.69,37.63,39.83,38.05
+ext3,13,65.86,69.77,67.8,34.82,36.55,32.03
+ext4,24,68.36,75.54,69.61,38.19,40.44,37.92

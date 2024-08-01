@@ -1,0 +1,324 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Masters/Doctoral Thesis 
+% LaTeX Template
+% Version 2.5 (27/8/17)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Version 2.x major modifications by:
+% Vel (vel@latextemplates.com)
+%
+% This template is based on a template by:
+% Steve Gunn (http://users.ecs.soton.ac.uk/srg/softwaretools/document/templates/)
+% Sunil Patel (http://www.sunilpatel.co.uk/thesis-template/)
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGES AND DOCUMENT CONFIGURATIONS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[
+11pt, % The default document font size, options: 10pt, 11pt, 12pt
+oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+english, % ngerman for German
+onehalfspacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+parskip, % Uncomment to add space between paragraphs
+%nohyperref, % Uncomment to not load the hyperref package
+headsepline, % Uncomment to get a line under the header
+% chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+% consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+\usepackage{ifthen} % for conditional statements
+    \newboolean{printlayout}
+    \setboolean{printlayout}{false} % True for print version
+
+\usepackage{changepage} % for adjustwidth
+\usepackage{fontenc} % Output font encoding for international characters
+\usepackage{libertine} % Use the Libertine font by default
+\usepackage[protrusion=true]{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage{adjustbox} % center overlarge elements
+\usepackage{algorithm} % for algorithms and pseudo code
+\usepackage{algpseudocode} % for algorithms and pseudo code
+\usepackage{amssymb} % for symbols
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes
+\usepackage{indentfirst} % indent first line of paragraph, including first in chapter
+    \setlength{\parindent}{10pt} % Set paragraph indentation
+\usepackage{pdflscape} % landscape pages
+
+\usepackage{float} % strict placement of figures
+\usepackage{graphics, subcaption} % Required for including images with lower captions
+\usepackage{rotating} % rotate figures
+\usepackage{wrapfig} % wrap text around figures
+
+\usepackage{booktabs} % table optimization
+\usepackage{colortbl} % color tables
+\usepackage{enumitem} % for lists
+    \setlist[enumerate]{noitemsep, topsep=0pt}
+\usepackage{multirow} % for expanded rows in tables
+\usepackage{tabularray} % for tables
+\usepackage{xcolor} % custom colors
+    \definecolor{hd-red}{RGB}{142, 14, 31} % custom color for the title page
+    \definecolor{best}{RGB}{182, 227, 221} % custom color for tables
+    \definecolor{worst}{RGB}{240, 222, 176}% custom color for tables
+    \definecolor{good}{RGB}{83, 178, 168}% custom color for tables
+    \definecolor{bad}{RGB}{209, 159, 89}% custom color for tables
+
+\usepackage{url} % for urls
+\usepackage{xurl} % word wrap for links
+    \def\UrlFont{\emph} % links are italic
+
+\usepackage{hyperref} % for hyperlinks inside the PDF
+\usepackage[nomain,acronyms,automake]{glossaries-extra} % for abbreviations
+\usepackage[backend=biber, style=apa, natbib=true, sorting=nyt, isbn=false]{biblatex} % Use the bibtex backend with the APA citation style
+    \addbibresource{literature.bib} % The filename of the bibliography
+    \renewcommand*{\bibfont}{\small}
+
+% arrows and colors for tables
+\newcommand{\upgood}{\color{good}$\uparrow$}
+\newcommand{\downgood}{\color{good}$\downarrow$}
+\newcommand{\upbad}{\color{bad}$\uparrow$}
+\newcommand{\downbad}{\color{bad}$\downarrow$}
+\newcommand{\best}{\cellcolor{best}}
+\newcommand{\worst}{\cellcolor{worst}}
+
+\newcommand{\comment}[1]{} % enable comment blocks
+
+%%%%%%%%%%%%%%%%%%
+% PAPER SETTINGS %
+%%%%%%%%%%%%%%%%%%
+
+\geometry{
+	paper=a4paper, % Change to letterpaper for US letter
+	inner=2.5cm, % Inner margin
+	outer=2.5cm, % Outer margin
+	bindingoffset=0.0cm, % Binding offset - was 0.5
+	top=1.5cm, % Top margin
+	bottom=1.5cm, % Bottom margin
+	% showframe, % Uncomment to show how the type block is set on the page
+}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% THESIS INFORMATION %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\thesistitle{Enhancing LULC Semantic Segmentation Models by Integrating Spatial Contextual Information from OpenStreetMap Road Networks} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\supervisor{apl. Prof. Dr. Sven \textsc{Lautenbach}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
+\examiner{Dr. Christina \textsc{Ludwig}} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
+\degree{Master of Science} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
+\author{Nikolaos \textsc{Kolaxidis}} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
+\university{\href{https://www.uni-heidelberg.de/en}{Heidelberg University}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\department{\href{https://www.geog.uni-heidelberg.de/index_en.html}{Institute of Geography}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
+\group{\href{https://www.geog.uni-heidelberg.de/gis/index_en.html}{GIScience}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
+\faculty{\href{https://www.uni-heidelberg.de/fakultaeten/chemgeo/}{Faculty of Chemistry and Earth Sciences}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+% \hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+\hypersetup{hidelinks} % hide links
+% If you want to have obvious links in the PDF but not the printed text, use:
+% \hypersetup{colorlinks=false}.
+}
+
+\makeglossaries
+\input{Additional/Abbreviations.tex} % Load entries from the abbreviations.tex file
+
+%%%%%%%%
+% MAIN %
+%%%%%%%%
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%%%%%%%%%%%%%%
+% TITLE PAGE %
+%%%%%%%%%%%%%%
+
+\begin{titlepage}
+\begin{center}
+
+{\color{hd-red} % Change color as needed
+\textsc{\large 
+    \univname\\[.4cm] % University name
+    \deptname\\ % Department name
+    \facname
+}}\\[.4cm] % Faculty name
+\emph{in cooperation with}\\[.4cm]
+{\color{hd-red}
+    \textsc{\href{https://heigit.org}{HeiGIT gGmbH}
+}}\\[1.2cm]
+\textsc{\LARGE Master's Thesis}\\[.8cm] % Thesis type
+
+\HRule \\ % Horizontal line
+\vspace{.4cm}
+\begin{adjustwidth}{-0.5em}{-0.5em}
+    \centering
+    {\huge \bfseries \ttitle \par} % Thesis title
+\end{adjustwidth}
+\vspace{.4cm}
+\HRule \\[1.2cm] % Horizontal line
+ 
+\begin{minipage}[t]{.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+{\color{hd-red}{\authorname}}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\begin{flushright} \large
+\emph{First Examiner:} \\
+{\color{hd-red}{\supname}} \\
+\vspace{.4cm}
+\emph{Second Examiner:}\\
+{\color{hd-red}
+    {\examname} \\
+    \emph{associated with \href{https://heigit.org}{HeiGIT gGmbH}}
+} \\
+
+\end{flushright}
+\end{minipage}\\
+ 
+\vspace{1.6cm}
+
+\large \emph{A thesis submitted in partial fulfillment of\\ the requirements for the degree of}\\[.4cm] % University requirement text
+{\color{hd-red}
+    \textsc{\degreename
+}}\\[.33cm]
+\emph{in}\\[.33cm]
+{\color{hd-red}
+    \textsc{Geography}\\
+    Specialization in \textsc{Geoinformatics}
+}\\ % Subject
+ 
+\vfill
+
+{\large \today} % Date
+ 
+\end{center}
+\end{titlepage}
+
+\ifthenelse{\boolean{printlayout}}{
+    \cleardoublepage
+    \shipout\null
+}{} % insert blank page without increasing page counter for print version
+
+%%%%%%%%%%%%%
+% ABSTRACTS %
+%%%%%%%%%%%%%
+
+\begin{abstract} % English
+
+Currently, two topics are prevalent in the geographic science world, namely deep learning and climate change. One key research field at the intersection of both fields is \glsentrylong{lulc} (\glsfmtshort{lulc}) mapping, a geographical computer vision task requiring large amounts of remote sensing data and, therefore, suitable deep learning models for segmentation. By utilizing such models, \glsfmtshort{lulc} mapping can be done automatically and efficiently, aiding in environmental monitoring as well as sustainable urban planning and resource management. Deep learning models offer two ways of improvement: enhancing the performance or enhancing the efficiency. In regard to climate change, efficiency becomes more important, as the models should be as sustainable as possible without consuming unnecessary resources. However, the reduction of performance for the sake of efficiency is not a desirable trade-off, especially when the according results are used for further applications. Therefore, this study evaluates a concept of supporting the convergence of models for \glsfmtshort{lulc} mapping in order to reduce the resource consumption while achieving similar performance. Current semantic segmentation models are able to capture a large context area of pixels to classify them effectively with more information available. Hypothetically, for segmentation tasks like \glsfmtshort{lulc} mapping, spatial contextual information has the potential to aid the models in making more informed predictions. As they are an important part of the landscape and are built with the adjacent \glsfmtshort{lulc} areas in mind, roads seem suitable to provide such information. Utilizing the SegFormer architecture inside the \glsfmtshort{lulc} Utility, a cutting-edge semantic segmentation framework for \glsfmtshort{lulc} mapping, this study incorporates features from the OpenStreetMap road network to improve both model performance and resource efficiency. Key research questions focus on identifying relevant road attributes, suitable encoding methods for feature integration, and the impact of these integrations on model performance and resource consumption. The results demonstrate that incorporating road network data, particularly road types and speed limits, considerably enhances the model's performance, while also increasing the resource consumption. However, they also show that with fine-tuning hyperparameters and according optimization techniques, the method has the potential to achieve higher performance while being more efficient, accomplishing the aforementioned goal. The study confirms that the integration of contextual data can be a valuable addition to deep learning models in the field of computer vision, as it offers the potential to enhance both their performance and efficiency.
+
+\end{abstract}
+
+\renewcommand{\abstractname}{Zusammenfassung}  % German
+\renewcommand{\byname}{von}
+\begin{abstract}
+
+In der geographischen Wissenschaftswelt sind heutzutage zwei Themen nicht wegzudenken: Deep Learning und der Klimawandel. Ein zentrales Forschungsfeld an der Schnittstelle beider Themen ist das Mapping von Landnutzung und Landbedeckung (\glsfmtshort{lulc}), eine geografische Computer Vision-Aufgabe, die vor allem wegen großer Mengen an Fernerkundungsdaten geeignete Deep Learning Modelle für die Segmentierung erfordert. Durch den Einsatz solcher Modelle kann das \glsfmtshort{lulc}-Mapping automatisch und effizient durchgeführt werden, was die Umweltüberwachung sowie die nachhaltige Stadtplanung und Ressourcenverwaltung unterstützt. Deep Learning-Modelle bieten zwei Möglichkeiten zur Verbesserung: die Erhöhung der Performance oder die Verbesserung der Effizienz. In Bezug zum Klimawandel gewinnt die Effizienz immer mehr an Bedeutung, da die Modelle so nachhaltig wie möglich sein sollten, ohne unnötige Ressourcen zu verbrauchen. Allerdings ist eine Reduzierung der Performance zugunsten der Effizienz kein wünschenswerter Kompromiss, insbesondere wenn die Ergebnisse für weitere Anwendungen genutzt werden. Diese Studie evaluiert daher ein Konzept zur Unterstützung der Konvergenz von Modellen für das \glsfmtshort{lulc}-Mapping, um den Ressourcenverbrauch zu reduzieren und gleichzeitig eine ähnliche Performance zu erzielen. Aktuelle Modelle zur semantischen Segmentierung sind in der Lage, einen großen Kontextbereich von Pixeln zu erfassen, um sie mit mehr verfügbaren Informationen effektiver zu klassifizieren. Hypothetisch haben räumliche Kontextinformationen für Segmentierungsaufgaben wie das \glsfmtshort{lulc}-Mapping  das Potenzial, den Modellen zu helfen, fundiertere Vorhersagen zu treffen. Straßen, als wichtiger Teil der Landschaft und in Bezug auf die angrenzenden \glsfmtshort{lulc}-Gebiete gebaut, scheinen geeignet, solche Informationen bereitzustellen. Diese Studie nutzt das SegFormer Modell, eingebettet im \glsfmtshort{lulc} Utility, einem Framework zum \glsfmtshort{lulc}-Mapping, und integriert Features des OpenStreetMap-Straßennetzwerkes, um sowohl die Performance als auch die Ressourceneffizienz des Modells zu verbessern. Die Hauptforschungsfragen konzentrieren sich auf die Identifizierung relevanter Straßeneigenschaften, geeignete Kodierungsmethoden für die Integration von Features und die Auswirkungen der integrierten Kontextinformationen auf die Performance und den Ressourcenverbrauch. Die Ergebnisse zeigen, dass die Einbeziehung von Straßennetzdaten, insbesondere Straßentypen und Geschwindigkeitsbegrenzungen, die Performance des Modells erheblich verbessert, gleichzeitig aber auch den Ressourcenverbrauch erhöht. Sie zeigen allerdings auch, dass mit dem Fine-Tuning der Hyperparameter und entsprechenden Optimierungstechniken die Methode das Potenzial hat, höhere Performance bei höherer Effizienz zu erzielen, und somit das angestrebte Ziel der Kombination von beidem zu erreichen. Die Studie bestätigt, dass die Integration von Kontextdaten eine wertvolle Ergänzung für Deep Learning-Modelle im Bereich des Computer Vision darstellt, da sie das Potenzial bietet, sowohl deren Performance als auch Effizienz zu verbessern.
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%
+% ACKNOWLEDGEMENTS %
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{acknowledgements}
+
+\vspace{.4cm}
+
+\input{Additional/Acknowledgements.tex}
+
+\end{acknowledgements}
+
+\ifthenelse{\boolean{printlayout}}{
+    \cleardoublepage
+    \shipout\null
+}{} % insert blank page without increasing page counter for print version
+
+%%%%%%%%%%%%%%%
+% DECLARATION %
+%%%%%%%%%%%%%%%
+
+\renewcommand{\authorshipname}{Statutory declaration}
+\begin{declaration}
+
+\noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
+
+\begin{itemize} 
+    \item I	have authored this thesis independently.
+    \item I have not used other than the declared sources / resources.
+    \item I have explicitly marked all material which has been quoted either literally or by content from the used sources.
+    \item this paper was not previously presented to another examination board and has not been published.
+\end{itemize}
+
+\vspace{1.2cm}
+
+\noindent Dossenheim, \today\\[.4cm]
+\rule[.8cm]{15cm}{.5pt} % This prints a line for date and signature
+ 
+\end{declaration}
+
+\ifthenelse{\boolean{printlayout}}{
+    \cleardoublepage
+    \shipout\null
+}{} % insert blank page without increasing page counter for print version
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTS OF CONTENTS/FIGURES/TABLES/ABBREVIATIONS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents % Prints the main table of contents
+\listoffigures % Prints the list of figures
+\listoftables % Prints the list of tables
+\printacronyms[nonumberlist, nogroupskip, title=List of Acronyms and Abbreviations] % Prints the list of abbreviations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THESIS CONTENT - CHAPTERS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+\include{Chapters/1_Introduction.tex}
+\include{Chapters/2_TheoreticalBackground.tex}
+\include{Chapters/3_Methodology.tex}
+\include{Chapters/4_Results.tex}
+\include{Chapters/5_Discussion.tex}
+\include{Chapters/6_Conclusion.tex}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY %
+%%%%%%%%%%%%%%%%
+
+\printbibliography[heading=bibintoc]
+
+\noindent 199 entries.
+
+%%%%%%%%%%%%
+% APPENDIX %
+%%%%%%%%%%%%
+
+\renewcommand{\thechapter}{\Alph{chapter}}
+\setcounter{chapter}{0}
+\include{Additional/Appendix.tex}
+
+\end{document}

@@ -1,0 +1,6 @@
+group,average,averaged_max
+ext4,3.35,3.9
+ext3,2.61,3.49
+ext2,3.01,3.66
+ext1,2.42,3.28
+baseline,2.31,3.29

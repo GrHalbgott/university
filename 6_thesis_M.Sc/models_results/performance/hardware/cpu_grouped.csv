@@ -1,0 +1,6 @@
+group,average,averaged_max
+ext4,24.65,71.83
+ext3,24.07,63.87
+ext2,25.71,64.47
+ext1,29.86,71.47
+baseline,32.3,78.6

@@ -1,0 +1,687 @@
+\chapter{Appendix}
+\label{Appendix}
+
+\section{Code Availability \& Repositories}
+\label{app:code}
+
+Files created for this study can be found in the GitHub repository at \emph{\url{https://github.com/GrHalbgott/university/tree/main/6_thesis_M.Sc}}. The folder \enquote{relationship\_analysis} contains the scripts used for exploring the road network attributes according to the used attributes as well as the relationship analysis between roads and adjacent \gls{lulc} classes. Additionally, the repository contains scripts for code verification and testing, comparison of speeds as shown in appendix \ref{app:speeddict} further below, and the calculation and plotting of the evaluation metrics derived from Neptune.ai. Also, the main additions to the \gls{lulcu} (mentioned below) are included as well. This repository is publicly accessible.
+
+The adapted \gls{lulcu} can be found in the GitLab repository at \emph{\url{https://gitlab.gistools.geog.uni-heidelberg.de/nkolaxidis/lulc-utility}}. The main script where the extensions are called and integrated into the feature space is \emph{lulc/data/ dataset.py}. The handling of the road network and the different functions required for querying, preprocessing, feature engineering, encoding, and rasterizing the road network data, are implemented in the \emph{lulc/ops/ road\_network\_operator.py} script, which is the main addition to the \gls{lulcu} in context of this thesis. The configuration variables specifically for the road network and its feature engineering process are in the file \emph{assets/ road\_network.yaml}. The configuration files for the baseline model and each extension can be found in the \emph{conf/model} folder, their normalization values in the \emph{conf/data} folder. Other parts of the code have been adapted to enable an easier training workflow and enhanced user experience, but they are not related to the thesis itself, therefore they are not specifically mentioned here. All changes and additions to the \gls{lulcu} are summarized in the merge request under \emph{\url{https://gitlab.gistools.geog.uni-heidelberg.de/nkolaxidis/lulc-utility/-/merge_requests/3}}. The project is only accessible with a login.
+
+Results of the model runs can be found in the Neptune.ai project at \emph{\url{https://app.neptune.ai/o/HeiGIT/org/RoadNetwork-integration}}. The project contains the results of all model runs, including the evaluation metrics and confusion matrices, as well as segmentation samples. The project is only accessible with a login and an invitation.
+
+%%%%%%%%%%
+\section{Default and Country-Specific Speed Limits}
+\label{app:speeddict}
+
+The file used for getting country-specific and default speed limits per road type is found here: \emph{\url{https://raw.githubusercontent.com/GIScience/openrouteservice/master/ors-engine/src/main/resources/resources/services/routing/speed_limits/car.json}}. It is part of the OpenRouteService, a routing engine developed by the \gls{heigit}, and the speeds apply for cars only.
+
+\clearpage
+
+%%%%%%%%%%
+\section{Maps of \glsentrylong{mahdrnk}}
+\label{app:aoi}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/LULC.pdf}
+    \caption[\glsfmtshort{lulc} Classes of \glsfmtshort{mahdrnk}]{Aggregated \gls{lulc} Classes of \gls{mahdrnk}. The large share of the classes \enquote{forest} and \enquote{farmland} is easily observable as well as the two larger and many spatially distributed smaller cities aggregated in the \enquote{built-up} class.}
+    \label{app_fig:lulc}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/Road Types.pdf}
+    \caption[Feature Engineered Road Types of \glsfmtshort{mahdrnk}]{Road types of the \gls{aoi} \gls{mahdrnk} after feature engineering. The high prevalence of \emph{track} is easily observable.}
+    \label{app_fig:roadtypes}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/Speed Limit Classes.pdf}
+    \caption[Feature Engineered Speed Limit Classes of \glsfmtshort{mahdrnk}]{Speed limit classes of the \gls{aoi} \gls{mahdrnk} after feature engineering. The whitespace in comparison to the other road networks is due to the high share of missing values in the speed tags.}
+    \label{app_fig:speedlimits}
+\end{figure}
+
+%%%%%%%%%%
+\section{Relationship Between Roads and \glsentryshort{lulc} Classes}
+
+The following pages contain additional material regarding the explorative relationship analysis between roads and \gls{lulc} classes.
+
+%%%%%%%%%%
+\subsection{Visual Relationship}
+\label{app:vis_lulc}
+
+The following figures are a continuation of figure \ref{fig:types_lulc_vis} in the results section \ref{subsec:vis}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/Single Road Types continuation I.pdf}
+    \caption[Visual Relationship between Road Types and \glsfmtshort{lulc} Classes, Continuation I]{Visual Relationship between road types and \gls{lulc} classes for \gls{mahdrnk}, first continuation of figure \ref{fig:types_lulc_vis}. The background is figure \ref{app_fig:lulc} in appendix section \ref{app:aoi}. Roads are black.}
+    \label{app_fig:types_lulc_vis_maj}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/Single Road Types continuation II.pdf}
+    \caption[Visual Relationship between Road Types and \glsfmtshort{lulc} Classes, Continuation II]{Visual Relationship between road types and \gls{lulc} classes for \gls{mahdrnk}, second continuation of figure \ref{fig:types_lulc_vis}. The background is figure \ref{app_fig:lulc} in appendix section \ref{app:aoi}. Roads are black.}
+    \label{app_fig:types_lulc_vis_min}
+\end{figure}
+
+\clearpage 
+
+%%%%%%%%%%
+\subsection{Buffered Road Types vs. \glsentryshort{lulc} Classes}
+\label{app:road_types}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_vertical.png}
+    \caption[Heatmaps of Road Types vs. \glsfmtshort{lulc} Classes, Vertical Summation]{Heatmaps showing the relationship between road types and \gls{lulc} classes for the buffer sizes 0, 10, and 25 m. Summation to 100 \% vertically. All values under 1 \% are omitted for clarity, summation includes the omitted values.}
+    \label{app_fig:types_lulc_v}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_vertical_changes.png}
+    \caption[Heatmaps of Road Types vs. \glsfmtshort{lulc} Classes, Changes, Vertical Summation]{Heatmaps showing the changes between the different buffer sizes 0, 10, and 25 m of the relationship between road types and \gls{lulc} classes. Summation to 100 \% vertically.}
+    \label{app_fig:types_lulc_v_changes}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_horizontal.png}
+    \caption[Heatmaps of Road Types vs. \glsfmtshort{lulc} Classes, Horizontal Summation]{Heatmaps showing the relationship between road types and \gls{lulc} classes for the buffer sizes 0, 10, and 25 m. Summation to 100 \% horizontally. All values under 1 \% are omitted for clarity, summation includes the omitted values.}
+    \label{app_fig:types_lulc_h}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_horizontal_changes.png}
+    \caption[Heatmaps of Road Types vs. \glsfmtshort{lulc} Classes, Changes, Horizontal Summation]{Heatmaps showing the changes between the different buffer sizes 0, 10, and 25 m of the relationship between road types and \gls{lulc} classes. Summation to 100 \% horizontally.}
+    \label{app_fig:types_lulc_h_changes}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/road_types/clustering/road_types_clustering_0.png}
+        \caption{No applied buffer.}
+    \end{subfigure}
+    \\
+    \begin{adjustbox}{center}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/road_types/clustering/road_types_clustering_10.png}
+            \caption{Buffered Road Network with 10 m.}
+        \end{subfigure}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/road_types/clustering/road_types_clustering_25.png}
+            \caption{Buffered Road Network with 25 m.}
+        \end{subfigure}
+    \end{adjustbox}
+    \caption[]{Dendrograms showing the \glsfmtshort{hca} of road types based on their distribution similarity over \gls{lulc} classes for no applied buffer (A), 10 m buffer (B), and 25 m buffer (C). Road types \emph{residential, pedestrian}, and \emph{living\_street} have been clustered together based on this result to decrease the number of channels for extension 2 (see section \ref{sec:ext2}).}
+    \label{app_fig:types_dendrograms}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_correlation.png}
+    \caption[\glsfmtshort{ppmc} of \glsfmtshort{lulc} Classes Based on Buffered Road Types]{\gls{ppmc} of \gls{lulc} classes based on road types distribution, for the buffer sizes 0, 10, and 25 m. Asterisks show the according significance level at 0.05 (*), 0.01 (**), and 0.001 (***), respectively. The upper triangle is omitted for clarity.}
+    \label{app_fig:types_correlation}
+\end{figure}
+
+
+\clearpage
+
+%%%%%%%%%
+\subsection{Buffered Speed Limit Classes vs. \glsentryshort{lulc} Classes}
+\label{app:speeds}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_vertical.png}
+    \caption[Heatmaps of Speed Limit Classes vs. \glsfmtshort{lulc} Classes, Vertical Summation]{Heatmaps showing the relationship between speed limit and \gls{lulc} classes for the buffer sizes 0, 10, and 25 m. Summation to 100 \% vertically. All values under 1 \% are omitted for clarity, summation includes the omitted values.}
+    \label{app_fig:speeds_v}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_vertical_changes.png}
+    \caption[Heatmaps of Speed Limit Classes vs. \glsfmtshort{lulc} Classes, Changes, Vertical Summation]{Heatmaps showing the changes between the different buffer sizes 0, 10, and 25 m of the relationship between speed limit and \gls{lulc} classes. Summation to 100 \% vertically.}
+    \label{app_fig:speeds_v_changes}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_horizontal.png}
+    \caption[Heatmaps of Speed Limit Classes vs. \glsfmtshort{lulc} Classes, Horizontal Summation]{Heatmaps showing the relationship between speed limit and \gls{lulc} classes for the buffer sizes 0, 10, and 25 m. Summation to 100 \% horizontally. All values under 1 \% are omitted for clarity, summation includes the omitted values.}
+    \label{app_fig:speeds_h}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_horizontal_changes.png}
+    \caption[Heatmaps of Speed Limit Classes vs. \glsfmtshort{lulc} Classes, Changes, Horizontal Summation]{Heatmaps showing the changes between the different buffer sizes 0, 10, and 25 m of the relationship between speed limit and \gls{lulc} classes. Summation to 100 \% horizontally.}
+    \label{app_fig:speeds_h_changes}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/speeds/clustering/speeds_clustering_0.png}
+        \caption{No applied buffer.}
+    \end{subfigure}
+    \begin{subfigure}{.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/speeds/clustering/speeds_clustering_10.png}
+        \caption{Buffered Road Network with 10 m.}
+    \end{subfigure}
+    \begin{subfigure}{.85\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/speeds/clustering/speeds_clustering_25.png}
+        \caption{Buffered Road Network with 25 m.}
+    \end{subfigure}
+    \caption[]{Dendrograms showing the \glsfmtshort{hca} of speed limit classes based on their distribution similarity over \gls{lulc} classes for no applied buffer (A), 10 m buffer (B), and 25 m buffer (C). The Speed Limit Classes are clusters based on speed limit ranges (see section \ref{sec:ext3}).}
+    \label{app_fig:speeds_dendrograms}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_correlation.png}
+    \caption[\glsfmtshort{ppmc} of \glsfmtshort{lulc} Classes Based on Buffered Speed Limit Classes]{\gls{ppmc} of \gls{lulc} classes based on speed limit classes distribution, for the buffer sizes 0, 10, and 25 m. Asterisks show the according significance level at 0.05 (*), 0.01 (**), and 0.001 (***), respectively. The upper triangle is omitted for clarity.}
+    \label{app_fig:speeds_correlation}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%
+\section{Model Evaluation}
+\label{app:evaluation}
+
+%%%%%%%%%
+\subsection{Performance of All Model Runs}
+\label{app:performance}
+
+\begin{table}[!htb]
+    \centering
+    \caption[Maximal Performance of All Model Runs]{Maximal achieved values for \gls{oa} and \gls{iou} in all three phases of all model runs.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{ccccccc}
+            \toprule
+            \textbf{Model Run} & \textbf{Train \gls{oa} [\%]} & \textbf{Val \gls{oa} [\%]} & \textbf{Test \gls{oa} [\%]} & \textbf{Train \gls{iou} [\%]} & \textbf{Val \gls{iou} [\%]} & \textbf{Test \gls{iou} [\%]} \\
+            \midrule
+            Baseline 1 & 67.38 & 74.84 & \best 76.69 & 36.86 & 40.48 & 36.42 \\
+            Baseline 2 & 64.53 & \worst 63.45 & 71.85 & \worst 32.73 & \worst 28.33 & 34.24 \\
+            Baseline 3 & 67.48 & 67.29 & 66.34 & 35.69 & 37.29 & 29.68 \\
+            \midrule
+            Baseline & 66.46 & 68.52 & 71.63 & 35.10 & 35.37 & 33.45 \\
+            \midrule
+            Extension 1.1 & 70.47 \upgood & 70.42 \upgood & 72.57 \upgood & \best 40.05 \upgood & 35.96 \upgood & 37.24 \upgood \\
+            Extension 1.2 & \worst64.11 \downbad & \worst 67.51 \downbad & 70.74 \downbad & \worst 33.17 \downbad & 34.11 \downbad & 35.34 \upgood \\
+            Extension 1.3 & 66.18 \downbad & 71.88 \upgood & 68.86 \downbad & 35.99 \upgood & \worst 33.59 \downbad & 38.68 \upgood \\
+            \midrule
+            Extension 2.1 & \best 71.23 \upgood & 73.77 \upgood & 68.90 \downbad & 39.66 \upgood & 42.57 \upgood & 37.42 \upgood \\
+            Extension 2.2 & 66.21 \downbad & 77.55 \upgood & 70.56 \downbad & 35.86 \upgood & 38.88 \upgood & \best 39.29 \upgood \\
+            Extension 2.3 & 67.57 \upgood & 69.75 \upgood & 72.62 \upgood & 37.36 \upgood & 38.05 \upgood & 37.44 \upgood \\
+            \midrule
+            Extension 3.1 & 65.69 \downbad & 72.73 \upgood & 69.73 \downbad & 34.25 \downbad & 39.25 \upgood & 34.02 \upgood \\
+            Extension 3.2 & 66.69 \upgood & 68.20 \downbad & 69.37 \downbad & 35.60 \upgood & 35.56 \upgood & 33.80 \upgood \\
+            Extension 3.3 & 65.19 \downbad & 68.39 \downbad & \worst 64.31 \downbad & 34.62 \downbad & 34.83 \downbad & \worst 28.27 \downbad \\
+            \midrule
+            Extension 4.1 & 67.57 \upgood & 72.65 \upgood & \best 74.63 \upgood & 36.94 \upgood & 38.80 \upgood & 38.61 \upgood \\
+            Extension 4.2 & 69.39 \upgood & \best 77.85 \upgood & 66.19 \downbad & 39.88 \upgood & \best 44.71 \upgood & 37.01 \upgood \\
+            Extension 4.3 & 68.11 \upgood & 76.11 \upgood & 68.01 \downbad & 37.74 \upgood & 37.80 \upgood & 38.14 \upgood \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+    \label{app_tab:performance}
+\end{table}
+
+\begin{table}[!htb]
+    \centering
+    \caption[Performance of All Model Runs at Step 13]{\gls{oa} and \gls{iou} values at step 13 of all model runs.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{ccccc}
+            \toprule
+            \textbf{Model Run} & \textbf{Train \gls{oa} [\%]} & \textbf{Val \gls{oa} [\%]} & \textbf{Train \gls{iou} [\%]} & \textbf{Val \gls{iou} [\%]} \\
+            \midrule
+            Baseline 1 & \worst 60.97 & \worst 52.55 & \worst 30.41 & \worst 23.83 \\
+            Baseline 2 & 63.31 & 60.84 & 32.73 & 26.71 \\
+            Baseline 3 & 61.66 & 58.34 & 31.98 & 31.23 \\
+            \midrule
+            Baseline & \worst 61.98 & \worst 57.24 & \worst 31.71 & \worst 27.26 \\
+            \midrule
+            Extension 1.1 & \best 66.82 \upgood & 64.18 \upgood & 35.60 \upgood & 31.11 \upgood \\
+            Extension 1.2 & 62.55 \upgood & \worst 61.07 \upgood & 31.79 \upgood & \worst 30.75 \upgood \\
+            Extension 1.3 & \worst 61.98 & \best 69.07 \upgood & \worst 31.77 \upgood & 30.93 \upgood \\
+            \midrule
+            Extension 2.1 & 66.21 \upgood & 68.71 \upgood & 35.86 \upgood & 34.90 \upgood \\
+            Extension 2.2 & 65.97 \upgood & 63.75 \upgood & 35.41 \upgood & 33.71 \upgood \\
+            Extension 2.3 & 65.32 \upgood & 65.76 \upgood & 35.51 \upgood & 37.36 \upgood \\
+            \midrule
+            Extension 3.1 & 62.75 \upgood & 64.06 \upgood & 33.74 \upgood & 36.72 \upgood \\
+            Extension 3.2 & 64.65 \upgood & 62.33 \upgood & 34.18 \upgood & 32.49 \upgood \\
+            Extension 3.3 (12) & 64.62 \upgood & 62.50 \upgood & 33.08 \upgood & 31.16 \upgood \\
+            \midrule    
+            Extension 4.1 & 65.94 \upgood & 67.49 \upgood & 35.50 \upgood & 35.08 \upgood \\
+            Extension 4.2 & 66.35 \upgood & 66.19 \upgood & \best 36.28 \upgood & \best 37.53 \upgood \\
+            Extension 4.3 & 64.61 \upgood & 62.35 \upgood & 35.14 \upgood & 30.74 \upgood \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+\label{app_tab:performance_epochcut}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htb]
+    \centering
+    \caption[\glsentrylong{ca} of All Model Runs]{\gls{ca} values of the test phases of all model runs. The according confusion matrices can be found in appendix section \ref{app:conf_matrices}.}
+    \begin{tabular}{ccccccc}
+        \toprule
+        \textbf{Model Run} & \textbf{Built-up} & \textbf{Forest} & \textbf{Water} & \textbf{Farmland} & \textbf{Permanent Crops} & \textbf{Grass} \\
+        \midrule
+        Baseline 1 & 70 & 78 & 91 & 67 & 78 & 22 \\
+        Baseline 2 & \worst 68 & 85 & 91 & 76 & 31 & 40 \\
+        Baseline 3 & 73 & \best 90 & \worst 52 & 64 & \worst 20 & \best 62 \\
+        \midrule
+        Baseline & 70 & 84 & 78 & 69 & 43 & 41 \\
+        \midrule
+        Extension 1.1 & 83 \upgood & 86 \upgood & 87 \upgood & 78 \upgood & 60 \upgood & 24 \downbad \\
+        Extension 1.2 & 78 \upgood & 82 \downbad & 87 \upgood & 78 \upgood & \worst 39 \downbad & 41 \downbad \\
+        Extension 1.3 & 85 \upgood & 86 \upgood & 85 \upgood & 66 \downbad & 54 \upgood & 39 \downbad \\
+        \midrule
+        Extension 2.1 & \best 90 \upgood & 84 & 92 \upgood & 63 \downbad & 47 \upgood & \best 51 \upgood \\
+        Extension 2.2 & 87 \upgood & 84 & \best 93 \upgood & 68 \downbad & 66 \upgood & 27 \downbad \\
+        Extension 2.3 & 81 \upgood & 84 & 90 \upgood & 74 \upgood & 57 \upgood & 40 \downbad \\
+        \midrule
+        Extension 3.1 & 88 \upgood & 88 \upgood & 91 \upgood & 55 \downbad & 70 \upgood & \worst 16 \downbad \\
+        Extension 3.2 & 81 \upgood & \best 90 \upgood & 89 \upgood & 57 \downbad & 44 \upgood & 26 \downbad \\
+        Extension 3.3 & \worst 68 \downbad & 83 \downbad & \worst 72 \downbad & 59 \downbad & 46 \upgood & 19 \downbad \\
+        \midrule
+        Extension 4.1 & 87 \upgood & 87 \upgood & 91 \upgood & \best 79 \upgood & 46 \upgood & 39 \downbad \\
+        Extension 4.2 & 87 \upgood & 84 & 88 \upgood & \worst 48 \downbad & \best 87 \upgood & 35 \downbad \\
+        Extension 4.3 & 89 \upgood & \worst 77 \downbad & \best 93 \upgood & 66 \downbad & 68 \upgood & 38 \downbad \\
+        \bottomrule
+    \end{tabular}
+    \label{app_tab:ca}
+\end{table}
+
+\clearpage
+
+%%%%%%%%%
+\subsection{Confusion Matrices of All Model Runs}
+\label{app:conf_matrices}
+    
+\begin{figure}[!htb]
+    \centering
+    \begin{adjustbox}{center}
+        \begin{subfigure}{.43\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/baseline_15.png}
+            \caption{Baseline 1.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/baseline_14.png}
+            \caption{Baseline 2.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/baseline_13.png}
+            \caption{Baseline 3.}
+        \end{subfigure}
+    \end{adjustbox}
+    \\[0.66cm]
+    \begin{adjustbox}{center}
+        \begin{subfigure}{.43\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext1_12.png}
+            \caption{Extension 1.1.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext1_11.png}
+            \caption{Extension 1.2.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext1_10.png}
+            \caption{Extension 1.3.}
+        \end{subfigure}
+    \end{adjustbox}
+    \\[0.66cm]
+    \begin{adjustbox}{center}
+        \begin{subfigure}{.43\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext2_9.png}
+            \caption{Extension 2.1.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext2_8.png}
+            \caption{Extension 2.2.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext2_7.png}
+            \caption{Extension 2.3.}
+        \end{subfigure}
+    \end{adjustbox}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htb]
+    \centering
+    \begin{adjustbox}{center}
+        \begin{subfigure}{.43\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext3_6.png}
+            \caption{Extension 3.1.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext3_5.png}
+            \caption{Extension 3.2.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext3_4.png}
+            \caption{Extension 3.3.}
+        \end{subfigure}
+    \end{adjustbox}
+    \\[0.66cm]
+    \begin{adjustbox}{center}
+        \begin{subfigure}{.43\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext4_3.png}
+            \caption{Extension 4.1.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext4_2.png}
+            \caption{Extension 4.2.}
+        \end{subfigure}
+        \begin{subfigure}{.355\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/results/extensions/conf_matrices/ext4_1.png}
+            \caption{Extension 4.3.}
+        \end{subfigure}
+    \end{adjustbox}
+    \caption[Confusion Matrices of All Model Runs]{Confusion matrices of all model runs for the test phase.}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%% Acc
+\subsection{Training vs. Validation \glsentrylong{oa}}
+\label{app:acc}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/15_acc.png}
+        \caption{Baseline 1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/14_acc.png}
+        \caption{Baseline 2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/13_acc.png}
+        \caption{Baseline 3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/12_acc.png}
+        \caption{Extension 1.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/11_acc.png}
+        \caption{Extension 1.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/10_acc.png}
+        \caption{Extension 1.3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/9_acc.png}
+        \caption{Extension 2.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/8_acc.png}
+        \caption{Extension 2.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/7_acc.png}
+        \caption{Extension 2.3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/6_acc.png}
+        \caption{Extension 3.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/5_acc.png}
+        \caption{Extension 3.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/4_acc.png}
+        \caption{Extension 3.3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/3_acc.png}
+        \caption{Extension 4.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/2_acc.png}
+        \caption{Extension 4.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/acc/1_acc.png}
+        \caption{Extension 4.3.}
+    \end{subfigure}
+    \caption[\glsentrylong{oa} Plots of All Model Runs]{\gls{oa} of the training (blue) and validation (orange) phase for each model run. The number of epochs is not equalized.}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%% Iou
+\subsection{Training vs. Validation \glsentrylong{iou}}
+\label{app:iou}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/15_iou.png}
+        \caption{Baseline 1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/14_iou.png}
+        \caption{Baseline 2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/13_iou.png}
+        \caption{Baseline 3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/12_iou.png}
+        \caption{Extension 1.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/11_iou.png}
+        \caption{Extension 1.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/10_iou.png}
+        \caption{Extension 1.3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/9_iou.png}
+        \caption{Extension 2.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/8_iou.png}
+        \caption{Extension 2.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/7_iou.png}
+        \caption{Extension 2.3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/6_iou.png}
+        \caption{Extension 3.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/5_iou.png}
+        \caption{Extension 3.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/4_iou.png}
+        \caption{Extension 3.3.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/3_iou.png}
+        \caption{Extension 4.1.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/2_iou.png}
+        \caption{Extension 4.2.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/iou/1_iou.png}
+        \caption{Extension 4.3.}
+    \end{subfigure}
+    \caption[\glsentrylong{iou} Plots of All Model Runs]{\gls{iou} of the training (blue) and validation (orange) phase for each model run. The number of epochs is not equalized.}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%
+\subsection{Hardware Utilization of All Model Runs}
+\label{app:efficiency}
+
+\begin{table}[!htb]
+    \centering
+    \caption[Hardware Utilization - \glsfmtshort{gpu} \& \glsfmtshort{cpu} of All Model Runs]{Averaged and maximal utilization of \gls{gpu} and \gls{cpu} of all model runs. \O{} denotes the average value, and Max the maximum value.}
+    \begin{tabular}{cccccc}
+        \toprule
+        \textbf{Model Run} & \textbf{Channels} & \textbf{\gls{gpu} \O{} [\%]} & \textbf{\gls{gpu} Max [\%]} & \textbf{\gls{cpu} \O{} [\%]} & \textbf{\gls{cpu} Max [\%]} \\
+        \midrule
+        Baseline 1 & 5 & \worst 23.75 & 68.00 & \worst 37.18 & 74.80 \\
+        Baseline 2 & 5 & 15.54 & 58.00 & 25.32 & \worst 81.60 \\
+        Baseline 3 & 5 & 18.92 & 67.00 & 34.39 & 79.40 \\
+        \midrule
+        Baseline & 5 & \worst 19.4 & 64.3 & 32.3 & \worst 78.6 \\
+        \midrule
+        Extension 1.1 & 6 & \worst 16.72 \downgood & 68.00 \upbad & \worst 33.91 \upbad & 69.60 \downgood \\
+        Extension 1.2 & 6 & 11.53 \downgood & 58.00 \downgood & 24.96 \downgood & \worst 74.60 \downgood \\
+        Extension 1.3 & 6 & 14.87 \downgood & 63.00 \downgood & 30.71 \downgood & 70.20 \downgood \\
+        \midrule
+        Extension 2.1 & 16 & 10.51 \downgood & 65.00 \upbad & 26.42 \downgood & \best 59.90 \downgood \\
+        Extension 2.2 & 16 & 10.42 \downgood & 65.00 \upbad & 24.33 \downgood & 66.80 \downgood \\
+        Extension 2.3 & 16 & 9.30 \downgood & 69.00 \upbad & 26.39 \downgood & 66.70 \downgood \\
+        \midrule
+        Extension 3.1 & 13 & 12.65 \downgood & \worst 75.00 \upbad & 24.11 \downgood & 67.20 \downgood \\
+        Extension 3.2 & 13 & 9.84 \downgood & 66.00 \upbad & 24.72 \downgood & 62.70 \downgood \\
+        Extension 3.3 & 13 & 10.21 \downgood & \best 52.00 \upbad & \best 23.38 \downgood & 61.70 \downgood \\
+        \midrule
+        Extension 4.1 & 24 & 7.30 \downgood & 61.00 \downgood & 24.57 \downgood & 73.90 \downgood \\
+        Extension 4.2 & 24 & \best 6.54 \downgood & 65.00 \upbad & 25.08 \downgood & 71.40 \downgood \\
+        Extension 4.3 & 24 & 8.13 \downgood & 63.00 \downgood & 24.31 \downgood & 70.20 \downgood \\
+        \bottomrule
+    \end{tabular}
+    \label{app_tab:util_major}
+\end{table}
+
+\begin{table}[!htb]
+    \centering
+    \caption[Hardware Utilization - \glsfmtshort{ram} \& \glsfmtshort{vram} of All Model Runs]{Averaged and maximal utilization of \gls{ram} and \gls{vram} of all model runs. \O{} denotes the average value, and Max the maximum value.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{cccccc}
+            \toprule
+            \textbf{Model Run} & \textbf{Channels} & \textbf{\gls{ram} \O{} [GB]} & \textbf{\gls{ram} Max [GB]} & \textbf{\gls{vram} \O{} [GB]} & \textbf{\gls{vram} Max [GB]} \\
+            \midrule
+            Baseline 1 & 5 & 9.60 & 14.27 & 2.53 & \best 3.28 \\
+            Baseline 2 & 5 & \best 7.08 & 13.92 & \best 2.00 & 3.29 \\
+            Baseline 3 & 5 & 8.79 & \best 13.71 & 2.41 & \best 3.28 \\
+            \midrule
+            Baseline & 5 & \best 8.49 & \best 13.97 & 2.31 & \best 3.28 \\
+            \midrule
+            Extension 1.1 & 6 & 13.57 \upbad & \best 18.51 \upbad & 2.69 \upbad & \best 3.28 \\
+            Extension 1.2 & 6 & \best 9.87 \upbad & 18.60 \upbad & \best 2.12 \downgood & \best 3.28 \\
+            Extension 1.3 & 6 & 11.96 \upbad & 18.79 \upbad & 2.44 \upbad & \best 3.28 \\
+            \midrule
+            Extension 2.1 & 16 & 15.27 \upbad & 22.60 \upbad & 3.14 \upbad & 3.67 \upbad \\
+            Extension 2.2 & 16 & 13.95 \upbad & 24.69 \upbad & 2.86 \upbad & 3.65 \upbad \\
+            Extension 2.3 & 16 & 14.78 \upbad & 25.49 \upbad & 3.02 \upbad & 3.65 \upbad \\
+            \midrule
+            Extension 3.1 & 13 & 12.83 \upbad & 21.40 \upbad & 2.65 \upbad & 3.49 \upbad \\
+            Extension 3.2 & 13 & 12.52 \upbad & 20.23 \upbad & 2.66 \upbad & 3.50 \upbad \\
+            Extension 3.3 & 13 & 11.61 \upbad & 19.99 \upbad & 2.54 \upbad & 3.50 \upbad \\
+            \midrule
+            Extension 4.1 & 24 & 16.98 \upbad & 28.25 \upbad & 3.26 \upbad & 3.90 \upbad \\
+            Extension 4.2 & 24 & \worst 18.07 \upbad & \worst 28.72 \upbad & \worst 3.47 \upbad & 3.90 \upbad \\
+            Extension 4.3 & 24 & 17.77 \upbad & 27.94 \upbad & 3.32 \upbad & \worst 3.91 \upbad \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+\label{app_tab:util_minor}
+\end{table}

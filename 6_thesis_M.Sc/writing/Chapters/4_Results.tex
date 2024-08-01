@@ -1,0 +1,529 @@
+\chapter{Results}
+\label{sec:results}
+
+Three research questions have been put up in the context of the hypothesis, that \enquote{by adding information about the spatial context of \gls{lulc} classes using a road network, the model convergence should be supported and the overall resource consumption reduced alongside an increase of the accuracy, as the model can make more informed decisions about the \gls{lulc} classes}.
+
+The second research question, \emph{\enquote{what is a suitable encoding method to integrate them into the feature space of the model}}, has been answered in the methodology chapter, partly based on the results regarding the first research question. Road types are reduced in their complexity beforehand by using a \gls{hca} and merging road types with similar relationships over \gls{lulc} classes, and speed limits are feature engineered by merging multiple \gls{osm} tags together and categorizing the values into fixed speed limit ranges. Both attributes are encoded via \gls{ohe} and integrated into the feature space of the \gls{lulcu}.
+
+Their suitability for the task at hand is shown by analyzing their relationship to \gls{lulc} classes, fully answering the first research question \emph{\enquote{which attributes of the \gls{osm} road network can provide the model spatial contextual information regarding \gls{lulc} classes, and what is their relationship to adjacent \gls{lulc} classes derived from \gls{osm}}}.
+
+Finally, the third research question, \emph{\enquote{how much does the integrated road network and its attributes impact the model's performance and resource consumption}}, is also answered in this chapter by presenting the results of the model runs and analyzing them.
+
+%%%%%%%%%%
+\section{Relationship Between Roads \& \glsfmtshort{lulc} Classes}
+
+\emph{RQ 1: Which attributes of the \gls{osm} road network can provide the model spatial contextual information regarding \gls{lulc} classes, and what is their relationship to adjacent \gls{lulc} classes derived from \gls{osm}?}
+
+In order to give an answer to this question, the results of the explorative relationship analysis between road network attributes and \gls{lulc} classes is presented. The analysis is divided into two sections according to the two attributes of the road network types and speed limits, respectively.
+
+%%%%%%%%%%
+\subsection{Road Types vs. \glsfmtshort{lulc} Classes}
+
+This section presents the results of the relationship analysis between road types and \gls{lulc} classes. The analysis is split into two parts: assessing the relationship visually and statistically.
+
+%%%%%%%%%%
+\subsubsection*{Visual Relationship}
+\label{subsec:vis}
+
+Figure \ref{fig:types_lulc_vis} visualizes the distribution of four out of the 16 road types shown in table \ref{tab:roadlengths}. They are plotted on top of the \gls{lulc} classes before feature engineering them as explained in section \ref{sec:ext2}. The remaining road types are shown in appendix section \ref{app:vis_lulc}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/maps/Single Road Types main.pdf}
+    \caption[Visual Relationship between Select Road Types and \glsfmtshort{lulc} Classes]{Visual Relationship between select road types and \gls{lulc} classes for \gls{mahdrnk}. Additional road types are found in appendix section \ref{app:vis_lulc}. Colors represent \gls{lulc} classes, whereas \enquote{built-up} is red, \enquote{forest} is green, \enquote{water} is blue, \enquote{farmland} is yellow, \enquote{permanent\_crops} is orange, and \enquote{grass} is light green (as in figure \ref{app_fig:lulc} in appendix section \ref{app:aoi}). Roads are black.}
+    \label{fig:types_lulc_vis}
+\end{figure}
+
+The figures primarily show that the occurrence and density of specific road types is highly heterogeneous. Some road types cover nearly the full \gls{aoi}, the high share of over 41 \% of the \emph{track} roads is clearly visible, while others are either very distributed or barely represented. Both links of \emph{motorway} and \emph{trunk} (figure \ref{app_fig:types_lulc_vis_maj}) and types \emph{cycleway} and \emph{pedestrian} (figure \ref{app_fig:types_lulc_vis_min}), all with a share of the total road network length of under 1 \%, are barely visible, making it difficult to draw conclusions about their spatial relationship to \gls{lulc} classes. All in all, the road network is more dense on the western part of the \gls{aoi} and sparse in the southeast.
+
+The major road types, including \emph{motorway, trunk, primary, secondary}, and \emph{tertiary}, are distributed across all \gls{lulc} classes, although \emph{primary} seems to rather occur in built-up areas and \emph{motorway} rather in farmlands. The same applies for \emph{path} and \emph{unclassified}, although both are very granulated, \emph{unclassified} more than \emph{path}. \emph{Path} is more distributed over all \gls{lulc} classes, \emph{unclassified} seems to rather avoid forest areas. Types \emph{footway} and \emph{service} are quite similar in their spatial distribution, whereas \emph{service} covers more area, as it has a higher share.
+
+Some roads seem to be bound to specific \gls{lulc} classes. \emph{Footway, living\_street, residential}, and \emph{service} seem to occur rather in built-up areas, whereas \emph{track} seems to avoid built-up areas completely. It is noticeable that \emph{track} and \emph{residential} are nearly the opposite of each other. Interestingly, \emph{path} is not similar to \emph{track}, although the first impression would suggest that. Forest areas are usually avoided, except for \emph{track} and \emph{path}, although only \emph{track} roads cover nearly all forest areas. Farmlands usually have a sparse network, except for \emph{track} and some roads of the major road types.
+
+So, at first glance, it seems that the road types \emph{residential, footway, living\_street}, and \emph{service} are bound to built-up areas, while \emph{track} is the opposite. The other road types do not seem to have a preference for a specific \gls{lulc} class. This will be investigated further in the statistical relationship analysis.
+
+%%%%%%%%%%
+\subsubsection*{Statistical Relationship}
+
+The relationship between road types and \gls{lulc} classes is further analyzed statistically. The results are presented in two heatmaps, showing the distribution of road types over \gls{lulc} classes and vice versa (see figure \ref{fig:types_mean}). The heatmaps are based on the total road length per road type and \gls{lulc} class, respectively. They are the averages of the applied buffers as explained in section \ref{subsec:explore} and as shown in figure \ref{app_fig:types_lulc_v} and \ref{app_fig:types_lulc_h} in the appendix section \ref{app:road_types}. The according figures and the changes between them are not explained in detail, because for the model it only is important to see if there are differences in the signals between the road types for the \gls{lulc} classes. It is sufficient to say that the buffers do have an impact on the distribution, but the average pattern represents the distributions well.
+
+Figure \ref{fig:types_v_mean} shows the quantified relative distribution of road types over \gls{lulc} classes. As explained in section \ref{subsec:explore}, the shares of the total road length per road type have been calculated per \gls{lulc} class, so the figure shows which roads are more prevalent in each \gls{lulc} class, based on the total road length in each \gls{lulc} class. The highest values are achieved by \emph{track}, covering over 70 \% of farmlands, forests, and permanent crops, as well as over 54 \% of grass. \emph{Residential} has the highest share in built-up areas with 30.4 \%, \emph{path} in water areas with 28.4 \%, followed by \emph{track} with 23.5 \%. A strong relation between road types and \gls{lulc} classes (over 50 \%) is only visible for the road type \emph{track} for the three mentioned \gls{lulc} classes as well as permanent crops.  
+
+Peculiarities are that 16.2 \% of built-up areas are intersecting with \emph{track}, which was not observable in the visual relationship, as well as the four types \emph{path, track, footway}, and \emph{service} near water areas, which also was not observable in the figure due to the small share of water areas in the \gls{aoi} (1.7 \%). Also, although \emph{service} has a high share in the road network (11.3 \%), only slightly less than \emph{residential} (14.2 \%), it has not a similar relation to built-up like \emph{residential}, it is more distributed towards water with otherwise similar values in the other \gls{lulc} classes.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{0.4625\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_vertical_mean.png}
+        \caption{Heatmap of Road Types per \gls{lulc} Class.\\Summation to 100 \% vertically.}
+        \label{fig:types_v_mean}
+    \end{subfigure}
+    \begin{subfigure}{0.5275\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/road_types/lulc/road_types_lulc_horizontal_mean.png}
+        \caption{Heatmap of \gls{lulc} Classes per Road Type.\\Summation to 100 \% horizontally.}
+        \label{fig:types_h_mean}
+    \end{subfigure}
+    \caption[Averaged Heatmaps of Road Types vs. \glsfmtshort{lulc} Classes]{Heatmaps showing the relationship between road types and \gls{lulc} classes, averaged over all buffer sizes (0, 10, 25 m; see appendix section \ref{app:road_types}). The distribution depends strongly on the share of road types (A) and the area of \gls{lulc} classes (B) in the \gls{aoi}. All values under 1 \% are omitted for clarity, summation includes the omitted values.}
+    \label{fig:types_mean}
+\end{figure}
+
+Because of the high share of \emph{track} roads (41.3 \%), the other road types have mostly low distribution values, so the figure is quite biased and, therefore, not very informative about the relationship between road types and \gls{lulc} classes, except those mentioned. That is why for this data no \gls{hca} was conducted, as it would not provide any additional information other than \emph{track} being largely different from the other road types.
+
+In order to get a better understanding of the relationship between road types and \gls{lulc} classes, the distribution is turned around. In figure \ref{fig:types_h_mean}, the share of \gls{lulc} classes adjacent to the road types is shown, summing up to 100 \% horizontally based on the total road length of each road type. In this figure, the distribution gets more distinct. The prior very prevalent road type \emph{track} has now a differentiated distribution over the \gls{lulc} classes, having its highest intersection with the forest class with 37.5 \%, but falling under 1 \% in the water class and under 10 \% in the classes built-up and permanent crops.
+
+The only road types whose largest share (over 50 \%) intersects with a specific \gls{lulc} class are \emph{footway, living\_street, pedestrian, residential}, and \emph{service}, which are the most prevalent in the built-up class. This was also already shown in the \gls{hca} in section \ref{sec:ext2}, where \emph{living\_street, pedestrian}, and \emph{residential} road types were merged together into one class. These three have an even higher relation to built-up areas than \emph{footway} and \emph{service} with each over 70 \%, whereas the other two are between 60 and 65 \%. No other road type intersects over 50 \% with a \gls{lulc} class, only \emph{motorway\_link} does so with the grass class just below at 49.5 \%.
+
+The other road types have a more diverse distribution over the \gls{lulc} classes. There are not many types whose share is the largest in one specific \gls{lulc} class except for those mentioned above, but some road types split themselves over two or three specific \gls{lulc} classes. \emph{Cycleway, motorway\_link, primary, secondary, trunk}, as well as \emph{trunk\_link} all have more than 25 \% of them distributed over the \gls{lulc} classes built-up and grass.  
+
+As assumed in section \ref{sec:ext2}, the major road classes are distributed differently over the \gls{lulc} classes, therefore not merging them in one class was the right decision. Especially \emph{tertiary} and \emph{unclassified} differ from the others with their largest shares distributed over the three \gls{lulc} classes built-up, forest, as well as grass, and built-up, farmland, and grass, respectively. The largest share of \emph{track} are distributed over farmland, forest, and grass, with its largest (37.5 \%) over forest.
+
+For the other merged road types, \emph{motorway, trunk}, and their links, the relationships differ in some aspects. \emph{Motorway} and \emph{trunk} are similar for their largest share intersects with grass, but differ for their second and third largest share intersect oppositely with built-up and forest. \emph{Trunk} and its link seem very similar, but \emph{motorway} and its link have a large difference in the grass class, with the link having a share of 49.5 \%, whereas \emph{motorway} has only 32.5 \%. It seems that the link is more prevalent in grass areas and the \emph{motorway} in forest. The distributions of these road types could provide unclear signals to the model.
+
+Comparing these values with the shares of \gls{lulc} classes in the \gls{aoi}, stronger relationships can be seen. Although forest has a share of 39.6 \% of all \gls{lulc} classes, only \emph{motorway, path}, and \emph{trunk} intersect to over 25 \% with it. Contrary, although grass only has a share of 7.7 \%, \emph{cycleway, motorway, motorway\_link, primary, secondary, trunk}, and \emph{trunk\_link} all intersect with it over 25 \%, suggesting a stronger relationship. Water is even more underrepresented than in the other figure, as its share is only 1.7 \%. Additionally, although farmlands have a share of 30.6 \%, no road type intersects with it over 25 \%. And, although built-up areas have a smaller share of 18.3 \%, many road types intersect with it over 25 \%.
+
+In order to compare the pattern similarities of the road types to determine if specific signals for the \gls{lulc} classes exist for the model to train on, a \gls{hca} has been conducted based on these results, as explained in section \ref{sec:ext2}. Figure \ref{fig:types_clustermap} combines the two distinct figures, the heatmap in figure \ref{fig:types_mean} and the dendrogram in figure \ref{fig:types_dendrogram_mean} into a clustermap, enabling the fast comparison of similar patterns of road types and \gls{lulc} classes.
+
+The first thing that catches the eye is that the most of the largest shares of road types are in the built-up and grass classes, although not always above 50 \%. Additionally, \emph{motorway, path}, and \emph{track} have a large intersection with forest. For farmlands, only \emph{track} has a large share. Permanent crops and water have only have shares under 10 \%.
+
+When looking on the left dendrogram, which shows similar patterns of road types, there are two major groups, splitting into the ones stronger associated with built-up and those with a more distributed pattern, as seen above. They are further split into smaller groups, based on their distributions over specific \gls{lulc} classes. For the model, it would mean that there are primarily signals to better distinguish between built-up and not built-up areas, but also between grass and forest areas. The other two \gls{lulc} classes are not as distinct, therefore it is expected, that for these \gls{lulc} classes the performance will not be enhanced as much.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.9\textwidth]{Figures/results/road_types/clustering/road_types_lulc_dendrogram_mean.png}
+    \caption[Clustermap of Road Types vs. \glsfmtshort{lulc} Classes]{Clustermap showing the hierarchical clustering of road types, averaged over all buffer sizes (0, 10, 25 m; see figure \ref{app_fig:types_dendrograms}) based on their distribution pattern similarity over \gls{lulc} classes (see figure \ref{fig:types_h_mean}). The left dendrogram shows the clustering of the road types, the top dendrogram the clustering of the \gls{lulc} classes. The nearer the lines of the dendrograms to the heatmap, the more similar the patterns (unitless).}
+    \label{fig:types_clustermap}
+\end{figure}
+
+Looking at the top dendrogram, which shows the pattern similarity between \gls{lulc} classes, this assumption is confirmed. Most similar are water and permanent crops, then farmland and forest, grass is more different than these two groups together, and built-up the most different. For the model it would mean that it gets signals it can interpret, but their effectivity depends on the \gls{lulc} class.
+
+Because the clustermap is also influenced by the imbalanced \gls{lulc} classes, a \gls{ppmc} analysis has been conducted as well in order to see if \gls{lulc} classes correlate with each other in their relationship to road types, regardless of the length of road types or the area of \gls{lulc} classes. Figure \ref{fig:pmcc_types_mean} shows the result of this analysis, again averaged for all buffer sizes. A positive relationship near 1 means that the classes are strongly linearly related to each other, a negative relationship near -1 that they are strongly opposed, and values around 0 impose a missing linear relationship.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.66\textwidth]{Figures/results/road_types/lulc/road_types_lulc_correlation_mean.png}
+    \caption[\glsfmtshort{ppmc} of \glsfmtshort{lulc} Classes Based on Road Types]{\gls{ppmc} of \gls{lulc} classes based on road type distribution, averaged over all buffer sizes (0, 10, 25 m; see figure \ref{app_fig:types_correlation}). Asterisks show according the significance level at 0.05 (*), 0.01 (**), and 0.001 (***), respectively. The upper triangle is omitted for clarity.}
+    \label{fig:pmcc_types_mean}
+\end{figure}
+
+The \gls{ppmc} confirms that there are linear relationships between the \gls{lulc} classes, with the strongest positive one between farmland and permanent crops, and the strongest negative one between forest and built-up, as assumed in the elaborations above.
+
+Interestingly, there is nearly no relationship between grass and farmlands, which is surprising, as they are both partially agricultural areas (\emph{landuse=meadow} in grass class). Also surprising is the relatively strong relation between forest and farmland as well as permanent crops. This shows that there is a relationship between agricultural areas and forests based on the road network in them. Unsurprising is the negative relationship between built-up and all other classes, as this has been shown in all figures above.
+
+So, all in all, it seems that road types can give the model according signals towards adjacent \gls{lulc} classes, although not every class will be strongly positively impacted by the integration of the road types into the feature space of the \gls{lulcu}.
+
+%%%%%%%%%%
+\subsection{Speed Limit Classes vs. \glsfmtshort{lulc} Classes}
+
+This section focuses on the relationship between speed limits and \gls{lulc} classes, the second attribute of the road network that is investigated. Because of the many missing values, the visual relationship analysis is skipped. The statistical relationship is analyzed similarly to the road types by using two heatmaps, a \gls{hca}, and the \gls{ppmc} analysis, showing the distribution of speed limit classes over \gls{lulc} classes and vice versa (see figure \ref{fig:speeds_mean}). Similar to analyzing the road types, the heatmaps are based on the total road length per speed limit class and \gls{lulc} class, respectively. They are the averages of the applied buffers as explained in section \ref{subsec:explore} and as shown in figure \ref{app_fig:speeds_v} and \ref{app_fig:speeds_h} in the appendix section \ref{app:speeds}. As previously, the according figures and changes between them are not explained in detail. The buffers also affect the distribution in this case, yet the average pattern adequately reflects the distributions as well.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.465\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_vertical_mean.png}
+        \caption{Heatmap of Speed Limit Classes per \gls{lulc} Class.\\Summation to 100 \% vertically.}
+        \label{fig:speeds_v_mean}
+    \end{subfigure}
+    \begin{subfigure}{.525\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/speeds/speeds_lulc_horizontal_mean.png}
+        \caption{Heatmap of \gls{lulc} Classes per Speed Limit Class.\\Summation to 100 \% horizontally.}
+        \label{fig:speeds_h_mean}
+    \end{subfigure}
+    \caption[Averaged Heatmaps of Speed Limit Classes vs. \glsfmtshort{lulc} Classes]{Heatmaps showing the relationship between speed limit classes and \gls{lulc} classes, averaged over all buffer sizes (0, 10, 25 m; see appendix section \ref{app:speeds}). The distribution depends strongly on the share of speed limit classes (A) and the area of \gls{lulc} classes (B) in the \gls{aoi}. All values under 1 \% are omitted for clarity, summation includes the omitted values.}
+    \label{fig:speeds_mean}
+\end{figure}
+
+Figure \ref{fig:speeds_v_mean} shows the relative distribution of the speed limit classes over \gls{lulc} classes. As explained in section \ref{subsec:explore}, the shares of the total road length per speed limit class have been calculated per \gls{lulc} class analog to the procedure for the road types, so the figure shows which roads are more prevalent in each \gls{lulc} class, based on the total road length in each \gls{lulc} class.
+
+Quite noticeable is the one high value of 72 \% in the relation between the speed limit class \enquote{very low} and the built-up \gls{lulc} class. \enquote{Very low} has the highest share in the road network with over 56 \%, explaining its highest prevalence in every \gls{lulc} class except water. The second highest share of the road network has the speed limit class \enquote{low} with nearly 20 \%, which explains why it has high shares over the \gls{lulc} classes as well. Interestingly, it intersects the most with water areas, surpassing even the class \enquote{very low}. Although \enquote{very high} has the third largest share of the road network with 8.55 \%, it is the second most prevalent speed limit class in farmlands and forests, suggesting an even stronger relationship towards these \gls{lulc} classes. \enquote{Medium}, with 6.3 \% the fourth largest share of the network, is usually the fourth largest share in all \gls{lulc} classes as well except for built-up. The other speed limit classes have low values, with \enquote{high} and \enquote{walk} having the lowest shares in the road network, observable in this figure.
+
+The assumption relating the speed limit classes is, that the further outside of cities, the higher the speed limit. Because of the imbalanced shares of speed limit classes this assumption can not be confirmed by only using this figure, that is why the figure next to it, figure \ref{fig:speeds_h_mean}, is consulted. In this figure, again the share of \gls{lulc} classes adjacent to the speed limit classes is shown, summing up to 100 \% horizontally based on the total road length of each speed limit class.
+
+Partially confirming the assumption, the largest shares of the three slowest speed limit classes \enquote{walk}, \enquote{very low}, and \enquote{low} intersect with the built-up class. But, nearly one quarter of each of the two fastest speed limit classes \enquote{very high+} and \enquote{unlimited} intersect with built-up also, showing a opposite distribution as expected. In both of them, the other shares mainly split over the forest and grass classes, although \enquote{very high+} has a shifted distribution with less of its roads in the \gls{lulc} class forest and more in grass.
+
+As before, due to the low shares of water and permanent crops, they are underrepresented. Additionally, only the speed limit class \enquote{unlimited} has a share of over 5 \% intersecting with water areas, all other classes are below. The higher mid range speed limits \enquote{high} and \enquote{very high} have a more distributed pattern over the three \gls{lulc} classes farmland, forest, and grass.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.75\textwidth]{Figures/results/speeds/clustering/speeds_lulc_dendrogram_mean.png}
+    \caption[Clustermap of Speed Limit Classes vs. \glsfmtshort{lulc} Classes]{Clustermap showing the hierarchical clustering of speed limit classes, averaged over all buffer sizes (0, 10, 25 m; see figure \ref{app_fig:speeds_dendrograms}) based on their distribution pattern similarity over \gls{lulc} classes (see figure \ref{fig:speeds_h_mean}). The left dendrogram shows the clustering of the speed limit classes, the top dendrogram the clustering of the \gls{lulc} classes. The nearer the lines of the dendrograms to the heatmap, the more similar the patterns (unitless).}
+    \label{fig:speeds_clustermap}
+\end{figure}
+
+The figures show a diverse distribution, although the assumption, that lower speed limits are more prevalent in built-up areas and higher speed limits in rural areas, is partially confirmed. However, a linear pattern is not clearly observable, as the highest speed limit classes have a high share in built-up areas as well. All speed limit classes intersect with the \gls{lulc} class grass, although the lower speed limits less than the faster ones. Farmlands and forests are mainly intersected by the mid range speed limits, especially \enquote{high} and \enquote{very high}. 
+
+The \gls{hca} in figure \ref{fig:speeds_clustermap} shows the pattern similarities of the speed limit classes. As the figure shows in the left dendrogram, the speed limit classes are mainly clustered into two groups, one with the slowest speed limits \enquote{walk}, \enquote{very low}, and \enquote{low}, and the other with the faster speed limits. The most similar pattern have \enquote{walk} and \enquote{very low} with the highest share (over 70 \%) of each in built-up areas and the second highest in grass. \enquote{Low} has also a similar pattern, but with a higher share in grass and a lower share in built-up.
+
+Interestingly, \enquote{unlimited} is more similar to \enquote{medium} than to \enquote{very high} and \enquote{high}, and these two more to \enquote{very high+} than to the other two high speed classes \enquote{very high} and \enquote{high}. \enquote{Unlimited} and \enquote{medium}, therefore, break up the assumption than high speed limits are found outside of built-up areas.
+
+The top dendrogram shows that the \gls{lulc} classes are clustered into two groups as well, one with the built-up class and the other with the other five classes, similar to the road types. The highest similarity have water and permanent crops, but this is not representative due to their small share of the total \gls{lulc} area, as explained above. Farmland and forest seem more related to each other than to grass, repeating the pattern seen in the road types, although in this case grass belongs to the same subgroup.
+
+The \gls{ppmc} confirms that there are linear relationships between the \gls{lulc} classes, with the strongest positive one, contrary to the road types, between forest and grass, closely followed by farmland and forest, and the strongest negative one at a significant -0.98 between forest and built-up, taking the statement of the road type analysis a step further. The correlation matrix generally looks different from the one for the road types, in general intensifying relations shown in the road types, like between built-up and the classes farmland, forest, and grass, also between forest and farmland, and between grass and forest. Surprising differences are especially in permanent crops and grass, which now have a positive relation, contrary to their prior negative relation with the same strength. Also, there is a relation between farmland and grass now, which was not observable before. Unsurprising is the negative relationship between built-up and all other classes, similar to the road types, as this has been shown in all figures above.
+
+So, all in all, it seems that speed limits also can give the model signals towards adjacent \gls{lulc} classes, but the signals are different from those of the road types. Some relations are similar and stronger, others opposite, so not every class will be strongly positively impacted by the integration of the speed limit classes into the feature space of the \gls{lulcu}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.66\textwidth]{Figures/results/speeds/speeds_lulc_correlation_mean.png}
+    \caption[\glsfmtshort{ppmc} of \glsfmtshort{lulc} Classes Based on Speed Limit Classes]{\gls{ppmc} of \gls{lulc} classes based on speed limit class distribution, averaged over all buffer sizes (0, 10, 25 m; see figure \ref{app_fig:speeds_correlation} in appendix section \ref{app:road_types}). Asterisks show the according significance level at 0.05 (*), 0.01 (**), and 0.001 (***), respectively. The upper triangle is omitted for clarity.}
+    \label{fig:pmcc_speeds_mean}
+\end{figure}
+
+For Extension 4, the merge of both encodings, it is expected that the context inclusion will have a strong impact on built-up, as there are strong signals from both road types and speed limits. For the other classes, the impact is expected to be less strong, possibly even negative, as the signals might be contradictory, reducing the clarity of signals towards \gls{lulc} classes.
+
+%%%%%%%%%%
+\section{Model Evaluation}
+
+\emph{RQ 3: What is the impact of the integrated road network and its attributes on the model's performance and resource consumption?}
+
+In section \ref{subsec:metrics}, multiple metrics have been presented in order to answer this question. The aim of this is to evaluate how the different extensions perform in comparison to the baseline runs and whether integrating a road network has a positive or negative impact on the performance and/or resource consumption of the model, if there is any. This should show if this approach is feasible and build the basis for further studies regarding spatial contextual information inclusion. The section above, where the results of the explorative relationship analysis between the road network attributes and \gls{lulc} classes were presented, showed that there are signals the model could utilize to make more informed predictions. The following evaluation will show if the model can make use of these signals and if the signals are strong enough to enhance the model's performance or provide useful information to increase its efficiency.
+
+The following sections present the metrics of the different models. Note that in all following tables, some cells are colored to enhance the perception. Depending on the metric, either the highest or the lowest value is the best. Usually for performance metrics, the higher the better, and the opposite for resource consumption metrics. The according best one will be marked green, and the according worst value will be colored yellow. Additionally, each cell will have an arrow indicating its performance in comparison to the baseline, which is an average of the three baseline runs. The arrows show the direction of the difference (increase/decrease), and the color the according rating (better/worse), as used for rating the best and worst value. The numbers of channels of each extension are added to the first two result tables to show their complexity in addition to the metrics for clarity. In subsequent tables, these will be omitted to reduce the table size.
+
+%%%%%%%%%%
+\subsection{Overview over Resource Consumption \& Efficiency}
+
+Before diving into the two metric groups and specific metrics, the general metrics of the model runs are presented in table \ref{tab:eval_overview} in an overview manner, showing first efficiency estimations. The assumption for the three general resource consumption metrics number of epochs, runtime, and model size, is, the lower the values, the lower the resource consumption, regardless of the performance of the model runs. The opposite is assumed for the performance metrics \gls{oa} and \gls{iou} of the test phases, also shown in this table. The time needed per epoch is added for comparability, as it is dependent the number of epochs and the runtime. 
+
+\begin{table}[htb]
+    \centering
+    \caption[Overview over General Model Run Metrics]{Overview over the general performance (test sets) and resource consumption metrics for all model runs. The baseline runs are averaged and the extension runs compared to this average. The assumption for the resource consumption metrics number of epochs, runtime, and model size is, the lower the values, the lower the resource consumption. The opposite is assumed for the performance metrics \gls{oa} and \gls{iou}. Time per epoch is added for comparability. In green the best value per metric and in yellow the worst (if baseline runs are one of them, the according extension run is colored as well). The arrows show the direction of the difference (increase/decrease).}
+    \begin{adjustbox}{center}
+        \begin{tabular}{cccccccc}
+            \toprule
+            \textbf{Model Run} & \textbf{Channels} & \textbf{Epochs} & \textbf{Runtime [s]} & \textbf{Time/Epoch [s]} & \textbf{Size [MB]} & \textbf{\gls{oa} [\%]} & \textbf{\gls{iou} [\%]} \\
+            \midrule
+            Baseline 1 & 5 & 37 & 691 & \best 18.68 & 83.01 & \best 76.69 & 36.42 \\
+            Baseline 2 & 5 & 13 & \best 269 & 20.69 & 30.79 & 71.85 & 34.24 \\
+            Baseline 3 & 5 & 28 & 536 & 19.14 & 65.28 & 66.34 & 29.68 \\
+            \midrule
+            Baseline & 5 & 26 & 498.67 & \best 19.50 & 59.69 & 71.63 & 33.45 \\
+            \midrule
+            Extension 1.1 & 6 & \worst 43 \upbad & 1030 \upbad & \best 23.95 \upbad & \worst 115.58 \upbad & 72.57 \upgood & 37.24 \upgood \\
+            Extension 1.2 & 6 & 13 \downgood & \best 348 \downgood & 26.77 \upbad & 35.55 \downgood & 70.74 \downbad & 35.34 \upgood \\
+            Extension 1.3 & 6 & 25 \downgood & 609 \upbad & 24.36 \upbad & 68.02 \upbad & 68.86 \downbad & 38.68 \upgood \\
+            \midrule
+            Extension 2.1 & 16 & 29 \upbad & 1444 \upbad & 49.79 \upbad & 40.47 \downgood & 68.90 \downbad & 37.42 \upgood \\
+            Extension 2.2 & 16 & 16 \downgood & 826 \upbad & 51.63 \upbad & 20.98 \downgood & 70.56 \downbad & \best 39.29 \upgood \\
+            Extension 2.3 & 16 & 22 \downgood & 1099 \upbad & 49.95 \upbad & 29.62 \downgood & 72.62 \upgood & 37.44 \upgood \\
+            \midrule
+            Extension 3.1 & 13 & 16 \downgood & 703 \upbad & 43.94 \upbad & 21.26 \downgood & 69.73 \downbad & 34.02 \upgood \\
+            Extension 3.2 & 13 & 16 \downgood & 680 \upbad & 42.50 \upbad & 21.73 \downgood & 69.37 \downbad & 33.80 \upgood\\
+            Extension 3.3 & 13 & \best 12 \downgood & 535 \upbad & 44.58 \upbad & \best 16.43 \downgood & \worst 64.31 \downbad & \worst 28.27 \downbad \\
+            \midrule
+            Extension 4.1 & 24 & 20 \downgood & 1405 \upbad & \worst 70.25 \upbad & 24.54 \downgood & \best 74.63 \upgood & 38.61 \upgood \\
+            Extension 4.2 & 24 & 33 \upbad & \worst 2231 \upbad & 67.61 \upbad & 38.41 \downgood & 66.20 \downbad & 37.01 \upgood\\
+            Extension 4.3 & 24 & 23 \downgood & 1583 \upbad & 68.83 \upbad & 27.00 \downgood & 68.01 \downbad & 38.14 \upgood \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+    \label{tab:eval_overview}
+\end{table}
+
+The first thing to notice is that the baselines are neither the best nor the worst in all metrics. They have the lowest runtime, lowest time per epoch, and the highest \gls{oa} score, but the other metrics are dominated by the extensions, especially the \gls{iou}, where only Extension 3.3 achieves a lower value than all baseline runs, and the number of epochs needed for convergence, where only three of the twelve extension runs needed more epochs than the baseline. Extension 4.2 has the longest runtime with 2231 s, more than triple the longest baseline run, and Extension 1.2 the shortest with 348 s, which is shorter than two of the baseline runs. The model size has a very high variability between 16.43 MB by Extension 3.3 and 115.58 MB by Extension 1.1, with the baselines ranging in between. The \gls{oa} scores range between the highest value by Baseline 1 with 76.69 \% and the lowest by Extension 3.3 with 64.31 \%. The \gls{iou} scores are closer together, with the highest value achieved by Extension 2.2 with 39.29 \%, better than all baseline runs, and the lowest by Extension 3.3 with 28.27 \%, worse than all baseline runs.
+
+In order to put the values into perspective, the fitting behavior of the model runs, monitored by comparing the loss of the training and validation phases and rating the curve progressions, is shown in figure \ref{fig:losses}. As the step count is not equalized, the curves are not directly comparable, but the general behavior can be observed and rated.
+
+\begin{figure}[!hp]
+    \centering
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/15_loss.png}
+        \caption{Baseline 1.\\Good fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/14_loss.png}
+        \caption{Baseline 2.\\Overfitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/13_loss.png}
+        \caption{Baseline 3.\\Moderate fitting.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/12_loss.png}
+        \caption{Extension 1.1.\\Slightly Overfitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/11_loss.png}
+        \caption{Extension 1.2.\\Good fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/10_loss.png}
+        \caption{Extension 1.3.\\Slightly overfitting.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/9_loss.png}
+        \caption{Extension 2.1.\\Good fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/8_loss.png}
+        \caption{Extension 2.2.\\Good fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/7_loss.png}
+        \caption{Extension 2.3.\\Slightly overfitting.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/6_loss.png}
+        \caption{Extension 3.1.\\Moderate fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/5_loss.png}
+        \caption{Extension 3.2.\\Moderate fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/4_loss.png}
+        \caption{Extension 3.3.\\Overfitting.}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/3_loss.png}
+        \caption{Extension 4.1.\\Moderate fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/2_loss.png}
+        \caption{Extension 4.2.\\Good fitting.}
+    \end{subfigure}
+    \begin{subfigure}{.325\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/loss/1_loss.png}
+        \caption{Extension 4.3.\\Moderate fitting.}
+    \end{subfigure}
+    \caption[Loss Plots of Model Runs]{Loss of the training (blue) and validation (orange) phase for each model run. As the number of epochs is not equalized, the comparability between the model runs is limited. The fitting behavior is categorized in good, moderate, and overfitting.}
+    \label{fig:losses}
+\end{figure}
+
+All training curves show an overall decrease, which means that they all achieved convergence. Some models did not perform well and overfitted the data, and some other models even have lower validation than training loss. This can be due to data augmentation and regularization techniques used in training and not in validation or having a too small validation set, which then happens to be an \enquote{easier} dataset to predict. Nevertheless, as the curves decrease and follow similar patterns, they signify successful model runs. Their different fitting behavior is mirrored in table \ref{tab:eval_overview}, which shows that all groups incorporate a high variability between their runs. Nevertheless, the models are all included in the comparison as they all have a similar fitting behavior in general per extension group and use the same overall dataset, architecture, and hyperparameters, which means they all have the same limitations.
+
+Averaging the values per baseline and extension, respectively, ensures better comparability and seems feasible based on the high variability in every group around a somewhat average-like medium model. Therefore, from this point on, only the averaged metrics will be analyzed in regard to the research question, where the extension groups are more important rather than single model runs for evaluating the extensions' impact on the model's performance and resource consumption. It should kept in mind that for all metrics, the variability is high. The metrics of all model runs are found in the appendix section \ref{app:evaluation}. Additionally, the plotted curves of the performance metrics \gls{oa} and \gls{iou} for the training and validation phases for each model run can be found in the appendix sections \ref{app:acc} and \ref{app:iou}, respectively, as well. These will also not be discussed here and function only as verification for claimed results.
+
+Continuing in table \ref{tab:eval_avg}, the metrics from table \ref{tab:eval_overview} are averaged per extension and compared to the baseline. As seen here, the main tendencies in comparison to the baseline do not change much, but it is clearer now that the extensions perform differently among themselves. Extension 3 is interesting for it has the lowest resource consumption values, but also the worst performance metrics. As the time per epoch also is much higher than the baseline or even Extension 1, it has a low efficiency and provides a bad trade-off between performance and resource consumption, signifying a failed attempt to enhance the model. Extension 4, on the other hand, has the worst runtime and time per epoch, but performs comparably good, achieving the second best \gls{iou}. This also is a bad trade-off, as achieving comparable performance with higher computational costs is a failed enhancing attempt as well. Extension 1 and 2 seem to achieve better results, as they perform better than the baseline in regard to \gls{iou} and comparable in \gls{oa} (less than 1 \% lower), while having higher computational costs. So, they achieve an increase in performance with increased computational costs, a usual trade-off.
+
+\begin{table}[htb]
+    \centering
+    \caption[Grouped General Model Run Metrics]{General performance (test sets) and resource consumption metrics grouped and averaged by extension, compared to the baseline.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{cccccccc}
+            \toprule
+            \textbf{Extension} & \textbf{Channels} & \textbf{Epochs} & \textbf{Runtime [s]} & \textbf{Time/Epoch [s]} & \textbf{Size [MB]} & \textbf{\gls{oa} [\%]} & \textbf{\gls{iou} [\%]}\\
+            \midrule
+            Baseline & 5 & 26 & \best 498.67 & \best 19.18 & 59.69 & \best 71.63 & 33.45 \\
+            \midrule
+            Extension 1 & 6 & \worst 27.00 \upbad & 662.33 \upbad & \best 24.51 \upbad & \worst 73.05 \upbad & \best 70.72 \downbad & 37.09 \upgood \\
+            Extension 2 & 16 & 22.33 \downgood & 1123.00 \upbad & 50.29 \upbad& 30.36 \downgood & 70.69 \downbad & \best 38.05 \upgood \\
+            Extension 3 & 13 & \best 14.67 \downgood & \best 639.33 \upbad & 43.58 \upbad & \best 19.81 \downgood & \worst 67.81 \downbad & \worst 32.03 \downbad \\
+            Extension 4 & 24 & 25.33 \downgood & \worst 1739.67 \upbad & \worst 68.68 \upbad & 29.98 \downgood & 69.61 \downbad & 37.92 \upgood \\
+            \midrule
+            Extensions & - & 22.08 \downgood & 1066.08 \upbad & 48.28 \upbad & 38.05 \downgood & 69.71 \downbad & 36.75 \upgood \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+    \label{tab:eval_avg}
+\end{table}
+
+Interestingly, the number of epochs and the model size of all extensions are much lower except for Extension 1. Similarly, all \gls{iou} values are higher than the baseline except for Extension 3. Comparing these values to the complexity of the models derived from the number of channels, it is difficult to observe a linear relationship between complexity and resource consumption or performance. Model sizes and epochs, for example, both are the worst in Extension 1 and best in Extension 3, but for Extension 2 and 4, the increase/decrease relation is turned around, giving a example against a linear relationship.
+
+Evaluating the model runs solely on these metrics is not enough to make final statements about the impact of the road attributes on the model. Therefore, the following sections will dive deeper into the according metrics to better evaluate the impact of the integrated road network and its attributes on the model.
+
+%%%%%%%%%%
+\subsection{Performance}
+
+Looking further into the performance of the models, the maximal \gls{oa} and \gls{iou} values for each phase of the model training process are shown in table \ref{tab:performance_avg}. The prior tendencies are changed completely, as the extensions perform nearly always better than the baseline, except for the \gls{oa} in the test phase, of course. There are single exceptions in every phase metric, usually in Extension 3, which performs worse in four of six metrics compared to the baseline, but the extensions usually perform better than the baseline in all other cases, usually in four to five out of the six cases.
+
+Extension 4 has the highest values in the training and validation phases in both metrics, which makes sense compared to it being the most complex extension with the highest runtime. Although Extension 1 is less complex than Extension 3, it still achieves better performance in all cases except \gls{iou} during validation, while having a slightly longer runtime. Extension 2, being the second most complex extension and also having the second longest runtime, achieves always the second best value of the extension except for the \gls{iou} in the test phase, where it surpasses Extension 4. Without Extension 3, a linear relationship is visible, where the metrics increase the higher the complexity, but as Extension 3 has the worst values and the \gls{iou} in the test phase of Extension 4 is lower than Extension 2, this assumption cannot be considered valid.
+
+\begin{table}[htb]
+    \centering
+    \caption[Grouped Maximal Performance Metrics]{Maximal achieved values for \gls{oa} and \gls{iou} in all three phases, grouped and averaged by extension. The full table for all model runs can be found in table \ref{app_tab:performance}.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{cccccccc}
+            \toprule
+            \textbf{Model Run} & \textbf{Train \gls{oa} [\%]} & \textbf{Val \gls{oa} [\%]} & \textbf{Test \gls{oa} [\%]} & \textbf{Train \gls{iou} [\%]} & \textbf{Val \gls{iou} [\%]} & \textbf{Test \gls{iou} [\%]} \\
+            \midrule
+            Baseline & 66.46 & \worst 68.52 & \best 71.63 & 35.10 & 35.37 & 33.45 \\
+            \midrule
+            Extension 1 & 66.92 \upgood & 69.94 \upgood & \best 70.72 \downbad & 36.40 \upgood & \worst 34.55 \downbad & 37.09 \upgood \\
+            Extension 2 & 68.34 \upgood & 73.69 \upgood & 70.69 \downbad & 37.63 \upgood & 39.84 \upgood & \best 38.05 \upgood \\
+            Extension 3 & \worst 65.86 \downbad & \worst 69.77 \upgood & \worst 67.81 \downbad & \worst 34.82 \downbad & 36.55 \upgood & \worst 32.03 \downbad \\
+            Extension 4 & \best 68.36 \upgood & \best 75.53 \upgood & 69.61 \downbad & \best 38.19 \upgood & \best 40.44 \upgood & 37.92 \upgood \\
+            \midrule
+            Extensions & 67.37 \upgood & 72.48 \upgood & 69.71 \downbad & 36.26 \upgood & 38.05 \upgood & 36.52 \upgood \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+    \label{tab:performance_avg}
+\end{table}
+
+In addition to comparing the maximal values achieved by the extensions, table \ref{tab:performance_epochcut_avg} shows the metrics at step 13, the lowest number of epochs needed for convergence in the baseline runs (see table \ref{tab:eval_overview}). This allows for the evaluation of performance at identical steps, under the premise that the models were ultimately exposed to the same amount of data for learning.
+
+\begin{table}[htb]
+    \centering
+    \caption[Grouped Performance Metrics at Step 13]{\gls{oa} and \gls{iou} values at step 13, grouped and averaged by extension. The full table for all model runs can be found in table \ref{app_tab:performance_epochcut}.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{ccccc}
+            \toprule
+            \textbf{Model Run} & \textbf{Train \gls{oa} [\%]} & \textbf{Val \gls{oa} [\%]} & \textbf{Train \gls{iou} [\%]} & \textbf{Val \gls{iou} [\%]} \\
+            \midrule
+            Baseline & \worst 61.98 & \worst 57.24 & \worst 31.71 & \worst 27.26 \\
+            \midrule
+            Extension 1 & \worst 63.78 \upgood & 64.77 \upgood & \worst 33.05 \upgood & \worst 30.93 \upgood \\
+            Extension 2 & \best 65.83 \upgood & \best 66.07 \upgood & 35.59 \upgood & \best 35.32 \upgood \\
+            Extension 3 & 64.54 \upgood & \worst 62.96 \upgood & 33.67 \upgood & 33.46 \upgood \\
+            Extension 4 & 65.63 \upgood & 65.34 \upgood & \best 35.64 \upgood & 34.45 \upgood \\
+            \midrule
+            Extensions & 64.95 \upgood & 64.79 \upgood & 34.49 \upgood & 33.54 \upgood \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+\label{tab:performance_epochcut_avg}
+\end{table}
+
+Surprisingly, the baseline has the worst values in all phases and for both metrics, often by a magnitude of multiple percent points (\%p) difference to the lowest performing extension. As for the best performing extension at step 13, Extension 2 achieves the best values in all phases except in the \gls{iou} during the training phase, where it performs only slightly worse than Extension 4. Extension 1 performs the worst among the extensions, with the exception of the \gls{oa} during the validation phase, where only Extension 3 performs worse. The extensions perform better than the baseline in all cases without exception, but, as the time per epoch metric in table \ref{tab:eval_avg} shows, they all will have consumed more resources at step 13 than the baseline. Yet, the better performance is a good trade-off, showing the potential of the extensions to at least enhance the model's performance based on the same amount of data.
+
+As \gls{oa} and \gls{iou} are merged metrics, calculated using all values of the confusion matrices, the averaged \gls{tp} values for each \gls{lulc} class are shown in table \ref{tab:ca_avg}. These values represent the \gls{ca} metric, which helps in comparing class-wise performance. The according confusion matrices of which the \gls{ca} is derived from can be found in the appendix section \ref{app:conf_matrices}.
+
+\begin{table}[htb]
+    \centering
+    \caption[Grouped \glsentrylong{ca}]{\gls{ca} values of the test phases, grouped and averaged by extension. The full table for all model runs can be found in table \ref{app_tab:ca} in appendix section \ref{app:performance}. Also, the according confusion matrices can be found in appendix section \ref{app:conf_matrices}.}
+    \begin{tabular}{ccccccc}
+        \toprule
+        \textbf{Extension} & \textbf{Built-up} & \textbf{Forest} & \textbf{Water} & \textbf{Farmland} & \textbf{Permanent Crops} & \textbf{Grass} \\
+        \midrule
+        Baseline & \worst70.33 & 84.33 & \worst78.00 & 69.00 & \worst43.00 & \best41.33 \\
+        \midrule
+        Extension 1 & 82.00 \upgood & 84.67 \upgood & 86.33 \upgood & \best 74.00 \upgood & \worst 51.00 \upgood & 34.67 \downbad \\
+        Extension 2 & 86.00 \upgood & 84.00 \downbad & \best 91.67 \upgood & 68.33 \downbad & 56.67 \upgood & \best 39.33 \downbad \\
+        Extension 3 & \worst 79.00 \upgood & \best 87.00 \upgood & \worst 84.00 \upgood & \worst 57.00 \downbad & 53.33 \upgood & \worst 20.33 \downbad \\
+        Extension 4 & \best 87.67 \upgood & \worst 82.67 \downbad & 90.67 \upgood & 64.33 \downbad & \best 67.00 \upgood & 37.33 \downbad \\
+        \midrule
+        Extensions & 83.67 \upgood & 84.59 \upgood & 88.17 \upgood & 66.67 \downbad & 57 \upgood & 32.92 \downbad \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:ca_avg}
+\end{table}
+
+The extensions perform better than the baseline in four of the six \gls{lulc} classes, except farmland and grass. The baseline then again performs best in the \gls{lulc} class grass, and worst in the classes built-up, water, and permanent crops. As shown above, the relationship between the road attributes were the most evident towards the built-up class, which experiences a considerable increase in prediction accuracy in all extensions. The same applies to the classes water and permanent crops. In the forest class, extensions and baseline perform similarly. In the grass class, all models achieve a performance below 50 \%, the extensions averaged even under 33 \%, making it by far the worst predicted class. Interestingly, integrating only the road network without further data (Extension 1) already improves the prediction of all \gls{lulc} classes except grass.
+
+The extensions perform similarly in the farmland class, where the \gls{ca} is worse than the baseline except in Extension 1, which outperforms the baseline by 5 \%. However, the average \gls{ca} of the extensions is over 65 \%, therefore, the overall prediction is much better than in the grass class. The class permanent crops also has a subpar \gls{ca} in the baseline with 43 \%, but the extensions achieve a considerable increase in performance, especially Extension 4, which achieves by far the highest value in this class with 67 \%. Interestingly, every extension performs the best in one of the classes, although Extension 4 holds the highest value in the two classes built-up and permanent crops. Because of this distribution, a linear relationship between complexity and performance again cannot be detected, as the most complex extension does not perform the best in all classes. The only extension which performs better than the baseline while all other extensions perform worse is Extension 1 in the farmland class.
+
+Extensions predict water the best, followed by forest and built-up, although the range of \gls{ca} differs in them. Of these three, forest has the smallest variation with 4.33 \%p, then water with 7.67 \%p, and finally built-up with the largest variation of 8.67 \%p. The other three classes, which are predicted worse, also have a much higher variability between 16 \%p in permanent crops to 19 \% in grass. This shows that the model is more stable in predicting the classes water, forest, and built-up, while the other classes are more difficult to predict and have a higher variability in the predictions.
+
+%%%%%%%%%%
+\subsection{Hardware Utilization}
+
+Although some resource consumption metrics have already been explored in regard to the research question, the utilization of the hardware components is analyzed below, replacing energy consumption and carbon emission measurements. Again, all following tables show averaged values per extension group for better comparability with the baseline. 
+
+Because they are the two highest consumers in the machine, the utilization of \gls{gpu} and \gls{cpu} is looked into first. Their utilization in percent is shown in table \ref{tab:util_major_avg}. Contrary to the values above in table \ref{tab:eval_overview}, the resource consumption in form of hardware utilization seems to be the highest in the baseline, with an exception in Extension 2, which reached a higher maximal \gls{gpu} utilization. However, all cases in the table have a lower utilization, usually more than five \%p, except for the mentioned value and the same metric for Extension 3, which reached the same maximal utilization of the \gls{gpu} as the baseline.
+
+\begin{table}[htb]
+    \centering
+    \caption[Grouped Hardware Utilization - \glsfmtshort{gpu} \& \glsfmtshort{cpu}]{Average and maximal utilization of \gls{gpu} and \gls{cpu}, grouped and averaged per extension. The values are compared to the baseline. \O{} denotes the average value, and Max the maximum value. The full table for all model runs can be found in table \ref{app_tab:util_major}.}
+    \begin{tabular}{cccccc}
+        \toprule
+        \textbf{Extension} & \textbf{\gls{gpu} \O{} [\%]} & \textbf{\gls{gpu} Max [\%]} & \textbf{\gls{cpu} \O{} [\%]} & \textbf{\gls{cpu} Max [\%]} \\
+        \midrule
+        Baseline & \worst 19.40 & 64.33 & \worst 32.30 & \worst 78.60 \\
+        \midrule
+        Extension 1 & \worst 14.37 \downgood & \best 63.00 \downgood & \worst 29.86 \downgood & 71.47 \downgood \\
+        Extension 2 & 10.08 \downgood & \worst 66.33 \upbad & 25.71 \downgood & 64.47 \downgood \\
+        Extension 3 & 10.90 \downgood & 64.33 & \best 24.07 \downgood & \best 63.87 \downgood \\
+        Extension 4 & \best 7.32 \downgood & \best 63.00 \downgood & 24.65 \downgood & \worst 71.83 \downgood \\
+        \midrule
+        Extensions & 10.67 \downgood & 64.17 \downgood & 26.07 \downgood & 67.91 \downgood \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:util_major_avg}
+\end{table}
+
+The expectation would be that the more complex the model, the more are \gls{gpu} and \gls{cpu} utilized. But, the values show a different picture, as the most complex extension, Extension 4, utilized the \gls{gpu} the least both maximal and averaged, and Extension 1 the most averaged. Also, despite having more than the double amount of channels, Extension 3 utilizes the \gls{cpu} less than Extension 1 in both cases, which definitely negates the expectation of a linear increase of hardware utilization with complexity and also its opposite, at least regarding the largest consumers.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/gpu.png}
+        \caption{Regression Plot of \gls{gpu} Utilization.}
+        \label{fig:gpu_reg}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/cpu.png}
+        \caption{Regression Plot of \gls{cpu} Utilization.}
+        \label{fig:cpu_reg}
+    \end{subfigure}
+    \caption[Regression Plots of \glsfmtshort{gpu} \& \glsfmtshort{cpu} Utilization]{Regression plots showing the relationship between number of channels (equates to feature space size and extension type) and average (blue) and maximal (orange) \gls{gpu} (A) and \gls{cpu} (B) utilization.}
+    \label{fig:major_reg}
+\end{figure}
+
+In order to investigate a possible linear relationship, a regression plot is used, shown in figure \ref{fig:major_reg}, which uses the utilization values of all model runs as seen in table \ref{app_tab:util_major} in appendix section \ref{app:efficiency}. The regression plot shows the relationship between the complexity, denoted as the number of channels, and the average and maximal \gls{gpu} and \gls{cpu} utilization.
+
+As seen in table \ref{tab:util_major_avg}, it is difficult to pinpoint a linear relationship between complexity and hardware utilization. This can be seen in the regression plots as well, as either the variability is high or some extensions behave contrary to a linear relationship. The maximal \gls{gpu} utilization stays on a similar level for all groups, although two runs of Extension 3 with 13 channels have comparably high and low values, respectively. The maximal \gls{cpu} utilization is non-linear, as Extension 2 (16 channels) and 3 both utilize it less than Extension 1 and 4, both with lower and higher complexity, respectively. The \gls{cpu} is utilized in average similarly by Extensions 2 to 4, only the baseline and Extension 1 utilize it more. The average \gls{gpu} utilization is similar for all extensions with a slight negative linearity, although {\nobreak Extension 1} has a higher variability than the other extensions. The baseline utilizes the \gls{gpu} the most. So, a linear relationship is not really present due to a combination of high and missing variability in the runs and between the extensions.
+
+The other two important hardware components for \gls{dl} training, as shown in table \ref{tab:hardwareconfig}, are \gls{ram} and \gls{vram}. The utilization of these two is shown in table \ref{tab:util_minor_avg}. However, contrary to \gls{gpu} and \gls{cpu}, the values are in Gigabytes. This is the first and only table which shows a clear relation between complexity and utilization in all metrics.
+
+The baseline utilizes both \gls{ram} and \gls{vram} the least, while Extension 4 utilizes them the most. Extension 4, also, has a peak \gls{ram} utilization of 28.30 GB, just below to maximal allocation for the \gls{wsl} at 30 GB, as shown in table \ref{tab:hardwareconfig}. Surprisingly, the \gls{vram} utilization peaks just under four GB in Extension 4, which is only half of the maximal allocation of 8 GB.
+
+\begin{table}[htb]
+    \centering
+    \caption[Grouped Hardware Utilization - \glsfmtshort{ram} \& \glsfmtshort{vram}]{Average and maximal utilization of \gls{ram} and \gls{vram}, grouped and averaged per extension. The values are compared to the baseline. \O{} denotes the average value, and Max the maximum value. The full table for all model runs can be found in table \ref{app_tab:util_minor}.}
+    \begin{adjustbox}{center}
+        \begin{tabular}{cccccc}
+            \toprule
+            \textbf{Extension} & \textbf{\gls{ram} \O{} [GB]} & \textbf{\gls{ram} Max [GB]} & \textbf{\gls{vram} \O{} [GB]} & \textbf{\gls{vram} Max [GB]} \\
+            \midrule
+            Baseline & \best 8.49 & \best 13.97 & \best 2.31 & \best 3.28 \\
+            \midrule
+            Extension 1 & \best 11.80 \upbad & \best18.63 \upbad & \best 2.42 \upbad & \best 3.28 \\
+            Extension 2 & 14.67 \upbad & 24.26 \upbad & 3.01 \upbad & 3.66 \upbad \\
+            Extension 3 & 12.32 \upbad & 20.54 \upbad & 2.62 \upbad & 3.50 \upbad \\
+            Extension 4 & \worst 17.61 \upbad & \worst 28.30 \upbad & \worst 3.35 \upbad & \worst 3.90 \upbad \\
+            \midrule
+            Extensions & 14.10 \upbad & 23.43 \upbad & 2.85 \upbad & 3.59 \upbad \\
+            \bottomrule
+        \end{tabular}
+    \end{adjustbox}
+    \label{tab:util_minor_avg}
+\end{table}
+
+In order to see if the assumed linear relationship exists here, a similar regression plot is used as well as for the other two components, shown in figure \ref{fig:minor_reg}. It is based on the utilization values of all model runs as seen in table \ref{app_tab:util_minor} in appendix section \ref{app:efficiency}.
+
+As expected, the regression lines show a rising regression line between feature space size and memory utilization for both \gls{ram} and \gls{vram}. However, contrary to the average values in table \ref{tab:util_minor_avg}, the linear relationship is not as clear as expected, as the regression lines show a large variability. Especially in the average utilization values of both components, Extension 1 with 6 channels seems to break up the linearity, particularly in comparison to Extension 3 with 13 channels. Also, the step between the baseline and Extension 1 is large in both average and maximal \gls{ram} utilization, but opposing small in the \gls{vram} utilization. However, when leaving out Extension 1, the values show a linear increase in utilization of \gls{ram} and \gls{vram} with increasing complexity.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/ram.png}
+        \caption{Regression Plot of \gls{ram} Utilization.}
+        \label{fig:ram_reg}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/results/extensions/vram.png}
+        \caption{Regression Plot of \gls{vram} Utilization.}
+        \label{fig:vram_reg}
+    \end{subfigure}
+    \caption[Regression Plots of \glsfmtshort{ram} \& \glsfmtshort{vram} Utilization]{Regression plots showing the relationship between number of channels (equates to feature space size and extension type) and average (blue) and maximal (orange) \gls{ram} (A) and \gls{vram} (B) utilization.}
+    \label{fig:minor_reg}
+\end{figure}
+
+The relationship of hardware utilization for the extensions of \gls{ram} and \gls{vram} can be described as: the larger and more complex the feature space, the higher the \gls{ram} and \gls{vram} utilization. This completely aligns with the assumption stated in section \ref{subsec:machine_config}. Yet, because these two components, particularly the \gls{ram}, do not consume much energy even on full load, their impact on the resource consumption is negligible. As the \gls{vram} is part of the \gls{gpu}, a higher utilization would mean a higher load on the \gls{gpu}, which, however, is not the case as seen above. Still, both components and their utilization show that there is a tendency towards a higher resource consumption with higher complexity, especially when combining these values with the runtime, number of epochs, and time per epoch metrics from table \ref{tab:eval_avg}. The \gls{gpu} and \gls{cpu} follow a opposite pattern in their average utilization, but do not have a linear relationship in their maximal utilization, which is why a concrete statement about the relationship between complexity and hardware utilization cannot be made.
